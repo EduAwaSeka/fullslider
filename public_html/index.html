@@ -5,11 +5,50 @@ Eduardo Jiménez Grande
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Fullslider</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="app/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="app/components/bootstrap-3.3.5/css/bootstrap.css" />
+
+        <script src="app/js/scripts.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
+        <script type="text/javascript" src="app/components/bootstrap-3.3.5/js/bootstrap.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container-fluid">
+
+            <div id="header-menu" class="row">
+                <div id="menu" class="col-sm-1 navbar-brand">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Menu
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Example</a></li>
+                    </ul>
+                </div>
+
+                <div id="tools" class="col-sm-11 navbar-brand">
+                    <button class="btn-primary">Text</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="vertical-toolbar" class="col-sm-3">
+                    <div id="markdown-btn" class="col-sm-2">
+                        <div class="vertical-text col-sm-6">Markdown</div>
+                        <div class="glyphicon glyphicon-chevron-right col-sm-6"></div>
+                    </div>
+                    <div id="vertical-slides" class="col-sm-9 col-sm-offset-1">slide1</div>
+                    
+                    <div id="markdown-space" class="hidden col-sm-12"></div>
+                </div>
+                
+                <div id="workspace" class="col-sm-9">slide-space</div>
+            </div>
+
+        </div>
     </body>
 </html>
