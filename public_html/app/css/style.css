@@ -18,63 +18,28 @@ body{
     bottom: 0;
     top: 5.2em;
     position: absolute;
-    padding-left: 0px;
+    background-color: #555;
+    float: left;
 }
 
-#markdown-btn{
-    background-color: #C4C4C4 !important;
-    padding: 0px !important;
-    height: 100%;
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+#mode{
+    /* position: relative; */
+    clear: both;
 }
 
-.vertical-text{
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    
-    -webkit-transform-origin: 50% 50%;
-    -moz-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    -o-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    
-    /* Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-
-#markdown-btn .vertical-text{
-    margin-left: -190px;
-    width: 400px;
-    text-align: center;
-    position: relative;
-    left: 7px;
-    top: 40%;
-    letter-spacing: 0.3em;
-    font-size: 2em;
-}
-
-#markdown-btn .glyphicon{
-    position: absolute;
-    right: 0;
-    top: 44%;
-}
-
-#vertical-slides{
-
+#horizontal-slides{
+    float: right;
 }
 
 #markdown-space{
     position: absolute;
     bottom: 0px;
-    top: 0px;
+    top: 90px;
     background-color: #fff;
+    float: left;
 }
 
 #workspace{
-    position: absolute;
-    left: 25%;
+    position: relative;
+    float: right;
 }
