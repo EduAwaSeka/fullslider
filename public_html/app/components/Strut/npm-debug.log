@@ -1,0 +1,918 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@2.14.2
+3 info using node@v4.0.0
+4 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\package.json
+5 warn package.json Strut@0.4.0 No repository field.
+6 warn package.json Strut@0.4.0 No license field.
+7 verbose install where, deps [ 'C:\\Users\\Edu\\GitHub\\fullslider\\public_html\\app\\components\\Strut',
+7 verbose install   [ 'grunt',
+7 verbose install     'grunt-contrib-handlebars',
+7 verbose install     'grunt-contrib-copy',
+7 verbose install     'grunt-contrib-concat',
+7 verbose install     'grunt-contrib-uglify',
+7 verbose install     'grunt-contrib-jshint',
+7 verbose install     'grunt-contrib-cssmin',
+7 verbose install     'grunt-contrib-connect',
+7 verbose install     'grunt-contrib-clean',
+7 verbose install     'grunt-contrib-htmlmin',
+7 verbose install     'grunt-contrib-imagemin',
+7 verbose install     'grunt-contrib-watch',
+7 verbose install     'grunt-contrib-livereload',
+7 verbose install     'grunt-usemin',
+7 verbose install     'grunt-contrib-requirejs',
+7 verbose install     'grunt-mocha',
+7 verbose install     'grunt-open',
+7 verbose install     'matchdep',
+7 verbose install     'grunt-text-replace' ] ]
+8 verbose install where, peers [ 'C:\\Users\\Edu\\GitHub\\fullslider\\public_html\\app\\components\\Strut',
+8 verbose install   [] ]
+9 verbose installManyTop reading for lifecycle C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\package.json
+10 info preinstall Strut@0.4.0
+11 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt\package.json
+12 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-clean\package.json
+13 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-concat\package.json
+14 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-connect\package.json
+15 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-copy\package.json
+16 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-cssmin\package.json
+17 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-handlebars\package.json
+18 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-htmlmin\package.json
+19 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-imagemin\package.json
+20 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-jshint\package.json
+21 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-livereload\package.json
+22 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-requirejs\package.json
+23 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-uglify\package.json
+24 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-watch\package.json
+25 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-open\package.json
+26 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-text-replace\package.json
+27 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-usemin\package.json
+28 verbose installManyTop reading scoped package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\matchdep\package.json
+29 info package.json grunt-contrib-connect@0.3.0 No README data
+30 info package.json grunt-contrib-connect@0.3.0 No license field.
+31 info package.json grunt-contrib-htmlmin@0.1.3 No README data
+32 info package.json grunt-contrib-htmlmin@0.1.3 No license field.
+33 info package.json grunt-contrib-imagemin@0.1.4 No README data
+34 info package.json grunt-contrib-imagemin@0.1.4 No license field.
+35 info package.json matchdep@0.1.2 No license field.
+36 info package.json grunt-contrib-cssmin@0.6.2 No license field.
+37 info package.json grunt-contrib-clean@0.4.1 No license field.
+38 info package.json grunt-contrib-handlebars@0.5.12 No license field.
+39 info package.json grunt-contrib-concat@0.3.0 No license field.
+40 info package.json grunt@0.4.5 No license field.
+41 info package.json grunt-contrib-copy@0.4.1 No license field.
+42 info package.json grunt-open@0.2.3 No license field.
+43 info package.json grunt-contrib-requirejs@0.4.4 No license field.
+44 info package.json grunt-contrib-livereload@0.1.1 No license field.
+45 info package.json grunt-contrib-jshint@0.6.5 No license field.
+46 info package.json grunt-usemin@0.1.13 No license field.
+47 info package.json grunt-contrib-uglify@0.2.7 No license field.
+48 info package.json grunt-contrib-watch@0.4.4 No license field.
+49 info package.json grunt-text-replace@0.3.12 No license field.
+50 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\package.json
+51 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt\package.json
+52 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-clean\package.json
+53 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-concat\package.json
+54 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-connect\package.json
+55 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-copy\package.json
+56 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-cssmin\package.json
+57 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-handlebars\package.json
+58 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-htmlmin\package.json
+59 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-imagemin\package.json
+60 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-jshint\package.json
+61 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-livereload\package.json
+62 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-requirejs\package.json
+63 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-uglify\package.json
+64 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-contrib-watch\package.json
+65 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-open\package.json
+66 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-text-replace\package.json
+67 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-usemin\package.json
+68 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\matchdep\package.json
+69 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\.bin\grunt-open\package.json
+70 verbose targetResolver reading package data from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\.bin\grunt-open.cmd\package.json
+71 verbose already installed skipping grunt-contrib-cssmin@~0.6.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+72 verbose already installed skipping grunt-contrib-connect@0.3.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+73 verbose already installed skipping grunt-contrib-clean@~0.4.1 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+74 verbose already installed skipping grunt-contrib-htmlmin@~0.1.3 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+75 verbose already installed skipping grunt-contrib-imagemin@~0.1.4 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+76 verbose already installed skipping grunt-contrib-watch@~0.4.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+77 verbose already installed skipping grunt-contrib-livereload@0.1.1 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+78 verbose already installed skipping grunt-usemin@~0.1.9 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+79 verbose already installed skipping grunt-contrib-requirejs@~0.4.1 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+80 silly cache add args [ 'grunt-mocha@~0.2.2', null ]
+81 verbose cache add spec grunt-mocha@~0.2.2
+82 silly cache add parsed spec Result {
+82 silly cache add   raw: 'grunt-mocha@~0.2.2',
+82 silly cache add   scope: null,
+82 silly cache add   name: 'grunt-mocha',
+82 silly cache add   rawSpec: '~0.2.2',
+82 silly cache add   spec: '>=0.2.2 <0.3.0',
+82 silly cache add   type: 'range' }
+83 silly addNamed grunt-mocha@>=0.2.2 <0.3.0
+84 verbose addNamed ">=0.2.2 <0.3.0" is a valid semver range for grunt-mocha
+85 silly addNameRange { name: 'grunt-mocha', range: '>=0.2.2 <0.3.0', hasData: false }
+86 silly mapToRegistry name grunt-mocha
+87 silly mapToRegistry using default registry
+88 silly mapToRegistry registry https://registry.npmjs.org/
+89 silly mapToRegistry uri https://registry.npmjs.org/grunt-mocha
+90 verbose addNameRange registry:https://registry.npmjs.org/grunt-mocha not in flight; fetching
+91 verbose already installed skipping grunt-open@~0.2.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+92 verbose already installed skipping matchdep@~0.1.2 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+93 verbose already installed skipping grunt-text-replace@~0.3.2 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+94 verbose already installed skipping grunt@~0.4.1 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+95 verbose already installed skipping grunt-contrib-handlebars@~0.5.10 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+96 verbose already installed skipping grunt-contrib-copy@~0.4.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+97 verbose already installed skipping grunt-contrib-concat@~0.3.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+98 verbose already installed skipping grunt-contrib-uglify@~0.2.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+99 verbose already installed skipping grunt-contrib-jshint@~0.6.0 C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+100 verbose request uri https://registry.npmjs.org/grunt-mocha
+101 verbose request no auth needed
+102 info attempt registry request try #1 at 14:29:05
+103 verbose request id 591fa17fc019d98e
+104 verbose etag "C1KN1P57UZJ4L7F86IBP5X4EI"
+105 http request GET https://registry.npmjs.org/grunt-mocha
+106 http 304 https://registry.npmjs.org/grunt-mocha
+107 silly get cb [ 304,
+107 silly get   { date: 'Sat, 10 Oct 2015 12:28:50 GMT',
+107 silly get     via: '1.1 varnish',
+107 silly get     'cache-control': 'max-age=60',
+107 silly get     etag: '"C1KN1P57UZJ4L7F86IBP5X4EI"',
+107 silly get     age: '0',
+107 silly get     connection: 'keep-alive',
+107 silly get     'x-served-by': 'cache-fra1236-FRA',
+107 silly get     'x-cache': 'HIT',
+107 silly get     'x-cache-hits': '1',
+107 silly get     'x-timer': 'S1444480130.425824,VS0,VE766',
+107 silly get     vary: 'Accept' } ]
+108 verbose etag https://registry.npmjs.org/grunt-mocha from cache
+109 verbose get saving grunt-mocha to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\grunt-mocha\.cache.json
+110 silly addNameRange number 2 { name: 'grunt-mocha', range: '>=0.2.2 <0.3.0', hasData: true }
+111 silly addNameRange versions [ 'grunt-mocha',
+111 silly addNameRange   [ '0.1.0',
+111 silly addNameRange     '0.1.1',
+111 silly addNameRange     '0.1.2',
+111 silly addNameRange     '0.1.3',
+111 silly addNameRange     '0.1.4',
+111 silly addNameRange     '0.1.5',
+111 silly addNameRange     '0.1.6',
+111 silly addNameRange     '0.1.7',
+111 silly addNameRange     '0.2.0',
+111 silly addNameRange     '0.2.1',
+111 silly addNameRange     '0.2.2',
+111 silly addNameRange     '0.2.3',
+111 silly addNameRange     '0.3.0',
+111 silly addNameRange     '0.3.1',
+111 silly addNameRange     '0.3.2',
+111 silly addNameRange     '0.3.3',
+111 silly addNameRange     '0.3.4',
+111 silly addNameRange     '0.4.0',
+111 silly addNameRange     '0.4.1',
+111 silly addNameRange     '0.4.4',
+111 silly addNameRange     '0.4.5',
+111 silly addNameRange     '0.4.6',
+111 silly addNameRange     '0.4.7',
+111 silly addNameRange     '0.4.8',
+111 silly addNameRange     '0.4.9',
+111 silly addNameRange     '0.4.10',
+111 silly addNameRange     '0.4.11',
+111 silly addNameRange     '0.4.12',
+111 silly addNameRange     '0.4.13' ] ]
+112 silly addNamed grunt-mocha@0.2.3
+113 verbose addNamed "0.2.3" is a plain semver version for grunt-mocha
+114 silly cache afterAdd grunt-mocha@0.2.3
+115 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\grunt-mocha\0.2.3\package\package.json not in flight; writing
+116 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\grunt-mocha\0.2.3\package\package.json written
+117 silly install resolved [ { name: 'grunt-mocha',
+117 silly install resolved     description: 'Grunt task for running client-side Mocha specs in PhantomJS',
+117 silly install resolved     version: '0.2.3',
+117 silly install resolved     homepage: 'https://github.com/kmiyashiro/grunt-mocha',
+117 silly install resolved     author:
+117 silly install resolved      { name: 'Kelly Miyashiro',
+117 silly install resolved        email: 'miyashiro.kelly@gmail.com',
+117 silly install resolved        url: 'http://non-diligent.com' },
+117 silly install resolved     repository:
+117 silly install resolved      { type: 'git',
+117 silly install resolved        url: 'git://github.com/kmiyashiro/grunt-mocha.git' },
+117 silly install resolved     bugs: { url: 'https://github.com/kmiyashiro/grunt-mocha/issues' },
+117 silly install resolved     licenses: [ [Object] ],
+117 silly install resolved     main: 'Gruntfile.js',
+117 silly install resolved     engines: { node: '*' },
+117 silly install resolved     scripts: { test: 'grunt test' },
+117 silly install resolved     dependencies: { 'grunt-lib-phantomjs': '0.2.0', growl: '~1' },
+117 silly install resolved     devDependencies:
+117 silly install resolved      { grunt: '~0.4.0',
+117 silly install resolved        'grunt-contrib-connect': '~0.1',
+117 silly install resolved        'grunt-contrib-internal': '*',
+117 silly install resolved        'grunt-contrib-jshint': '~0.1.0' },
+117 silly install resolved     optionalDependencies: { growl: '~1' },
+117 silly install resolved     keywords: [ 'gruntplugin mocha test phantomjs' ],
+117 silly install resolved     contributors: [ [Object], [Object] ],
+117 silly install resolved     _id: 'grunt-mocha@0.2.3',
+117 silly install resolved     dist:
+117 silly install resolved      { shasum: '99d784b79fd59d3c518c3699453705e02ff328fd',
+117 silly install resolved        tarball: 'http://registry.npmjs.org/grunt-mocha/-/grunt-mocha-0.2.3.tgz' },
+117 silly install resolved     _from: 'grunt-mocha@>=0.2.2 <0.3.0',
+117 silly install resolved     _npmVersion: '1.2.11',
+117 silly install resolved     _npmUser: { name: 'kmiyashiro', email: 'miyashiro.kelly@gmail.com' },
+117 silly install resolved     maintainers: [ [Object] ],
+117 silly install resolved     directories: {},
+117 silly install resolved     _shasum: '99d784b79fd59d3c518c3699453705e02ff328fd',
+117 silly install resolved     _resolved: 'https://registry.npmjs.org/grunt-mocha/-/grunt-mocha-0.2.3.tgz',
+117 silly install resolved     readme: 'ERROR: No README data found!' } ]
+118 info install grunt-mocha@0.2.3 into C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+119 info installOne grunt-mocha@0.2.3
+120 verbose installOne of grunt-mocha to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut not in flight; installing
+121 verbose lock using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\grunt-mocha-5539286669da723f.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+122 silly install write writing grunt-mocha 0.2.3 to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+123 verbose unbuild node_modules\grunt-mocha
+124 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha is being purged from base C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+125 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+126 verbose tar unpack C:\Users\Edu\AppData\Roaming\npm-cache\grunt-mocha\0.2.3\package.tgz
+127 verbose tar unpacking to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+128 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha is being purged
+129 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+130 silly gunzTarPerm modes [ '777', '666' ]
+131 silly gunzTarPerm extractEntry package.json
+132 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+133 silly gunzTarPerm extractEntry .npmignore
+134 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+135 silly gunzTarPerm extractEntry README.md
+136 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+137 silly gunzTarPerm extractEntry Gruntfile.js
+138 silly gunzTarPerm modified mode [ 'Gruntfile.js', 420, 438 ]
+139 silly gunzTarPerm extractEntry growl/error.png
+140 silly gunzTarPerm modified mode [ 'growl/error.png', 420, 438 ]
+141 silly gunzTarPerm extractEntry growl/ok.png
+142 silly gunzTarPerm modified mode [ 'growl/ok.png', 420, 438 ]
+143 silly gunzTarPerm extractEntry CONTRIBUTING.md
+144 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 420, 438 ]
+145 silly gunzTarPerm extractEntry example/js/apple.js
+146 silly gunzTarPerm modified mode [ 'example/js/apple.js', 420, 438 ]
+147 silly gunzTarPerm extractEntry example/js/wombat.js
+148 silly gunzTarPerm modified mode [ 'example/js/wombat.js', 420, 438 ]
+149 silly gunzTarPerm extractEntry example/test/css/mocha.css
+150 silly gunzTarPerm modified mode [ 'example/test/css/mocha.css', 420, 438 ]
+151 silly gunzTarPerm extractEntry example/test/js/chai.js
+152 silly gunzTarPerm modified mode [ 'example/test/js/chai.js', 420, 438 ]
+153 silly gunzTarPerm extractEntry example/test/js/mocha.js
+154 silly gunzTarPerm modified mode [ 'example/test/js/mocha.js', 420, 438 ]
+155 silly gunzTarPerm extractEntry example/test/spec/apple.js
+156 silly gunzTarPerm modified mode [ 'example/test/spec/apple.js', 420, 438 ]
+157 silly gunzTarPerm extractEntry example/test/spec/wombat.js
+158 silly gunzTarPerm modified mode [ 'example/test/spec/wombat.js', 420, 438 ]
+159 silly gunzTarPerm extractEntry example/test/test.html
+160 silly gunzTarPerm modified mode [ 'example/test/test.html', 420, 438 ]
+161 silly gunzTarPerm extractEntry example/test/test2.html
+162 silly gunzTarPerm modified mode [ 'example/test/test2.html', 420, 438 ]
+163 silly gunzTarPerm extractEntry .jshintrc
+164 silly gunzTarPerm modified mode [ '.jshintrc', 420, 438 ]
+165 silly gunzTarPerm extractEntry .travis.yml
+166 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+167 silly gunzTarPerm extractEntry HISTORY.md
+168 silly gunzTarPerm modified mode [ 'HISTORY.md', 420, 438 ]
+169 silly gunzTarPerm extractEntry LICENSE-MIT
+170 silly gunzTarPerm modified mode [ 'LICENSE-MIT', 420, 438 ]
+171 silly gunzTarPerm extractEntry AUTHORS
+172 silly gunzTarPerm modified mode [ 'AUTHORS', 420, 438 ]
+173 silly gunzTarPerm extractEntry phantomjs/bridge.js
+174 silly gunzTarPerm modified mode [ 'phantomjs/bridge.js', 420, 438 ]
+175 silly gunzTarPerm extractEntry phantomjs/main.js
+176 silly gunzTarPerm modified mode [ 'phantomjs/main.js', 420, 438 ]
+177 silly gunzTarPerm extractEntry CHANGELOG
+178 silly gunzTarPerm modified mode [ 'CHANGELOG', 420, 438 ]
+179 silly gunzTarPerm extractEntry tasks/mocha.js
+180 silly gunzTarPerm modified mode [ 'tasks/mocha.js', 420, 438 ]
+181 verbose write writing to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\package.json
+182 info preinstall grunt-mocha@0.2.3
+183 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\package.json
+184 silly prepareForInstallMany adding grunt-lib-phantomjs@0.2.0 from grunt-mocha dependencies
+185 silly prepareForInstallMany adding growl@~1 from grunt-mocha dependencies
+186 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\package.json
+187 silly cache add args [ 'grunt-lib-phantomjs@0.2.0', null ]
+188 verbose cache add spec grunt-lib-phantomjs@0.2.0
+189 silly cache add args [ 'growl@~1', null ]
+190 verbose cache add spec growl@~1
+191 silly cache add parsed spec Result {
+191 silly cache add   raw: 'grunt-lib-phantomjs@0.2.0',
+191 silly cache add   scope: null,
+191 silly cache add   name: 'grunt-lib-phantomjs',
+191 silly cache add   rawSpec: '0.2.0',
+191 silly cache add   spec: '0.2.0',
+191 silly cache add   type: 'version' }
+192 silly addNamed grunt-lib-phantomjs@0.2.0
+193 verbose addNamed "0.2.0" is a plain semver version for grunt-lib-phantomjs
+194 silly mapToRegistry name grunt-lib-phantomjs
+195 silly mapToRegistry using default registry
+196 silly mapToRegistry registry https://registry.npmjs.org/
+197 silly mapToRegistry uri https://registry.npmjs.org/grunt-lib-phantomjs
+198 verbose addNameVersion registry:https://registry.npmjs.org/grunt-lib-phantomjs not in flight; fetching
+199 silly cache add parsed spec Result {
+199 silly cache add   raw: 'growl@~1',
+199 silly cache add   scope: null,
+199 silly cache add   name: 'growl',
+199 silly cache add   rawSpec: '~1',
+199 silly cache add   spec: '>=1.0.0 <2.0.0',
+199 silly cache add   type: 'range' }
+200 silly addNamed growl@>=1.0.0 <2.0.0
+201 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for growl
+202 silly addNameRange { name: 'growl', range: '>=1.0.0 <2.0.0', hasData: false }
+203 silly mapToRegistry name growl
+204 silly mapToRegistry using default registry
+205 silly mapToRegistry registry https://registry.npmjs.org/
+206 silly mapToRegistry uri https://registry.npmjs.org/growl
+207 verbose addNameRange registry:https://registry.npmjs.org/growl not in flight; fetching
+208 verbose request uri https://registry.npmjs.org/grunt-lib-phantomjs
+209 verbose request no auth needed
+210 info attempt registry request try #1 at 14:29:07
+211 verbose etag "C898NF1OIA9RKZETKPPDU1JY0"
+212 http request GET https://registry.npmjs.org/grunt-lib-phantomjs
+213 verbose request uri https://registry.npmjs.org/growl
+214 verbose request no auth needed
+215 info attempt registry request try #1 at 14:29:07
+216 verbose etag "3H2UJ5QXP4K5FFFV10D5LPCSK"
+217 http request GET https://registry.npmjs.org/growl
+218 http 304 https://registry.npmjs.org/growl
+219 silly get cb [ 304,
+219 silly get   { date: 'Sat, 10 Oct 2015 12:28:51 GMT',
+219 silly get     via: '1.1 varnish',
+219 silly get     'cache-control': 'max-age=60',
+219 silly get     etag: '"3H2UJ5QXP4K5FFFV10D5LPCSK"',
+219 silly get     age: '45',
+219 silly get     connection: 'keep-alive',
+219 silly get     'x-served-by': 'cache-fra1234-FRA',
+219 silly get     'x-cache': 'HIT',
+219 silly get     'x-cache-hits': '1',
+219 silly get     'x-timer': 'S1444480131.844924,VS0,VE0',
+219 silly get     vary: 'Accept' } ]
+220 verbose etag https://registry.npmjs.org/growl from cache
+221 verbose get saving growl to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\growl\.cache.json
+222 silly addNameRange number 2 { name: 'growl', range: '>=1.0.0 <2.0.0', hasData: true }
+223 silly addNameRange versions [ 'growl',
+223 silly addNameRange   [ '1.0.1',
+223 silly addNameRange     '1.0.2',
+223 silly addNameRange     '1.1.0',
+223 silly addNameRange     '1.2.0',
+223 silly addNameRange     '1.2.1',
+223 silly addNameRange     '1.3.0',
+223 silly addNameRange     '1.4.0',
+223 silly addNameRange     '1.4.1',
+223 silly addNameRange     '1.5.0',
+223 silly addNameRange     '1.5.1',
+223 silly addNameRange     '1.6.0',
+223 silly addNameRange     '1.6.1',
+223 silly addNameRange     '1.7.0',
+223 silly addNameRange     '1.8.0',
+223 silly addNameRange     '1.8.1' ] ]
+224 silly addNamed growl@1.8.1
+225 verbose addNamed "1.8.1" is a plain semver version for growl
+226 silly cache afterAdd growl@1.8.1
+227 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\growl\1.8.1\package\package.json not in flight; writing
+228 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\growl\1.8.1\package\package.json written
+229 http 304 https://registry.npmjs.org/grunt-lib-phantomjs
+230 silly get cb [ 304,
+230 silly get   { date: 'Sat, 10 Oct 2015 12:28:51 GMT',
+230 silly get     via: '1.1 varnish',
+230 silly get     'cache-control': 'max-age=60',
+230 silly get     etag: '"C898NF1OIA9RKZETKPPDU1JY0"',
+230 silly get     age: '0',
+230 silly get     connection: 'keep-alive',
+230 silly get     'x-served-by': 'cache-fra1233-FRA',
+230 silly get     'x-cache': 'MISS',
+230 silly get     'x-cache-hits': '0',
+230 silly get     'x-timer': 'S1444480131.838071,VS0,VE198',
+230 silly get     vary: 'Accept' } ]
+231 verbose etag https://registry.npmjs.org/grunt-lib-phantomjs from cache
+232 verbose get saving grunt-lib-phantomjs to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\grunt-lib-phantomjs\.cache.json
+233 silly cache afterAdd grunt-lib-phantomjs@0.2.0
+234 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\grunt-lib-phantomjs\0.2.0\package\package.json not in flight; writing
+235 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\grunt-lib-phantomjs\0.2.0\package\package.json written
+236 silly install resolved [ { name: 'growl',
+236 silly install resolved     version: '1.8.1',
+236 silly install resolved     description: 'Growl unobtrusive notifications',
+236 silly install resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+236 silly install resolved     maintainers: [ [Object], [Object] ],
+236 silly install resolved     repository:
+236 silly install resolved      { type: 'git',
+236 silly install resolved        url: 'git://github.com/visionmedia/node-growl.git' },
+236 silly install resolved     main: './lib/growl.js',
+236 silly install resolved     gitHead: '882ced3155a57f566887c884d5c6dccb7df435c1',
+236 silly install resolved     bugs: { url: 'https://github.com/visionmedia/node-growl/issues' },
+236 silly install resolved     homepage: 'https://github.com/visionmedia/node-growl',
+236 silly install resolved     _id: 'growl@1.8.1',
+236 silly install resolved     scripts: {},
+236 silly install resolved     _shasum: '4b2dec8d907e93db336624dcec0183502f8c9428',
+236 silly install resolved     _from: 'growl@>=1.0.0 <2.0.0',
+236 silly install resolved     _npmVersion: '1.4.20',
+236 silly install resolved     _npmUser: { name: 'jbnicolai', email: 'jappelman@xebia.com' },
+236 silly install resolved     dist:
+236 silly install resolved      { shasum: '4b2dec8d907e93db336624dcec0183502f8c9428',
+236 silly install resolved        tarball: 'http://registry.npmjs.org/growl/-/growl-1.8.1.tgz' },
+236 silly install resolved     directories: {},
+236 silly install resolved     _resolved: 'https://registry.npmjs.org/growl/-/growl-1.8.1.tgz',
+236 silly install resolved     readme: 'ERROR: No README data found!' },
+236 silly install resolved   { name: 'grunt-lib-phantomjs',
+236 silly install resolved     description: 'Grunt and PhantomJS, sitting in a tree.',
+236 silly install resolved     version: '0.2.0',
+236 silly install resolved     homepage: 'http://github.com/gruntjs/grunt-lib-phantomjs',
+236 silly install resolved     author: { name: 'Grunt Team', url: 'http://gruntjs.com/' },
+236 silly install resolved     repository:
+236 silly install resolved      { type: 'git',
+236 silly install resolved        url: 'git://github.com/gruntjs/grunt-lib-phantomjs.git' },
+236 silly install resolved     bugs: { url: 'https://github.com/gruntjs/grunt-lib-phantomjs/issues' },
+236 silly install resolved     licenses: [ [Object] ],
+236 silly install resolved     engines: { node: '>= 0.6.0' },
+236 silly install resolved     scripts: { test: 'grunt test' },
+236 silly install resolved     dependencies:
+236 silly install resolved      { eventemitter2: '~0.4.9',
+236 silly install resolved        semver: '~1.0.14',
+236 silly install resolved        temporary: '~0.0.4',
+236 silly install resolved        phantomjs: '~1.8.1' },
+236 silly install resolved     devDependencies: { 'grunt-contrib-jshint': '~0.1.1', grunt: '~0.4.0' },
+236 silly install resolved     main: 'lib/phantomjs',
+236 silly install resolved     _id: 'grunt-lib-phantomjs@0.2.0',
+236 silly install resolved     dist:
+236 silly install resolved      { shasum: '9106d8a817757d53320b2ad95e6d7f98a34832ce',
+236 silly install resolved        tarball: 'http://registry.npmjs.org/grunt-lib-phantomjs/-/grunt-lib-phantomjs-0.2.0.tgz' },
+236 silly install resolved     _npmVersion: '1.1.70',
+236 silly install resolved     _npmUser: { name: 'cowboy', email: 'cowboy@rj3.net' },
+236 silly install resolved     maintainers: [ [Object] ],
+236 silly install resolved     directories: {},
+236 silly install resolved     _shasum: '9106d8a817757d53320b2ad95e6d7f98a34832ce',
+236 silly install resolved     _resolved: 'https://registry.npmjs.org/grunt-lib-phantomjs/-/grunt-lib-phantomjs-0.2.0.tgz',
+236 silly install resolved     _from: 'grunt-lib-phantomjs@0.2.0',
+236 silly install resolved     readme: 'ERROR: No README data found!' } ]
+237 info install growl@1.8.1 into C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+238 info install grunt-lib-phantomjs@0.2.0 into C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+239 info installOne growl@1.8.1
+240 verbose installOne of growl to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha not in flight; installing
+241 info installOne grunt-lib-phantomjs@0.2.0
+242 verbose installOne of grunt-lib-phantomjs to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha not in flight; installing
+243 verbose lock using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\growl-daf4521ebea1289a.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+244 verbose lock using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\grunt-lib-phantomjs-dd56c128b95d7433.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+245 silly install write writing growl 1.8.1 to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+246 silly install write writing grunt-lib-phantomjs 0.2.0 to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+247 verbose unbuild node_modules\grunt-mocha\node_modules\growl
+248 verbose unbuild node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+249 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl is being purged from base C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+250 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+251 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs is being purged from base C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+252 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+253 verbose tar unpack C:\Users\Edu\AppData\Roaming\npm-cache\growl\1.8.1\package.tgz
+254 verbose tar unpacking to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+255 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl is being purged
+256 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+257 verbose tar unpack C:\Users\Edu\AppData\Roaming\npm-cache\grunt-lib-phantomjs\0.2.0\package.tgz
+258 verbose tar unpacking to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+259 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs is being purged
+260 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+261 silly gunzTarPerm modes [ '777', '666' ]
+262 silly gunzTarPerm modes [ '777', '666' ]
+263 silly gunzTarPerm extractEntry package.json
+264 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+265 silly gunzTarPerm extractEntry test.js
+266 silly gunzTarPerm modified mode [ 'test.js', 420, 438 ]
+267 silly gunzTarPerm extractEntry History.md
+268 silly gunzTarPerm modified mode [ 'History.md', 420, 438 ]
+269 silly gunzTarPerm extractEntry package.json
+270 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+271 silly gunzTarPerm extractEntry Readme.md
+272 silly gunzTarPerm modified mode [ 'Readme.md', 420, 438 ]
+273 silly gunzTarPerm extractEntry lib/growl.js
+274 silly gunzTarPerm modified mode [ 'lib/growl.js', 420, 438 ]
+275 silly gunzTarPerm extractEntry .npmignore
+276 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+277 silly gunzTarPerm extractEntry README.md
+278 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+279 silly gunzTarPerm extractEntry Gruntfile.js
+280 silly gunzTarPerm modified mode [ 'Gruntfile.js', 420, 438 ]
+281 silly gunzTarPerm extractEntry .jshintrc
+282 silly gunzTarPerm modified mode [ '.jshintrc', 420, 438 ]
+283 silly gunzTarPerm extractEntry .travis.yml
+284 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+285 silly gunzTarPerm extractEntry CHANGELOG
+286 silly gunzTarPerm modified mode [ 'CHANGELOG', 420, 438 ]
+287 silly gunzTarPerm extractEntry lib/phantomjs.js
+288 silly gunzTarPerm modified mode [ 'lib/phantomjs.js', 420, 438 ]
+289 silly gunzTarPerm extractEntry LICENSE-MIT
+290 silly gunzTarPerm modified mode [ 'LICENSE-MIT', 420, 438 ]
+291 silly gunzTarPerm extractEntry phantomjs/main.js
+292 silly gunzTarPerm modified mode [ 'phantomjs/main.js', 420, 438 ]
+293 verbose write writing to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl\package.json
+294 verbose write writing to C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs\package.json
+295 info preinstall grunt-lib-phantomjs@0.2.0
+296 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs\package.json
+297 info preinstall growl@1.8.1
+298 silly prepareForInstallMany adding eventemitter2@~0.4.9 from grunt-lib-phantomjs dependencies
+299 silly prepareForInstallMany adding semver@~1.0.14 from grunt-lib-phantomjs dependencies
+300 silly prepareForInstallMany adding temporary@~0.0.4 from grunt-lib-phantomjs dependencies
+301 silly prepareForInstallMany adding phantomjs@~1.8.1 from grunt-lib-phantomjs dependencies
+302 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs\package.json
+303 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl\package.json
+304 verbose readDependencies loading dependencies from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl\package.json
+305 silly cache add args [ 'temporary@~0.0.4', null ]
+306 verbose cache add spec temporary@~0.0.4
+307 silly cache add parsed spec Result {
+307 silly cache add   raw: 'temporary@~0.0.4',
+307 silly cache add   scope: null,
+307 silly cache add   name: 'temporary',
+307 silly cache add   rawSpec: '~0.0.4',
+307 silly cache add   spec: '>=0.0.4 <0.1.0',
+307 silly cache add   type: 'range' }
+308 silly addNamed temporary@>=0.0.4 <0.1.0
+309 verbose addNamed ">=0.0.4 <0.1.0" is a valid semver range for temporary
+310 silly addNameRange { name: 'temporary', range: '>=0.0.4 <0.1.0', hasData: false }
+311 silly mapToRegistry name temporary
+312 silly mapToRegistry using default registry
+313 silly mapToRegistry registry https://registry.npmjs.org/
+314 silly mapToRegistry uri https://registry.npmjs.org/temporary
+315 verbose addNameRange registry:https://registry.npmjs.org/temporary not in flight; fetching
+316 silly cache add args [ 'phantomjs@~1.8.1', null ]
+317 verbose cache add spec phantomjs@~1.8.1
+318 silly cache add parsed spec Result {
+318 silly cache add   raw: 'phantomjs@~1.8.1',
+318 silly cache add   scope: null,
+318 silly cache add   name: 'phantomjs',
+318 silly cache add   rawSpec: '~1.8.1',
+318 silly cache add   spec: '>=1.8.1 <1.9.0',
+318 silly cache add   type: 'range' }
+319 silly addNamed phantomjs@>=1.8.1 <1.9.0
+320 verbose addNamed ">=1.8.1 <1.9.0" is a valid semver range for phantomjs
+321 silly addNameRange { name: 'phantomjs', range: '>=1.8.1 <1.9.0', hasData: false }
+322 silly mapToRegistry name phantomjs
+323 silly mapToRegistry using default registry
+324 silly mapToRegistry registry https://registry.npmjs.org/
+325 silly mapToRegistry uri https://registry.npmjs.org/phantomjs
+326 verbose addNameRange registry:https://registry.npmjs.org/phantomjs not in flight; fetching
+327 silly cache add args [ 'eventemitter2@~0.4.9', null ]
+328 verbose cache add spec eventemitter2@~0.4.9
+329 silly cache add parsed spec Result {
+329 silly cache add   raw: 'eventemitter2@~0.4.9',
+329 silly cache add   scope: null,
+329 silly cache add   name: 'eventemitter2',
+329 silly cache add   rawSpec: '~0.4.9',
+329 silly cache add   spec: '>=0.4.9 <0.5.0',
+329 silly cache add   type: 'range' }
+330 silly addNamed eventemitter2@>=0.4.9 <0.5.0
+331 verbose addNamed ">=0.4.9 <0.5.0" is a valid semver range for eventemitter2
+332 silly addNameRange { name: 'eventemitter2',
+332 silly addNameRange   range: '>=0.4.9 <0.5.0',
+332 silly addNameRange   hasData: false }
+333 silly mapToRegistry name eventemitter2
+334 silly mapToRegistry using default registry
+335 silly mapToRegistry registry https://registry.npmjs.org/
+336 silly mapToRegistry uri https://registry.npmjs.org/eventemitter2
+337 verbose addNameRange registry:https://registry.npmjs.org/eventemitter2 not in flight; fetching
+338 silly cache add args [ 'semver@~1.0.14', null ]
+339 verbose cache add spec semver@~1.0.14
+340 silly cache add parsed spec Result {
+340 silly cache add   raw: 'semver@~1.0.14',
+340 silly cache add   scope: null,
+340 silly cache add   name: 'semver',
+340 silly cache add   rawSpec: '~1.0.14',
+340 silly cache add   spec: '>=1.0.14 <1.1.0',
+340 silly cache add   type: 'range' }
+341 silly addNamed semver@>=1.0.14 <1.1.0
+342 verbose addNamed ">=1.0.14 <1.1.0" is a valid semver range for semver
+343 silly addNameRange { name: 'semver', range: '>=1.0.14 <1.1.0', hasData: false }
+344 silly mapToRegistry name semver
+345 silly mapToRegistry using default registry
+346 silly mapToRegistry registry https://registry.npmjs.org/
+347 silly mapToRegistry uri https://registry.npmjs.org/semver
+348 verbose addNameRange registry:https://registry.npmjs.org/semver not in flight; fetching
+349 silly install resolved []
+350 verbose about to build C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+351 info build C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+352 verbose request uri https://registry.npmjs.org/semver
+353 verbose request no auth needed
+354 info attempt registry request try #1 at 14:29:07
+355 verbose etag "EWUNWOWRIF4DN3W3PJCXIVDFT"
+356 http request GET https://registry.npmjs.org/semver
+357 info linkStuff growl@1.8.1
+358 silly linkStuff growl@1.8.1 has C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules as its parent node_modules
+359 verbose linkBins growl@1.8.1
+360 verbose linkMans growl@1.8.1
+361 verbose rebuildBundles growl@1.8.1
+362 info install growl@1.8.1
+363 info postinstall growl@1.8.1
+364 verbose unlock done using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\growl-daf4521ebea1289a.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\growl
+365 verbose request uri https://registry.npmjs.org/phantomjs
+366 verbose request no auth needed
+367 info attempt registry request try #1 at 14:29:07
+368 verbose etag "2197DWR2SOYMIR6QH8QN1YVMT"
+369 http request GET https://registry.npmjs.org/phantomjs
+370 verbose request uri https://registry.npmjs.org/temporary
+371 verbose request no auth needed
+372 info attempt registry request try #1 at 14:29:07
+373 verbose etag "4A9FG70B8KFVAITUL363CSODN"
+374 http request GET https://registry.npmjs.org/temporary
+375 verbose request uri https://registry.npmjs.org/eventemitter2
+376 verbose request no auth needed
+377 info attempt registry request try #1 at 14:29:07
+378 verbose etag "DUUE33QWNKSWD2H8R10G1BG38"
+379 http request GET https://registry.npmjs.org/eventemitter2
+380 http 304 https://registry.npmjs.org/phantomjs
+381 silly get cb [ 304,
+381 silly get   { date: 'Sat, 10 Oct 2015 12:28:52 GMT',
+381 silly get     via: '1.1 varnish',
+381 silly get     'cache-control': 'max-age=60',
+381 silly get     etag: '"2197DWR2SOYMIR6QH8QN1YVMT"',
+381 silly get     age: '19',
+381 silly get     connection: 'keep-alive',
+381 silly get     'x-served-by': 'cache-fra1238-FRA',
+381 silly get     'x-cache': 'HIT',
+381 silly get     'x-cache-hits': '1',
+381 silly get     'x-timer': 'S1444480132.569341,VS0,VE0',
+381 silly get     vary: 'Accept' } ]
+382 verbose etag https://registry.npmjs.org/phantomjs from cache
+383 verbose get saving phantomjs to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\phantomjs\.cache.json
+384 silly addNameRange number 2 { name: 'phantomjs', range: '>=1.8.1 <1.9.0', hasData: true }
+385 silly addNameRange versions [ 'phantomjs',
+385 silly addNameRange   [ '0.0.1',
+385 silly addNameRange     '0.0.2',
+385 silly addNameRange     '0.0.3',
+385 silly addNameRange     '0.0.4',
+385 silly addNameRange     '0.0.5',
+385 silly addNameRange     '0.0.6',
+385 silly addNameRange     '0.0.7',
+385 silly addNameRange     '0.0.8',
+385 silly addNameRange     '0.0.9',
+385 silly addNameRange     '0.1.0',
+385 silly addNameRange     '0.1.1',
+385 silly addNameRange     '0.2.0',
+385 silly addNameRange     '0.2.1',
+385 silly addNameRange     '0.2.2',
+385 silly addNameRange     '0.2.3',
+385 silly addNameRange     '0.2.4',
+385 silly addNameRange     '0.2.5',
+385 silly addNameRange     '0.2.6',
+385 silly addNameRange     '1.8.0-1',
+385 silly addNameRange     '1.8.1-1',
+385 silly addNameRange     '1.8.1-2',
+385 silly addNameRange     '1.8.1-3',
+385 silly addNameRange     '1.8.2-0',
+385 silly addNameRange     '1.8.2-1',
+385 silly addNameRange     '1.8.2-2',
+385 silly addNameRange     '1.9.0-0',
+385 silly addNameRange     '1.9.0-1',
+385 silly addNameRange     '1.9.0-2',
+385 silly addNameRange     '1.9.0-3',
+385 silly addNameRange     '1.9.0-4',
+385 silly addNameRange     '1.9.0-5',
+385 silly addNameRange     '1.9.0-6',
+385 silly addNameRange     '1.9.1-0',
+385 silly addNameRange     '1.9.1-2',
+385 silly addNameRange     '1.9.1-3',
+385 silly addNameRange     '1.9.1-4',
+385 silly addNameRange     '1.9.1-5',
+385 silly addNameRange     '1.9.1-6',
+385 silly addNameRange     '1.9.1-7',
+385 silly addNameRange     '1.9.1-8',
+385 silly addNameRange     '1.9.1-9',
+385 silly addNameRange     '1.9.2-0',
+385 silly addNameRange     '1.9.2-1',
+385 silly addNameRange     '1.9.2-2',
+385 silly addNameRange     '1.9.2-3',
+385 silly addNameRange     '1.9.2-4',
+385 silly addNameRange     '1.9.2-5',
+385 silly addNameRange     '1.9.2-6',
+385 silly addNameRange     '1.9.6-0',
+385 silly addNameRange     '1.9.7-1',
+385 silly addNameRange     '1.9.7-3',
+385 silly addNameRange     '1.9.7-4',
+385 silly addNameRange     '1.9.7-5',
+385 silly addNameRange     '1.9.7-6',
+385 silly addNameRange     '1.9.7-7',
+385 silly addNameRange     '1.9.7-8',
+385 silly addNameRange     '1.9.7-9',
+385 silly addNameRange     '1.9.7-10',
+385 silly addNameRange     '1.9.7-11',
+385 silly addNameRange     '1.9.7-12',
+385 silly addNameRange     '1.9.7-13',
+385 silly addNameRange     '1.9.7-14',
+385 silly addNameRange     '1.9.7-15',
+385 silly addNameRange     '1.8.2-3',
+385 silly addNameRange     '1.9.8',
+385 silly addNameRange     '1.9.9',
+385 silly addNameRange     '1.9.10',
+385 silly addNameRange     '1.9.11',
+385 silly addNameRange     '1.9.12',
+385 silly addNameRange     '1.9.13',
+385 silly addNameRange     '1.9.15',
+385 silly addNameRange     '1.9.16',
+385 silly addNameRange     '1.9.17',
+385 silly addNameRange     '1.9.18' ] ]
+386 http 304 https://registry.npmjs.org/temporary
+387 silly get cb [ 304,
+387 silly get   { date: 'Sat, 10 Oct 2015 12:28:52 GMT',
+387 silly get     via: '1.1 varnish',
+387 silly get     'cache-control': 'max-age=60',
+387 silly get     etag: '"4A9FG70B8KFVAITUL363CSODN"',
+387 silly get     age: '60',
+387 silly get     connection: 'keep-alive',
+387 silly get     'x-served-by': 'cache-fra1239-FRA',
+387 silly get     'x-cache': 'HIT',
+387 silly get     'x-cache-hits': '1',
+387 silly get     'x-timer': 'S1444480132.586108,VS0,VE0',
+387 silly get     vary: 'Accept' } ]
+388 verbose etag https://registry.npmjs.org/temporary from cache
+389 verbose get saving temporary to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\temporary\.cache.json
+390 silly addNameRange number 2 { name: 'temporary', range: '>=0.0.4 <0.1.0', hasData: true }
+391 silly addNameRange versions [ 'temporary',
+391 silly addNameRange   [ '0.0.1',
+391 silly addNameRange     '0.0.2',
+391 silly addNameRange     '0.0.3',
+391 silly addNameRange     '0.0.4',
+391 silly addNameRange     '0.0.5',
+391 silly addNameRange     '0.0.6',
+391 silly addNameRange     '0.0.7',
+391 silly addNameRange     '0.0.8' ] ]
+392 silly addNamed temporary@0.0.8
+393 verbose addNamed "0.0.8" is a plain semver version for temporary
+394 silly cache afterAdd temporary@0.0.8
+395 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\temporary\0.0.8\package\package.json not in flight; writing
+396 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\temporary\0.0.8\package\package.json written
+397 http 200 https://registry.npmjs.org/semver
+398 silly get cb [ 200,
+398 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+398 silly get     etag: '"7JOYOOBN12ENCTVXABTC8ATNA"',
+398 silly get     'content-type': 'application/json',
+398 silly get     'cache-control': 'max-age=60',
+398 silly get     'content-length': '65520',
+398 silly get     'accept-ranges': 'bytes',
+398 silly get     date: 'Sat, 10 Oct 2015 12:28:52 GMT',
+398 silly get     via: '1.1 varnish',
+398 silly get     age: '24',
+398 silly get     connection: 'keep-alive',
+398 silly get     'x-served-by': 'cache-fra1221-FRA',
+398 silly get     'x-cache': 'HIT',
+398 silly get     'x-cache-hits': '3',
+398 silly get     'x-timer': 'S1444480132.511487,VS0,VE0',
+398 silly get     vary: 'Accept' } ]
+399 verbose get saving semver to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\semver\.cache.json
+400 silly addNameRange number 2 { name: 'semver', range: '>=1.0.14 <1.1.0', hasData: true }
+401 silly addNameRange versions [ 'semver',
+401 silly addNameRange   [ '1.0.0',
+401 silly addNameRange     '1.0.1',
+401 silly addNameRange     '1.0.2',
+401 silly addNameRange     '1.0.3',
+401 silly addNameRange     '1.0.4',
+401 silly addNameRange     '1.0.5',
+401 silly addNameRange     '1.0.6',
+401 silly addNameRange     '1.0.7',
+401 silly addNameRange     '1.0.8',
+401 silly addNameRange     '1.0.9',
+401 silly addNameRange     '1.0.10',
+401 silly addNameRange     '1.0.11',
+401 silly addNameRange     '1.0.12',
+401 silly addNameRange     '1.0.13',
+401 silly addNameRange     '1.0.14',
+401 silly addNameRange     '1.1.0',
+401 silly addNameRange     '1.1.1',
+401 silly addNameRange     '1.1.2',
+401 silly addNameRange     '1.1.3',
+401 silly addNameRange     '1.1.4',
+401 silly addNameRange     '2.0.0-alpha',
+401 silly addNameRange     '2.0.0-beta',
+401 silly addNameRange     '2.0.1',
+401 silly addNameRange     '2.0.2',
+401 silly addNameRange     '2.0.3',
+401 silly addNameRange     '2.0.4',
+401 silly addNameRange     '2.0.5',
+401 silly addNameRange     '2.0.6',
+401 silly addNameRange     '2.0.7',
+401 silly addNameRange     '2.0.8',
+401 silly addNameRange     '2.0.9',
+401 silly addNameRange     '2.0.10',
+401 silly addNameRange     '2.0.11',
+401 silly addNameRange     '2.1.0',
+401 silly addNameRange     '2.2.0',
+401 silly addNameRange     '2.2.1',
+401 silly addNameRange     '2.3.0',
+401 silly addNameRange     '2.3.1',
+401 silly addNameRange     '2.3.2',
+401 silly addNameRange     '3.0.0',
+401 silly addNameRange     '3.0.1',
+401 silly addNameRange     '4.0.0',
+401 silly addNameRange     '4.0.2',
+401 silly addNameRange     '4.0.3',
+401 silly addNameRange     '4.1.0',
+401 silly addNameRange     '4.1.1',
+401 silly addNameRange     '4.2.0',
+401 silly addNameRange     '4.2.1',
+401 silly addNameRange     '4.2.2',
+401 silly addNameRange     '4.3.0',
+401 silly addNameRange     '4.3.1',
+401 silly addNameRange     '4.3.2',
+401 silly addNameRange     '4.3.3',
+401 silly addNameRange     '4.3.4',
+401 silly addNameRange     '4.3.5',
+401 silly addNameRange     '4.3.6',
+401 silly addNameRange     '5.0.0',
+401 silly addNameRange     '5.0.1',
+401 silly addNameRange     '5.0.2',
+401 silly addNameRange     '5.0.3' ] ]
+402 silly addNamed semver@1.0.14
+403 verbose addNamed "1.0.14" is a plain semver version for semver
+404 http 200 https://registry.npmjs.org/eventemitter2
+405 silly get cb [ 200,
+405 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+405 silly get     etag: '"5OVM5CTJ3RP8783CMIZC0IYUK"',
+405 silly get     'content-type': 'application/json',
+405 silly get     'cache-control': 'max-age=60',
+405 silly get     'content-length': '37315',
+405 silly get     'accept-ranges': 'bytes',
+405 silly get     date: 'Sat, 10 Oct 2015 12:28:52 GMT',
+405 silly get     via: '1.1 varnish',
+405 silly get     age: '34',
+405 silly get     connection: 'keep-alive',
+405 silly get     'x-served-by': 'cache-fra1236-FRA',
+405 silly get     'x-cache': 'HIT',
+405 silly get     'x-cache-hits': '1',
+405 silly get     'x-timer': 'S1444480132.631616,VS0,VE0',
+405 silly get     vary: 'Accept' } ]
+406 verbose get saving eventemitter2 to C:\Users\Edu\AppData\Roaming\npm-cache\registry.npmjs.org\eventemitter2\.cache.json
+407 silly addNameRange number 2 { name: 'eventemitter2', range: '>=0.4.9 <0.5.0', hasData: true }
+408 silly addNameRange versions [ 'eventemitter2',
+408 silly addNameRange   [ '0.0.1',
+408 silly addNameRange     '0.1.0',
+408 silly addNameRange     '0.1.1',
+408 silly addNameRange     '0.1.3',
+408 silly addNameRange     '0.2.5',
+408 silly addNameRange     '0.2.6',
+408 silly addNameRange     '0.2.7',
+408 silly addNameRange     '0.3.5',
+408 silly addNameRange     '0.3.6',
+408 silly addNameRange     '0.3.7',
+408 silly addNameRange     '0.4.0',
+408 silly addNameRange     '0.4.1',
+408 silly addNameRange     '0.4.3',
+408 silly addNameRange     '0.4.6',
+408 silly addNameRange     '0.4.7',
+408 silly addNameRange     '0.4.8',
+408 silly addNameRange     '0.4.9',
+408 silly addNameRange     '0.4.10',
+408 silly addNameRange     '0.4.11',
+408 silly addNameRange     '0.4.12',
+408 silly addNameRange     '0.4.13',
+408 silly addNameRange     '0.4.14' ] ]
+409 silly addNamed eventemitter2@0.4.14
+410 verbose addNamed "0.4.14" is a plain semver version for eventemitter2
+411 silly cache afterAdd semver@1.0.14
+412 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\semver\1.0.14\package\package.json not in flight; writing
+413 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\semver\1.0.14\package\package.json written
+414 silly cache afterAdd eventemitter2@0.4.14
+415 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\eventemitter2\0.4.14\package\package.json not in flight; writing
+416 verbose afterAdd C:\Users\Edu\AppData\Roaming\npm-cache\eventemitter2\0.4.14\package\package.json written
+417 verbose about to build C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+418 verbose unlock done using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\grunt-lib-phantomjs-dd56c128b95d7433.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+419 verbose about to build C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+420 verbose unlock done using C:\Users\Edu\AppData\Roaming\npm-cache\_locks\grunt-mocha-5539286669da723f.lock for C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+421 verbose stack Error: No compatible version found: phantomjs@'>=1.8.1 <1.9.0'
+421 verbose stack Valid install targets:
+421 verbose stack ["0.0.1","0.0.2","0.0.3","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.0.9","0.1.0","0.1.1","0.2.0","0.2.1","0.2.2","0.2.3","0.2.4","0.2.5","0.2.6","1.8.0-1","1.8.1-1","1.8.1-2","1.8.1-3","1.8.2-0","1.8.2-1","1.8.2-2","1.9.0-0","1.9.0-1","1.9.0-2","1.9.0-3","1.9.0-4","1.9.0-5","1.9.0-6","1.9.1-0","1.9.1-2","1.9.1-3","1.9.1-4","1.9.1-5","1.9.1-6","1.9.1-7","1.9.1-8","1.9.1-9","1.9.2-0","1.9.2-1","1.9.2-2","1.9.2-3","1.9.2-4","1.9.2-5","1.9.2-6","1.9.6-0","1.9.7-1","1.9.7-3","1.9.7-4","1.9.7-5","1.9.7-6","1.9.7-7","1.9.7-8","1.9.7-9","1.9.7-10","1.9.7-11","1.9.7-12","1.9.7-13","1.9.7-14","1.9.7-15","1.8.2-3","1.9.8","1.9.9","1.9.10","1.9.11","1.9.12","1.9.13","1.9.15","1.9.16","1.9.17","1.9.18"]
+421 verbose stack
+421 verbose stack     at installTargetsError (C:\Program Files\nodejs\node_modules\npm\lib\cache\add-named.js:278:12)
+421 verbose stack     at next (C:\Program Files\nodejs\node_modules\npm\lib\cache\add-named.js:256:19)
+421 verbose stack     at setData (C:\Program Files\nodejs\node_modules\npm\lib\cache\add-named.js:230:5)
+421 verbose stack     at RES (C:\Program Files\nodejs\node_modules\npm\node_modules\inflight\inflight.js:23:14)
+421 verbose stack     at f (C:\Program Files\nodejs\node_modules\npm\node_modules\once\once.js:17:25)
+421 verbose stack     at fixName (C:\Program Files\nodejs\node_modules\npm\lib\cache\add-named.js:29:5)
+421 verbose stack     at saved (C:\Program Files\nodejs\node_modules\npm\lib\cache\caching-client.js:173:7)
+421 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:210:7
+421 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
+422 verbose cwd C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+423 error Windows_NT 10.0.10240
+424 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+425 error node v4.0.0
+426 error npm  v2.14.2
+427 error code ETARGET
+428 error notarget No compatible version found: phantomjs@'>=1.8.1 <1.9.0'
+428 error notarget Valid install targets:
+428 error notarget ["0.0.1","0.0.2","0.0.3","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.0.9","0.1.0","0.1.1","0.2.0","0.2.1","0.2.2","0.2.3","0.2.4","0.2.5","0.2.6","1.8.0-1","1.8.1-1","1.8.1-2","1.8.1-3","1.8.2-0","1.8.2-1","1.8.2-2","1.9.0-0","1.9.0-1","1.9.0-2","1.9.0-3","1.9.0-4","1.9.0-5","1.9.0-6","1.9.1-0","1.9.1-2","1.9.1-3","1.9.1-4","1.9.1-5","1.9.1-6","1.9.1-7","1.9.1-8","1.9.1-9","1.9.2-0","1.9.2-1","1.9.2-2","1.9.2-3","1.9.2-4","1.9.2-5","1.9.2-6","1.9.6-0","1.9.7-1","1.9.7-3","1.9.7-4","1.9.7-5","1.9.7-6","1.9.7-7","1.9.7-8","1.9.7-9","1.9.7-10","1.9.7-11","1.9.7-12","1.9.7-13","1.9.7-14","1.9.7-15","1.8.2-3","1.9.8","1.9.9","1.9.10","1.9.11","1.9.12","1.9.13","1.9.15","1.9.16","1.9.17","1.9.18"]
+428 error notarget
+428 error notarget This is most likely not a problem with npm itself.
+428 error notarget In most cases you or one of your dependencies are requesting
+428 error notarget a package version that doesn't exist.
+428 error notarget
+428 error notarget It was specified as a dependency of 'grunt-lib-phantomjs'
+429 verbose exit [ 1, true ]
+430 verbose unbuild node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+431 info preuninstall grunt-lib-phantomjs@0.2.0
+432 info uninstall grunt-lib-phantomjs@0.2.0
+433 verbose unbuild rmStuff grunt-lib-phantomjs@0.2.0 from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules
+434 verbose unbuild rmStuff in C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules
+435 info postuninstall grunt-lib-phantomjs@0.2.0
+436 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs is being purged from base C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+437 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+438 silly vacuum-fs purging C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules\grunt-lib-phantomjs
+439 silly vacuum-fs quitting because other entries in C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha\node_modules
+440 verbose unbuild node_modules\grunt-mocha
+441 info preuninstall grunt-mocha@0.2.3
+442 info uninstall grunt-mocha@0.2.3
+443 verbose unbuild rmStuff grunt-mocha@0.2.3 from C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules
+444 info postuninstall grunt-mocha@0.2.3
+445 silly gentlyRm C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha is being purged from base C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut
+446 verbose gentlyRm don't care about contents; nuking C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+447 silly vacuum-fs purging C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules\grunt-mocha
+448 silly vacuum-fs quitting because other entries in C:\Users\Edu\GitHub\fullslider\public_html\app\components\Strut\node_modules
