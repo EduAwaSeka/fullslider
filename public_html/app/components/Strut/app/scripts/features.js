@@ -24,7 +24,7 @@ define([
 	// 'tantaman/web/remote_storage/main',
 	'strut/startup/main'
 	],
-function(ServiceRegistry) { //Calls to all initialize functions and saves them in array
+function(ServiceRegistry) { //Calls to startUp initialize
 	var registry = new ServiceRegistry();
 
 	var args = Array.prototype.slice.call(arguments, 0);

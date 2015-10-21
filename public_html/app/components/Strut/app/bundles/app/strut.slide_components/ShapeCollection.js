@@ -25,7 +25,7 @@ function() {
 			loc = loc.substring(0, finalIdx);
 
 		this.src = loc
-			+ '/preview_export/shapes/' + src;
+			+ '/app/components/Strut/app/preview_export/shapes/' + src;
 		this.markup = markup;
 		this.aspect = aspect;
 	}
