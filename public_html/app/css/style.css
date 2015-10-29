@@ -5,10 +5,11 @@
 
 body{
     background-color: #f0f0f0 !important;
+    padding: 0px;
 }
 
 #header-menu{
-    padding-bottom: 1.6em;
+    padding-bottom: 1em;
     background-color: #A32C00;
     border-bottom: 1px solid #767575;
 }
@@ -29,12 +30,60 @@ body{
 
 #horizontal-slides{
     float: right;
+    margin: 0;
+}
+
+.mainfooter {
+    position: relative;
+    width: initial;
+    top: initial;
+    bottom: initial;
+    left: initial;
+    z-index: 10;
+    padding: 6px 0px;
+}
+
+.slidethumbholdercontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    overflow: auto;
+}
+
+#addslidebtn{
+    position: initial;
+    left: initial;
+    top: initial;
+    margin: 6px 0px;
+}
+
+
+.slidethumbholder {
+    position: initial;
+    left: initial;
+    top: initial;
+    bottom: initial;
+    right: initial;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 418px;
+}
+
+.slidethumb {
+    display: block;
+    width: 199px;
+    height: 110px;
+    margin-top: 10px;
+    /* margin-left: 10px; */
+    background-color: #ECF0F1;
+    position: relative;
 }
 
 #markdown-space{
     position: absolute;
     bottom: 0px;
-    top: 90px;
+    top: 75px;
     background-color: #fff;
     float: left;
 }
@@ -43,3 +92,13 @@ body{
     position: relative;
     float: right;
 }
+
+.sidebarfooter {
+    background-color: none;
+}
+
+.previewbtn {
+     margin-left: 0px; 
+     margin-top: 0px; 
+}
+
