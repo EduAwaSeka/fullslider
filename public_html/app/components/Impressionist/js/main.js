@@ -1333,7 +1333,7 @@ Impressionist.prototype =
                     success: function(msg)
                     {
 
-                        window.open("app/components/impress.js-master/index.php");
+                        window.open("app/components/impress.js/index.php");
 
                     }
                 });
