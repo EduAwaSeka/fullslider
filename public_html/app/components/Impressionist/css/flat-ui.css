@@ -223,7 +223,7 @@ h6 {
 
 .btn {
   border: none;
-  background: #34495e;
+  /* background: #34495e; */
   color: white;
   font-size: 16.5px;
   text-decoration: none;
@@ -235,7 +235,8 @@ h6 {
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   transition: 0.25s;
-  -webkit-backface-visibility: hidden; }
+  -webkit-backface-visibility: hidden;
+  }
   .btn:hover, .btn:focus {
     background-color: #4e6d8d;
     color: white;
@@ -263,7 +264,8 @@ h6 {
     .btn.btn-primary:active, .btn.btn-primary.active {
       background-color: #16a085; }
   .btn.btn-info {
-    background-color: #3498db; }
+    /* background-color: #3498db; */
+    }
     .btn.btn-info:hover, .btn.btn-info:focus {
       background-color: #5dade2; }
     .btn.btn-info:active, .btn.btn-info.active {
@@ -1409,9 +1411,9 @@ textarea,
   color: white;
   font-size: 16px;
   font-weight: 700;
-  display: inline-block;
-  zoom: 1;
-  *display: inline; }
+  display: inline-block;zoom:1;*
+  display: inline;
+  }
   .pager li:first-child > a, .pager li:first-child > span {
     border-left: none;
     padding-left: 20px;

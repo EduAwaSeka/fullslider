@@ -9,7 +9,7 @@ body{
 }
 
 #header-menu{
-    padding-bottom: 1.6em;
+    padding-bottom: 1em;
     background-color: #A32C00;
     border-bottom: 1px solid #767575;
 }
@@ -72,10 +72,10 @@ body{
 
 .slidethumb {
     display: block;
-    width: 160px;
+    width: 199px;
     height: 110px;
     margin-top: 10px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     background-color: #ECF0F1;
     position: relative;
 }
@@ -92,3 +92,13 @@ body{
     position: relative;
     float: right;
 }
+
+.sidebarfooter {
+    background-color: none;
+}
+
+.previewbtn {
+     margin-left: 0px; 
+     margin-top: 0px; 
+}
+
