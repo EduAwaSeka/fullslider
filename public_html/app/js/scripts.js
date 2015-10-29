@@ -27,9 +27,3 @@ $('#normal-mode').on('click', function() {
 
     $('#markdown-space').addClass('hidden');
 });
-
-
-
-$(function() {
-  $( ".ui-draggable" ).draggable({autoscroll: false, containment: ".impress-slide-container"});
-});
