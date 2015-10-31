@@ -41,7 +41,6 @@ if ("ontouchstart" in document.documentElement) {
 }
 </script>
 
-
 <script src="js/impress.js"></script>
 <script>impress().init();</script>
 
