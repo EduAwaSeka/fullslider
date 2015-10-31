@@ -8,29 +8,45 @@ body{
     padding: 0px;
 }
 
+/* Header-menu */
+
 #header-menu{
     padding-bottom: 1em;
     background-color: #A32C00;
     border-bottom: 1px solid #767575;
 }
 
+.sidebarfooter {
+    background-color: none;
+}
+
+.previewbtn {
+    margin-left: 0px; 
+    margin-top: 0px; 
+}
+
+
+
+
+/* Body-editor */
+
+#body-editor{
+    position: absolute;
+    width: 100%;
+    height: 89.9%;
+}
+
+#deck{
+    padding: 0;
+    height: 100%;
+}
+
 #vertical-toolbar{
     border-right: 1px solid #767575;
-    bottom: 0;
-    top: 5.2em;
-    position: absolute;
+    height: 100%;
     background-color: #555;
     float: left;
-}
-
-#mode{
-    /* position: relative; */
-    clear: both;
-}
-
-#horizontal-slides{
-    float: right;
-    margin: 0;
+    padding: 0;
 }
 
 .mainfooter {
@@ -41,6 +57,9 @@ body{
     left: initial;
     z-index: 10;
     padding: 6px 0px;
+    margin: 0;
+    padding: 0 !important;
+    height: 100%;
 }
 
 .slidethumbholdercontainer {
@@ -55,7 +74,7 @@ body{
     position: initial;
     left: initial;
     top: initial;
-    margin: 6px 0px;
+    margin: 6px 20%;
 }
 
 
@@ -67,18 +86,55 @@ body{
     right: initial;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 418px;
+    height: 87%;
 }
 
 .slidethumb {
     display: block;
-    width: 199px;
+    width: 144px;
     height: 110px;
-    margin-top: 10px;
-    /* margin-left: 10px; */
+    margin-bottom: 10px;
+    margin-left: 10px;
     background-color: #ECF0F1;
     position: relative;
 }
+
+/* Slides thumb scroll */
+::-webkit-scrollbar{
+    max-width: 8%;
+    background: #dbe8ec;
+    margin:100px;
+    padding: 100px;
+}
+::-webkit-scrollbar-button{
+    width:8px;
+    height: 5px;
+}
+::-webkit-scrollbar-track{
+    background:#3c454e;
+    border:thin solid #1a1f25;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: -webkit-linear-gradient(top, #87B5AC, #C1D9E0);
+    -webkit-box-shadow:   inset 0 1px 0 rgba(255,255,225,.5),
+        inset 1px 0 0 rgba(255,255,255,.4),
+        inset 0 1px 2px rgba(255,255,255,.3);
+
+    border:thin solid #232c34;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: -webkit-linear-gradient(top, #5BC0DE, #1ABC9C);
+}
+/* Pseudo-clase */
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(77,161,112,.6);
+}
+
 
 #markdown-space{
     position: absolute;
@@ -90,15 +146,12 @@ body{
 
 #workspace{
     position: relative;
-    float: right;
+    float: left;
+    padding-left: 2px;
 }
 
-.sidebarfooter {
-    background-color: none;
+#markdown-editor{
+    border-right: 1px solid #767575;
+    background-color: #34495E;
+    height: 100%
 }
-
-.previewbtn {
-     margin-left: 0px; 
-     margin-top: 0px; 
-}
-
