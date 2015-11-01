@@ -3255,7 +3255,7 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
+  background-color: #3498DB;
   border-color: #46b8da;
 }
 .btn-info:focus,
@@ -4923,7 +4923,7 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #337ab7;
+  background-color: #1ABC9C;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {

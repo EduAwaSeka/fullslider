@@ -6,6 +6,7 @@
 body{
     background-color: #f0f0f0 !important;
     padding: 0px;
+    color:#fff !important;
 }
 
 /* Header-menu */
@@ -41,6 +42,8 @@ body{
     height: 100%;
 }
 
+/* Vertical-toolbar */
+
 #vertical-toolbar{
     border-right: 1px solid #767575;
     height: 100%;
@@ -74,7 +77,7 @@ body{
     position: initial;
     left: initial;
     top: initial;
-    margin: 6px 20%;
+    margin: 3% 20%;
 }
 
 
@@ -97,6 +100,15 @@ body{
     margin-left: 10px;
     background-color: #ECF0F1;
     position: relative;
+}
+
+.currentselection{
+    border: 3px solid #1ABC9C !important;
+}
+
+.deletebtn{
+    bottom: 37% !important;
+    right: 34% !important;
 }
 
 /* Slides thumb scroll */
@@ -135,14 +147,7 @@ body{
     background: rgba(77,161,112,.6);
 }
 
-
-#markdown-space{
-    position: absolute;
-    bottom: 0px;
-    top: 75px;
-    background-color: #fff;
-    float: left;
-}
+/* Workspace */
 
 #workspace{
     position: relative;
@@ -153,5 +158,16 @@ body{
 #markdown-editor{
     border-right: 1px solid #767575;
     background-color: #34495E;
-    height: 100%
+    height: 100%;
+    padding: 0.5%;
+}
+
+#markdown-space{
+    width: 100%;
+    height: 92%;
+}
+
+#markdown-space textArea{
+    width: 100%;
+    height: 100%;
 }
