@@ -100,47 +100,45 @@ Eduardo Jiménez Grande
                 </div>
             </div>
 
-            <div class="row">
-                <div id="vertical-toolbar" class="col-sm-2 ">
-                    <div class="row pager">
-                        <div class="btn-group" role="group">
-                            <button id="normal-mode" type="button" class="btn btn-default">Normal</button>
-                            <button id="markdown-mode" type="button" class="btn btn-default">Markdown</button>
-                        </div>
-                    </div>
-                    <div id="mode" class="row">
-                        <div id="markdown-space" class="hidden col-sm-8"></div>
-                        <div id="horizontal-slides" class="pager col-sm-12">
-                            <div class ="mainfooter palette-night">
-                                <div class = "slidethumbholdercontainer">
-                                    <a class="btn btn-primary btn-large" href="#" id="addslidebtn"><i class="icon-plus"></i>&nbsp;Add Slide</a>
+            <div id="body-editor" class="row">
+                <div id="deck" class="col-sm-9">
+                    <div id="vertical-toolbar" class="col-sm-2 ">
+                        <div class ="mainfooter palette-night col-sm-12">
+                            <div class = "slidethumbholdercontainer">
+                                <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn"><i class="icon-plus"></i>&nbsp;Add Slide</a>
 
-                                    <div class = "slidethumbholder">
+                                <div class = "slidethumbholder">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <div id="workspace" class="slideviewportcontainer col-sm-10">
+
+                        <div class="slideviewport col-sm-12">
+                            <div class="impress-slide-container">
+
+                            </div>
+                            <span id="play">
+                                <span class="rotate label label-disabled" id="spanrotate"><i class="icon-rotate-left"></i></span>
+                                <!--<span class="scale label label-important"><i class="icon-resize-horizontal"></i></span>-->
+                                <span class="skewx label label-disabled" id="spanskewx"><i class="icon-resize-horizontal"></i></span>
+                                <span class="skewy label label-disabled" id="spanskewy"><i class="icon-resize-vertical"></i></span>
+                                <span class="deleteicon label label-important" id="spandelete"><i class="fui-cross-16"></i></span>
+
+                                <!-- <span class="move">move</span>-->
+                            </span>
+                        </div><!-- slideviewport -->
+                    </div>
                 </div>
-
-                <div id="workspace" class="slideviewportcontainer col-sm-10">
-
-                    <div class="slideviewport col-sm-12">
-                        <div class="impress-slide-container">
-
-                        </div>
-                        <span id="play">
-                            <span class="rotate label label-disabled" id="spanrotate"><i class="icon-rotate-left"></i></span>
-                            <!--<span class="scale label label-important"><i class="icon-resize-horizontal"></i></span>-->
-                            <span class="skewx label label-disabled" id="spanskewx"><i class="icon-resize-horizontal"></i></span>
-                            <span class="skewy label label-disabled" id="spanskewy"><i class="icon-resize-vertical"></i></span>
-                            <span class="deleteicon label label-important" id="spandelete"><i class="fui-cross-16"></i></span>
-
-                            <!-- <span class="move">move</span>-->
-                        </span>
-                    </div><!-- slideviewport -->
+                <div id="markdown-editor" class="col-sm-3">
+                    <div class="center-block text-center h4">
+                        <span class="glyphicon glyphicon-pencil"></span> Markdown
+                    </div>
+                    <div id="markdown-space">
+                        <textarea></textarea>
+                    </div>
                 </div>
             </div>
 
@@ -166,8 +164,8 @@ Eduardo Jiménez Grande
         <script src="app/components/Impressionist/js/fbconnectapp.js"></script>
         <script src="app/components/Impressionist/js/main.js"></script>
         <script src ="app/components/Impressionist/js/startup.js"></script>
-        
-        
+
+
         <script src="app/js/scripts.js" type="text/javascript"></script>
 
     </body>
