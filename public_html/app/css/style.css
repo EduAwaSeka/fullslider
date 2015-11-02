@@ -152,11 +152,16 @@ body{
 #workspace{
     position: relative;
     float: left;
-    padding-left: 2px;
+    padding-top: 20px;
+}
+
+.slideviewport{
+    top: 0px !important;
+    left: 0px !important;
 }
 
 #markdown-editor{
-    border-right: 1px solid #767575;
+    border-left: 1px solid #767575;
     background-color: #34495E;
     height: 100%;
     padding: 0.5%;
