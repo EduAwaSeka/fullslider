@@ -33,6 +33,10 @@ Impressionist = function()
     this.isItalic = false;
     this.isUnderlined = false;
 
+    this.isLeftAligned = false;
+    this.isRightAligned = false;
+    this.isCenterAligned = false;
+
     this.vxmax = 6000;
     //Viewport x min
     this.vxmin = -6000;
@@ -250,6 +254,79 @@ Impressionist.prototype =
                         me.selectedElement.css("text-decoration", "none");
                         me.selectedElement.attr("data-isunderline", false);
                         me.isUnderlined = false;
+                        $(this).removeClass("active");
+                    }
+                });
+
+                $("#makealignleft").on("click", function(e)
+                {
+                    e.stopPropagation();
+                    $(this).removeClass("active");
+                    if (!me.isLeftAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "left");
+                        me.selectedElement.attr("data-leftalign", true);
+                        me.selectedElement.attr("data-centeralign", false);
+                        me.selectedElement.attr("data-rightalign", false);
+                        
+                        $(this).addClass("active");
+                        $("#makealignright").removeClass("active");
+                        $("#makealigncenter").removeClass("active");
+                        me.isLeftAligned = true;
+                    }
+                    else if (me.isLeftAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "initial");
+                        me.selectedElement.attr("data-leftalign", false);
+                        me.isLeftAligned = false;
+                        $(this).removeClass("active");
+                    }
+                });
+
+                $("#makealignright").on("click", function(e)
+                {
+                    e.stopPropagation();
+                    $(this).removeClass("active");
+                    if (!me.isRightAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "right");
+                        me.selectedElement.attr("data-rightalign", true);
+                        me.selectedElement.attr("data-centeralign", false);
+                        me.selectedElement.attr("data-leftalign", false);
+                        $(this).addClass("active");
+                        $("#makealignleft").removeClass("active");
+                        $("#makealigncenter").removeClass("active");
+                        me.isRightAligned = true;
+                    }
+                    else if (me.isRightAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "initial");
+                        me.selectedElement.attr("data-rightalign", false);
+                        me.isRightAligned = false;
+                        $(this).removeClass("active");
+                    }
+                });
+
+                $("#makealigncenter").on("click", function(e)
+                {
+                    e.stopPropagation();
+                    $(this).removeClass("active");
+                    if (!me.isCenterAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "center");
+                        me.selectedElement.attr("data-centeralign", true);
+                        me.selectedElement.attr("data-rightalign", false);
+                        me.selectedElement.attr("data-leftalign", false);
+                        $(this).addClass("active");
+                        $("#makealignright").removeClass("active");
+                        $("#makealignleft").removeClass("active");
+                        me.isCenterAligned = true;
+                    }
+                    else if (me.isCenterAligned && me.selectedElement)
+                    {
+                        me.selectedElement.css("text-align", "initial");
+                        me.selectedElement.attr("data-centeralign", false);
+                        me.isCenterAligned = false;
                         $(this).removeClass("active");
                     }
                 });
@@ -473,6 +550,10 @@ Impressionist.prototype =
                 var isbold = el.attr("data-isbold");
                 var isitalic = el.attr("data-isitalic");
                 var isunderline = el.attr("data-isunderline");
+                var isCenterAlign = el.attr("data-centeralign");
+                var isLeftAlign = el.attr("data-leftalign");
+                var isRightAlign = el.attr("data-rightalign");
+
                 if (isbold)
                 {
                     $("#makebold").addClass("active");
@@ -498,6 +579,33 @@ Impressionist.prototype =
                 else
                 {
                     $("#makeunderline").removeClass("active");
+                }
+
+                if (isCenterAlign)
+                {
+                    $("#makealigncenter").addClass("active");
+                }
+                else
+                {
+                    $("#makealigncenter").removeClass("active");
+                }
+
+                if (isLeftAlign)
+                {
+                    $("#makealignleft").addClass("active");
+                }
+                else
+                {
+                    $("#makealignleft").removeClass("active");
+                }
+
+                if (isRightAlign)
+                {
+                    $("#makealignright").addClass("active");
+                }
+                else
+                {
+                    $("#makealignright").removeClass("active");
                 }
             },
             resetMenuControlValues: function()
@@ -682,7 +790,7 @@ Impressionist.prototype =
                 //$("clonethumb_"+id).remove();
                 newel.attr("id", "clonethumb_" + id);
                 newel.attr("data-clone", true);
-                newel.css("-webkit-transform", "scale(0.171, 0.21)");
+                newel.css("-webkit-transform", "scale(0.17, 0.205)");
                 newel.removeClass("impress-slide-element");
                 //newel.css("border", "1px solid #999");
                 newel.css("left", "-97px");

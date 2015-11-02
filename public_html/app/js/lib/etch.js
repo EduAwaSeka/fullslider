@@ -11,14 +11,15 @@
 
   etch.config = {
     // selector to specify editable elements   
-    selector: '.editable',
+    selector: '.slidelement',
       
     // Named sets of buttons to be specified on the editable element
     // in the markup as "data-button-class"   
     buttonClasses: {
       'default': ['save'],
       'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
-      'title': ['bold', 'italic', 'underline', 'save']
+      'title': ['bold', 'italic', 'underline', 'save'],
+      'text': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting']
     }
   };
 
@@ -32,7 +33,7 @@
       _.bindAll(this, 'changeButtons', 'changePosition', 'changeEditable', 'insertImage');
       this.model.bind('change:buttons', this.changeButtons);
       this.model.bind('change:position', this.changePosition);
-      this.model.bind('change:editable', this.changeEditable);
+      this.model.bind('change:slidelement', this.changeEditable);
 
       // Init Routines:
       this.changeEditable();
@@ -62,7 +63,7 @@
     setButtonClass: function() {
       // check the button class of the element being edited and set the associated buttons on the model
       var editorModel = this.model;
-      var buttonClass = editorModel.get('editable').attr('data-button-class') || 'default';
+      var buttonClass = editorModel.get('slidelement').attr('data-button-class') || 'default';
       editorModel.set({ buttons: etch.config.buttonClasses[buttonClass] });
     },
 
@@ -119,9 +120,9 @@
     toggleHeading: function(e) {
       e.preventDefault();
       var range = window.getSelection().getRangeAt(0);
-      var wrapper = range.commonAncestorContainer.parentElement
+      var wrapper = range.commonAncestorContainer.parentElement;
       if ($(wrapper).is('h3')) {
-        $(wrapper).replaceWith(wrapper.textContent)
+        $(wrapper).replaceWith(wrapper.textContent);
         return;
       }
       var h3 = document.createElement('h3');
@@ -219,7 +220,7 @@
       sel.addRange(this._savedRange);
             
       var attrs = {
-        'editable': this.model.get('editable'),
+        'slidelement': this.model.get('slidelement'),
         'editableModel': this.model.get('editableModel')
       };
             
@@ -248,24 +249,24 @@
     editableInit: function(e) {
       e.stopPropagation();
       var target = e.target || e.srcElement;
-      var $editable = $(target).etchFindEditable();
-      $editable.attr('contenteditable', true);
+      var $slidelement = $(target).etchFindEditable();
+      $slidelement.attr('contenteditable', true);
 
       // if the editor isn't already built, build it
       var $editor = $('.etch-editor-panel');
       var editorModel = $editor.data('model');
       if (!$editor.size()) {
         $editor = $('<div class="etch-editor-panel">');
-        var editorAttrs = { editable: $editable, editableModel: this.model };
+        var editorAttrs = { slidelement: $slidelement, editableModel: this.model };
         document.body.appendChild($editor[0]);
         $editor.etchInstantiate({classType: 'Editor', attrs: editorAttrs});
         editorModel = $editor.data('model');
 
       // check if we are on a new editable
-      } else if ($editable[0] !== editorModel.get('editable')[0]) {
+      } else if ($slidelement[0] !== editorModel.get('slidelement')[0]) {
         // set new editable
         editorModel.set({
-          editable: $editable,
+          slidelement: $slidelement,
           editableModel: this.model
         });
       }
@@ -284,9 +285,9 @@
 
       if (models.EditableImage) {
         // instantiate any images that may be in the editable
-        var $imgs = $editable.find('img');
+        var $imgs = $slidelement.find('img');
         if ($imgs.size()) {
-          var attrs = { editable: $editable, editableModel: this.model };
+          var attrs = { slidelement: $slidelement, editableModel: this.model };
           $imgs.each(function() {
             var $this = $(this);
             if (!$this.data('editableImageModel')) {
@@ -310,7 +311,7 @@
                     
           if (models.EditableImage) {
             // unblind the image-tools if the editor isn't active
-            $editable.find('img').unbind('mouseenter');
+            $slidelement.find('img').unbind('mouseenter');
 
             // remove any latent image tool model references
             $(etch.config.selector+' img').data('editableImageModel', false)
@@ -334,7 +335,7 @@
       var settings = {
         el: this,
         attrs: {}
-      }
+      };
 
       _.extend(settings, options);
 
@@ -353,14 +354,14 @@
         cb({model: model, view: view});
       }
     });
-  }
+  };
 
   $.fn.etchFindEditable = function() {
     // function that looks for the editable selector on itself or its parents
     // and returns that el when it is found
     var $el = $(this);
     return $el.is(etch.config.selector) ? $el : $el.closest(etch.config.selector);
-  }
+  };
     
   window.etch = etch;
 })();

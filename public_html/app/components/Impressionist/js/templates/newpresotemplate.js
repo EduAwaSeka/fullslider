@@ -10,10 +10,10 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement">'+
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fui-cross-16"></i></a>'+
 				 '</div>';
 var impress_slide = '<div class="impress-slide" id="impress_slide__slidenumber__">'+
-						'<div class="slidelement slidelementh1" id="slidelement_id" data-parent="impress_slide__slidenumber__" data-type="h2" style="width:auto; height:60px; position:absolute; left:190px; top:50px; whitespace:no-wrap;" contentEditable="true"> Sample Heading </div>'+
-                    	'<div class="slidelement slidelementh3" id="slidelement_id" data-parent="impress_slide__slidenumber__" data-type="h3" style="position:absolute; width:auto; height:40px; left:270px; top:120px; whitespace:no-wrap;"> Sample Paragraph </div>'
+						'<div class="slidelement slidelementh1" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="h2" style="width:auto; height:60px; position:absolute; left:190px; top:50px; whitespace:no-wrap;" contentEditable="true"> <div>Sample Heading</div> </div>'+
+                    	'<div class="slidelement slidelementh3" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="h3" style="position:absolute; width:auto; height:40px; left:270px; top:120px; whitespace:no-wrap;"> <div>Sample Paragraph</div> </div>'+
                 	'</div>';
- var text_snippet = '<div class="slidelement slidelementh1" id="slidelement_id" data-parent="impress_slide__slidenumber__" data-type="h2" style="width:auto; height:60px; position:absolute; left:190px; top:50px; whitespace:no-wrap;" contentEditable="true"> Sample Heading </div>';
+ var text_snippet = '<div class="slidelement slidelementh1" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="h2" style="width:auto; height:60px; position:absolute; left:190px; top:50px; whitespace:no-wrap;" contentEditable="true"> <div>Sample Heading</div> </div>';
  var saved_presentations = '<div class="savedpresos">' +
  								'<div class="presothumbcontent">' +
  								'<h3 style="display:inline-block; color:#2980B9" contentEditable="true"> __presotitle__</h3>'+

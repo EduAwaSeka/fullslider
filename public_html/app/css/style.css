@@ -35,6 +35,7 @@ body{
     position: absolute;
     width: 100%;
     height: 89.9%;
+    overflow-y: hidden;
 }
 
 #deck{
@@ -175,4 +176,6 @@ body{
 #markdown-space textArea{
     width: 100%;
     height: 100%;
+    color: #000;
 }
+
