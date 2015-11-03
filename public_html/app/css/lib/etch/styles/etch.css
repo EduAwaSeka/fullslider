@@ -6,6 +6,7 @@
     -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
     -webkit-box-shadow: inset 1px 0 0 #dfdfdf, inset 0 1px 0 #dfdfdf, inset -1px 0 0 #dfdfdf, inset 0 -1px 0 #dfdfdf, 0 0 5px rgba(0,0,0,.3);
     opacity: 0.9;
+    overflow: block !important;
  }
 .etch-editor-button { display: block; float: left; margin-right: 3px; position: relative; text-decoration: none;
     display: block; width: 27px; height: 27px; background: #dadada; border: 1px solid #aaa; color: #535353; text-shadow: 0 1px 0 #fff;
