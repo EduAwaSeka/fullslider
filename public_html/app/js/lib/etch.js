@@ -22,6 +22,15 @@
         }
     };
 
+    function extractValue(e) {
+        var value = e.target.dataset.value;
+        if (value == null) {
+            $target = $(e.target);
+            value = $target.parent()[0].dataset.value;
+        }
+        return value;
+    }
+
     models.Editor = Backbone.Model;
 
     views.Editor = Backbone.View.extend({
@@ -76,6 +85,9 @@
             var editorModel = this.model;
             var buttonClass = editorModel.get('editable').attr('data-button-class') || 'default';
             editorModel.set({buttons: etch.config.buttonClasses[buttonClass]});
+        },
+        _fontSizeChanged: function(model, value) {
+            this.$fontSizeReadout.text(value);
         },
         changeButtons: function() {
             // render the buttons into the editor-panel
@@ -265,9 +277,6 @@
             Backbone.trigger('etch:state', {
                 size: value
             });
-        },
-        _fontSizeChanged: function(model, value) {
-            this.$fontSizeReadout.text(value);
         }
     });
 
@@ -282,7 +291,7 @@
             e.stopPropagation();
             var target = e.target || e.srcElement;
             var $editable = $(target).etchFindEditable();
-            //$editable.attr('contenteditable', true);
+            $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
             var $editor = $('.etch-editor-panel');

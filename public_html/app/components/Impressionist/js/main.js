@@ -268,7 +268,7 @@ Impressionist.prototype =
                         me.selectedElement.attr("data-leftalign", true);
                         me.selectedElement.attr("data-centeralign", false);
                         me.selectedElement.attr("data-rightalign", false);
-                        
+
                         $(this).addClass("active");
                         $("#makealignright").removeClass("active");
                         $("#makealigncenter").removeClass("active");
@@ -493,8 +493,7 @@ Impressionist.prototype =
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
-                    e.stopPropagation();
-                    $(this).draggable({disabled: false});
+                    $(this).draggable({disabled: true});
                     //$(this).attr("contentEditable", true);
                     $("#play").css("display", "none");
                     $(this).removeClass("movecursor");
@@ -513,7 +512,7 @@ Impressionist.prototype =
                     me.setTransformValues($(this));
                     me.setMenuControlValues($(this));
                     me.positionTransformControl();
-
+                    $(this).removeClass("movecursor");
 
                 }).on("mousedown mouseover", function(e)
                 {
@@ -1020,7 +1019,7 @@ Impressionist.prototype =
             },
             attachListeners: function()
             {
-                $("html").on("click", me.manageGlobalClick)
+                $("html").on("click", me.manageGlobalClick);
                 $(".settingsCancelBtn").on("click", me.onSettingsCancelClicked);
                 $(".menuItemBtn").on("click", me.onMenuItemClicked);
                 $(".viewtogglebtn").on("click", me.onViewToggled);
