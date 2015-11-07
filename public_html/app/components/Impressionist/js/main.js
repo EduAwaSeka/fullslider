@@ -692,13 +692,17 @@ Impressionist.prototype =
                 me.selectedforedit = false;
                 me.colorpickeropen = false;
                 me.resetMenuControlValues();
-                //me.clearElementSelections()
+                if (!($(e.target).hasClass("is-etch-button"))) {
+                    me.clearElementSelections();
+                }
             },
             clearElementSelections: function()
             {
                 $(".slidelement").removeClass("elementhover");
                 $(".slidelement").removeClass("elementselected");
-                //me.selectedElement = "";;
+                $(".slidelement").attr("contentEditable", "false");
+                me.selectedElement = "";
+                ;
             },
             colorSelectedElement: function(color)
             {
@@ -1474,11 +1478,11 @@ Impressionist.prototype =
             createEditor: function(e)
             {
                 editor = $(e.target).clone();
-                editor.attr("contentEditable", "true");
+                //editor.attr("contentEditable", "true");
             },
             triggetElementEdit: function(e)
             {
-                $(e.target).attr("contentEditable", true);
+                //$(e.target).attr("contentEditable", true);
             },
             removelisteners: function()
             {

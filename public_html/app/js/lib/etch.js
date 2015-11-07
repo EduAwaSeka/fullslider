@@ -106,7 +106,7 @@
                     var $buttonEl = $(font_size_selector);
                 }
                 else {
-                    var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span></span></a>');
+                    var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"></span></a>');
                 }
                 view.$el.append($buttonEl);
             });
@@ -257,7 +257,7 @@
             e.preventDefault();
             var value = extractValue(e);
             document.execCommand('fontName', false, value);
-            value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1)
+            value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
             this.$el.find(".fontFamilyBtn .text").text(value);
             Backbone.trigger('etch:state', {
                 face: value
@@ -274,6 +274,9 @@
             // so that way we have the correct font readouts when someone
             // uses the scale control
             this.$el.find(".fontSizeBtn .text").text(value);
+            var elementToChange = $(document).find("[contentEditable='true']");
+            elementToChange.css("font-size", value + "px");
+
             Backbone.trigger('etch:state', {
                 size: value
             });
@@ -291,6 +294,7 @@
             e.stopPropagation();
             var target = e.target || e.srcElement;
             var $editable = $(target).etchFindEditable();
+            $(".slidelement").attr("contentEditable", "false");
             $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
@@ -360,7 +364,7 @@
                         $editable.find('img').unbind('mouseenter');
 
                         // remove any latent image tool model references
-                        $(etch.config.selector + ' img').data('editableImageModel', false)
+                        $(etch.config.selector + ' img').data('editableImageModel', false);
                     }
 
                     // once the editor is removed, remove the body binding for it
