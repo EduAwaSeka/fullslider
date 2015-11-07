@@ -300,6 +300,7 @@
             // if the editor isn't already built, build it
             var $editor = $('.etch-editor-panel');
             var editorModel = $editor.data('model');
+//            this.$fontSizeReadout.text($editable.css("font-size"));
             if (!$editor.size()) {
                 $editor = $('<div class="etch-editor-panel">');
                 var editorAttrs = {editable: $editable, editableModel: this.model};
@@ -355,7 +356,7 @@
             $('body').bind('mousedown.editor', function(e) {
                 // check to see if the click was in an etch tool
                 var target = e.target || e.srcElement;
-                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *').size()) {
+                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .slidelement, .slidelement *').size()) {
                     // remove editor
                     $editor.css("display", "none");
 

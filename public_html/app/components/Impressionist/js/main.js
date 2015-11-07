@@ -204,131 +204,35 @@ Impressionist.prototype =
                 $("#makebold").on("click", function(e)
                 {
                     e.stopPropagation();
-                    if (!me.isBold && me.selectedElement)
-                    {
-                        me.selectedElement.css("fontWeight", "bold");
-                        me.selectedElement.attr("data-isbold", true);
-                        $(this).addClass("active");
-                        me.isBold = true;
-                    }
-                    else if (me.isBold && me.selectedElement)
-                    {
-                        me.selectedElement.css("fontWeight", "normal");
-                        me.selectedElement.attr("data-isbold", false);
-                        me.isBold = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('bold', false, null);
                 });
                 $("#makeitalic").on("click", function(e)
                 {
                     e.stopPropagation();
-                    $(this).removeClass("active");
-                    if (!me.isItalic && me.selectedElement)
-                    {
-                        me.selectedElement.css("fontStyle", "italic");
-                        me.selectedElement.attr("data-isitalic", true);
-                        $(this).addClass("active");
-                        me.isItalic = true;
-                    }
-                    else if (me.isItalic && me.selectedElement)
-                    {
-                        me.selectedElement.css("fontStyle", "normal");
-                        me.selectedElement.attr("data-isitalic", false);
-                        me.isItalic = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('italic', false, null);
                 });
                 $("#makeunderline").on("click", function(e)
                 {
                     e.stopPropagation();
-                    $(this).removeClass("active");
-                    if (!me.isUnderlined && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-decoration", "underline");
-                        me.selectedElement.attr("data-isunderline", true);
-                        $(this).addClass("active");
-                        me.isUnderlined = true;
-                    }
-                    else if (me.isUnderlined && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-decoration", "none");
-                        me.selectedElement.attr("data-isunderline", false);
-                        me.isUnderlined = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('underline', false, null);
                 });
 
                 $("#makealignleft").on("click", function(e)
                 {
                     e.stopPropagation();
-                    $(this).removeClass("active");
-                    if (!me.isLeftAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "left");
-                        me.selectedElement.attr("data-leftalign", true);
-                        me.selectedElement.attr("data-centeralign", false);
-                        me.selectedElement.attr("data-rightalign", false);
-
-                        $(this).addClass("active");
-                        $("#makealignright").removeClass("active");
-                        $("#makealigncenter").removeClass("active");
-                        me.isLeftAligned = true;
-                    }
-                    else if (me.isLeftAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "initial");
-                        me.selectedElement.attr("data-leftalign", false);
-                        me.isLeftAligned = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('justifyLeft', false, null);
                 });
 
                 $("#makealignright").on("click", function(e)
                 {
                     e.stopPropagation();
-                    $(this).removeClass("active");
-                    if (!me.isRightAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "right");
-                        me.selectedElement.attr("data-rightalign", true);
-                        me.selectedElement.attr("data-centeralign", false);
-                        me.selectedElement.attr("data-leftalign", false);
-                        $(this).addClass("active");
-                        $("#makealignleft").removeClass("active");
-                        $("#makealigncenter").removeClass("active");
-                        me.isRightAligned = true;
-                    }
-                    else if (me.isRightAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "initial");
-                        me.selectedElement.attr("data-rightalign", false);
-                        me.isRightAligned = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('justifyRight', false, null);
                 });
 
                 $("#makealigncenter").on("click", function(e)
                 {
                     e.stopPropagation();
-                    $(this).removeClass("active");
-                    if (!me.isCenterAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "center");
-                        me.selectedElement.attr("data-centeralign", true);
-                        me.selectedElement.attr("data-rightalign", false);
-                        me.selectedElement.attr("data-leftalign", false);
-                        $(this).addClass("active");
-                        $("#makealignright").removeClass("active");
-                        $("#makealignleft").removeClass("active");
-                        me.isCenterAligned = true;
-                    }
-                    else if (me.isCenterAligned && me.selectedElement)
-                    {
-                        me.selectedElement.css("text-align", "initial");
-                        me.selectedElement.attr("data-centeralign", false);
-                        me.isCenterAligned = false;
-                        $(this).removeClass("active");
-                    }
+                    document.execCommand('justifyCenter', false, null);
                 });
             },
             enableSort: function()
@@ -510,7 +414,6 @@ Impressionist.prototype =
                     me.selectElement($(this));
                     me.selectedforedit = true;
                     me.setTransformValues($(this));
-                    me.setMenuControlValues($(this));
                     me.positionTransformControl();
                     $(this).removeClass("movecursor");
 
@@ -543,73 +446,6 @@ Impressionist.prototype =
                     me.selectedElement.remove();
                     $("#play").css("display", "none");
                 });
-            },
-            setMenuControlValues: function(el)
-            {
-                var isbold = el.attr("data-isbold");
-                var isitalic = el.attr("data-isitalic");
-                var isunderline = el.attr("data-isunderline");
-                var isCenterAlign = el.attr("data-centeralign");
-                var isLeftAlign = el.attr("data-leftalign");
-                var isRightAlign = el.attr("data-rightalign");
-
-                if (isbold)
-                {
-                    $("#makebold").addClass("active");
-                }
-                else
-                {
-                    $("#makebold").removeClass("active");
-                }
-
-                if (isitalic)
-                {
-                    $("#makeitalic").addClass("active");
-                }
-                else
-                {
-                    $("#makeitalic").removeClass("active");
-                }
-
-                if (isunderline)
-                {
-                    $("#makeunderline").addClass("active");
-                }
-                else
-                {
-                    $("#makeunderline").removeClass("active");
-                }
-
-                if (isCenterAlign)
-                {
-                    $("#makealigncenter").addClass("active");
-                }
-                else
-                {
-                    $("#makealigncenter").removeClass("active");
-                }
-
-                if (isLeftAlign)
-                {
-                    $("#makealignleft").addClass("active");
-                }
-                else
-                {
-                    $("#makealignleft").removeClass("active");
-                }
-
-                if (isRightAlign)
-                {
-                    $("#makealignright").addClass("active");
-                }
-                else
-                {
-                    $("#makealignright").removeClass("active");
-                }
-            },
-            resetMenuControlValues: function()
-            {
-                $(".menubtn").removeClass("active");
             },
             setTransformValues: function(el)
             {
@@ -691,7 +527,6 @@ Impressionist.prototype =
                 me.generateScaledSlide(me.selectedSlide);
                 me.selectedforedit = false;
                 me.colorpickeropen = false;
-                me.resetMenuControlValues();
                 if (!($(e.target).hasClass("is-etch-button"))) {
                     me.clearElementSelections();
                 }
@@ -793,7 +628,12 @@ Impressionist.prototype =
                 //$("clonethumb_"+id).remove();
                 newel.attr("id", "clonethumb_" + id);
                 newel.attr("data-clone", true);
-                newel.css("-webkit-transform", "scale(0.17, 0.205)");
+                newel.css("transform", "scale(0.17, 0.205)");
+                newel.css("-webkit-transform", "scale(0.17, 0.205)"); /* Safari and Chrome */
+                newel.css("-moz-transform", "scale(0.17, 0.205)"); /* Firefox */
+                newel.css("-ms-transform", "scale(0.17, 0.205)"); /* IE 9 */
+                newel.css("-o-transform", "scale(0.17, 0.205)"); /* Opera */
+
                 newel.removeClass("impress-slide-element");
                 //newel.css("border", "1px solid #999");
                 newel.css("left", "-97px");
