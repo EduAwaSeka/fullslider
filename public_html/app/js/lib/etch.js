@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'font-size']
+            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'font-size', 'font-family']
         }
     };
 
@@ -86,12 +86,17 @@
             }
 
             _.each(this.model.get('buttons'), function(button) {
-                if (button === "font-size") {
-                    var $buttonEl = $(font_size_selector);
+                switch (button) {
+                    case "font-size":
+                        var $buttonEl = $(font_size_selector);
+                        break;
+                    case "font-family":
+                        var $buttonEl = $(font_family_selector);
+                        break;
+                    default:
+                        var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"></span></a>');
                 }
-                else {
-                    var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"></span></a>');
-                }
+
                 view.$el.append($buttonEl);
             });
 
@@ -238,7 +243,7 @@
             editableModel.trigger('save');
         },
         setFontFamily: function(e) {
-            e.preventDefault();
+            
             var value = extractValue(e);
             document.execCommand('fontName', false, value);
             value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
@@ -253,7 +258,7 @@
             this.$el.find(".fontSizeBtn .text").text(value);
             var elementToChange = $(document).find("[contentEditable='true']");
             elementToChange.css("font-size", value + "px");
-            
+
             //update value on editor button
             var fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
             fontSizeReadout[0].innerHTML = elementToChange.css("font-size").replace(/[^-\d\.]/g, '');

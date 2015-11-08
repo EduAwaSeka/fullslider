@@ -39,3 +39,19 @@
 .etch-editor-panel .etch-heading span { background-position: -360px 0; }
 .etch-editor-panel .etch-clear-formatting span { background-position: -390px 0; }
 
+.etch-editor-panel .btn-group .btn:hover{
+    background: #fff !important;
+    border-color: #999 !important; 
+    color:#000 !important;
+    border-top-color: #000 !important;
+}
+
+.etch-editor-panel .btn-group .btn:hover .caret{
+    color:#000 !important;
+    border-top-color: #000 !important;
+}
+
+.etch-editor-panel .btn-group .btn:focus{
+    color: #fff !important; 
+    border-top-color: #000 !important;
+}

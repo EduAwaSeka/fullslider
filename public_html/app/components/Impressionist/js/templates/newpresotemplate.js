@@ -41,4 +41,21 @@ var font_size_selector = '<div class="btn-group">'+
                                           '<a class="is-etch-button" href="#" data-value="8">8</a>' +
                                         '</li>' +
                                 '</ul>' +
-                        '</div>';                                                
+                        '</div>';      
+
+var font_family_selector =  '<div class="btn-group">'+
+                                '<a class="btn btn-inverse dropdown-toggle btn-small fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text">Lato</span><span class="caret"></span></a>'+
+                                '<ul class="dropdown-menu menuBarOption" data-option="fontFamily">'+
+                                        '<li>'+
+                                          '<a class="lato is-etch-button" href="#" data-value="\'Lato\', sans-serif">Lato</a>'+
+                                          '<a class="leaguegothic is-etch-button" href="#" data-value="\'League Gothic\', sans-serif">League Gothic</a>'+
+                                          '<a class="droidsansmono is-etch-button" href="#" data-value="\'Droid Sans Mono\', monospace">Droid Sans Mono</a>'+
+                                          '<a class="ubuntu is-etch-button" href="#" data-value="\'Ubuntu\', sans-serif">Ubuntu</a>'+
+                                          '<a class="abril is-etch-button" href="#" data-value="\'Abril Fatface\', cursive">Abril</a>'+
+                                          '<a class="hammersmith is-etch-button" href="#" data-value="\'Hammersmith One\', sans-serif">Hammersmith One</a>'+
+                                          '<a class="fredoka is-etch-button" href="#" data-value="\'Fredoka One\', cursive">Fredoka One</a>'+
+                                          '<a class="gorditas is-etch-button" href="#" data-value="\'Gorditas\', cursive">Gorditas</a>'+
+                                          '<a class="pressstart is-etch-button" href="#" data-value="\'PressStart2P\', cursive">Press Start 2P</a>'+
+                                        '</li>'+
+                                '</ul>'+
+                            '</div>';
