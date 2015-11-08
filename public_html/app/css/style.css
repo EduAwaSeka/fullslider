@@ -56,9 +56,9 @@ body{
 .mainfooter {
     position: relative;
     width: initial;
-    top: initial;
-    bottom: initial;
-    left: initial;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
     z-index: 10;
     padding: 6px 0px;
     margin: 0;

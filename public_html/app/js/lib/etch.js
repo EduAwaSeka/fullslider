@@ -38,14 +38,10 @@
             this.$el = $(this.el);
 
             // Model attribute event listeners:
-            _.bindAll(this, 'changeButtons', 'changePosition', 'changeEditable', 'insertImage', '_editableModelChanged');
+            _.bindAll(this, 'changeButtons', 'changePosition', 'changeEditable', 'insertImage');
             this.model.bind('change:buttons', this.changeButtons);
             this.model.bind('change:position', this.changePosition);
             this.model.bind('change:editable', this.changeEditable);
-
-            this.model.on('change:editableModel', this._editableModelChanged, this);
-
-            this._editableModelChanged(this.model, this.model.get('editableModel'));
 
             // Init Routines:
             this.changeEditable();
@@ -67,15 +63,6 @@
             'click [data-option="fontSize"]': 'setFontSize',
             'click [data-option="fontFamily"]': 'setFontFamily'
         },
-        _editableModelChanged: function(model, newEditable) {
-            if (this._lastEditableModel != null) {
-                this._lastEditableModel.off(null, null, this);
-            }
-
-            this._lastEditableModel = newEditable;
-
-            newEditable.on('change:size', this._fontSizeChanged, this);
-        },
         changeEditable: function() {
             this.setButtonClass();
             // Im assuming that Ill add more functionality here
@@ -85,9 +72,6 @@
             var editorModel = this.model;
             var buttonClass = editorModel.get('editable').attr('data-button-class') || 'default';
             editorModel.set({buttons: etch.config.buttonClasses[buttonClass]});
-        },
-        _fontSizeChanged: function(model, value) {
-            this.$fontSizeReadout.text(value);
         },
         changeButtons: function() {
             // render the buttons into the editor-panel
@@ -264,24 +248,23 @@
             });
         },
         setFontSize: function(e) {
-            var textBox = this.model.get('editableModel');
             var value = extractValue(e);
 
-            textBox.set('size', (value |= 0));
-
-            // TODO: we need to bind this to the editable model...
-            // whenever that changes.
-            // so that way we have the correct font readouts when someone
-            // uses the scale control
             this.$el.find(".fontSizeBtn .text").text(value);
             var elementToChange = $(document).find("[contentEditable='true']");
             elementToChange.css("font-size", value + "px");
+            
+            //update value on editor button
+            var fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
+            fontSizeReadout[0].innerHTML = elementToChange.css("font-size").replace(/[^-\d\.]/g, '');
+
 
             Backbone.trigger('etch:state', {
                 size: value
             });
         }
     });
+
 
     // tack on models, views, etc... as well as init function
     _.extend(etch, {
@@ -294,13 +277,15 @@
             e.stopPropagation();
             var target = e.target || e.srcElement;
             var $editable = $(target).etchFindEditable();
+            var fontSizeReadout;
             $(".slidelement").attr("contentEditable", "false");
             $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
             var $editor = $('.etch-editor-panel');
             var editorModel = $editor.data('model');
-//            this.$fontSizeReadout.text($editable.css("font-size"));
+
+            //this.$fontSizeReadout.text($editable.css("font-size"));
             if (!$editor.size()) {
                 $editor = $('<div class="etch-editor-panel">');
                 var editorAttrs = {editable: $editable, editableModel: this.model};
@@ -322,6 +307,10 @@
                 $editor.css("display", "block");
                 $editor.css("overflow", "initial");
             }
+
+            //initialize value of font-size etch-editor-button with selected element value
+            fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
+            fontSizeReadout[0].innerHTML = $editable.css("font-size").replace(/[^-\d\.]/g, '');
 
             // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
             // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.
