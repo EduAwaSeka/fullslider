@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'font-size', 'font-family']
+            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'color', 'font-size', 'font-family']
         }
     };
 
@@ -63,6 +63,23 @@
             'click [data-option="fontSize"]': 'setFontSize',
             'click [data-option="fontFamily"]': 'setFontFamily'
         },
+        _hideSpectrum: function() {
+            this.$colorChooser.spectrum('hide');
+        },
+        _caretUpdated: function() {
+            var $container = $(getSelectionBoundaryElement(window));
+            var color = $container.attr('color');
+            var face = $container.attr('face');
+
+            color = color || $container.parents('font').attr('color') || '#333';
+            face = face || $container.parents('font').attr('face') || 'Lato';
+
+            if (face)
+                face = face.split(',')[0]
+
+            this.$fontFamilyReadout.html(face);
+            this.$colorChooser.spectrum('set', color);
+        },
         changeEditable: function() {
             this.setButtonClass();
             // Im assuming that Ill add more functionality here
@@ -93,6 +110,9 @@
                     case "font-family":
                         var $buttonEl = $(font_family_selector);
                         break;
+                    case "color":
+                        var $buttonEl = $(color_selector);
+                        break;
                     default:
                         var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"></span></a>');
                 }
@@ -101,11 +121,48 @@
             });
 
             $(this.el).show('fast');
+
+            var $colorChooser = this.$el.find(".color-chooser");
+            if ($colorChooser.length > 0) {
+                var hex = '333';
+                $colorChooser.spectrum({
+                    color: '#' + hex,
+                    showSelectionPalette: true,
+                    localStorageKey: 'strut.colorChooser',
+                    showPalette: true,
+                    showInitial: true,
+                    showInput: true,
+                    palette: [],
+                    clickoutFiresChange: true,
+                    theme: 'sp-dark',
+                    move: function(color) {
+                        // $colorChooser.find("div").css("backgroundColor", "#" + hex);
+                        //view.model.get('editableModel').set('color', hex)
+                        document.execCommand('foreColor', false, color.toHexString());
+                    },
+                    change: function(color) {
+                        Backbone.trigger('etch:state', {
+                            color: color.toHexString()
+                        });
+                    }
+                });
+
+                var prevent = function(e) {
+                    e.preventDefault();
+                };
+
+                $(".sp-replacer").mousedown(prevent);
+                $(".sp-container").mousedown(prevent);
+                $colorChooser.mousedown(prevent);
+
+                $colorChooser.find("div").css("backgroundColor", '#' + hex)
+            }
+
             var $toggle = this.$el.find('.dropdown-toggle');
             $toggle.dropdown();
             this.$fontSizeReadout = this.$el.find('.fontSizeReadout');
-//            this.$colorChooser = $colorChooser;
-//            this.$fontFamilyReadout = this.$el.find('.fontFamilyBtn > .text');
+            this.$colorChooser = $colorChooser;
+            this.$fontFamilyReadout = this.$el.find('.fontFamilyBtn > .text');
         },
         changePosition: function() {
             // animate editor-panel to new position
@@ -254,6 +311,8 @@
             else {
                 value = value.substr(0, value.lastIndexOf(","));
             }
+
+            //update value on editor button
             var fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
             fontFamilyReadout[0].innerHTML = value;
 

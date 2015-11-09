@@ -5,7 +5,7 @@
                      background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#ccc));
                      -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
                      -webkit-box-shadow: inset 1px 0 0 #dfdfdf, inset 0 1px 0 #dfdfdf, inset -1px 0 0 #dfdfdf, inset 0 -1px 0 #dfdfdf, 0 0 5px rgba(0,0,0,.3);
-                     opacity: 0.9;
+                     opacity: 0.98;
                      overflow: block !important;
 }
 .etch-editor-button { display: block; float: left; margin-right: 3px; position: relative; text-decoration: none;
@@ -45,7 +45,10 @@
     color:#000 !important;
     border-top-color: #000 !important;
 }
-
+.etch-editor-panel .btn-group .caret{
+    margin-top: 0px;
+    margin-left: 0.25em;
+}
 .etch-editor-panel .btn-group .btn:hover .caret{
     color:#000 !important;
     border-top-color: #000 !important;
@@ -59,7 +62,6 @@
 .etch-editor-panel .btn-group li{
     overflow-y: auto;
     max-height: 400px;
-    font-size: 1.25em;
 }
 .etch-editor-panel .btn-group li a:hover{
     color: #FFFFFF;
@@ -67,4 +69,26 @@
     background-color: #f5f5f5;
     text-shadow: 1px 1px 2px #000;
     background-image: linear-gradient(to bottom, #3498DB, #3491D0);
+}
+
+#etch-font-family li{
+    font-size: 1.25em;
+}
+
+.etch-bold, .etch-justify-left, .etch-unordered-list{
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+.etch-italic, .etch-justify-center{
+    margin-right: 0;
+    border-radius: 0;
+    border-right: none;
+}
+
+.etch-underline, .etch-justify-right, .etch-ordered-list{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
