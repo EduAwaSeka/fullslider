@@ -419,7 +419,9 @@ Impressionist.prototype =
 
                 }).on("mousedown mouseover", function(e)
                 {
-                    $(this).addClass("movecursor");
+                    if (!($(this).attr("contentEditable") === "true")) {
+                        $(this).addClass("movecursor");
+                    }
                 }).on("mouseup", function(e)
                 {
                     console.log("mouse upping", me.selectedSlide);
@@ -493,7 +495,10 @@ Impressionist.prototype =
                         $("#colorpickerbtn").colorpicker("show").on("changeColor", function(e)
                         {
                             console.log("color", e.color.toHex(), $(this));
-                            me.colorSelectedElement(e.color.toHex());
+
+                            var elementToChange = $(document).find("[contentEditable='true']");
+                            var value= e.color.toHex();
+                            elementToChange.css("color", value);
                             //$(this).colorpicker("hide");
 
                         });

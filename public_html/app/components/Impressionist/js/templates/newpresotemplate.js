@@ -79,4 +79,4 @@ var font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
                                 '</ul>'+
                             '</div>';
                     
-var color_selector='<input class="color-chooser colorpicker etch-color" />';
+var color_selector='<div class="btn-group"><input class="color-chooser colorpicker etch-color" /></div>';

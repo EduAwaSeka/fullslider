@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'color', 'font-size', 'font-family']
+            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'font-size', 'font-family', 'color']
         }
     };
 
@@ -128,7 +128,6 @@
                 $colorChooser.spectrum({
                     color: '#' + hex,
                     showSelectionPalette: true,
-                    localStorageKey: 'strut.colorChooser',
                     showPalette: true,
                     showInitial: true,
                     showInput: true,
@@ -431,7 +430,7 @@
             $('body').bind('mousedown.editor', function(e) {
                 // check to see if the click was in an etch tool
                 var target = e.target || e.srcElement;
-                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .slidelement, .slidelement *').size()) {
+                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .slidelement, .slidelement *,.sp-container *, .colorpicker *, #colorpickerbtn').size()) {
                     // remove editor
                     $editor.css("display", "none");
 
