@@ -6,23 +6,6 @@
   font-weight: normal;
   font-style: normal; 
 }
-.quicksand
-{
-	font-family: 'Quicksand', sans-serif !important;
-	text-transform: uppercase;
-}
-.montserrat
-{
-	font-family: 'Montserrat', sans-serif !important;
-}
-.miltonian
-{
-	font-family: 'Miltonian', cursive !important;
-}
-.sketch
-{
-	font-family: 'Cabin Sketch', cursive !important;
-}
 a, a:hover{
 	text-decoration: none;
 	color: white;

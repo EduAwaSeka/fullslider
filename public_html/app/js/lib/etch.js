@@ -243,11 +243,20 @@
             editableModel.trigger('save');
         },
         setFontFamily: function(e) {
-            
+
             var value = extractValue(e);
-            document.execCommand('fontName', false, value);
-            value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
-            this.$el.find(".fontFamilyBtn .text").text(value);
+            //document.execCommand('fontName', false, value);
+            var elementToChange = $(document).find("[contentEditable='true']");
+            elementToChange.css("font-family", value);
+            if (value[0] === "'") {
+                value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
+            }
+            else {
+                value = value.substr(0, value.lastIndexOf(","));
+            }
+            var fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
+            fontFamilyReadout[0].innerHTML = value;
+
             Backbone.trigger('etch:state', {
                 face: value
             });
@@ -283,6 +292,7 @@
             var target = e.target || e.srcElement;
             var $editable = $(target).etchFindEditable();
             var fontSizeReadout;
+            var fontFamilyReadout;
             $(".slidelement").attr("contentEditable", "false");
             $editable.attr('contenteditable', true);
 
@@ -316,6 +326,18 @@
             //initialize value of font-size etch-editor-button with selected element value
             fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
             fontSizeReadout[0].innerHTML = $editable.css("font-size").replace(/[^-\d\.]/g, '');
+
+            //initialize value of font-family etch-editor-button with selected element value
+            fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
+            var value = $editable.css("font-family");
+            if (value[0] === "'") {
+                value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
+            }
+            else {
+                value = value.substr(0, value.lastIndexOf(","));
+            }
+            fontFamilyReadout[0].innerHTML = value;
+
 
             // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
             // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.

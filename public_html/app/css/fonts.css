@@ -1,0 +1,256 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-nov-2015, 12:14:58
+    Author     : EduJG
+*/
+
+/* Abril */
+@import url(https://fonts.googleapis.com/css?family=Abril+Fatface);
+
+/* Architects Daughter */
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+/* Bangers */
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+
+/* Black Ops One */
+@import url(https://fonts.googleapis.com/css?family=Black+Ops+One);
+
+/* Cabin Sketch */
+@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);
+
+/* Cookie */
+@import url(https://fonts.googleapis.com/css?family=Cookie);
+
+/* Courgette */
+@import url(https://fonts.googleapis.com/css?family=Courgette);
+
+/* Crimson Text */
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text);
+
+/* Dancing Script */
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+
+/* Droid Sans Mono */
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+/* Fredoka one */
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One);
+
+/* Gorditas */
+@import url(https://fonts.googleapis.com/css?family=Gorditas);
+
+/* Great Vibes */
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+
+/* Hammersmith one */
+@import url(https://fonts.googleapis.com/css?family=Hammersmith+One);
+
+/* Inconsolata */
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+/* Indie Flower */
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+/* Lato */
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+/* Lobster */
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+/* Miltonian */
+@import url(http://fonts.googleapis.com/css?family=Miltonian);
+
+/* Montserrat */
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+/* Nocinne */
+@import url(https://fonts.googleapis.com/css?family=Niconne);
+
+/* Pacifico */
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
+/* Playfair Display */
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+
+/* Press start 2P */
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+/* Quicksand */
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+
+/* Shadows into light */
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
+/* Special Elite */
+@import url(https://fonts.googleapis.com/css?family=Special+Elite);
+
+/* Satisfy */
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+
+/* Tangerine */
+@import url(https://fonts.googleapis.com/css?family=Tangerine);
+
+/* Tangerine */
+@import url(https://fonts.googleapis.com/css?family=Tangerine);
+
+/* Ubuntu */
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+
+.abril
+{
+    font-family: 'Abril Fatface', cursive !important;
+}
+
+.architects{
+    font-family: 'Architects Daughter', cursive !important;
+}
+
+.bangers{
+    font-family: 'Bangers', cursive !important;
+}
+
+.blackops{
+    font-family: 'Black Ops One', cursive !important;
+}
+
+.cabin-sketch
+{
+    font-family: 'Cabin Sketch', cursive !important;
+}
+
+.cookie{
+    font-family: 'Cookie', cursive !important;
+    font-size: 1.6em !important;
+}
+
+.courgette{
+    font-family: 'Courgette', cursive !important;   
+}
+
+.crimson{
+    font-family: 'Crimson Text', serif !important;
+    font-size: 1.3em !important;
+}
+
+.dancingscript{
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 1.3em !important;
+}
+
+.droidsansmono{
+    font-family: 'Droid Sans Mono', monospace !important;
+}
+
+.fredoka{
+    font-family: 'Fredoka One', cursive !important;
+}
+
+.gorditas{
+    font-family: 'Gorditas', cursive !important;
+    font-size: 1.25em !important;
+}
+
+.greatvibes{
+    font-family: 'Great Vibes', cursive !important;   
+    font-size: 1.3em !important;
+}
+
+.hammersmith{
+
+    font-family: 'Hammersmith One', sans-serif  !important;   
+}
+
+.inconsolata{
+    font-family: 'Inconsolata',monospace !important;  
+    font-size: 1.3em !important;
+}
+
+.indieflower{
+    font-family: 'Indie Flower', cursive !important;   
+    font-size: 1.3em !important;
+}
+
+.lato{
+    font-family: 'Lato', sans-serif !important;   
+}
+
+.leaguegothic{
+    font-family: 'League Gothic', sans-serif !important;      
+}
+
+.lobster{
+    font-family: 'Lobster', serif !important;  
+    font-size: 1.3em !important;
+}
+
+.miltonian
+{
+    font-family: 'Miltonian', cursive !important;
+    font-size: 1.35em !important;
+}
+
+.montserrat
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.niconne{
+    font-family: 'Niconne', cursive !important;  
+    font-size: 1.5em !important;
+}
+
+.pacifico{
+    font-family: 'Pacifico', cursive  !important;  
+    font-size: 1.35em !important;
+}
+
+.playfair{
+    font-family: 'Playfair Display', cursive !important;  
+    font-size: 1.3em !important;
+}
+
+.pressstart{
+    font-family: 'Press Start 2P', cursive !important; 
+    font-size: 1em !important;
+}
+
+.quicksand
+{
+    font-family: 'Quicksand', sans-serif !important;
+    font-size: 1.3em !important;
+}
+
+.satisfy{
+    font-family: 'Satisfy', cursive !important;  
+    font-size: 1.35em !important;
+}
+
+.shadows{
+    font-family: 'Shadows Into Light', cursive !important; 
+    font-size: 1.35em !important;
+}
+
+.specialelite{
+    font-family: 'Special Elite', cursive !important;  
+    font-size: 1.3em;
+}
+
+.tangerine{
+    font-family: 'Tangerine', cursive !important;  
+    font-size: 1.8em !important;
+}
+
+.ubuntu{
+    font-family: 'Ubuntu', sans-serif !important; 
+}
+
+
+
+
+
