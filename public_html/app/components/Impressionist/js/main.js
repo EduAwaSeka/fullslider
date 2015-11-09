@@ -8,7 +8,6 @@ Impressionist = function()
 
     this.menuopen = false;
     this.currentview = "mainarea";
-    this.colorpickeropen = false;
     this.selectedElement;
     this.clonedElement;
     this.selectedSlide;
@@ -480,32 +479,41 @@ Impressionist.prototype =
             },
             setupColorpickerPopup: function()
             {
-                $("#colorpickerbtn").popover("hide");
-                $("#colorpickerbtn").on("click", function(e)
-                {
-                    console.log("Inside click");
-                    e.stopPropagation();
-                    if (me.colorpickeropen)
-                    {
-                        $("#colorpickerbtn").colorpicker("hide");
-                        me.colorpickeropen = false;
-                    }
-                    else
-                    {
-                        $("#colorpickerbtn").colorpicker("show").on("changeColor", function(e)
-                        {
-                            console.log("color", e.color.toHex(), $(this));
+                var $colorChooser = $(document).find(".color-chooser");
+                if ($colorChooser.length > 0) {
+                    var hex = '333';
+                    $colorChooser.spectrum({
+                        color: '#' + hex,
+                        showSelectionPalette: true,
+                        showPalette: true,
+                        showInitial: true,
+                        showInput: true,
+                        palette: [],
+                        clickoutFiresChange: true,
+                        theme: 'sp-dark',
+                        move: function(color) {
+                            document.execCommand('foreColor', false, color.toHexString());
+                        },
+                        change: function(color) {
+                            Backbone.trigger('etch:state', {
+                                color: color.toHexString()
+                            });
+                        }
+                    });
 
-                            var elementToChange = $(document).find("[contentEditable='true']");
-                            var value= e.color.toHex();
-                            elementToChange.css("color", value);
-                            //$(this).colorpicker("hide");
+                    var prevent = function(e) {
+                        e.preventDefault();
+                    };
+                    var replacer = $("#tools").find(".sp-replacer");
+                    replacer.html('<i class="icon-tint"></i>');
+                    replacer.addClass("btn btn-info menubtn");
+                    replacer.removeClass("sp-replacer sp-dark");
+                    $(".sp-replacer").mousedown(prevent);
+                    $(".sp-container").mousedown(prevent);
+                    $colorChooser.mousedown(prevent);
 
-                        });
-                        me.colorpickeropen = true;
-                    }
-
-                });
+                    $colorChooser.find("div").css("backgroundColor", '#' + hex);
+                }
             },
             positionOrchestrationPanel: function()
             {
@@ -524,14 +532,12 @@ Impressionist.prototype =
             },
             manageGlobalClick: function(e)
             {
-                $("#colorpickerbtn").colorpicker("hide");
                 $(".slidelement").draggable({disabled: false});
                 //console.log("in globel ",e.target);
                 //$(".dropdownpopup").css("display", "none");
                 $("#play").css("display", "none");
                 me.generateScaledSlide(me.selectedSlide);
                 me.selectedforedit = false;
-                me.colorpickeropen = false;
                 if (!($(e.target).hasClass("is-etch-button"))) {
                     me.clearElementSelections();
                 }

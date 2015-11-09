@@ -63,23 +63,6 @@
             'click [data-option="fontSize"]': 'setFontSize',
             'click [data-option="fontFamily"]': 'setFontFamily'
         },
-        _hideSpectrum: function() {
-            this.$colorChooser.spectrum('hide');
-        },
-        _caretUpdated: function() {
-            var $container = $(getSelectionBoundaryElement(window));
-            var color = $container.attr('color');
-            var face = $container.attr('face');
-
-            color = color || $container.parents('font').attr('color') || '#333';
-            face = face || $container.parents('font').attr('face') || 'Lato';
-
-            if (face)
-                face = face.split(',')[0]
-
-            this.$fontFamilyReadout.html(face);
-            this.$colorChooser.spectrum('set', color);
-        },
         changeEditable: function() {
             this.setButtonClass();
             // Im assuming that Ill add more functionality here
@@ -392,7 +375,11 @@
                 value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
             }
             else {
-                value = value.substr(0, value.lastIndexOf(","));
+                if (value[0] === "\"") {
+                    value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
+                } else {
+                    value = value.substr(0, value.lastIndexOf(","));
+                }
             }
             fontFamilyReadout[0].innerHTML = value;
 
