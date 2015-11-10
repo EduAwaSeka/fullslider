@@ -61,12 +61,21 @@ body{
     background-color: none;
 }
 
+#view-save-btns{
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    margin: -1px auto;
+}
+
+#view-save-btns .btn{
+    padding: 10px 22px;
+}
+
 .previewbtn {
     margin-left: 0px; 
     margin-top: 0px; 
 }
-
-
 
 
 /* Body-editor */
@@ -184,3 +193,12 @@ body{
     color: #000;
 }
 
+
+/* Add image modal */
+
+#imagemodal{
+    left: 50% !important;
+    top: 10% !important;
+    bottom: inherit !important;
+    color: #34495e;
+}

@@ -80,3 +80,49 @@ var font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
                             '</div>';
                     
 var color_selector='<div class="btn-group"><input class="color-chooser colorpicker etch-color" /></div>';
+
+var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+                            '<h3>Add Image</h3>'+
+                        '</div>'+
+                        '<div class="modal-body">'+
+                            '<p>Paste Image URL</p>'+
+                            '<input type="text" id="imageinput" class="image-input"> </input>'+
+                            '<p> Preview Will appear below</p>'+
+                            '<img id="previewimg"></img>'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-danger">Close</a>'+
+                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> &nbsp; Add</a>'+
+                        '</div>'+
+                    '</div>';
+//
+//
+//        '<div id="imagemodal" class="modal-header">'+
+//                        '<button class="close" data-dismiss="modal">×</button>'+
+//                        '<h3>{{title}}</h3>'+
+//                    '</div>'+
+//                    '<div class="modal-body" style="overflow: hidden">'+
+//                        '<div class="alert alert-error dispNone">'+
+//                            '<button class="close" data-dismiss="alert">×</button>'+
+//                            'The image URL you entered appears to be incorrect'+
+//                        '</div>'+
+//                        '<h4>URL:</h4><div class="form-inline"><input type="text" name="itemUrl"></input>&nbsp;{{#browsable}}<div data-option="browse" class="btn">Browse</div>'+
+//                        '<p><em>*Local images are currently uploaded to imgur.<br/>We\'re working on changing this.</em></p>{{/browsable}}</div>'+
+//                        '<input type="file" style="display:none"></input>'+
+//                        '<h4>Preview:</h4>'+
+//                        '<ul class="thumbnails">'+
+//                            '<li class="span4">'+
+//                                '<div class="thumbnail">'+
+//                                        '<{{tag}} class="preview" width="360" height"268"></{{tag}}>'+
+//                                '</div>'+
+//                                '<div class="progress active progress-striped dispNone">'+
+//                                        '<div class="bar"></div>'+
+//                                '</div>'+
+//                            '</li>'+
+//                        '</ul>'+
+//                    '</div>'+
+//                    '<div class="modal-footer">'+
+//                        '<a href="#" class="btn btn-primary ok btn-inverse">{{title}}</a>'+
+//                    '</div>';

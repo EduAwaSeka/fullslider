@@ -82,7 +82,11 @@ Impressionist.prototype =
                 me.renderPresentations(presentations);
                 me.openLastSavedPresentation();
                 me.switchView("right");
+                me.initializeImageModal();
 
+            },
+            initializeImageModal: function(){
+                $("#modals").html(add_img_modal);
             },
             openLastSavedPresentation: function()
             {
@@ -951,6 +955,7 @@ Impressionist.prototype =
                 $("#addimagebtn").on("click", function(e)
                 {
                     console.log("open image modal...");
+                    $("#imagemodal").removeClass("hide");
                     $("#imagemodal").modal("show");
                 });
                 $("#imageinput").on("blur keyup", function(e)
