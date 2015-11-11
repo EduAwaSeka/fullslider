@@ -416,7 +416,7 @@ Impressionist.prototype =
                         $(".slidelement").removeClass("elementselected");
                         me.selectElement($(this));
                         me.selectedforedit = true;
-                        me.setTransformValues($(this));
+                        //me.setTransformValues($(this));
                         me.positionTransformControl();
                     }
                 }).on("mousedown mouseover", function(e)
@@ -448,6 +448,7 @@ Impressionist.prototype =
                 {
                     e.stopPropagation();
                     me.selectedElement.remove();
+                    me.generateScaledSlide(me.selectedSlide);
                     $("#play").css("display", "none");
                 });
             },
@@ -860,11 +861,6 @@ Impressionist.prototype =
                     me.selectedElement.addClass(classname);
                 }
 
-            },
-            removeTextFormatting: function()
-            {
-                me.selectedElement.removeClass("slidelementh1");
-                me.selectedElement.removeClass("slidelementh3");
             },
             openCodeExportWindow: function()
             {

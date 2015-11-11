@@ -177,6 +177,8 @@ body{
 
 .slidelement{
     line-height: 55px !important;
+    color: #000;
+    font-size: 400%;
 }
 
 #markdown-editor{
