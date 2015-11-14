@@ -354,8 +354,7 @@ body
 }
 .elementselected
 {
-    color : #999;
-    /*border: 1px solid #ccc;*/
+    outline: 2px solid #3498DB;
 }
 .transformdiv
 {

@@ -412,8 +412,8 @@ Impressionist.prototype =
                     e.stopPropagation();
                     // if not is in editionmode, select it
                     if ($(this).attr("contentEditable") === "false") {
-                        $(this).css("outline", "2px solid #3498DB");
                         $(".slidelement").removeClass("elementselected");
+                        $(this).addClass("elementselected");
                         me.selectElement($(this));
                         me.selectedforedit = true;
                         //me.setTransformValues($(this));
@@ -537,7 +537,7 @@ Impressionist.prototype =
             manageGlobalClick: function(e)
             {
                 $(".slidelement").draggable({disabled: false});
-                $(".slidelement").css("outline", "none");
+                $(".slidelement").removeClass("elementselected");
                 //console.log("in globel ",e.target);
                 //$(".dropdownpopup").css("display", "none");
                 $("#play").css("display", "none");
