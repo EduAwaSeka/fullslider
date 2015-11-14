@@ -4,7 +4,7 @@ var newpresotemplate = '<div id="newpreso">'+
 						   '<a class="btn btn-large btn-primary btn-inline previewbtn settingsCancelBtn" id="newpresocancel">&nbsp;Cancel</a>'+
           				   '<a class="btn btn-large btn-inline btn-info previewbtn">&nbsp;OK</a>'
           				'</div>'
-var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement">'+
+var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block">'+
 					 '<div class="thumbnailholder"></div>'+
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fui-cross-16"></i></a>'+
