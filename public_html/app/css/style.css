@@ -176,9 +176,10 @@ body{
 }
 
 .slidelement{
-    line-height: 55px !important;
+    line-height: initial !important;
     color: #000;
     font-size: 400%;
+    height: initial !important;
 }
 
 #markdown-editor{
