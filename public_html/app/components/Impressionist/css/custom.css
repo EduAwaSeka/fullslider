@@ -354,8 +354,13 @@ body
 }
 .elementselected
 {
-   outline:2px solid #3498DB !important;
+    outline:2px solid #3498DB !important;
 }
+
+.elementediting{
+    outline: 2px dotted #3498DB !important;
+}
+
 .transformdiv
 {
     position: absolute;

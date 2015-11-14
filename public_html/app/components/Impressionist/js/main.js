@@ -400,8 +400,10 @@ Impressionist.prototype =
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
+                    $(".slidelement").removeClass("elementselected");
+                    $(".slidelement").attr("data-select", false);
                     $(this).draggable({disabled: true});
-                    $(this).css("outline", "2px dotted #3498DB");
+                    $(this).addClass("elementediting");
                     $("#play").css("display", "none");
                     $(this).removeClass("movecursor");
 
@@ -459,10 +461,12 @@ Impressionist.prototype =
                 me.selectedElement = $(el);
                 console.log("click firing....");
                 // if not is in editionmode, select it
-                if ($(el).attr("contentEditable") === "false" || typeof( $(el).attr("contentEditable"))=== "undefined") {
+                if ($(el).attr("contentEditable") === "false" || typeof ($(el).attr("contentEditable")) === "undefined") {
                     $(".slidelement").removeClass("elementselected");
+                    $(".slidelement").removeClass("elementediting");
+                    $(".slidelement").attr("data-select", false);
                     $(el).addClass("elementselected");
-                    alert();
+                    $(el).attr("data-select", true);
                     me.selectedforedit = true;
                     //me.setTransformValues($(el));
                     me.positionTransformControl();
@@ -541,6 +545,7 @@ Impressionist.prototype =
             {
                 $(".slidelement").draggable({disabled: false});
                 $(".slidelement").removeClass("elementselected");
+                $(".slidelement").attr("data-select", false);
                 //console.log("in globel ",e.target);
                 //$(".dropdownpopup").css("display", "none");
                 $("#play").css("display", "none");
@@ -554,6 +559,7 @@ Impressionist.prototype =
             {
                 $(".slidelement").removeClass("elementhover");
                 $(".slidelement").removeClass("elementselected");
+                $(".slidelement").removeClass("elementediting");
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
                 ;

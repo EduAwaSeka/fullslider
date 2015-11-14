@@ -157,6 +157,8 @@
                 case 'scale':
                     var moved = point.subtract(center);
                     var scaled = moved.divide(offset);
+                    var element= $(document).find("[data-select='true']");
+                    alert(element);
                     var initialPoint= $(this.play).offset().top + this.play.offsetHeight;
                     //matrix = matrix.scale(scaled);
 
