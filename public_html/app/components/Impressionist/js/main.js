@@ -408,17 +408,9 @@ Impressionist.prototype =
 
                 }).on("click", function(e)
                 {
-                    console.log("click firing....");
                     e.stopPropagation();
-                    // if not is in editionmode, select it
-                    if ($(this).attr("contentEditable") === "false") {
-                        $(this).css("outline", "2px solid #3498DB");
-                        $(".slidelement").removeClass("elementselected");
-                        me.selectElement($(this));
-                        me.selectedforedit = true;
-                        //me.setTransformValues($(this));
-                        me.positionTransformControl();
-                    }
+                    me.selectElement(this);
+
                 }).on("mousedown mouseover", function(e)
                 {
                     if (!($(this).attr("contentEditable") === "true")) {
@@ -464,7 +456,18 @@ Impressionist.prototype =
             },
             selectElement: function(el)
             {
-                me.selectedElement = el;
+                me.selectedElement = $(el);
+                console.log("click firing....");
+                // if not is in editionmode, select it
+                if ($(el).attr("contentEditable") === "false" || typeof( $(el).attr("contentEditable"))=== "undefined") {
+                    $(".slidelement").removeClass("elementselected");
+                    $(el).addClass("elementselected");
+                    alert();
+                    me.selectedforedit = true;
+                    //me.setTransformValues($(el));
+                    me.positionTransformControl();
+
+                }
             },
             calculateFontSize: function(type)
             {
@@ -537,7 +540,7 @@ Impressionist.prototype =
             manageGlobalClick: function(e)
             {
                 $(".slidelement").draggable({disabled: false});
-                $(".slidelement").css("outline", "none");
+                $(".slidelement").removeClass("elementselected");
                 //console.log("in globel ",e.target);
                 //$(".dropdownpopup").css("display", "none");
                 $("#play").css("display", "none");
@@ -622,10 +625,17 @@ Impressionist.prototype =
             {
                 console.log("adding the new item....");
                 item = text_snippet;
-                item = item.split("slidelement_id").join("slidelement_" + me.generateUID());
+                var id = "slidelement_" + me.generateUID();
+                item = item.split("slidelement_id").join(id);
                 $(el).append(item);
                 me.enableDrag();
+                me.addDataSelectable(id);
                 me.generateScaledSlide(me.selectedSlide);
+            },
+            addDataSelectable: function(id) {
+                var element = document.getElementById(id);
+                element.setAttribute("data-select", true);
+                me.selectElement(element);
             },
             generateScaledSlide: function(el)
             {
