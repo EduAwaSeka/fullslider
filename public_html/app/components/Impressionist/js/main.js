@@ -400,20 +400,23 @@ Impressionist.prototype =
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
-                    $(".slidelement").removeClass("elementselected");
-                    $(".slidelement").attr("data-select", false);
+                    me.clearElementSelections();
                     $(this).draggable({disabled: true});
                     $(this).addClass("elementediting");
                     $("#play").css("display", "none");
                     $(this).removeClass("movecursor");
-
-
                 }).on("click", function(e)
                 {
                     e.stopPropagation();
                     me.selectElement(this);
 
-                }).on("mousedown mouseover", function(e)
+                }).on("mousedown", function(e)
+                {
+                    me.selectElement(this);
+                    if (!($(this).attr("contentEditable") === "true")) {
+                        $(this).addClass("movecursor");
+                    }
+                }).on("mouseover", function(e)
                 {
                     if (!($(this).attr("contentEditable") === "true")) {
                         $(this).addClass("movecursor");
@@ -422,6 +425,11 @@ Impressionist.prototype =
                 {
                     console.log("mouse upping", me.selectedSlide);
                     me.generateScaledSlide(me.selectedSlide);
+                }).on("drag", function(e)
+                {
+                    if (me.isSelected(this)) {
+                        scalePlay(this);
+                    }
                 });
 
                 //only can moves in slide
@@ -434,14 +442,7 @@ Impressionist.prototype =
                 _transform = me.selectedElement.css("-webkit-transform");
                 $("#play").css("-webkit-transform", _transform);
                 $("#play").css("display", "block");
-                $("#play").width(me.selectedElement.width());
-                //$("#play").height( me.selectedElement.height());
-                $("#play").css("left", me.selectedElement.position().left + "px");
-                $("#play").css("top", me.selectedElement.position().top + "px");
-                var elem_height=me.selectedElement[0].offsetHeight;
-                $("#play").children(".scale").css("top", elem_height);
-                $("#play").children(".skewy").css("top", elem_height*2/5);
-                $("#play").children(".rotate").css("top",  elem_height*2/5);
+                scalePlay(me.selectedElement[0]);
                 $("#spandelete").on("click", function(e)
                 {
                     e.stopPropagation();
@@ -462,20 +463,20 @@ Impressionist.prototype =
             },
             selectElement: function(el)
             {
-                me.selectedElement = $(el);
                 console.log("click firing....");
                 // if not is in editionmode, select it
                 if ($(el).attr("contentEditable") === "false" || typeof ($(el).attr("contentEditable")) === "undefined") {
-                    $(".slidelement").removeClass("elementselected");
-                    $(".slidelement").removeClass("elementediting");
-                    $(".slidelement").attr("data-select", false);
+                    me.clearElementSelections();
+                    me.selectedElement = $(el);
                     $(el).addClass("elementselected");
                     $(el).attr("data-select", true);
                     me.selectedforedit = true;
                     //me.setTransformValues($(el));
                     me.positionTransformControl();
-
                 }
+            },
+            isSelected: function(element) {
+                return (element.getAttribute("data-select"));
             },
             calculateFontSize: function(type)
             {
@@ -547,26 +548,25 @@ Impressionist.prototype =
             },
             manageGlobalClick: function(e)
             {
-                $(".slidelement").draggable({disabled: false});
-                $(".slidelement").removeClass("elementselected");
-                $(".slidelement").attr("data-select", false);
                 //console.log("in globel ",e.target);
                 //$(".dropdownpopup").css("display", "none");
-                $("#play").css("display", "none");
                 me.generateScaledSlide(me.selectedSlide);
-                me.selectedforedit = false;
-                if (!($(e.target).hasClass("is-etch-button"))) {
+                var t = $(e.target);
+                if (!(t.hasClass("is-etch-button")) && !($("#tools").find(t).length)) {
                     me.clearElementSelections();
                 }
             },
             clearElementSelections: function()
             {
+                $("#play").css("display", "none");
                 $(".slidelement").removeClass("elementhover");
                 $(".slidelement").removeClass("elementselected");
                 $(".slidelement").removeClass("elementediting");
+                $(".slidelement").draggable({disabled: false});
+                $(".slidelement").attr("data-select", false);
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
-                ;
+                me.selectedforedit = false;
             },
             colorSelectedElement: function(color)
             {
@@ -638,12 +638,12 @@ Impressionist.prototype =
                 var id = "slidelement_" + me.generateUID();
                 item = item.split("slidelement_id").join(id);
                 $(el).append(item);
-                me.enableDrag();
-                me.addDataSelectable(id);
-                me.generateScaledSlide(me.selectedSlide);
-            },
-            addDataSelectable: function(id) {
                 var element = document.getElementById(id);
+                me.enableDrag();
+                me.generateScaledSlide(me.selectedSlide);
+                me.addDataSelectable(element);
+            },
+            addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);
                 me.selectElement(element);
             },
@@ -680,7 +680,7 @@ Impressionist.prototype =
                 {
 
                     child = children[i];
-                    if ($(child).attr("data-clone") == "true")
+                    if ($(child).attr("data-clone") === "true")
                     {
                         $(child).remove();
                     }
@@ -1022,9 +1022,6 @@ Impressionist.prototype =
                     me.applyStyle();
                     $("#styleselectionmodal").modal("hide");
                 });
-
-
-
             },
             applyStyle: function()
             {

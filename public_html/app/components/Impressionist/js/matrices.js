@@ -159,19 +159,23 @@
                     var scaled = moved.divide(offset);
 
                     var element = $(document).find("[data-select='true']");
-                    if (element.attr("data-type") === "text") {
-                        element = element[0];
-                        var initialPoint = $(element).offset().top + element.offsetHeight;
-                        var fontsize = parseInt(me.selectedElement.css("font-size").replace(/[^-\d\.]/g, ''));
-                        var difference = e.pageY - initialPoint;
-                        fontsize += difference;
+                    var initialPoint = $(element[0]).offset().top + element[0].offsetHeight;
+                    var difference = e.pageY - initialPoint;
 
+                    if (element.attr("data-type") === "text") {
+                        var fontsize = parseInt(me.selectedElement.css("font-size").replace(/[^-\d\.]/g, ''));
+                        fontsize += difference;
                         fontsize += "px";
                         me.selectedElement.css("font-size", fontsize);
-                        this.scalePlay(element);
+                        scalePlay(element[0]);
                     }
                     else {
-                        matrix = matrix.scale(scaled);
+                        var elem_height = e.offsetY - element[0].offsetTop;
+                        var elem_width = e.offsetX - element[0].offsetLeft;
+                        element.css("height", elem_height);
+                        element.css("width", elem_width);
+                        scalePlay(element[0]);
+//                        matrix = matrix.scale(scaled);
                     }
                     break;
 
@@ -215,17 +219,6 @@
             this.mode = null;
             this.save();
             $(".slideviewport").css("-webkit-user-select", "auto");
-        },
-        scalePlay: function(element) {
-            $(this.play).css("width", $(element).css("width"));
-            $(this.play).css("top", $(element).css("top"));
-            $(this.play).css("left", $(element).css("left"));
-            var elem_height= element.offsetHeight;
-            $(this.play).children(".scale").css("top", elem_height);
-            $(this.play).children(".skewy").css("top", elem_height * 2 / 5);
-            $(this.play).children(".rotate").css("top", elem_height * 2 / 5);
-
-//            $(this.play).css("height",$(element).css("height"));
         },
         getTouch: function(e) {
             // multitouch vs mouse
