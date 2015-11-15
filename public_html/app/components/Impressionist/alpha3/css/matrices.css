@@ -107,7 +107,7 @@ p {
 			cursor: n-resize;
 		}
 
-		#play .scale {
+		#play .scale{
 			bottom:-40px;
 			right:-50px;
 			cursor: nw-resize;

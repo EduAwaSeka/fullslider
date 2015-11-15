@@ -438,6 +438,10 @@ Impressionist.prototype =
                 //$("#play").height( me.selectedElement.height());
                 $("#play").css("left", me.selectedElement.position().left + "px");
                 $("#play").css("top", me.selectedElement.position().top + "px");
+                var elem_height=me.selectedElement[0].offsetHeight;
+                $("#play").children(".scale").css("top", elem_height);
+                $("#play").children(".skewy").css("top", elem_height*2/5);
+                $("#play").children(".rotate").css("top",  elem_height*2/5);
                 $("#spandelete").on("click", function(e)
                 {
                     e.stopPropagation();

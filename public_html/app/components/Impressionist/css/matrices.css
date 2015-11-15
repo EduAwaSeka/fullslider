@@ -104,15 +104,13 @@ p {
 }
 
 #play .rotate {
-    right:-22px;
-    top:51%;
+    right: -43px;
     cursor: n-resize;
     -webkit-transform: rotate(90deg);
 }
 
 #play .scale {
-    bottom:-60px;
-    right:-50px;
+    right: -33px;
     cursor: nw-resize;
 
     -webkit-transform: rotate(45deg);
@@ -131,7 +129,6 @@ p {
 
 #play .skewy {
     left:-15px;
-    top:50%;
     cursor: n-resize;
 
     /*-webkit-transform: rotate(-90deg);
@@ -142,8 +139,8 @@ p {
 }
 #play .deleteicon
 {
-    right:-44px;
-    top:5px
+    right:-33px;
+    top:-9px
 }
 
 #play .move {

@@ -157,18 +157,22 @@
                 case 'scale':
                     var moved = point.subtract(center);
                     var scaled = moved.divide(offset);
-                    var element= $(document).find("[data-select='true']");
-                    alert(element);
-                    var initialPoint= $(this.play).offset().top + this.play.offsetHeight;
-                    //matrix = matrix.scale(scaled);
 
-                    var fontsize = parseInt(me.selectedElement.css("font-size").replace(/[^-\d\.]/g, ''));
-                    var difference = e.pageY - initialPoint;
-                    fontsize += difference;
-                    alert("altura:"+this.play.offsetHeight+" initial: "+ initialPoint +" new: "+ e.pageY + " diference: "+difference);
+                    var element = $(document).find("[data-select='true']");
+                    if (element.attr("data-type") === "text") {
+                        element = element[0];
+                        var initialPoint = $(element).offset().top + element.offsetHeight;
+                        var fontsize = parseInt(me.selectedElement.css("font-size").replace(/[^-\d\.]/g, ''));
+                        var difference = e.pageY - initialPoint;
+                        fontsize += difference;
 
-                    fontsize += "px";
-                    me.selectedElement.css("font-size", fontsize);
+                        fontsize += "px";
+                        me.selectedElement.css("font-size", fontsize);
+                        this.scalePlay(element);
+                    }
+                    else {
+                        matrix = matrix.scale(scaled);
+                    }
                     break;
 
                 case 'move':
@@ -211,6 +215,17 @@
             this.mode = null;
             this.save();
             $(".slideviewport").css("-webkit-user-select", "auto");
+        },
+        scalePlay: function(element) {
+            $(this.play).css("width", $(element).css("width"));
+            $(this.play).css("top", $(element).css("top"));
+            $(this.play).css("left", $(element).css("left"));
+            var elem_height= element.offsetHeight;
+            $(this.play).children(".scale").css("top", elem_height);
+            $(this.play).children(".skewy").css("top", elem_height * 2 / 5);
+            $(this.play).children(".rotate").css("top", elem_height * 2 / 5);
+
+//            $(this.play).css("height",$(element).css("height"));
         },
         getTouch: function(e) {
             // multitouch vs mouse
@@ -473,7 +488,7 @@
 
                     function(node, property, value) {
                         node.style[property] = value;
-                    }:
+                    } :
                     function(node, property, value) {
                         console.log("NODE: " + node);
                         node.style.setProperty(property, value, PRIORITY);
