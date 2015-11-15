@@ -172,7 +172,7 @@
                     else {
                         var elem_height = e.offsetY - element[0].offsetTop;
                         var elem_width = e.offsetX - element[0].offsetLeft;
-                        element.css("height", elem_height);
+                        element.css("height", elem_height,'important');
                         element.css("width", elem_width);
                         scalePlay(element[0]);
 //                        matrix = matrix.scale(scaled);

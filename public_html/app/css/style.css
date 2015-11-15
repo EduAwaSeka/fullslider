@@ -179,7 +179,7 @@ body{
     line-height: initial !important;
     color: #000;
     font-size: 400%;
-    height: initial !important;
+    height: initial;
 }
 
 #markdown-editor{
