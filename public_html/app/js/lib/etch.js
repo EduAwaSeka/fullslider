@@ -435,7 +435,11 @@
             });
 
             this.model.trigger('change:size', this.model, this.model.get('size'), {});
-            editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
+            if (e.pageX === 0) {
+                editorModel.set({position: {x: $editable.offset().left - 15, y: $editable.offset().top - 80}});
+            } else {
+                editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
+            }
         }
     });
 

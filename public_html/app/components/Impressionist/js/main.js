@@ -400,11 +400,7 @@ Impressionist.prototype =
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
-                    me.clearElementSelections();
-                    $(this).draggable({disabled: true});
-                    $(this).addClass("elementediting");
-                    $("#play").css("display", "none");
-                    $(this).removeClass("movecursor");
+                    me.editElement(this);
                 }).on("click", function(e)
                 {
                     e.stopPropagation();
@@ -425,6 +421,7 @@ Impressionist.prototype =
                 {
                     console.log("mouse upping", me.selectedSlide);
                     me.generateScaledSlide(me.selectedSlide);
+                    me.selectElement(this);
                 }).on("drag", function(e)
                 {
                     if (me.isSelected(this)) {
@@ -477,6 +474,12 @@ Impressionist.prototype =
             },
             isSelected: function(element) {
                 return (element.getAttribute("data-select"));
+            },
+            editElement: function(el) {
+                me.clearElementSelections();
+                $(el).draggable({disabled: true});
+                $(el).addClass("elementediting");
+                $(el).removeClass("movecursor");
             },
             calculateFontSize: function(type)
             {
@@ -641,7 +644,10 @@ Impressionist.prototype =
                 var element = document.getElementById(id);
                 me.enableDrag();
                 me.generateScaledSlide(me.selectedSlide);
-                me.addDataSelectable(element);
+                
+                var nouEvent = document.createEvent("MouseEvents");
+                nouEvent.initMouseEvent("dblclick", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                element.dispatchEvent(nouEvent);
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);
