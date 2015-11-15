@@ -93,8 +93,8 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                             '<img id="previewimg"></img>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger">Close</a>'+
-                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> &nbsp; Add</a>'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> Add</a>'+
                         '</div>'+
                     '</div>';
 //

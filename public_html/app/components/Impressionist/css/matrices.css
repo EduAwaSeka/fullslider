@@ -122,13 +122,13 @@ p {
 
 #play .skewx {
     left:50%;
-    top:-20px;
+    top:-26px;
     /*bottom:-15px;*/
     cursor: w-resize;
 }
 
 #play .skewy {
-    left:-15px;
+    left:-10px;
     cursor: n-resize;
 
     /*-webkit-transform: rotate(-90deg);

@@ -979,6 +979,7 @@ Impressionist.prototype =
                     console.log("open image modal...");
                     $("#imagemodal").removeClass("hide");
                     $("#imagemodal").modal("show");
+                    $("#imageinput").focus();
                 });
                 $("#imageinput").on("blur keyup", function(e)
                 {
