@@ -1340,6 +1340,8 @@ Impressionist.prototype =
                 $(img).attr("id", "slidelement_" + me.generateUID());
                 $(img).css("left", "200px");
                 $(img).css("top", "200px");
+                $(img).css("height", "100px");
+                $(img).css("width", "100px");
                 $(img).addClass("slidelement");
                 $(img).attr("src", src);
                 console.log("selectedslide", me.selectedSlide);
