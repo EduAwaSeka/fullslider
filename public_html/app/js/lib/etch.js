@@ -417,7 +417,7 @@
             $('body').bind('mousedown.editor', function(e) {
                 // check to see if the click was in an etch tool
                 var target = e.target || e.srcElement;
-                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .slidelement, .slidelement *,.sp-container *, .colorpicker *, #colorpickerbtn').size()) {
+                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn').size()) {
                     // remove editor
                     $editor.css("display", "none");
 
@@ -435,7 +435,11 @@
             });
 
             this.model.trigger('change:size', this.model, this.model.get('size'), {});
-            editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
+            if (e.pageX === 0) {
+                editorModel.set({position: {x: $editable.offset().left - 15, y: $editable.offset().top - 80}});
+            } else {
+                editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
+            }
         }
     });
 

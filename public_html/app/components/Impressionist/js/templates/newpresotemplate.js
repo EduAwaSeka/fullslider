@@ -9,7 +9,7 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fui-cross-16"></i></a>'+
 				 '</div>';
-var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="h2" style="width:auto; height:60px; position:absolute; left:210px; top:50px; whitespace:no-wrap; font-family: \'Montserrat\', sans-serif;"> <div>Sample Text</div> </div>';
+var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="text" style="width:auto; height:60px; position:absolute; left:210px; top:50px; whitespace:no-wrap; font-family: \'Montserrat\', sans-serif;"> <div>Sample Text</div> </div>';
 var impress_slide = '<div class="impress-slide" id="impress_slide__slidenumber__">'+text_snippet+'</div>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
@@ -93,8 +93,8 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                             '<img id="previewimg"></img>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger">Close</a>'+
-                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> &nbsp; Add</a>'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> Add</a>'+
                         '</div>'+
                     '</div>';
 //
