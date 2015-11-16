@@ -14,17 +14,17 @@ function getFontSize(element) {
     return element.css("font-size").replace(/[^-\d\.]/g, '');
 }
 
-function pxToEm(value) {
+function pxToRem(value) {
     return value / obtainRel();
 }
 
 
-function emToPx(value) {
+function remToPx(value) {
     return value * obtainRel();
 }
 
 function obtainRel() {
-    return $("body").css("font-size").replace(/[^-\d\.]/g, '');
+    return $("html").css("font-size").replace(/[^-\d\.]/g, '');
 }
 
 function launchEvent(event, element) {

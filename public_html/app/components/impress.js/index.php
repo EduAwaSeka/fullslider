@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=1024" />
+        <meta name="viewport" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <title></title>
 
@@ -10,6 +10,7 @@
 
         <link href="css/impress-demo.css" rel="stylesheet" />
         <link href="../../css/fonts.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/style.css" rel="stylesheet" type="text/css" />
 
         <link rel="shortcut icon" href="favicon.png" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -27,21 +28,21 @@
 
         <div id="impress">
 
-   <?php
-session_start();
-echo stripslashes($_SESSION['htmldata']);
-?>
+            <?php
+            session_start();
+            echo stripslashes($_SESSION['htmldata']);
+            ?>
         </div>
 
         <div class="hint">
             <p>Use a spacebar or arrow keys to navigate</p>
         </div>
-        <script>
-        if ("ontouchstart" in document.documentElement) { 
-            document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-        }
-        </script>
 
+        <script>
+            if ("ontouchstart" in document.documentElement) {
+                document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+            }
+        </script>
         <script src="js/impress.js"></script>
         <script>impress().init();</script>
 

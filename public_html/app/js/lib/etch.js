@@ -309,7 +309,7 @@
             var elementToChange = $(document).find("[contentEditable='true']");
             
             //Update element font-size value
-            elementToChange.css("font-size", pxToEm(value) + "em");
+            elementToChange.css("font-size", pxToRem(value) + "rem");
 
             //update value on editor button
             fontSizeReadout.text(value);

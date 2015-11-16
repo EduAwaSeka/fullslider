@@ -165,8 +165,8 @@
                     if (element.attr("data-type") === "text") {
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
                         fontsize += difference;
-                        fontsize=pxToEm(fontsize);
-                        fontsize += "em";
+                        fontsize=pxToRem(fontsize);
+                        fontsize += "rem";
                         me.selectedElement.css("font-size", fontsize);
                         scalePlay(element[0]);
                     }

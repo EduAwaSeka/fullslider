@@ -657,7 +657,7 @@ Impressionist.prototype =
             addTextStyle: function(element) {
                 $(element).css("line-height", "initial", "important");
                 $(element).css("color", "#000");
-                $(element).css("font-size", "4em");
+                $(element).css("font-size", "5rem");
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("position", "absolute");
@@ -1114,8 +1114,9 @@ Impressionist.prototype =
                 outputcontainer.find(".impress-slide").each(function(i, object)
                 {
                     console.log("Physically adding sizing information");
-                    $(this).css("width", "1024px");
-                    $(this).css("height", "768px");
+
+                    $(this).css("width", $(".slideviewport").css("width"));
+                    $(this).css("height", $(".slideviewport").css("height"));
 
 
                 });
