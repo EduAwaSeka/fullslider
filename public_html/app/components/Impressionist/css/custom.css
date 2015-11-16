@@ -313,26 +313,6 @@ body
     -webkit-transition: opacity 0.5s ease;
     opacity: 1;
 }
-.slidelement
-{
-    white-space: nowrap;
-    height: 100px;
-}
-.slidelementh1
-{
-    font-size: 400%;
-    color: #000;
-}
-.slidelementh2
-{
-    font-size: 320%;
-    color: #000;
-}
-.slidelementh3
-{
-    font-size: 250%;
-    color: #000;
-}
 .movecursor
 {
     cursor: move;

@@ -7,7 +7,8 @@ body{
     background-color: #f0f0f0 !important;
     padding: 0px;
     color:#fff !important;
-    overflow: hidden; 
+    overflow: hidden;  
+    font-size: 1vw !important;
 }
 
 
@@ -173,13 +174,6 @@ body{
 .slideviewport{
     top: 0px !important;
     left: 0px !important;
-}
-
-.slidelement{
-    line-height: initial !important;
-    color: #000;
-    font-size: 400%;
-    height: initial;
 }
 
 #markdown-editor{

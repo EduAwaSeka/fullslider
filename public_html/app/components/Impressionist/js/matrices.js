@@ -163,9 +163,10 @@
                     var difference = e.pageY - initialPoint;
 
                     if (element.attr("data-type") === "text") {
-                        var fontsize = parseInt(me.selectedElement.css("font-size").replace(/[^-\d\.]/g, ''));
+                        var fontsize = parseFloat(getFontSize(me.selectedElement));
                         fontsize += difference;
-                        fontsize += "px";
+                        fontsize=pxToEm(fontsize);
+                        fontsize += "em";
                         me.selectedElement.css("font-size", fontsize);
                         scalePlay(element[0]);
                     }

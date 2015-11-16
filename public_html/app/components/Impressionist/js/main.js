@@ -25,7 +25,7 @@ Impressionist = function()
 
     this.dropdownopen = false;
 
-    this.selectedforedit = false;
+    this.selectedforedit;
 
 
     this.isBold = false;
@@ -396,6 +396,14 @@ Impressionist.prototype =
             },
             enableDrag: function()
             {
+                $(window).resize(function(e) {
+                    if (me.selectedforedit !== "") {
+                        launchEvent("dblclick", me.selectedforedit);
+                    }
+                    if (me.selectedElement !== "") {
+                        scalePlay(me.selectedElement[0]);
+                    }
+                });
 
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
@@ -467,7 +475,6 @@ Impressionist.prototype =
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");
                     $(el).attr("data-select", true);
-                    me.selectedforedit = true;
                     //me.setTransformValues($(el));
                     me.positionTransformControl();
                 }
@@ -477,6 +484,7 @@ Impressionist.prototype =
             },
             editElement: function(el) {
                 me.clearElementSelections();
+                me.selectedforedit = el;
                 $(el).draggable({disabled: true});
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
@@ -555,7 +563,7 @@ Impressionist.prototype =
                 //$(".dropdownpopup").css("display", "none");
                 me.generateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (!(t.hasClass("is-etch-button")) && !($("#tools").find(t).length)) {
+                if (!(t.hasClass("is-etch-button")) && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
             },
@@ -569,7 +577,7 @@ Impressionist.prototype =
                 $(".slidelement").attr("data-select", false);
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
-                me.selectedforedit = false;
+                me.selectedforedit = "";
             },
             colorSelectedElement: function(color)
             {
@@ -624,15 +632,14 @@ Impressionist.prototype =
             {
                 islide = impress_slide;
                 islide = islide.split("__slidenumber__").join("_" + id);
-                islide = islide.split("slidelement_id").join("slidelement_" + me.generateUID());
                 $(".impress-slide-container").append(islide);
                 $("#impress_slide_" + id).addClass("impress-slide-element");
                 me.removeAllStyles($("#impress_slide_" + id));
                 //$("#impress_slide_"+id).addClass(me.theme);
                 me.applyStyle();
                 me.selectSlide("#impress_slide_" + id);
+                me.addImpressSlideItem(me.selectedSlide);
                 me.enableDrag();
-                me.generateScaledSlide("#impress_slide_" + id);
             },
             addImpressSlideItem: function(el)
             {
@@ -642,12 +649,22 @@ Impressionist.prototype =
                 item = item.split("slidelement_id").join(id);
                 $(el).append(item);
                 var element = document.getElementById(id);
+                me.addTextStyle(element);
                 me.enableDrag();
+                me.selectedforedit = element;
                 me.generateScaledSlide(me.selectedSlide);
-                
-                var nouEvent = document.createEvent("MouseEvents");
-                nouEvent.initMouseEvent("dblclick", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-                element.dispatchEvent(nouEvent);
+            },
+            addTextStyle: function(element) {
+                $(element).css("line-height", "initial", "important");
+                $(element).css("color", "#000");
+                $(element).css("font-size", "4em");
+                $(element).css("height", "initial");
+                $(element).css("width", "auto");
+                $(element).css("position", "absolute");
+                $(element).css("left", "210px");
+                $(element).css("top", "50px");
+                $(element).css("white-space", "nowrap");
+                $(element).css("font-family", "'Montserrat', sans-serif");
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);
@@ -879,15 +896,6 @@ Impressionist.prototype =
             {
                 $(".maskedcontainer").animate({"top": amount, "opacity": 1}, {duration: 300, easing: "linear"});
             },
-            changeTextFormat: function(classname)
-            {
-                if (me.selectedforedit)
-                {
-                    me.removeTextFormatting();
-                    me.selectedElement.addClass(classname);
-                }
-
-            },
             openCodeExportWindow: function()
             {
                 me.generateExportMarkup();
@@ -946,6 +954,7 @@ Impressionist.prototype =
                     if (me.currentPresentation)
                     {
                         console.log("Has access to current presentation");
+                        me.clearElementSelections();
                         $("#titleinput").val(me.currentPresentation.title);
                         $("textarea#descriptioninput").val(me.currentPresentation.description);
                     }
@@ -961,8 +970,8 @@ Impressionist.prototype =
                 });
                 $(".dropdownitem").on("click", function(e)
                 {
-                    console.log("Dd value: ", $(e.target).attr("data-dk-dropdown-value"))
-                    me.changeTextFormat($(e.target).attr("data-dk-dropdown-value"))
+                    console.log("Dd value: ", $(e.target).attr("data-dk-dropdown-value"));
+                    me.changeTextFormat($(e.target).attr("data-dk-dropdown-value"));
                     $(".dropdownpopup").css("display", "block");
                     $(".pulldownmenu").html($(e.target).html());
                     //$(".dropdownpopup").css("display", "none");
@@ -973,6 +982,9 @@ Impressionist.prototype =
                 {
                     console.log("add btn clicked...");
                     me.addImpressSlideItem(me.selectedSlide);
+
+                    //On create text element, this is selected for edit with dblclick event
+                    launchEvent("dblclick", me.selectedforedit);
                 });
                 $("#addimagebtn").on("click", function(e)
                 {

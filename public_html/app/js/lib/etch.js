@@ -303,21 +303,24 @@
             });
         },
         setFontSize: function(e) {
+            //Extract selected value
             var value = extractValue(e);
-
-            this.$el.find(".fontSizeBtn .text").text(value);
+            var fontSizeReadout = this.$el.find(".fontSizeReadout");
             var elementToChange = $(document).find("[contentEditable='true']");
-            elementToChange.css("font-size", value + "px");
+            
+            //Update element font-size value
+            elementToChange.css("font-size", pxToEm(value) + "em");
 
             //update value on editor button
-            var fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
-            fontSizeReadout[0].innerHTML = elementToChange.css("font-size").replace(/[^-\d\.]/g, '');
+            fontSizeReadout.text(value);
 
 
             Backbone.trigger('etch:state', {
                 size: value
             });
+
         }
+
     });
 
 
@@ -365,8 +368,8 @@
             }
 
             //initialize value of font-size etch-editor-button with selected element value
-            fontSizeReadout = document.getElementsByClassName('fontSizeReadout');
-            fontSizeReadout[0].innerHTML = $editable.css("font-size").replace(/[^-\d\.]/g, '');
+            fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+            fontSizeReadout.innerHTML=parseInt(getFontSize($editable));
 
             //initialize value of font-family etch-editor-button with selected element value
             fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
