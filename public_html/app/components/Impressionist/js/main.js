@@ -1114,9 +1114,12 @@ Impressionist.prototype =
                 outputcontainer.find(".impress-slide").each(function(i, object)
                 {
                     console.log("Physically adding sizing information");
-
-                    $(this).css("width", $(".slideviewport").css("width"));
-                    $(this).css("height", $(".slideviewport").css("height"));
+                    var w=$(".slideviewport").css("width").replace(/[^-\d\.]/g, '');
+                    w=pxToRem(w);
+                    var h=$(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
+                    h=pxToRem(h);
+                    $(this).css("width", w+"rem");
+                    $(this).css("height",h+"rem");
 
 
                 });
