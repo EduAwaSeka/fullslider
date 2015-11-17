@@ -122,7 +122,7 @@ p {
 
 #play .skewx {
     left:50%;
-    top:-26px;
+    top:-1.903vw;
     /*bottom:-15px;*/
     cursor: w-resize;
 }
@@ -140,7 +140,7 @@ p {
 #play .deleteicon
 {
     right:-1.3177vw;
-    top:-9px
+    top:-0.6588vw;
 }
 
 #play .move {

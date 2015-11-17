@@ -428,13 +428,17 @@ Impressionist.prototype =
                 }).on("mouseup", function(e)
                 {
                     console.log("mouse upping", me.selectedSlide);
-                    me.generateScaledSlide(me.selectedSlide);
                     me.selectElement(this);
                 }).on("drag", function(e)
                 {
                     if (me.isSelected(this)) {
                         scalePlay(this);
                     }
+                    $(".slidelement").draggable().on("mouseup", function(e)
+                    {
+                        drawElement(this);
+                        me.generateScaledSlide(me.selectedSlide);
+                    });
                 });
 
                 //only can moves in slide
@@ -488,21 +492,6 @@ Impressionist.prototype =
                 $(el).draggable({disabled: true});
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
-            },
-            calculateFontSize: function(type)
-            {
-                size = "";
-                switch (type)
-                {
-                    case "h3" :
-                        size = "4.5px";
-                        break;
-                    case "h2" :
-                        size = "5.5px";
-                        break;
-                }
-                console.log("size", size);
-                return size;
             },
             setupColorpickerPopup: function()
             {
@@ -661,8 +650,8 @@ Impressionist.prototype =
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("position", "absolute");
-                $(element).css("left", "210px");
-                $(element).css("top", "50px");
+                $(element).css("left", "15.373vw");
+                $(element).css("top", "3.66vw");
                 $(element).css("white-space", "nowrap");
                 $(element).css("font-family", "'Montserrat', sans-serif");
             },

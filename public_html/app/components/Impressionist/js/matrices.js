@@ -166,7 +166,7 @@
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
                         fontsize += difference;
                         fontsize=pxToRem(fontsize);
-                        fontsize += "rem";
+                        fontsize += "vw";
                         me.selectedElement.css("font-size", fontsize);
                         scalePlay(element[0]);
                     }
