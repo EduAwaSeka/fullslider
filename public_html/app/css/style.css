@@ -57,9 +57,10 @@ body{
 /* Header-menu */
 
 #header-menu{
-    padding-bottom: 1em;
+    padding-bottom: 1vw;
     background-color: #A32C00;
-    border-bottom: 1px solid #767575;
+    border-bottom: 0.074vw solid #767575;
+    height: 4.7291vw;
 }
 
 .sidebarfooter {
@@ -74,7 +75,7 @@ body{
 }
 
 #view-save-btns .btn{
-    padding: 10px 22px;
+    padding: 0.7320vw 1.61vw;
 }
 
 .previewbtn {
@@ -88,7 +89,7 @@ body{
 #body-editor{
     position: absolute;
     width: 100%;
-    height: 89.9%;
+    height: 42.3167vw;
     overflow-y: hidden;
 }
 
@@ -149,8 +150,8 @@ body{
 
 .slidethumb {
     display: block;
-    width: 144px;
-    height: 110px;
+    width: 10.54vw;
+    height: 8.05vw;
     margin-bottom: 10px;
     margin-left: 10px;
     background-color: #ECF0F1;
@@ -172,17 +173,18 @@ body{
 #workspace{
     position: relative;
     float: left;
-    padding-top: 20px;
+    padding-top: 1.464vw;
 }
 
 .slideviewport{
     top: 0px !important;
     left: 0px !important;
     padding: 0px !important;
+    height: 38.8vw !important;
 }
 
 #markdown-editor{
-    border-left: 1px solid #767575;
+    border-left: 0.0732vw solid #767575;
     background-color: #34495E;
     height: 100%;
     padding: 0.5%;

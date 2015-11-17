@@ -616,8 +616,7 @@ Impressionist.prototype =
                     id = (e.target.id).split("_")[1];
                     console.log("slidemask", id);
                     me.selectSlide("#impress_slide_" + id);
-                    $(".slidethumb").removeClass("currentselection");
-                    $("#slidethumb_" + id).addClass("currentselection");
+                    me.selectThumb(id);
                     me.hideTransformControl();
                     me.switchView("right");
                 });
@@ -638,6 +637,7 @@ Impressionist.prototype =
                 //$("#impress_slide_"+id).addClass(me.theme);
                 me.applyStyle();
                 me.selectSlide("#impress_slide_" + id);
+                me.selectThumb(id);
                 me.addImpressSlideItem(me.selectedSlide);
                 me.enableDrag();
             },
@@ -687,16 +687,16 @@ Impressionist.prototype =
                 //$("clonethumb_"+id).remove();
                 newel.attr("id", "clonethumb_" + id);
                 newel.attr("data-clone", true);
-                newel.css("transform", "scale(0.17, 0.205)");
-                newel.css("-webkit-transform", "scale(0.17, 0.205)"); /* Safari and Chrome */
-                newel.css("-moz-transform", "scale(0.17, 0.205)"); /* Firefox */
-                newel.css("-ms-transform", "scale(0.17, 0.205)"); /* IE 9 */
-                newel.css("-o-transform", "scale(0.17, 0.205)"); /* Opera */
+                newel.css("transform", "scale(0.172, 0.21)");
+                newel.css("-webkit-transform", "scale(0.172, 0.21)"); /* Safari and Chrome */
+                newel.css("-moz-transform", "scale(0.172, 0.21)"); /* Firefox */
+                newel.css("-ms-transform", "scale(0.172, 0.21)"); /* IE 9 */
+                newel.css("-o-transform", "scale(0.172, 0.21)"); /* Opera */
 
                 newel.removeClass("impress-slide-element");
                 //newel.css("border", "1px solid #999");
-                newel.css("left", "-97px");
-                newel.css("top", "-73px");
+                newel.css("left", "-7.2vw");
+                newel.css("top", "-5.38vw");
                 children = $("#slidethumb_" + id).children();
                 //console.log("children", children)
                 for (var i = 0; i < children.length; i++)
@@ -737,6 +737,11 @@ Impressionist.prototype =
                         $(childid).css("z-index", -200 + (-(Math.round(Math.random() * 1000))));
                     }
                 }
+            },
+            selectThumb: function(id)
+            {
+                $(".slidethumb").removeClass("currentselection");
+                $("#slidethumb_" + id).addClass("currentselection");
             },
             assignSlideNumbers: function()
             {
@@ -1114,12 +1119,12 @@ Impressionist.prototype =
                 outputcontainer.find(".impress-slide").each(function(i, object)
                 {
                     console.log("Physically adding sizing information");
-                    var w=$(".slideviewport").css("width").replace(/[^-\d\.]/g, '');
-                    w=pxToRem(w);
-                    var h=$(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
-                    h=pxToRem(h);
-                    $(this).css("width", w+"rem");
-                    $(this).css("height",h+"rem");
+                    var w = $(".slideviewport").css("width").replace(/[^-\d\.]/g, '');
+                    w = pxToRem(w);
+                    var h = $(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
+                    h = pxToRem(h);
+                    $(this).css("width", w + "rem");
+                    $(this).css("height", h + "rem");
 
 
                 });
@@ -1168,8 +1173,7 @@ Impressionist.prototype =
                     id = (e.target.id).split("_")[1];
                     console.log("slidemask", id);
                     me.selectSlide("#impress_slide_" + id);
-                    $(".slidethumb").removeClass("currentselection");
-                    $("#slidethumb_" + id).addClass("currentselection");
+                    me.selectThumb(id);
                     me.hideTransformControl();
                     me.switchView("right");
                 });
@@ -1354,10 +1358,10 @@ Impressionist.prototype =
                 console.log("adding image", src);
                 var img = new Image();
                 $(img).attr("id", "slidelement_" + me.generateUID());
-                $(img).css("left", "200px");
-                $(img).css("top", "200px");
-                $(img).css("height", "100px");
-                $(img).css("width", "100px");
+                $(img).css("left", "15vw");
+                $(img).css("top", "15vw");
+                $(img).css("height", "8vw");
+                $(img).css("width", "8vw");
                 $(img).addClass("slidelement");
                 $(img).attr("src", src);
                 console.log("selectedslide", me.selectedSlide);

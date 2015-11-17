@@ -1246,8 +1246,8 @@ h5,
 .h5,
 h6,
 .h6 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0.7320vw;
+    margin-bottom: 0.7320vw;
 }
 h4 small,
 .h4 small,
@@ -1265,27 +1265,27 @@ h6 .small,
 }
 h1,
 .h1 {
-    font-size: 36px;
+    font-size: 2.6354vw;
 }
 h2,
 .h2 {
-    font-size: 30px;
+    font-size: 2.1962vw;
 }
 h3,
 .h3 {
-    font-size: 24px;
+    font-size: 1.757vw;
 }
 h4,
 .h4 {
-    font-size: 18px;
+    font-size: 1.3177vw;
 }
 h5,
 .h5 {
-    font-size: 14px;
+    font-size: 1.025vw;
 }
 h6,
 .h6 {
-    font-size: 12px;
+    font-size: 0.8784vw;
 }
 p {
     margin: 0 0 10px;
@@ -1616,8 +1616,8 @@ pre code {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 1.098vw;
+    padding-left: 1.098vw;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
     float: left;
@@ -3000,9 +3000,9 @@ select[multiple].input-lg {
 }
 .btn {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 0.4392vw 0.8785vw;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 1.1vw;
     font-weight: normal;
     line-height: 1.42857143;
     text-align: center;
@@ -3016,8 +3016,12 @@ select[multiple].input-lg {
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border: 0.0732vw solid transparent;
+    border-radius: 0.2928vw;
+}
+.btn.btn-large{
+    padding-bottom: 0.8784vw;
+    padding-top: 0.9516vw;   
 }
 .btn:focus,
 .btn:active:focus,
@@ -3705,6 +3709,7 @@ tbody.collapse.in {
 .btn-group-vertical > .btn {
     position: relative;
     float: left;
+    font-size:1vw;
 }
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover,
@@ -3740,6 +3745,12 @@ tbody.collapse.in {
 }
 .btn-group > .btn:first-child {
     margin-left: 0;
+    -webkit-border-top-left-radius: 0.2928vw;
+    -moz-border-radius-topleft: 0.2928vw;
+    border-top-left-radius: 0.2928vw;
+    -webkit-border-bottom-left-radius: 0.2928vw;
+    -moz-border-radius-bottomleft: 0.2928vw;
+    border-bottom-left-radius: 0.2928vw;
 }
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 0;
@@ -3749,6 +3760,13 @@ tbody.collapse.in {
 .btn-group > .dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+
+    -webkit-border-top-right-radius: 0.2928vw;
+    -moz-border-radius-topright: 0.2928vw;
+    border-top-right-radius: 0.2928vw;
+    -webkit-border-bottom-right-radius: 0.2928vw;
+    -moz-border-radius-bottomright: 0.2928vw;
+    border-bottom-right-radius: 0.2928vw;
 }
 .btn-group > .btn-group {
     float: left;
@@ -4321,10 +4339,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
     float: left;
-    height: 50px;
-    padding: 15px 15px;
-    font-size: 18px;
-    line-height: 20px;
+    height: 3.66vw;
+    padding: 1.098vw 1.098vw;
+    font-size: 1.3177vw;
+    line-height: 1.464vw;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
