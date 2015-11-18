@@ -166,6 +166,9 @@
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
 //                        fontsize += difference;
                         fontsize *= scale;
+                        if(fontsize<16){
+                            fontsize=16;
+                        }
                         fontsize = pxToVw(fontsize);
                         fontsize += "vw";
                         me.selectedElement.css("font-size", fontsize);
@@ -173,16 +176,20 @@
                     }
                     else {
                         var new_width = element[0].offsetWidth * scale;
-                        new_width=pxToVw(new_width);
-                        new_heigth=pxToVw(new_heigth);
-                        if(new_width<getRel()){
-                            new_width=1;
+                        if (new_width < getRel()) {
+                            new_width = 1;
                         }
-                        if(new_heigth<getRel()){
-                            new_heigth=1;
+                        else {
+                            new_width = pxToVw(new_width);
                         }
-                        element.css("height", new_heigth+"vw", 'important');
-                        element.css("width", new_width+"vw");
+                        if (new_heigth < getRel()) {
+                            new_heigth = 1;
+                        }
+                        else {
+                            new_heigth = pxToVw(new_heigth);
+                        }
+                        element.css("height", new_heigth + "vw", 'important');
+                        element.css("width", new_width + "vw");
                         scalePlay(element[0]);
                     }
                     break;

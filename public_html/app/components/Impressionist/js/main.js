@@ -1111,8 +1111,8 @@ Impressionist.prototype =
                     w = pxToVw(w);
                     var h = $(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
                     h = pxToVw(h);
-                    $(this).css("width", w + "rem");
-                    $(this).css("height", h + "rem");
+                    $(this).css("width", w + "vw");
+                    $(this).css("height", h + "vw");
 
 
                 });
