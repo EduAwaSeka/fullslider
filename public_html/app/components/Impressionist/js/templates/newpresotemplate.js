@@ -26,16 +26,15 @@ var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
                                         '<span class="caret"></span></a>' +
                                 '<ul class="dropdown-menu" data-option="fontSize">' +
                                         '<li>' +
-                                          '<a class="is-etch-button" href="#" data-value="144">144</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="96">96</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="72">72</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="64">64</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="48">48</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="36">36</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="24">24</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="16">16</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="12">12</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="8">8</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="144">144px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="115">115px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="96">96px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="72">72px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="64">64px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="48">48px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="36">36px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="24">24px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="16">16px</a>' +
                                         '</li>' +
                                 '</ul>' +
                         '</div>';      
