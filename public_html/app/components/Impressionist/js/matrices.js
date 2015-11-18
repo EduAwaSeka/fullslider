@@ -176,7 +176,7 @@
                     else {
                         var el_width = element[0].offsetWidth;
                         var scale = el_height / el_width;
-                        alert(scale);
+                        alert(scale);   
                         var new_width = new_heigth / scale;
                         var rel = getRel();
                         var top = pxToVw(me.selectedElement.css("top"));
