@@ -5,25 +5,25 @@ function scalePlay(element) {
     $("#play").css("top", $(element).css("top"));
     $("#play").css("left", $(element).css("left"));
 
-    $("#play").children(".scale").css("top", ((elem_height-3)/obtainRel())+"vw");
-    $("#play").children(".skewy").css("top", ((elem_height * 2 / 5)/obtainRel())+"vw");
-    $("#play").children(".rotate").css("top", ((elem_height * 2 / 5)/obtainRel())+"vw");
+    $("#play").children(".scale").css("top", ((elem_height-3)/getRel())+"vw");
+    $("#play").children(".skewy").css("top", ((elem_height * 2 / 5)/getRel())+"vw");
+    $("#play").children(".rotate").css("top", ((elem_height * 2 / 5)/getRel())+"vw");
 }
 
 function getFontSize(element) {
     return element.css("font-size").replace(/[^-\d\.]/g, '');
 }
 
-function pxToRem(value) {
-    return value / obtainRel();
+function pxToVw(value) {
+    return value / getRel();
 }
 
 
-function remToPx(value) {
-    return value * obtainRel();
+function vwToPx(value) {
+    return value * getRel();
 }
 
-function obtainRel() {
+function getRel() {
     return $("html").css("font-size").replace(/[^-\d\.]/g, '');
 }
 
@@ -34,7 +34,7 @@ function launchEvent(event, element) {
 }
 
 function drawElement(element){
-    var rel=obtainRel();
+    var rel=getRel();
     var top=element.offsetTop/rel;
     var left=element.offsetLeft/rel;
     $(element).css("top",top+"vw");
