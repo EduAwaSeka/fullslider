@@ -1604,14 +1604,14 @@ pre code {
     }
 }
 .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 1.098vw;
+    padding-left: 1.098vw;
     margin-right: auto;
     margin-left: auto;
 }
 .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -1.098vw;
+    margin-left: -1.098vw;
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     position: relative;
@@ -3560,12 +3560,12 @@ tbody.collapse.in {
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: 2px;
+    margin-left: 0.1464vw;
     vertical-align: middle;
-    border-top: 4px dashed;
-    border-top: 4px solid \9;
-    border-right: 4px solid transparent;
-    border-left: 4px solid transparent;
+    border-top: 0.2928vw dashed;
+    border-top: 0.2928vw solid \9;
+    border-right: 0.2928vw solid transparent;
+    border-left: 0.2928vw solid transparent;
 }
 .dropup,
 .dropdown {
@@ -3676,12 +3676,18 @@ tbody.collapse.in {
     right: 0;
     left: auto;
 }
+
+.btn .caret {
+    margin-top: 0.5856vw;
+    margin-left: 0;
+}
+
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
     content: "";
     border-top: 0;
-    border-bottom: 4px dashed;
-    border-bottom: 4px solid \9;
+    border-bottom: 0.2928vw dashed;
+    border-bottom: 0.2928vw solid \9;
 }
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
@@ -3807,11 +3813,11 @@ tbody.collapse.in {
     margin-left: 0;
 }
 .btn-lg .caret {
-    border-width: 5px 5px 0;
+    border-width: 0.366vw 0.366vw 0;
     border-bottom-width: 0;
 }
 .dropup .btn-lg .caret {
-    border-width: 0 5px 5px;
+    border-width: 0 0.366vw 0.366vw;
 }
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
@@ -4294,8 +4300,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -1.098vw;
+    margin-left: -1.098vw;
 }
 @media (min-width: 768px) {
     .container > .navbar-header,
@@ -4354,7 +4360,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
-        margin-left: -15px;
+        margin-left: -1.098vw;
     }
 }
 .navbar-toggle {
@@ -5042,7 +5048,7 @@ a.badge:focus {
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
-    border-radius: 6px;
+    border-radius: 0.439vw;
 }
 .jumbotron .container {
     max-width: 100%;
@@ -5054,12 +5060,12 @@ a.badge:focus {
     }
     .container .jumbotron,
     .container-fluid .jumbotron {
-        padding-right: 60px;
-        padding-left: 60px;
+        padding-right: 4.39vw;
+        padding-left: 4.39vw;
     }
     .jumbotron h1,
     .jumbotron .h1 {
-        font-size: 63px;
+        font-size: 4.612vw;
     }
 }
 .thumbnail {

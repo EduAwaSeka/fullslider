@@ -155,28 +155,35 @@
                     break;
 
                 case 'scale':
-                    var moved = point.subtract(center);
-                    var scaled = moved.divide(offset);
-
                     var element = $(document).find("[data-select='true']");
-                    var initialPoint = $(element[0]).offset().top + element[0].offsetHeight;
+                    var el_height = element[0].offsetHeight;
+                    var initialPoint = $(element[0]).offset().top + el_height;
                     var difference = e.pageY - initialPoint;
+                    var new_heigth = el_height + difference;
+                    var scale = new_heigth / el_height;
 
                     if (element.attr("data-type") === "text") {
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
-                        fontsize += difference;
-                        fontsize=pxToRem(fontsize);
+//                        fontsize += difference;
+                        fontsize *= scale;
+                        fontsize = pxToVw(fontsize);
                         fontsize += "vw";
                         me.selectedElement.css("font-size", fontsize);
                         scalePlay(element[0]);
                     }
                     else {
-                        var elem_height = e.offsetY - element[0].offsetTop;
-                        var elem_width = e.offsetX - element[0].offsetLeft;
-                        element.css("height", elem_height,'important');
-                        element.css("width", elem_width);
+                        var new_width = element[0].offsetWidth * scale;
+                        new_width=pxToVw(new_width);
+                        new_heigth=pxToVw(new_heigth);
+                        if(new_width<getRel()){
+                            new_width=1;
+                        }
+                        if(new_heigth<getRel()){
+                            new_heigth=1;
+                        }
+                        element.css("height", new_heigth+"vw", 'important');
+                        element.css("width", new_width+"vw");
                         scalePlay(element[0]);
-//                        matrix = matrix.scale(scaled);
                     }
                     break;
 

@@ -11,7 +11,6 @@ Impressionist = function()
     this.selectedElement;
     this.clonedElement;
     this.selectedSlide;
-    this.lasttextaddedcoords = {};
     this.orchestrationcoords = [];
     this.selectedOrchElement;
     this.lastslideleftpos = 0;
@@ -437,8 +436,8 @@ Impressionist.prototype =
                     $(".slidelement").draggable().on("mouseup", function(e)
                     {
                         drawElement(this);
-                        me.generateScaledSlide(me.selectedSlide);
                     });
+                        me.generateScaledSlide(me.selectedSlide);
                 });
 
                 //only can moves in slide
@@ -1109,9 +1108,9 @@ Impressionist.prototype =
                 {
                     console.log("Physically adding sizing information");
                     var w = $(".slideviewport").css("width").replace(/[^-\d\.]/g, '');
-                    w = pxToRem(w);
+                    w = pxToVw(w);
                     var h = $(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
-                    h = pxToRem(h);
+                    h = pxToVw(h);
                     $(this).css("width", w + "rem");
                     $(this).css("height", h + "rem");
 

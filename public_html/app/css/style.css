@@ -9,7 +9,7 @@ html{
 
 body{
     background-color: #f0f0f0 !important;
-    padding: 0px;
+    padding: 0vw;
     color:#fff !important;
     overflow: hidden;  
     font-size: 1vw !important;
@@ -21,29 +21,29 @@ body{
 /* Slides thumb scroll */
 ::-webkit-scrollbar{
     max-width: 8%;
-    margin:100px;
-    padding: 100px;
+    margin:7.32vw;
+    padding: 7.32vw;
 }
 ::-webkit-scrollbar-button{
-    width:8px;
-    height: 5px;
+    width:0.5856vw;
+    height: 0.366vw;
 }
 ::-webkit-scrollbar-track{
     background:#3c454e;
     border:thin solid #1a1f25;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 0.4392vw rgba(0,0,0,0.3);
+    -webkit-border-radius: 0.732vw;
+    border-radius: 0.732vw;
 }
 ::-webkit-scrollbar-thumb{
     background: -webkit-linear-gradient(top, #87B5AC, #C1D9E0);
-    -webkit-box-shadow:   inset 0 1px 0 rgba(255,255,225,.5),
-        inset 1px 0 0 rgba(255,255,255,.4),
-        inset 0 1px 2px rgba(255,255,255,.3);
+    -webkit-box-shadow:   inset 0 0.0732vw 0 rgba(255,255,225,.5),
+        inset 0.0732vw 0 0 rgba(255,255,255,.4),
+        inset 0 0.0732vw 0.1464vw rgba(255,255,255,.3);
 
     border:thin solid #232c34;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 0.732vw;
+    -webkit-border-radius: 0.732vw;
 }
 ::-webkit-scrollbar-thumb:hover{
     background: -webkit-linear-gradient(top, #5BC0DE, #1ABC9C);
@@ -71,7 +71,7 @@ body{
     display: inline-block;
     position: absolute;
     right: 2%;
-    margin: -1px auto;
+    margin: -0.0732vw auto;
 }
 
 #view-save-btns .btn{
@@ -79,8 +79,8 @@ body{
 }
 
 .previewbtn {
-    margin-left: 0px; 
-    margin-top: 0px; 
+    margin-left: 0vw; 
+    margin-top: 0vw; 
 }
 
 
@@ -101,7 +101,7 @@ body{
 /* Vertical-toolbar */
 
 #vertical-toolbar{
-    border-right: 1px solid #767575;
+    border-right: 0.0732vw solid #767575;
     height: 100%;
     background-color: #555;
     float: left;
@@ -111,11 +111,11 @@ body{
 .mainfooter {
     position: relative;
     width: initial;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
+    top: 0vw;
+    bottom: 0vw;
+    left: 0vw;
     z-index: 10;
-    padding: 6px 0px;
+    padding: 0.439vw 0vw;
     margin: 0;
     padding: 0 !important;
     height: 100%;
@@ -133,7 +133,7 @@ body{
     position: initial;
     left: initial;
     top: initial;
-    margin: 3% 20%;
+    margin: 0.375vw 2.5vw;
 }
 
 
@@ -145,21 +145,21 @@ body{
     right: initial;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 87%;
+    height: 36.5vw;
 }
 
 .slidethumb {
     display: block;
     width: 10.54vw;
     height: 8.05vw;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: 0.732vw;
+    margin-left: 0.732vw;
     background-color: #ECF0F1;
     position: relative;
 }
 
 .currentselection{
-    border: 3px solid #1ABC9C !important;
+    border: 0.2196vw solid #1ABC9C !important;
 }
 
 .deletebtn{
@@ -177,9 +177,9 @@ body{
 }
 
 .slideviewport{
-    top: 0px !important;
-    left: 0px !important;
-    padding: 0px !important;
+    top: 0vw !important;
+    left: 0vw !important;
+    padding: 0vw !important;
     height: 38.8vw !important;
 }
 
