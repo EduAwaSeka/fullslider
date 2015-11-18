@@ -157,41 +157,74 @@
                 case 'scale':
                     var element = $(document).find("[data-select='true']");
                     var el_height = element[0].offsetHeight;
+
                     var initialPoint = $(element[0]).offset().top + el_height;
                     var difference = e.pageY - initialPoint;
                     var new_heigth = el_height + difference;
-                    var scale = new_heigth / el_height;
 
                     if (element.attr("data-type") === "text") {
+                        var scale = new_heigth / el_height;
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
-//                        fontsize += difference;
                         fontsize *= scale;
-                        if(fontsize<16){
-                            fontsize=16;
+                        if (fontsize < 16) {
+                            fontsize = 16;
                         }
                         fontsize = pxToVw(fontsize);
                         fontsize += "vw";
                         me.selectedElement.css("font-size", fontsize);
-                        scalePlay(element[0]);
                     }
                     else {
-                        var new_width = element[0].offsetWidth * scale;
-                        if (new_width < getRel()) {
-                            new_width = 1;
-                        }
-                        else {
+                        var el_width = element[0].offsetWidth;
+                        var scale = el_height / el_width;
+                        alert(scale);
+                        var new_width = new_heigth / scale;
+                        var rel = getRel();
+                        var top = pxToVw(me.selectedElement.css("top"));
+                        var left = pxToVw(me.selectedElement.css("left"));
+
+
+                        if (new_width > rel && new_heigth > rel) {
+                            new_heigth = pxToVw(new_heigth);
                             new_width = pxToVw(new_width);
                         }
-                        if (new_heigth < getRel()) {
-                            new_heigth = 1;
-                        }
                         else {
-                            new_heigth = pxToVw(new_heigth);
+                            if (new_width <= rel && new_heigth > rel) {
+                                new_width = pxToVw(rel);
+                                new_heigth = pxToVw(rel * scale);
+                            }
+                            else {
+                                if (new_width > rel && new_heigth <= rel) {
+                                    new_heigth = pxToVw(rel);
+                                    new_width = pxToVw(rel / scale);
+                                }
+                                else {
+                                    if (new_width === rel && new_heigth === rel) {
+                                        new_heigth = pxToVw(rel);
+                                        new_width = pxToVw(rel);
+                                    }
+                                    else {
+                                        if (scale > 1) {
+                                            new_width = pxToVw(rel);
+                                            new_heigth = pxToVw(rel * scale);
+                                        }
+                                        else {
+                                            new_heigth = pxToVw(rel);
+                                            new_width = pxToVw(rel / scale);
+
+                                        }
+                                    }
+                                }
+
+                            }
                         }
+
+
                         element.css("height", new_heigth + "vw", 'important');
-                        element.css("width", new_width + "vw");
-                        scalePlay(element[0]);
+                        element.css("width", new_width + "vw", 'important');
+                        element.css("top", top + "vw");
+                        element.css("left", left + "vw");
                     }
+                    scalePlay(element[0]);
                     break;
 
                 case 'move':

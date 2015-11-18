@@ -437,7 +437,7 @@ Impressionist.prototype =
                     {
                         drawElement(this);
                     });
-                        me.generateScaledSlide(me.selectedSlide);
+                    me.generateScaledSlide(me.selectedSlide);
                 });
 
                 //only can moves in slide
@@ -1345,15 +1345,36 @@ Impressionist.prototype =
             {
                 console.log("adding image", src);
                 var img = new Image();
-                $(img).attr("id", "slidelement_" + me.generateUID());
+                var id = me.generateUID();
+                $(img).attr("id", "slidelement_" + id);
                 $(img).css("left", "15vw");
                 $(img).css("top", "15vw");
-                $(img).css("height", "8vw");
-                $(img).css("width", "8vw");
                 $(img).addClass("slidelement");
                 $(img).attr("src", src);
                 console.log("selectedslide", me.selectedSlide);
                 me.selectedSlide.append($(img));
+                var im_height = $("#slidelement_" + id)[0].offsetHeight;
+                var im_width = $("#slidelement_" + id)[0].offsetWidth;
+                var scale;
+                if (im_height < im_width) {
+                    scale = im_width / im_height;
+                    im_height = 7;
+                    im_width = 7 * scale;
+                }
+                else {
+                    if (im_height > im_width) {
+                        scale = im_height/im_width;
+                        im_width = 7;
+                        im_height = 7 * scale;
+                    }
+                    else{
+                        im_height=7;
+                        im_width=7;
+                    }
+                }
+
+                $(img).css("height", im_height + "vw");
+                $(img).css("width", im_width + "vw");
                 me.enableDrag();
             },
             removeSlide: function(el)
