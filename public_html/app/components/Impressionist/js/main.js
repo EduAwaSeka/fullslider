@@ -1017,7 +1017,7 @@ Impressionist.prototype =
                     });
                     $("#savedpresentationsmodal").modal("show");
                 });
-                $("#exportcontentbtn").on("click", function(e)
+                $("#slideshow").on("click", function(e)
                 {
                     me.generateExportMarkup(true);
 
@@ -1084,15 +1084,17 @@ Impressionist.prototype =
             generateExportMarkup: function(isPreview)
             {
                 var children = $(".slidethumbholder").children();
+                var count = 0;
                 for (var i = 0; i < children.length; i++)
                 {
-                    child = $(children[i]);
-                    id = child.attr("id").split("_")[1];
-                    l = child.attr("data-left").split("px")[0];
-                    t = child.attr("data-top").split("px")[0];
+                    var child = $(children[i]);
+                    var id = child.attr("id").split("_")[1];
+                    var l = count;
+                    count+=200;
+                    var t = child.attr("data-top").split("px")[0];
 
-                    coords = me.calculateSlideCoordinates(l, t);
-                    el = $("#impress_slide_" + id);
+                    var coords = me.calculateSlideCoordinates(l, t);
+                    var el = $("#impress_slide_" + id);
                     el.attr("data-x", coords.x - 500);
                     el.attr("data-y", coords.y);
                     el.attr("data-rotate", child.attr("data-rotate"));
@@ -1320,18 +1322,20 @@ Impressionist.prototype =
 //
 //			 }
 //		});
-                $.ajax({
-                    type: 'POST',
-                    url: "app/components/Impressionist/alpha3/server/generatePreview.php",
-                    data: {generateddata: str},
-                    dataType: "html",
-                    success: function(msg)
-                    {
-
-                        window.open("app/components/impress.js/index.php");
-
-                    }
-                });
+//                $.ajax({
+//                    type: 'POST',
+//                    url: "app/components/Impressionist/alpha3/server/generatePreview.php",
+//                    data: {generateddata: str},
+//                    dataType: "html",
+//                    success: function(msg)
+//                    {
+//
+//                        window.open("app/components/impress.js/index.php");
+//
+//                    }
+//                });
+                sessionStorage.setItem('preview', str);
+                window.open("app/components/impress.js/index.html");
             },
             calculateSlideCoordinates: function(wx, wy)
             {
@@ -1363,13 +1367,13 @@ Impressionist.prototype =
                 }
                 else {
                     if (im_height > im_width) {
-                        scale = im_height/im_width;
+                        scale = im_height / im_width;
                         im_width = 7;
                         im_height = 7 * scale;
                     }
-                    else{
-                        im_height=7;
-                        im_width=7;
+                    else {
+                        im_height = 7;
+                        im_width = 7;
                     }
                 }
 
