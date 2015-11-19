@@ -176,53 +176,21 @@
                     else {
                         var el_width = element[0].offsetWidth;
                         var scale = el_height / el_width;
-                        alert(scale);   
-                        var new_width = new_heigth / scale;
-                        var rel = getRel();
-                        var top = pxToVw(me.selectedElement.css("top"));
-                        var left = pxToVw(me.selectedElement.css("left"));
-
-
-                        if (new_width > rel && new_heigth > rel) {
-                            new_heigth = pxToVw(new_heigth);
-                            new_width = pxToVw(new_width);
+                        var new_width = element[0].offsetWidth * scale;
+                        if (new_width < getRel()) {
+                            new_width = 1;
                         }
                         else {
-                            if (new_width <= rel && new_heigth > rel) {
-                                new_width = pxToVw(rel);
-                                new_heigth = pxToVw(rel * scale);
-                            }
-                            else {
-                                if (new_width > rel && new_heigth <= rel) {
-                                    new_heigth = pxToVw(rel);
-                                    new_width = pxToVw(rel / scale);
-                                }
-                                else {
-                                    if (new_width === rel && new_heigth === rel) {
-                                        new_heigth = pxToVw(rel);
-                                        new_width = pxToVw(rel);
-                                    }
-                                    else {
-                                        if (scale > 1) {
-                                            new_width = pxToVw(rel);
-                                            new_heigth = pxToVw(rel * scale);
-                                        }
-                                        else {
-                                            new_heigth = pxToVw(rel);
-                                            new_width = pxToVw(rel / scale);
-
-                                        }
-                                    }
-                                }
-
-                            }
+                            new_width = pxToVw(new_width);
                         }
-
-
-                        element.css("height", new_heigth + "vw", 'important');
-                        element.css("width", new_width + "vw", 'important');
-                        element.css("top", top + "vw");
-                        element.css("left", left + "vw");
+                        if (new_heigth < getRel()) {
+                            new_heigth = 1;
+                        }
+                        else {
+                            new_heigth = pxToVw(new_heigth);
+                        }
+                        element.css("height", new_heigth + "vw");
+                        element.css("width", new_width + "vw");
                     }
                     scalePlay(element[0]);
                     break;
