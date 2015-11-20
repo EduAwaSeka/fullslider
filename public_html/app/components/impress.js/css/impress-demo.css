@@ -166,7 +166,7 @@ a:focus {
     transition:         opacity 1s;
 }
 
-.impress-enabled .step.active { opacity: 1 ;transform: translate(-50%, -50%) translate3d(256.222vw, -6000px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) !important;}
+.impress-enabled .step.active { opacity: 1 ;}
 
 /*
     These 'slide' step styles were heavily inspired by HTML5 Slides:

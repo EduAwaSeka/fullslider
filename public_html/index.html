@@ -74,8 +74,10 @@ Eduardo Jiménez Grande
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
-                        <a href="#" id="slideshow" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-eye-16"></i>&nbsp;View</a>
-                        <a href="#" id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
+                        <a id="newpresopanel" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-plus-24"></i> New Presentation</a>
+                        <a id="openpresentationsbtn" class="btn btn-large btn-inline btn-primary previewbtn"><i class="icon-save"></i> My Presentations</a>
+                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-eye-16"></i>&nbsp;View</a>
+                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
                     </div>
                 </div>
             </div>
@@ -95,7 +97,10 @@ Eduardo Jiménez Grande
                     </div>
 
                     <div id="workspace" class="slideviewportcontainer col-sm-10">
-
+                        <div class="presentationmeta">
+                            <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
+                            <a href="#" style="position:absolute; right: 0.366vw; top: 0.2196vw;padding: 0vw 2.1vw;" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary"><i class="icon-edit"></i></a>
+                        </div>
                         <div class="slideviewport col-sm-12">
                             <div class="impress-slide-container">
 
@@ -125,7 +130,6 @@ Eduardo Jiménez Grande
         </div>
 
         <div id="modals">
-
         </div>
 
         <script src="app/js/scripts.js" type="text/javascript"></script>

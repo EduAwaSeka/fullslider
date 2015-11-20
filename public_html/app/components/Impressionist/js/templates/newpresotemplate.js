@@ -16,8 +16,8 @@ var saved_presentations = '<div class="savedpresos">' +
                                         '<h3 style="display:inline-block; color:#2980B9"> __presotitle__</h3>'+
                                         '<p style="font-size: 120%">__presodescription__</p>'+
                                     '</div>'+
-                                    '<div class="presothumb idle" >'+
-                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn" style="position:absolute; right: 10px; top: 10px"><i class="fui-eye-16"></i></a>' +
+                                    '<div class="presothumb" >'+
+                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn" style="position:absolute; right: 10px; top: 10px"><i class="glyphicon glyphicon-pencil"></i></a>' +
                                         '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-danger deletepresobtn" style="position:absolute; right: 60px; top: 10px"><i class="icon-trash"></i></a></br>'+
                                     '</div>' +
                             '</div>';
@@ -96,32 +96,37 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                             '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> Add</a>'+
                         '</div>'+
                     '</div>';
-//
-//
-//        '<div id="imagemodal" class="modal-header">'+
-//                        '<button class="close" data-dismiss="modal">×</button>'+
-//                        '<h3>{{title}}</h3>'+
-//                    '</div>'+
-//                    '<div class="modal-body" style="overflow: hidden">'+
-//                        '<div class="alert alert-error dispNone">'+
-//                            '<button class="close" data-dismiss="alert">×</button>'+
-//                            'The image URL you entered appears to be incorrect'+
-//                        '</div>'+
-//                        '<h4>URL:</h4><div class="form-inline"><input type="text" name="itemUrl"></input>&nbsp;{{#browsable}}<div data-option="browse" class="btn">Browse</div>'+
-//                        '<p><em>*Local images are currently uploaded to imgur.<br/>We\'re working on changing this.</em></p>{{/browsable}}</div>'+
-//                        '<input type="file" style="display:none"></input>'+
-//                        '<h4>Preview:</h4>'+
-//                        '<ul class="thumbnails">'+
-//                            '<li class="span4">'+
-//                                '<div class="thumbnail">'+
-//                                        '<{{tag}} class="preview" width="360" height"268"></{{tag}}>'+
-//                                '</div>'+
-//                                '<div class="progress active progress-striped dispNone">'+
-//                                        '<div class="bar"></div>'+
-//                                '</div>'+
-//                            '</li>'+
-//                        '</ul>'+
-//                    '</div>'+
-//                    '<div class="modal-footer">'+
-//                        '<a href="#" class="btn btn-primary ok btn-inverse">{{title}}</a>'+
-//                    '</div>';
+            
+
+var my_pres_modal= '<!-- Saved Presentations Modal -->'+
+                   '<div class="modal hide fade modalwindow" id="savedpresentationsmodal">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+                            '<h3>My Presentations</h3>'+
+                        '</div>'+
+                        '<div class="modal-body" id="savedpresentations">'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
+                        '</div>'+
+                    '</div>'+
+                    '<!-- End Saved Presentations Modal -->';
+ 
+var new_pres_modal= '<!-- New Presentation Modal -->'+
+                    '<div class="modal hide fade modalwindow" id="newpresentationmodal">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+                            '<h3 id="newpresoheader">New Presentation</h3>'+
+                        '</div>'+
+                        '<div class="modal-body">'+
+                            '<p>Title</p>'+
+                            '<input type="text" id="titleinput" class="image-input" value="New Presentation"> </input>'+
+                            '<p>Description</p>'+
+                            '<textarea id="descriptioninput" class="descriptioninput"> </textarea>'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary" id="createpresentation"> <i class="icon-plus"></i> &nbsp; Save</a>'+
+                        '</div>'+
+                    '</div>'+
+                    '<!-- End of new preso modal-->';

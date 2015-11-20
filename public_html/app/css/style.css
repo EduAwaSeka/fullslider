@@ -15,6 +15,10 @@ body{
     font-size: 1vw !important;
 }
 
+p {
+    width: 16.84vw;
+}
+
 
 /* Scroll bar */
 
@@ -173,7 +177,32 @@ body{
 #workspace{
     position: relative;
     float: left;
-    padding-top: 1.464vw;
+}
+
+.presentationmeta {
+    width: initial;
+    height: 2.1962vw;
+    margin-left: 0;
+    margin-bottom: 0.464vw;
+    background-color: #34495E;
+    position: relative;
+    margin-top: 0.2vw;
+}
+
+#presentationmetatitle{
+    margin: 0 1vw;
+    text-transform: none;
+    font-size: 130%;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+#editpresonamebtn{
+    position: absolute;
+    right: 0.366vw;
+    top: 0.2196vw;
+    padding: 0vw 2.1vw;
 }
 
 .slideviewport{
@@ -202,11 +231,11 @@ body{
 }
 
 
-/* Add image modal */
+/* Modals */
 
-#imagemodal{
+.modal{
     left: 50% !important;
     top: 10% !important;
     bottom: inherit !important;
-    color: #34495e;
+    color: #34495e !important;
 }

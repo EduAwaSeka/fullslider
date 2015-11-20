@@ -114,7 +114,10 @@
     
     // `translate` builds a translate transform string for given data.
     var translate = function ( t ) {
-        return " translate3d(" + t.x + "px," + t.y + "px," + t.z + "px) ";
+        var x=pxToVw(t.x);
+        var y=pxToVw(t.y);
+        var z=pxToVw(t.z);
+        return " translate3d(" + x + "vw," + y + "vw," + z + "vw) ";
     };
     
     // `rotate` builds a rotate transform string for given data.
@@ -135,7 +138,7 @@
     
     // `perspective` builds a perspective transform string for given data.
     var perspective = function ( p ) {
-        return " perspective(" + p + "px) ";
+        return " perspective(" + pxToVw(p) + "vw) ";
     };
     
     // `getElementFromHash` returns an element located by id from hash part of
