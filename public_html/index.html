@@ -50,12 +50,14 @@ Eduardo Jiménez Grande
 
             <div id="header-menu" class="row">
                 <div id="menu" class="col-sm-1 navbar-brand">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Menu
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-menu-hamburger"></i>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Example</a></li>
+                        <li><a id="newpresopanel"><i class="fui-plus-24"></i> New Presentation</a></li>
+                        <li><a id="openpresentationsbtn"><i class="icon-save"></i> My Presentations</a></li>
+
                     </ul>
                 </div>
 
@@ -74,8 +76,6 @@ Eduardo Jiménez Grande
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
-                        <a id="newpresopanel" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-plus-24"></i> New Presentation</a>
-                        <a id="openpresentationsbtn" class="btn btn-large btn-inline btn-primary previewbtn"><i class="icon-save"></i> My Presentations</a>
                         <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-eye-16"></i>&nbsp;View</a>
                         <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
                     </div>
@@ -99,7 +99,7 @@ Eduardo Jiménez Grande
                     <div id="workspace" class="slideviewportcontainer col-sm-10">
                         <div class="presentationmeta">
                             <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
-                            <a href="#" style="position:absolute; right: 0.366vw; top: 0.2196vw;padding: 0vw 2.1vw;" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary"><i class="icon-edit"></i></a>
+                            <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary"><i class="icon-edit"></i></a>
                         </div>
                         <div class="slideviewport col-sm-12">
                             <div class="impress-slide-container">

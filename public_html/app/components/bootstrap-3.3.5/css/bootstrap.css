@@ -3562,10 +3562,10 @@ tbody.collapse.in {
     height: 0;
     margin-left: 0.1464vw;
     vertical-align: middle;
-    border-top: 0.2928vw dashed;
-    border-top: 0.2928vw solid \9;
-    border-right: 0.2928vw solid transparent;
-    border-left: 0.2928vw solid transparent;
+    border-top: 0.365vw dashed;
+    border-top: 0.365vw solid \9;
+    border-right: 0.365vw solid transparent;
+    border-left: 0.365vw solid transparent;
 }
 .dropup,
 .dropdown {
@@ -3617,9 +3617,11 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-    color: #262626;
+    color: #FFFFFF;
     text-decoration: none;
     background-color: #f5f5f5;
+    text-shadow: 1px 1px 2px #000;
+    background-image: linear-gradient(to bottom, #3498DB, #3491D0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3678,8 +3680,8 @@ tbody.collapse.in {
 }
 
 .btn .caret {
-    margin-top: 0.5856vw;
-    margin-left: 0;
+    margin-top: 0px;
+    margin-left: 0.2em;
 }
 
 .dropup .caret,
@@ -3810,7 +3812,8 @@ tbody.collapse.in {
     box-shadow: none;
 }
 .btn .caret {
-    margin-left: 0;
+    margin-top: 0px;
+    margin-left: 0.2em;
 }
 .btn-lg .caret {
     border-width: 0.366vw 0.366vw 0;

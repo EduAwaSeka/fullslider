@@ -123,8 +123,6 @@ Impressionist.prototype =
                     console.log("Retrieved id: ", me.currentPresentation);
                     me.theme = presentation.theme;
                     me.openPresentationForEdit(me.currentPresentation.id);
-                    me.applyStyle();
-
                 }
             },
             openNewPresentationWindow: function()
@@ -424,12 +422,12 @@ Impressionist.prototype =
                 }).on("mousedown", function(e)
                 {
                     me.selectElement(this);
-                    if (!($(this).attr("contentEditable") === "true")) {
+                    if (!($(this).attr("contentEditable") == "true")) {
                         $(this).addClass("movecursor");
                     }
                 }).on("mouseover", function(e)
                 {
-                    if (!($(this).attr("contentEditable") === "true")) {
+                    if (!($(this).attr("contentEditable") == "true")) {
                         $(this).addClass("movecursor");
                     }
                 }).on("mouseup", function(e)
@@ -481,7 +479,7 @@ Impressionist.prototype =
             {
                 console.log("click firing....");
                 // if not is in editionmode, select it
-                if ($(el).attr("contentEditable") === "false" || typeof ($(el).attr("contentEditable")) === "undefined") {
+                if ($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined") {
                     me.clearElementSelections();
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");
@@ -631,7 +629,6 @@ Impressionist.prototype =
                 $("#impress_slide_" + id).addClass("impress-slide-element");
                 me.removeAllStyles($("#impress_slide_" + id));
                 //$("#impress_slide_"+id).addClass(me.theme);
-                me.applyStyle();
                 me.selectSlide("#impress_slide_" + id);
                 me.selectThumb(id);
                 me.addImpressSlideItem(me.selectedSlide);
@@ -699,7 +696,7 @@ Impressionist.prototype =
                 {
 
                     child = children[i];
-                    if ($(child).attr("data-clone") === "true")
+                    if ($(child).attr("data-clone") == "true")
                     {
                         $(child).remove();
                     }
@@ -1048,30 +1045,6 @@ Impressionist.prototype =
                     $(this).css("border-bottom", "2px solid #1ABC9C");
                     me.theme = $(this).attr("data-style");
                 });
-                $("#applystylebtn").on("click", function(e)
-                {
-                    me.applyStyle();
-                    $("#styleselectionmodal").modal("hide");
-                });
-            },
-            applyStyle: function()
-            {
-                $(".slidelement").each(function(i, object)
-                {
-                    if ($(this).hasClass("slidelementh1"))
-                    {
-                        console.log("Only change headings.");
-                        me.removeAllStyles($(this));
-                        $(this).addClass(me.theme);
-                    }
-                });
-            },
-            removeAllStyles: function(el)
-            {
-                el.removeClass("quicksand");
-                el.removeClass("montserrat");
-                el.removeClass("sketch");
-                el.removeClass("miltonian");
             },
             openStyleSelector: function()
             {
@@ -1166,7 +1139,10 @@ Impressionist.prototype =
                             $(this).css("opacity", 1);
                         });
 
-                        me.selectedSlide = $(".impress-slide-container").find(".impress-slide-element")
+                        var first_slide_id = $(".impress-slide-container").find(".impress-slide-element").attr("id");
+                        first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
+                        me.selectSlide("#impress_slide_" + first_slide_id);
+                        me.selectThumb(first_slide_id);
                         me.currentPresentation = presentation;
                         $("#presentationmetatitle").html(me.currentPresentation.title);
                         console.log("rendered");

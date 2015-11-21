@@ -1,4 +1,4 @@
 document.getElementById("impress").innerHTML = sessionStorage.preview;
-$(window).resize(function(e) {
-    alert();
-});
+//$(window).resize(function(e) {
+//    alert();
+//});
