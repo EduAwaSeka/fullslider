@@ -5,9 +5,9 @@ function scalePlay(element) {
     $("#play").css("top", $(element).css("top"));
     $("#play").css("left", $(element).css("left"));
 
-    $("#play").children(".scale").css("top", ((elem_height-3)/getRel())+"vw");
-    $("#play").children(".skewy").css("top", ((elem_height * 2 / 5)/getRel())+"vw");
-    $("#play").children(".rotate").css("top", ((elem_height * 2 / 5)/getRel())+"vw");
+    $("#play").children(".scale").css("top", ((elem_height - 3) / getRel()) + "vw");
+    $("#play").children(".skewy").css("top", ((elem_height * 2 / 5) / getRel()) + "vw");
+    $("#play").children(".rotate").css("top", ((elem_height * 2 / 5) / getRel()) + "vw");
 }
 
 function getFontSize(element) {
@@ -33,10 +33,10 @@ function launchEvent(event, element) {
     element.dispatchEvent(nouEvent);
 }
 
-function drawElement(element){
-    var rel=getRel();
-    var top=element.offsetTop/rel;
-    var left=element.offsetLeft/rel;
-    $(element).css("top",top+"vw");
-    $(element).css("left",left+"vw");
+function drawElement(element) {
+    var rel = getRel();
+    var top = element.offsetTop / rel;
+    var left = element.offsetLeft / rel;
+    $(element).css("top", top + "vw");
+    $(element).css("left", left + "vw");
 }

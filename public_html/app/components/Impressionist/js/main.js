@@ -649,7 +649,7 @@ Impressionist.prototype =
             addTextStyle: function(element) {
                 $(element).css("line-height", "initial", "important");
                 $(element).css("color", "#000");
-                $(element).css("font-size", "5rem");
+                $(element).css("font-size", "5vw");
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("position", "absolute");
@@ -893,16 +893,6 @@ Impressionist.prototype =
             {
                 $(".maskedcontainer").animate({"top": amount, "opacity": 1}, {duration: 300, easing: "linear"});
             },
-            openCodeExportWindow: function()
-            {
-                me.generateExportMarkup();
-                //hljs.tabReplace = '    '; // 4 spaces
-                $('pre code').each(function(i, e) {
-                    hljs.highlightBlock(e);
-                });
-                //me.autoFormat();
-                $("#exportcodemodal").modal("show");
-            },
             attachListeners: function()
             {
                 $("html").on("click", me.manageGlobalClick);
@@ -1028,9 +1018,12 @@ Impressionist.prototype =
                 });
                 $("#viewbtn").on("click", function(e)
                 {
-                    me.generateExportMarkup(true);
-
-
+                    var slides = me.generateExportMarkup();
+                    me.generatePreview(slides);
+                });
+                $("#downloadpresbtn").on("mouseover", function(e)
+                {
+                    me.downloadFile(me.generateFile(), me.getFileName());
                 });
                 $(".stylethumbnail").on("click", function(e)
                 {
@@ -1066,7 +1059,7 @@ Impressionist.prototype =
                     localStorage.removeItem(me.lastSaved);
                 }
             },
-            generateExportMarkup: function(isPreview)
+            generateExportMarkup: function()
             {
                 var children = $(".slidethumbholder").children();
                 var count = 0;
@@ -1097,12 +1090,7 @@ Impressionist.prototype =
 
 
                 });
-
-                if (isPreview)
-                {
-                    me.generatePreview(outputcontainer.html().toString());
-                }
-                $("#exportedcode").text(outputcontainer.html().toString());
+                return (outputcontainer.html().toString());
             },
             createNewPresentation: function()
             {
@@ -1185,6 +1173,14 @@ Impressionist.prototype =
                     }
                 }
             },
+            getFileName: function() {
+                var title = me.getTitle();
+                title = title.replace(/\s+/g, '_');
+                return title;
+            },
+            getTitle: function() {
+                return ($("#presentationmetatitle").text());
+            },
             savePresentation: function()
             {
                 $("#savepresentationbtn").text("Saving...");
@@ -1258,6 +1254,29 @@ Impressionist.prototype =
             {
                 $("#savepresentationbtn").html('<i class="icon-ok-sign"></i>&nbsp;Save');
             },
+            //Genera un objeto Blob con los datos en un archivo TXT
+            generateFile: function() {
+                var title = me.getTitle();
+                var slides = me.generateExportMarkup();
+                var file = {
+                    'title': title,
+                    'slides': slides
+                };
+                var text = JSON.stringify(file);
+                var blob = new Blob([text], {type: "application/json"});
+                return blob;
+            },
+            downloadFile: function(content, filename) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var save = document.getElementById("downloadpresbtn");
+                    save.setAttribute("href", event.target.result);
+                    save.setAttribute("target", '_blank');
+                    save.setAttribute("download", (filename + ".fspf") || (me.generateUID() + '.fspf'));
+                    (window.URL || window.webkitURL).revokeObjectURL(save.href);
+                };
+                reader.readAsDataURL(content);
+            },
             removeReference: function(arr)
             {
 
@@ -1285,6 +1304,7 @@ Impressionist.prototype =
             generatePreview: function(str)
             {
                 sessionStorage.setItem('preview', str);
+                sessionStorage.setItem('title', me.getTitle());
 //                window.open("app/components/impress.js/index.html");
                 window.open("app/components/reveal.js/index.html");
             },

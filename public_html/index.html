@@ -55,16 +55,16 @@ Eduardo Jiménez Grande
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a id="newpresopanel"><i class="fui-plus-24"></i> New Presentation</a></li>
-                        <li><a id="openpresentationsbtn"><i class="icon-save"></i> My Presentations</a></li>
+                        <li><a id="newpresopanel"><i class="fui-plus-24"></i>&nbsp; New Presentation</a></li>
+                        <li><a id="openpresentationsbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; My Presentations</a></li>
 
                     </ul>
                 </div>
 
                 <div id="tools" class="col-sm-11 navbar-brand sidebarfooter">
                     <div class="btn-group" id="addElementsPanel">
-                        <a class="btn btn-info toolbarblockleft" id="addtextbtn" href="#"><i class="icon-plus"></i> <i class="icon-font"></i></a>
-                        <a class="btn btn-info" id="addimagebtn" href="#"><i class="icon-picture"></i></a>
+                        <a class="btn btn-info toolbarblockleft" id="addtextbtn" href="#" title="Add text"><i class="icon-plus"></i> <i class="icon-font"></i></a>
+                        <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="icon-picture"></i></a>
                     </div>
                     <div class="btn-group">
                         <a class="btn btn-info menubtn" href="#" id="makebold"><i class="icon-bold"></i></a>
@@ -76,8 +76,9 @@ Eduardo Jiménez Grande
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
-                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn"><i class="fui-eye-16"></i>&nbsp;View</a>
-                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
+                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fui-eye-16"></i>&nbsp;View</a>
+                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
+                        <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-save-file"></i>&nbsp;Download</a> 
                     </div>
                 </div>
             </div>
@@ -87,7 +88,7 @@ Eduardo Jiménez Grande
                     <div id="vertical-toolbar" class="col-sm-2 ">
                         <div class ="mainfooter palette-night col-sm-12">
                             <div class = "slidethumbholdercontainer">
-                                <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn"><i class="icon-plus"></i>&nbsp;Add Slide</a>
+                                <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn" title="Add slide"><i class="icon-plus"></i>&nbsp;Add Slide</a>
 
                                 <div class = "slidethumbholder">
 
@@ -99,7 +100,7 @@ Eduardo Jiménez Grande
                     <div id="workspace" class="slideviewportcontainer col-sm-10">
                         <div class="presentationmeta">
                             <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
-                            <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary"><i class="icon-edit"></i></a>
+                            <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary" title="Change title"><i class="icon-edit"></i></a>
                         </div>
                         <div class="slideviewport col-sm-12">
                             <div class="fullslider-slide-container">

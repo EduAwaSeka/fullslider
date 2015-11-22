@@ -12,9 +12,10 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  /* font-size: 100%; */
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  }
 
 html{
     font-size: 1vw !important;
@@ -153,12 +154,13 @@ body {
 .reveal .controls {
   display: none;
   position: fixed;
-  width: 110px;
-  height: 110px;
+  width: 8.0527vw;
+  height: 8.0527vw;
   z-index: 30;
-  right: 10px;
-  bottom: 10px;
-  -webkit-user-select: none; }
+  right: 0.732vw;
+  bottom: 0.732vw;
+  -webkit-user-select: none;
+  }
 
 .reveal .controls div {
   position: absolute;
@@ -264,7 +266,8 @@ body {
   height: 100%;
   overflow: hidden;
   -ms-touch-action: none;
-      touch-action: none; }
+  touch-action: none;
+  }
 
 .reveal .slides {
   position: absolute;
