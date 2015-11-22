@@ -21,8 +21,8 @@
     {
          impressionist = new Impressionist();
          impressionist.initialize();
-         impressionist.addSettingsPanel( " " )
-         loggedinstate = true
+         impressionist.addSettingsPanel( " " );
+         loggedinstate = true;
          //$(".preloaderviewport").css("display", "none");
          setTimeout(showViewport, 1000);
      }

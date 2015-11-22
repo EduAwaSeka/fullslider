@@ -186,7 +186,7 @@ p {
     margin-bottom: 0.464vw;
     background-color: #34495E;
     position: relative;
-    margin-top: 0.2vw;
+    /* margin-top: 0.2vw; */
 }
 
 #presentationmetatitle{

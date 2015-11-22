@@ -14,8 +14,8 @@ Impressionist = function()
     this.orchestrationcoords = [];
     this.selectedOrchElement;
     this.lastslideleftpos = 0;
-    this.saveKey = "impressionist_decks";
-    this.lastSaved = "impressionist_lastsaved";
+    this.saveKey = "fullslider_decks";
+    this.lastSaved = "fullslider_lastsaved";
     this.currentPresentation;
     this.mypresentations = [];
     this.mode = "create";
@@ -249,7 +249,7 @@ Impressionist.prototype =
                     {
                         console.log("sort updated", event, ui);
                         me.assignSlideNumbers();
-                        me.reArrangeImpressSlides();
+                        me.reArrangeFullsliderSlides();
                     }});
                 //$(".slidethumbholder").disableSelection();
             },
@@ -257,7 +257,7 @@ Impressionist.prototype =
             {
 
             },
-            reArrangeImpressSlides: function()
+            reArrangeFullsliderSlides: function()
             {
                 children = $(".slidethumbholder").children();
                 var clonedElements = [];
@@ -266,14 +266,14 @@ Impressionist.prototype =
                     child = children[i];
                     console.log("Rearrange child", child.id);
                     id = (child.id).split("_")[1];
-                    el = $("#impress_slide_" + id);
+                    el = $("#fullslider_slide_" + id);
                     clonedElements.push(el);
                 }
-                $(".impress-slide-container").html("");
+                $(".fullslider-slide-container").html("");
                 for (var j = 0; j < clonedElements.length; j++)
                 {
                     console.log("el", clonedElements[j]);
-                    $(".impress-slide-container").append(clonedElements[j]);
+                    $(".fullslider-slide-container").append(clonedElements[j]);
                 }
                 me.enableDrag();
             },
@@ -448,7 +448,7 @@ Impressionist.prototype =
 
                 //only can moves in slide
                 $(function() {
-                    $(".ui-draggable").draggable({autoscroll: false, containment: ".impress-slide-container"});
+                    $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container"});
                 });
             },
             positionTransformControl: function( )
@@ -600,7 +600,7 @@ Impressionist.prototype =
                     p.animate({opacity: 0}, 200, function(e)
                     {
                         $(this).remove();
-                        $("#impress_slide_" + slideid).remove();
+                        $("#fullslider_slide_" + slideid).remove();
                         me.assignSlideNumbers();
                     });
                 });
@@ -609,7 +609,7 @@ Impressionist.prototype =
                     e.stopPropagation();
                     id = (e.target.id).split("_")[1];
                     console.log("slidemask", id);
-                    me.selectSlide("#impress_slide_" + id);
+                    me.selectSlide("#fullslider_slide_" + id);
                     me.selectThumb(id);
                     me.hideTransformControl();
                     me.switchView("right");
@@ -617,24 +617,23 @@ Impressionist.prototype =
                 //me.orchestrationcoords.push({left:"0px", top:"0px"});
                 me.lastslideleftpos += 200;
                 me.assignSlideNumbers();
-                me.addImpressSlide(uid);
+                me.addFullsliderSlide(uid);
                 me.switchView("right");
                 $("#presentationmetatitle").html($("#titleinput").val());
             },
-            addImpressSlide: function(id)
+            addFullsliderSlide: function(id)
             {
-                islide = impress_slide;
+                islide = fullslider_slide;
                 islide = islide.split("__slidenumber__").join("_" + id);
-                $(".impress-slide-container").append(islide);
-                $("#impress_slide_" + id).addClass("impress-slide-element");
-                me.removeAllStyles($("#impress_slide_" + id));
-                //$("#impress_slide_"+id).addClass(me.theme);
-                me.selectSlide("#impress_slide_" + id);
+                $(".fullslider-slide-container").append(islide);
+                $("#fullslider_slide_" + id).addClass("fullslider-slide-element");
+                //$("#fullslider_slide_"+id).addClass(me.theme);
+                me.selectSlide("#fullslider_slide_" + id);
                 me.selectThumb(id);
-                me.addImpressSlideItem(me.selectedSlide);
+                me.addFullsliderSlideItem(me.selectedSlide);
                 me.enableDrag();
             },
-            addImpressSlideItem: function(el)
+            addFullsliderSlideItem: function(el)
             {
                 console.log("adding the new item....");
                 item = text_snippet;
@@ -650,7 +649,7 @@ Impressionist.prototype =
             addTextStyle: function(element) {
                 $(element).css("line-height", "initial", "important");
                 $(element).css("color", "#000");
-                $(element).css("font-size", "5rem");
+                $(element).css("font-size", "5vw");
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("position", "absolute");
@@ -686,7 +685,7 @@ Impressionist.prototype =
                 newel.css("-ms-transform", "scale(0.172, 0.21)"); /* IE 9 */
                 newel.css("-o-transform", "scale(0.172, 0.21)"); /* Opera */
 
-                newel.removeClass("impress-slide-element");
+                newel.removeClass("fullslider-slide-element");
                 //newel.css("border", "1px solid #999");
                 newel.css("left", "-7.2vw");
                 newel.css("top", "-5.38vw");
@@ -705,14 +704,14 @@ Impressionist.prototype =
 
                 $("#slidethumb_" + id).append(newel);
                 //$(".orchestrationviewport").append( orchel );
-                //$(".impress-slide").append( newel );
+                //$(".fullslider-slide").append( newel );
 
 
             },
             selectSlide: function(id)
             {
 
-                children = $(".impress-slide-container").children();
+                children = $(".fullslider-slide-container").children();
                 //console.log("I am in selection", children)
                 for (var i = 0; i < children.length; i++)
                 {
@@ -894,16 +893,6 @@ Impressionist.prototype =
             {
                 $(".maskedcontainer").animate({"top": amount, "opacity": 1}, {duration: 300, easing: "linear"});
             },
-            openCodeExportWindow: function()
-            {
-                me.generateExportMarkup();
-                //hljs.tabReplace = '    '; // 4 spaces
-                $('pre code').each(function(i, e) {
-                    hljs.highlightBlock(e);
-                });
-                //me.autoFormat();
-                $("#exportcodemodal").modal("show");
-            },
             attachListeners: function()
             {
                 $("html").on("click", me.manageGlobalClick);
@@ -962,12 +951,6 @@ Impressionist.prototype =
                     me.mode = "save";
                     me.savePresentation();
                 });
-                $("#openpreviewbtn").on("click", function(e)
-                {
-//                    window.open("http://harish.io/impressionist/viewer.php", "_blank");
-                    window.open("app/components/Impressionist/alpha3/server/viewer.php", "_blank");
-                    $("#previewmodal").modal("hide");
-                });
                 $(".dropdownitem").on("click", function(e)
                 {
                     console.log("Dd value: ", $(e.target).attr("data-dk-dropdown-value"));
@@ -981,7 +964,7 @@ Impressionist.prototype =
                 $("#addtextbtn").on("click", function(e)
                 {
                     console.log("add btn clicked...");
-                    me.addImpressSlideItem(me.selectedSlide);
+                    me.addFullsliderSlideItem(me.selectedSlide);
 
                     //On create text element, this is selected for edit with dblclick event
                     launchEvent("dblclick", me.selectedforedit);
@@ -1035,9 +1018,12 @@ Impressionist.prototype =
                 });
                 $("#viewbtn").on("click", function(e)
                 {
-                    me.generateExportMarkup(true);
-
-
+                    var slides = me.generateExportMarkup();
+                    me.generatePreview(slides);
+                });
+                $("#downloadpresbtn").on("mouseover", function(e)
+                {
+                    me.downloadFile(me.generateFile(), me.getFileName());
                 });
                 $(".stylethumbnail").on("click", function(e)
                 {
@@ -1073,7 +1059,7 @@ Impressionist.prototype =
                     localStorage.removeItem(me.lastSaved);
                 }
             },
-            generateExportMarkup: function(isPreview)
+            generateExportMarkup: function()
             {
                 var children = $(".slidethumbholder").children();
                 var count = 0;
@@ -1086,7 +1072,7 @@ Impressionist.prototype =
                     var t = child.attr("data-top").split("px")[0];
 
                     var coords = me.calculateSlideCoordinates(l, t);
-                    var el = $("#impress_slide_" + id);
+                    var el = $("#fullslider_slide_" + id);
                     el.attr("data-x", coords.x - 500);
                     el.attr("data-y", coords.y);
 //                    el.attr("data-rotate", child.attr("data-rotate"));
@@ -1096,31 +1082,20 @@ Impressionist.prototype =
 //                    el.attr("data-scale", child.attr("data-scale"));
                     el.addClass("step");
                 }
-                var outputcontainer = $(".impress-slide-container").clone();
-                console.log("output", $(".impress-slide-container").html().toString());
-                outputcontainer.find(".impress-slide").each(function(i, object)
+                var outputcontainer = $(".fullslider-slide-container").clone();
+                console.log("output", $(".fullslider-slide-container").html().toString());
+                outputcontainer.find(".fullslider-slide").each(function(i, object)
                 {
                     console.log("Physically adding sizing information");
-                    var w = $(".slideviewport").css("width").replace(/[^-\d\.]/g, '');
-                    w = pxToVw(w);
-                    var h = $(".slideviewport").css("height").replace(/[^-\d\.]/g, '');
-                    h = pxToVw(h);
-                    $(this).css("width", w + "vw");
-                    $(this).css("height", h + "vw");
 
 
                 });
-
-                if (isPreview)
-                {
-                    me.generatePreview(outputcontainer.html().toString());
-                }
-                $("#exportedcode").text(outputcontainer.html().toString());
+                return (outputcontainer.html().toString());
             },
             createNewPresentation: function()
             {
                 $(".slidethumbholder").html("");
-                $(".impress-slide-container").html();
+                $(".fullslider-slide-container").html();
                 me.addSlide();
                 me.savePresentation();
             },
@@ -1132,16 +1107,16 @@ Impressionist.prototype =
                     var presentation = me.mypresentations[i];
                     if (id == presentation.id)
                     {
-                        $(".impress-slide-container").html(presentation.contents);
+                        $(".fullslider-slide-container").html(presentation.contents);
                         $(".slidethumbholder").html(presentation.thumbcontents);
                         $(".slidethumbholder").each(function(i, object)
                         {
                             $(this).css("opacity", 1);
                         });
 
-                        var first_slide_id = $(".impress-slide-container").find(".impress-slide-element").attr("id");
+                        var first_slide_id = $(".fullslider-slide-container").find(".fullslider-slide-element").attr("id");
                         first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
-                        me.selectSlide("#impress_slide_" + first_slide_id);
+                        me.selectSlide("#fullslider_slide_" + first_slide_id);
                         me.selectThumb(first_slide_id);
                         me.currentPresentation = presentation;
                         $("#presentationmetatitle").html(me.currentPresentation.title);
@@ -1157,7 +1132,7 @@ Impressionist.prototype =
                     e.stopPropagation();
                     id = (e.target.id).split("_")[1];
                     console.log("slidemask", id);
-                    me.selectSlide("#impress_slide_" + id);
+                    me.selectSlide("#fullslider_slide_" + id);
                     me.selectThumb(id);
                     me.hideTransformControl();
                     me.switchView("right");
@@ -1170,7 +1145,7 @@ Impressionist.prototype =
                     p.animate({opacity: 0}, 200, function(e)
                     {
                         $(this).remove();
-                        $("#impress_slide_" + slideid).remove();
+                        $("#fullslider_slide_" + slideid).remove();
                         me.assignSlideNumbers();
                     });
                 });
@@ -1185,7 +1160,7 @@ Impressionist.prototype =
                     {
                         console.log("content", presentation.contents);
                         $(".placeholder").html(presentation.contents);
-                        $(".placeholder").find(".impress-slide").each(function(i, object)
+                        $(".placeholder").find(".fullslider-slide").each(function(i, object)
                         {
                             console.log("Physically adding sizing information, again");
                             $(this).css("width", "1024px");
@@ -1197,6 +1172,14 @@ Impressionist.prototype =
                         break;
                     }
                 }
+            },
+            getFileName: function() {
+                var title = me.getTitle();
+                title = title.replace(/\s+/g, '_');
+                return title;
+            },
+            getTitle: function() {
+                return ($("#presentationmetatitle").text());
             },
             savePresentation: function()
             {
@@ -1240,7 +1223,7 @@ Impressionist.prototype =
                     id: tempid,
                     title: $("#titleinput").val(),
                     description: $("textarea#descriptioninput").text(),
-                    contents: $(".impress-slide-container").html().toString(),
+                    contents: $(".fullslider-slide-container").html().toString(),
                     thumbcontents: $(".slidethumbholder").html().toString(),
                     theme: me.theme
                 };
@@ -1271,6 +1254,29 @@ Impressionist.prototype =
             {
                 $("#savepresentationbtn").html('<i class="icon-ok-sign"></i>&nbsp;Save');
             },
+            //Genera un objeto Blob con los datos en un archivo TXT
+            generateFile: function() {
+                var title = me.getTitle();
+                var slides = me.generateExportMarkup();
+                var file = {
+                    'title': title,
+                    'slides': slides
+                };
+                var text = JSON.stringify(file);
+                var blob = new Blob([text], {type: "application/json"});
+                return blob;
+            },
+            downloadFile: function(content, filename) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var save = document.getElementById("downloadpresbtn");
+                    save.setAttribute("href", event.target.result);
+                    save.setAttribute("target", '_blank');
+                    save.setAttribute("download", (filename + ".fspf") || (me.generateUID() + '.fspf'));
+                    (window.URL || window.webkitURL).revokeObjectURL(save.href);
+                };
+                reader.readAsDataURL(content);
+            },
             removeReference: function(arr)
             {
 
@@ -1297,40 +1303,10 @@ Impressionist.prototype =
             },
             generatePreview: function(str)
             {
-//              $("#previewmodal").modal("show");
-//		$("#openpreviewbtn").addClass("disabled");
-//		$("#openpreviewbtn").removeClass("btn-primary");
-//		$("#progressmeter").css("display", "block");
-//		$("#previewmessage").html("Please wait while we generate the preview.")
-//		$.ajax({
-//			type: 'POST',
-//			 url: "http://harish.io/impressionist/generatePreview.php",
-//			 data: {generateddata:str},
-//			 dataType: "html",
-//			 success: function(msg)
-//			 {
-//			 	console.log("Preview Generated");
-//			 	$("#openpreviewbtn").removeClass("disabled");
-//			 	$("#openpreviewbtn").addClass("btn-primary");
-//			 	$("#progressmeter").css("display", "none");
-//			 	$("#previewmessage").html("Slide preview successfully generated.");
-//
-//			 }
-//		});
-//                $.ajax({
-//                    type: 'POST',
-//                    url: "app/components/Impressionist/alpha3/server/generatePreview.php",
-//                    data: {generateddata: str},
-//                    dataType: "html",
-//                    success: function(msg)
-//                    {
-//
-//                        window.open("app/components/impress.js/index.php");
-//
-//                    }
-//                });
                 sessionStorage.setItem('preview', str);
-                window.open("app/components/impress.js/index.html");
+                sessionStorage.setItem('title', me.getTitle());
+//                window.open("app/components/impress.js/index.html");
+                window.open("app/components/reveal.js/index.html");
             },
             calculateSlideCoordinates: function(wx, wy)
             {

@@ -9,8 +9,8 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fui-cross-16"></i></a>'+
 				 '</div>';
-var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="impress_slide__slidenumber__" data-type="text"><div>Sample Text</div> </div>';
-var impress_slide = '<div class="impress-slide" id="impress_slide__slidenumber__"></div>';
+var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="fullslider_slide__slidenumber__" data-type="text"><div>Sample Text</div> </div>';
+var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
                                         '<h3 style="display:inline-block; color:#2980B9"> __presotitle__</h3>'+
@@ -51,7 +51,7 @@ var font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
                                           '<a class="cookie is-etch-button" href="#" data-value="\'Cookie\', cursive">Cookie</a>'+
                                           '<a class="courgette is-etch-button" href="#" data-value="\'Courgette\', cursive">Courgette</a>'+
                                           '<a class="crimson is-etch-button" href="#" data-value="\'Crimson Text\', serif">Crimson Text</a>'+
-                                          '<a class="dancingscript is-etch-button" href="#" data-value="\'Dancing Scriptt\', cursive">Dancing Script</a>'+
+                                          '<a class="dancingscript is-etch-button" href="#" data-value="\'Dancing Script\', cursive">Dancing Script</a>'+
                                           '<a class="droidsansmono is-etch-button" href="#" data-value="\'Droid Sans Mono\', monospace">Droid Sans Mono</a>'+
                                           '<a class="fredoka is-etch-button" href="#" data-value="\'Fredoka One\', cursive">Fredoka One</a>'+
                                           '<a class="gorditas is-etch-button" href="#" data-value="\'Gorditas\', cursive">Gorditas</a>'+

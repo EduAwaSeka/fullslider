@@ -165,14 +165,14 @@ body
     text-transform: none;
     /*-webkit-user-select: none;*/
 }
-.impress-slide-container
+.fullslider-slide-container
 {
     position: relative;
     width: 100%;
     height: 100%
 
 }
-.impress-slide
+.fullslider-slide
 {
     position: absolute;
     left: 0px;
