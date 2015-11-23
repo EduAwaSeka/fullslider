@@ -1132,7 +1132,6 @@ Impressionist.prototype =
             },
             createNewPresentation: function()
             {
-                me.savePresentation();
                 $(".slidethumbholder").html("");
                 $(".fullslider-slide-container").html();
                 me.addSlide();
@@ -1314,8 +1313,6 @@ Impressionist.prototype =
                     });
                 });
                 me.enableDrag();
-                me.renderPresentations(me.mypresentations);
-
             },
             existPresentation: function(id) {
                 var exist = false;
