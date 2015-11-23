@@ -19,7 +19,6 @@ Impressionist = function()
     this.currentPresentation;
     this.mypresentations = [];
     this.mode = "create";
-    this.theme = "montserrat";
     this.loggedinstate = false;
 
     this.dropdownopen = false;
@@ -68,6 +67,7 @@ Impressionist.prototype =
             },
             continueInit: function()
             {
+                me.initializeWelcomePanel();
                 me.initializeImageModal();
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
@@ -86,7 +86,11 @@ Impressionist.prototype =
                 me.renderPresentations(presentations);
 
                 //Load last saved presentation
-                me.openLastSavedPresentation();
+//                 me.openLastSavedPresentation();
+
+                me.openWelcomePanel();
+
+
 //                me.switchView("right");
             },
             initializeImageModal: function() {
@@ -97,6 +101,13 @@ Impressionist.prototype =
             },
             initializeMyPresModal: function() {
                 $("#modals").append(my_pres_modal);
+            },
+            initializeWelcomePanel: function() {
+                $("#modals").append(welcome_panel);
+            },
+            openWelcomePanel: function() {
+                $("#welcomemodal").removeClass("hide");
+                $("#welcomemodal").modal("show");
             },
             openLastSavedPresentation: function()
             {
@@ -113,7 +124,7 @@ Impressionist.prototype =
                     }
                     else
                     {
-                        me.openNewPresentationWindow();
+                        me.openWelcomePanel();
                     }
 
                 }
@@ -121,8 +132,7 @@ Impressionist.prototype =
                 {
                     me.currentPresentation = presentation;
                     console.log("Retrieved id: ", me.currentPresentation);
-                    me.theme = presentation.theme;
-                    me.openPresentationForEdit(me.currentPresentation.id);
+                    me.loadPresentation(me.currentPresentation);
                 }
             },
             openNewPresentationWindow: function()
@@ -146,7 +156,6 @@ Impressionist.prototype =
                     presentation = presentations[i];
                     templ = saved_presentations;
                     templ = templ.split("__presotitle__").join(presentation.title);
-                    templ = templ.split("__presodescription__").join(presentation.description);
                     templ = templ.split("__presoid__").join(presentation.id);
                     $("#savedpresentations").append(templ);
                 }
@@ -546,8 +555,9 @@ Impressionist.prototype =
             },
             addSettingsPanel: function(type)
             {
-                $(".settingsbox").html(newpresotemplate);
-                //this.addSlide();
+                if (!me.currentPresentation) {
+                    this.addSlide();
+                }
                 this.removelisteners();
                 this.attachListeners();
             },
@@ -908,6 +918,7 @@ Impressionist.prototype =
                     $("#newpresentationmodal").removeClass("hide");
                     $("#newpresentationmodal").modal("show");
                     $("#newpresoheader").html("Save Presentation As");
+                    $("#titleinput").val($("#presentationmetatitle").text());
                     me.mode = "save";
                 });
                 $(".previewpresobtn").on("click", function(e)
@@ -915,14 +926,7 @@ Impressionist.prototype =
                     console.log("data parent id", $(this).attr("data-id"));
                     me.fetchAndPreview($(this).attr("data-id"));
                 });
-                $(".openpresobtn").on("click", function(e)
-                {
-                    console.log("Edit presentation");
-                    me.mode = "save";
-                    me.openPresentationForEdit($(this).attr("data-id"));
-
-                });
-                $("#createpresentation").on("click", function(e)
+                $(".createpresentation").on("click", function(e)
                 {
                     console.log("Mode", me.mode);
                     if (me.mode == "create")
@@ -932,10 +936,10 @@ Impressionist.prototype =
                     else
                     {
                         console.log("saving now");
-                        me.savePresentation();
+                        $("#presentationmetatitle").html($("#titleinput").val());
+                        me.currentPresentation.title = $("#titleinput").val();
+                        $(".modal").modal("hide");
                     }
-
-
                 });
                 $("#savepresentationbtn").on("click", function(e)
                 {
@@ -944,7 +948,6 @@ Impressionist.prototype =
                         console.log("Has access to current presentation");
                         me.clearElementSelections();
                         $("#titleinput").val(me.currentPresentation.title);
-                        $("textarea#descriptioninput").val(me.currentPresentation.description);
                     }
 //                    $("#newpresentationmodal").removeClass("hide");
 //                    $("#newpresentationmodal").modal("show");
@@ -976,11 +979,12 @@ Impressionist.prototype =
                     $("#imagemodal").modal("show");
                     $("#imageinput").focus();
                 });
-                $("#newpresopanel").on("click", function(e)
+                $(".newpresopanel").on("click", function(e)
                 {
                     console.log("open image modal...");
                     $("#newpresentationmodal").removeClass("hide");
                     $("#newpresentationmodal").modal("show");
+                    $("#titleinput").val("New Presentation")
                     $("#newpresoheader").html("Create New Presentation");
                     me.mode = "create";
                 });
@@ -1025,11 +1029,45 @@ Impressionist.prototype =
                 {
                     me.downloadFile(me.generateFile(), me.getFileName());
                 });
+                $(".loadpresbtn").on("click", function(e)
+                {
+                    $("#inputFile").click();
+                });
+                $('#inputFile').change(function(e) {
+                    $(".loadpresbtn").button('loading');
+                    var files = e.target.files;
+                    var error = false;
+                    if (!(/\.fspf$/).test(files[0].name)) {
+                        //error
+                        error = true;
+                    }
+                    else {
+                        var reader = new FileReader();
+                        reader.addEventListener("loadend", function() {
+                            var presentation = JSON.parse(reader.result);
+                            if (!me.existPresentation(presentation.id)) {
+                                me.mypresentations.push(presentation);
+                            }
+                            me.loadPresentation(presentation);
+                            $('input[name=openFile]').removeAttr('value');
+                            error = false;
+
+                            if (error) {
+                                //error
+                            }
+                            else {
+                                $("#welcomemodal").modal("hide");
+                            }
+                            $(".loadpresbtn").button('reset');
+                        });
+                        reader.readAsText(files[0]);
+                    }
+
+                });
                 $(".stylethumbnail").on("click", function(e)
                 {
                     $(".stylethumbnail").css("border-bottom", "1px dotted #DDD");
                     $(this).css("border-bottom", "2px solid #1ABC9C");
-                    me.theme = $(this).attr("data-style");
                 });
             },
             openStyleSelector: function()
@@ -1094,10 +1132,10 @@ Impressionist.prototype =
             },
             createNewPresentation: function()
             {
+                me.savePresentation();
                 $(".slidethumbholder").html("");
                 $(".fullslider-slide-container").html();
                 me.addSlide();
-                me.savePresentation();
             },
             openPresentationForEdit: function(id)
             {
@@ -1107,49 +1145,10 @@ Impressionist.prototype =
                     var presentation = me.mypresentations[i];
                     if (id == presentation.id)
                     {
-                        $(".fullslider-slide-container").html(presentation.contents);
-                        $(".slidethumbholder").html(presentation.thumbcontents);
-                        $(".slidethumbholder").each(function(i, object)
-                        {
-                            $(this).css("opacity", 1);
-                        });
-
-                        var first_slide_id = $(".fullslider-slide-container").find(".fullslider-slide-element").attr("id");
-                        first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
-                        me.selectSlide("#fullslider_slide_" + first_slide_id);
-                        me.selectThumb(first_slide_id);
-                        me.currentPresentation = presentation;
-                        $("#presentationmetatitle").html(me.currentPresentation.title);
-                        console.log("rendered");
+                        me.loadPresentation(presentation);
                     }
-
                     $("#savedpresentationsmodal").modal("hide");
-
                 }
-                $(".slidemask").on("click", function(e)
-                {
-                    console.log("repopulated zone");
-                    e.stopPropagation();
-                    id = (e.target.id).split("_")[1];
-                    console.log("slidemask", id);
-                    me.selectSlide("#fullslider_slide_" + id);
-                    me.selectThumb(id);
-                    me.hideTransformControl();
-                    me.switchView("right");
-                });
-                $(".deletebtn").on("click", function(e)
-                {
-                    p = $("#" + $(this).attr("data-parent"));
-                    slideid = $(this).attr("data-parent").split("_")[1];
-                    console.log("parent", p, slideid);
-                    p.animate({opacity: 0}, 200, function(e)
-                    {
-                        $(this).remove();
-                        $("#fullslider_slide_" + slideid).remove();
-                        me.assignSlideNumbers();
-                    });
-                });
-                me.enableDrag();
             },
             fetchAndPreview: function(id)
             {
@@ -1216,16 +1215,13 @@ Impressionist.prototype =
                 }
                 else
                 {
-                    tempid = Math.round(Math.random() * 201020)
+                    tempid = Math.round(Math.random() * 201020);
                 }
-
                 var o = {
                     id: tempid,
-                    title: $("#titleinput").val(),
-                    description: $("textarea#descriptioninput").text(),
+                    title: $("#presentationmetatitle").text(),
                     contents: $(".fullslider-slide-container").html().toString(),
                     thumbcontents: $(".slidethumbholder").html().toString(),
-                    theme: me.theme
                 };
                 me.currentPresentation = o;
                 $("#presentationmetatitle").html(me.currentPresentation.title);
@@ -1241,26 +1237,23 @@ Impressionist.prototype =
                     console.log("data parent id", $(this).attr("data-id"));
                     me.fetchAndPreview($(this).attr("data-id"));
                 });
-                $(".openpresobtn").on("click", function(e)
-                {
-                    console.log("Edit presentation");
-                    me.mode = "save";
-                    me.openPresentationForEdit($(this).attr("data-id"));
-                });
-                $("#newpresentationmodal").modal("hide");
+                $(".modal").modal("hide");
                 setTimeout(me.resetSaveButtonText, 1000);
             },
             resetSaveButtonText: function()
             {
                 $("#savepresentationbtn").html('<i class="icon-ok-sign"></i>&nbsp;Save');
             },
-            //Genera un objeto Blob con los datos en un archivo TXT
             generateFile: function() {
+                var id = me.currentPresentation.id
                 var title = me.getTitle();
-                var slides = me.generateExportMarkup();
+                var contents = me.generateExportMarkup();
+                var thumbcontents = $(".slidethumbholder").html().toString();
                 var file = {
+                    'id': id,
                     'title': title,
-                    'slides': slides
+                    'contents': contents,
+                    'thumbcontents': thumbcontents
                 };
                 var text = JSON.stringify(file);
                 var blob = new Blob([text], {type: "application/json"});
@@ -1276,6 +1269,68 @@ Impressionist.prototype =
                     (window.URL || window.webkitURL).revokeObjectURL(save.href);
                 };
                 reader.readAsDataURL(content);
+            },
+            loadPresentation: function(presentation) {
+                $(".fullslider-slide-container").html(presentation.contents);
+                $(".slidethumbholder").html(presentation.thumbcontents);
+                $(".slidethumbholder").each(function(i, object)
+                {
+                    $(this).css("opacity", 1);
+                });
+
+                var first_slide_id = $(".fullslider-slide-container").find(".fullslider-slide-element").attr("id");
+                first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
+                me.selectSlide("#fullslider_slide_" + first_slide_id);
+                me.selectThumb(first_slide_id);
+                me.currentPresentation = presentation;
+                $("#presentationmetatitle").html(me.currentPresentation.title);
+                console.log("rendered");
+
+
+                $("#savedpresentationsmodal").modal("hide");
+
+
+                $(".slidemask").on("click", function(e)
+                {
+                    console.log("repopulated zone");
+                    e.stopPropagation();
+                    id = (e.target.id).split("_")[1];
+                    console.log("slidemask", id);
+                    me.selectSlide("#fullslider_slide_" + id);
+                    me.selectThumb(id);
+                    me.hideTransformControl();
+                    me.switchView("right");
+                });
+                $(".deletebtn").on("click", function(e)
+                {
+                    p = $("#" + $(this).attr("data-parent"));
+                    slideid = $(this).attr("data-parent").split("_")[1];
+                    console.log("parent", p, slideid);
+                    p.animate({opacity: 0}, 200, function(e)
+                    {
+                        $(this).remove();
+                        $("#fullslider_slide_" + slideid).remove();
+                        me.assignSlideNumbers();
+                    });
+                });
+                me.enableDrag();
+                me.renderPresentations(me.mypresentations);
+
+            },
+            existPresentation: function(id) {
+                var exist = false;
+                var i = 0;
+                var presentation = null;
+                while ((!exist) && (i < me.mypresentations.length))
+                {
+                    presentation = me.mypresentations[i];
+                    if (id == presentation.id)
+                    {
+                        exist = true;
+                    }
+                    i++;
+                }
+                return exist;
             },
             removeReference: function(arr)
             {

@@ -55,8 +55,8 @@ Eduardo Jiménez Grande
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a id="newpresopanel"><i class="fui-plus-24"></i>&nbsp; New Presentation</a></li>
-                        <li><a id="openpresentationsbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; My Presentations</a></li>
+                        <li><a id="newpresopanel" class="newpresopanel"><i class="fui-plus-24"></i>&nbsp; New Presentation</a></li>
+                        <li><a id="openpresentationsbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Recent presentations</a></li>
 
                     </ul>
                 </div>
@@ -76,9 +76,11 @@ Eduardo Jiménez Grande
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
-                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fui-eye-16"></i>&nbsp;View</a>
-                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="icon-ok-sign"></i>&nbsp;Save</a> 
-                        <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-save-file"></i>&nbsp;Download</a> 
+                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fui-eye-16"></i>&nbsp; View</a>
+                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="icon-ok-sign"></i>&nbsp; Save</a> 
+                        <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; Download</a> 
+                        <button id="loadpresbtn" class="loadpresbtn btn btn-large btn-inline btn-info previewbtn" title="Open Presentation" data-loading-text="Loading..."><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open</button> 
+                        <input id="inputFile" type="file" name="openFile" style="visibility: hidden;" accept=".fspf"/>
                     </div>
                 </div>
             </div>
