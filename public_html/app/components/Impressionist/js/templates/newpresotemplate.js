@@ -1,9 +1,19 @@
-var newpresotemplate = '<div id="newpreso">'+
-						   '<h4 id="presotitle" class="settingsboxheader">Title</h4><input id="presotitleinput" type="text"></input>'+
-						   '<h4 id="presodescription" class="settingsboxheader">Description</h4><textarea id="presotitledescription"></textarea>'+
-						   '<a class="btn btn-large btn-primary btn-inline previewbtn settingsCancelBtn" id="newpresocancel">&nbsp;Cancel</a>'+
-          				   '<a class="btn btn-large btn-inline btn-info previewbtn">&nbsp;OK</a>'
-          				'</div>'
+var welcome_panel = '<!-- Welcome panel -->'+
+                    '<div class="modal hide fade modalwindow" id="welcomemodal">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+                            '<h3>Welcome to Fullslider</h3>'+
+                        '</div>'+
+                        '<div class="modal-body">'+
+                            '<div>You can create a new presentation or open file from your device</div>'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-primary newpresopanel"> <i class="icon-plus"></i> &nbsp; New presentation</a>'+
+                            '<a href="#" class="btn btn-success loadpresbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
+                        '</div>'+
+                    '</div>'+
+                    '<!-- End of new preso modal-->';
+        
 var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block">'+
 					 '<div class="thumbnailholder"></div>'+
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
@@ -14,7 +24,6 @@ var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
                                         '<h3 style="display:inline-block; color:#2980B9"> __presotitle__</h3>'+
-                                        '<p style="font-size: 120%">__presodescription__</p>'+
                                     '</div>'+
                                     '<div class="presothumb" >'+
                                         '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn" style="position:absolute; right: 10px; top: 10px"><i class="glyphicon glyphicon-pencil"></i></a>' +
@@ -121,12 +130,10 @@ var new_pres_modal= '<!-- New Presentation Modal -->'+
                         '<div class="modal-body">'+
                             '<p>Title</p>'+
                             '<input type="text" id="titleinput" class="image-input" value="New Presentation"> </input>'+
-                            '<p>Description</p>'+
-                            '<textarea id="descriptioninput" class="descriptioninput"> </textarea>'+
                         '</div>'+
                         '<div class="modal-footer">'+
                             '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
-                            '<a href="#" class="btn btn-primary" id="createpresentation"> <i class="icon-plus"></i> &nbsp; Save</a>'+
+                            '<a href="#" class="btn btn-primary createpresentation"> <i class="icon-plus"></i> &nbsp; Save</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
