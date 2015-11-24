@@ -14,8 +14,8 @@ License: MIT
     *zoom: 1;
     z-index: 2147483647;
     overflow: hidden;
-    height: 228px;
-    border: 2px solid rgba(111,111,111,0.1);
+    height: 16.691vw;
+    border: 0.1464vw solid rgba(111,111,111,0.1);
 }
 .sp-container.sp-flat {
     position: relative;
@@ -62,7 +62,7 @@ License: MIT
 
 .sp-alpha-enabled .sp-top
 {
-    margin-bottom: 18px;
+    margin-bottom: 1.3177vw;
 }
 .sp-alpha-enabled .sp-alpha
 {
@@ -72,12 +72,12 @@ License: MIT
 .sp-alpha-handle
 {
     position:absolute;
-    top:-4px;
-    bottom: -4px;
-    width: 6px;
+    top:-0.2928vw;
+    bottom: -0.2928vw;
+    width: 0.4392vw;
     left: 50%;
     cursor: pointer;
-    border: 1px solid black;
+    border: 0.0732 solid black;
     background: white;
     opacity: .8;
 }
@@ -86,13 +86,13 @@ License: MIT
 {
     display: none;
     position: absolute;
-    bottom: -14px;
+    bottom: -1.025vw;
     right: 0;
     left: 0;
-    height: 8px;
+    height: 0.5857vw;
 }
 .sp-alpha-inner{
-    border: solid 1px #333;
+    border: solid 0.0732vw #333;
 }
 
 /* Don't allow text selection */
@@ -198,10 +198,10 @@ License: MIT
 }
 
 .sp-dragger {
-   border-radius: 5px;
-   height: 5px;
-   width: 5px;
-   border: 1px solid #fff;
+   border-radius: 0.366vw;
+   height: 0.366vw;
+   width: 0.366vw;
+   border: 0.0732vw solid #fff;
    background: #000;
    cursor: pointer;
    position:absolute;
@@ -212,25 +212,25 @@ License: MIT
     position: absolute;
     top:0;
     cursor:pointer;
-    height: 3px;
-    left: -1px;
-    right: -1px;
-    border: 1px solid #000;
+    height: 0.2196vw;
+    left: -0.0732vw;
+    right: -0.0732vw;
+    border: -0.0732vw solid #000;
     background: white;
     opacity: .8;
 }
 
 /* Basic display options (colors, fonts, global widths) */
 .sp-container {
-    border-radius: 4px;
+    border-radius: 0.2928vw;
     background: rgba(22,22,22,0.6);
     padding: 0;
-    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0.2196vw 0.5124vw rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0.2196vw 0.5124vw rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.2196vw 0.5124vw rgba(0, 0, 0, 0.3);
 }
 .sp-container.sp-flat {
-    border-radius: 0px;
+    border-radius: 0vw;
     background: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -239,7 +239,7 @@ License: MIT
 
 .sp-container, .sp-container button, .sp-container input, .sp-color, .sp-hue
 {
-    font: normal 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    font: normal 0.8785vw "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -248,30 +248,30 @@ License: MIT
 
 .sp-top
 {
-    margin-bottom: 3px;
+    margin-bottom: 0.2196vw;
 }
 .sp-color, .sp-hue
 {
-    border: solid 1px #666;
+    border: solid 0.0732vw #666;
 }
 
 /* Input */
 .sp-input-container {
     float:right;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 0.2928vw;
 }
 .sp-initial-disabled  .sp-input-container {
     width: 100%;
 }
 .sp-input {
-   font-size: 12px !important;
-   border: 1px inset;
-   padding: 4px 5px;
+   font-size: 0.8785vw !important;
+   border: 0.0732vw inset;
+   padding: 0.2928vw 0.366vw;
    margin: 0;
    width: 100%;
    background: #333;
-   border-radius: 3px;
+   border-radius: 0.2196vw;
    color: #222;
 }
 
@@ -281,41 +281,41 @@ input.sp-input {
 }
 
 .sp-input:focus  {
-    border: 1px solid orange;
+    border: 0.0732vw solid orange;
 }
 .sp-input.sp-validation-error
 {
-    border: 1px solid red;
+    border: 0.0732vw solid red;
     background: #fdd;
 }
 .sp-picker-container , .sp-palette-container
 {
     float:left;
     position: relative;
-    padding: 10px;
-    padding-bottom: 300px;
-    margin-bottom: -290px;
+    padding: 0.732vw;
+    padding-bottom: 21.962vw;
+    margin-bottom: -21.23vw;
 }
 .sp-picker-container
 {
-    width: 172px;
-    border-left: solid 1px #333;
+    width: 12.592vw;
+    border-left: solid 0.0732vw #333;
 }
 
 /* Palettes */
 .sp-palette-container
 {
-    border-right: solid 1px #333;
+    border-right: solid 0.0732vw #333;
 }
 
 .sp-palette .sp-thumb-el {
     display: block;
     position:relative;
-    width: 24px;
-    height: 15px;
-    margin: 3px;
+    width: 1.757vw;
+    height: 1.098vw;
+    margin: 0.2196vw;
     cursor: pointer;
-    border:solid 2px transparent;
+    border:solid 0.1464vw transparent;
 }
 .sp-palette .sp-thumb-el:hover, .sp-palette .sp-thumb-el.sp-thumb-active {
     border-color: orange;
@@ -329,11 +329,11 @@ input.sp-input {
 .sp-initial
 {
     float: left;
-    border: solid 1px #333;
+    border: solid 0.0732vw #333;
 }
 .sp-initial span {
-    width: 30px;
-    height: 25px;
+    width: 2.1962vw;
+    height: 1.83vw;
     border:none;
     display:block;
     float:left;
@@ -350,11 +350,11 @@ input.sp-input {
     margin:0;
     overflow:hidden;
     cursor:pointer;
-    padding: 4px;
+    padding: 0.2928vw;
     display:inline-block;
     *zoom: 1;
     *display: inline;
-    border: solid 1px #91765d;
+    border: solid 0.0732vw #91765d;
     background: #eee;
     color: #333;
     vertical-align: middle;
@@ -369,34 +369,34 @@ input.sp-input {
     color: silver;
 }
 .sp-dd {
-    padding: 2px 0;
-    height: 16px;
-    line-height: 16px;
+    padding: 0.1464vw 0;
+    height: 1.1713vw;
+    line-height: 1.1713vw;
     float:left;
-    font-size:10px;
+    font-size:0.732vw;
 }
 .sp-preview
 {
     position:relative;
-    width:25px;
-    height: 20px;
-    border: solid 1px #222;
-    margin-right: 5px;
+    width:1.83vw;
+    height: 1.464vw;
+    border: solid 0.0732vw #222;
+    margin-right: 0.336vw;
     float:left;
     z-index: 0;
 }
 
 .sp-palette
 {
-    *width: 220px;
-    max-width: 220px;
+    *width: 16.11vw;
+    max-width: 16.11vw;
 }
 .sp-palette .sp-thumb-el
 {
-    width:16px;
-    height: 16px;
-    margin:2px 1px;
-    border: solid 1px #d0d0d0;
+    width:1.1713vw;
+    height: 1.1713vw;
+    margin:0.1464vw 0.0732vw;
+    border: solid 0.0732vw #d0d0d0;
 }
 
 .sp-container
@@ -414,15 +414,15 @@ input.sp-input {
   background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
   background-image: linear-gradient(to bottom, #eeeeee, #cccccc);
-  border: 1px solid #ccc;
-  border-bottom: 1px solid #bbb;
-  border-radius: 3px;
+  border: 0.0732vw solid #ccc;
+  border-bottom: 0.0732vw solid #bbb;
+  border-radius: 0.2196vw;
   color: #333;
-  font-size: 14px;
+  font-size: 1.025vw;
   line-height: 1;
-  padding: 5px 4px;
+  padding: 0.366vw 0.2928vw;
   text-align: center;
-  text-shadow: 0 1px 0 #eee;
+  text-shadow: 0 0.0732vw 0 #eee;
   vertical-align: middle;
 }
 .sp-container button:hover {
@@ -433,27 +433,27 @@ input.sp-input {
     background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
     background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
     background-image: linear-gradient(to bottom, #dddddd, #bbbbbb);
-    border: 1px solid #bbb;
-    border-bottom: 1px solid #999;
+    border: 0.0732vw solid #bbb;
+    border-bottom: 0.0732vw solid #999;
     cursor: pointer;
-    text-shadow: 0 1px 0 #ddd;
+    text-shadow: 0 0.0732vw 0 #ddd;
 }
 .sp-container button:active {
-    border: 1px solid #aaa;
-    border-bottom: 1px solid #888;
-    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    border: 0.0732vw solid #aaa;
+    border-bottom: 0.0732vw solid #888;
+    -webkit-box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
+    -o-box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
+    box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
 }
 .sp-cancel
 {
-    font-size: 11px;
+    font-size: 0.805vw;
     color: #d93f3f !important;
     margin:0;
-    padding:2px;
-    margin-right: 5px;
+    padding:0.1464vw;
+    margin-right: 0.366vw;
     vertical-align: middle;
     text-decoration:none;
 

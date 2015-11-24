@@ -417,6 +417,9 @@ Impressionist.prototype =
                     if (me.selectedElement !== "") {
                         scalePlay(me.selectedElement[0]);
                     }
+                    else{
+                        
+                    }
                 });
 
                 //$(".slidelement").drags();

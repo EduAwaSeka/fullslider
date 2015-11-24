@@ -16,9 +16,9 @@
         // in the markup as "data-button-class"   
         buttonClasses: {
             'default': ['save'],
-            'all': ['bold', 'italic', 'underline', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'save'],
+            'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'justify-left', 'justify-center', 'justify-right', 'unordered-list', 'ordered-list', 'link', 'clear-formatting', 'font-size', 'font-family', 'color']
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
         }
     };
 
@@ -51,15 +51,15 @@
             'click .etch-italic': 'toggleItalic',
             'click .etch-underline': 'toggleUnderline',
             'click .etch-heading': 'toggleHeading',
-            'click .etch-unordered-list': 'toggleUnorderedList',
-            'click .etch-justify-left': 'justifyLeft',
-            'click .etch-justify-center': 'justifyCenter',
-            'click .etch-justify-right': 'justifyRight',
-            'click .etch-ordered-list': 'toggleOrderedList',
+            'click .etch-list-ul': 'toggleUnorderedList',
+            'click .etch-align-left': 'justifyLeft',
+            'click .etch-align-center': 'justifyCenter',
+            'click .etch-align-right': 'justifyRight',
+            'click .etch-list-ol': 'toggleOrderedList',
             'click .etch-link': 'toggleLink',
             'click .etch-image': 'getImage',
             'click .etch-save': 'save',
-            'click .etch-clear-formatting': 'clearFormatting',
+            'click .etch-eraser': 'clearFormatting',
             'click [data-option="fontSize"]': 'setFontSize',
             'click [data-option="fontFamily"]': 'setFontFamily'
         },
@@ -97,7 +97,7 @@
                         var $buttonEl = $(color_selector);
                         break;
                     default:
-                        var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"></span></a>');
+                        var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-'+button+'"></i></span></a>');
                 }
 
                 view.$el.append($buttonEl);

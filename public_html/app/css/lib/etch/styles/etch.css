@@ -4,7 +4,7 @@
                      background-image: -moz-linear-gradient(center bottom, #ccc 0%, #ddd 100%);
                      background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#ccc));
                      -webkit-border-radius: 0.2196vw; -moz-border-radius: 0.2196vw; border-radius: 0.2196vw;
-                     -webkit-box-shadow: inset 0.0732vw 0 0 #dfdfdf, inset 0 0.0732vw 0 #dfdfdf, inset -0.0732vw 0 0 #dfdfdf, inset 0 -0.0732vw 0 #dfdfdf, 0 0 5px rgba(0,0,0,.3);
+                     -webkit-box-shadow: inset 0.0732vw 0 0 #dfdfdf, inset 0 0.0732vw 0 #dfdfdf, inset -0.0732vw 0 0 #dfdfdf, inset 0 -0.0732vw 0 #dfdfdf, 0 0 0.366vw rgba(0,0,0,.3);
                      opacity: 0.98;
                      overflow: block !important;
 }
@@ -20,24 +20,25 @@
 .etch-editor-button span:active { box-shadow: inset 0 0 1.098vw rgba(0,0,0,.5); border-color: #999; }
 
 .etch-editor-button span,
-.etch-editor-button span { background: url('images/editor_icons.png') no-repeat;
+.etch-editor-button span {
+    /*background: url('images/editor_icons.png') no-repeat;*/
                            display: block; height: 100%; width: 100%;
 }
 
 .etch-editor-panel .etch-bold span { background-position: 0 0; }
-.etch-editor-panel .etch-italic span { background-position: -30px 0; }
-.etch-editor-panel .etch-underline span { background-position: -60px 0; }
-.etch-editor-panel .etch-unordered-list span { background-position: -90px 0; }
-.etch-editor-panel .etch-ordered-list span { background-position: -120px 0; }
+.etch-editor-panel .etch-italic span { background-position: -2.1962vw 0; }
+.etch-editor-panel .etch-underline span { background-position: -4.39vw 0; }
+.etch-editor-panel .etch-unordered-list span { background-position: -6.589vw 0; }
+.etch-editor-panel .etch-ordered-list span { background-position: -8.785vw 0; }
 .etch-editor-panel .etch-image span { background-position: -10.981vw 0; }
-.etch-editor-panel .etch-link span { background-position: -180px 0; }
-.etch-editor-panel .etch-save span { background-position: -210px 0; }
-.etch-editor-panel .etch-justify-left span { background-position: -240px 0; }
-.etch-editor-panel .etch-justify-center span { background-position: -270px 0; }
-.etch-editor-panel .etch-justify-right span { background-position: -300px 0; }
-.etch-editor-panel .etch-cite span { background-position: -330px 0; }
-.etch-editor-panel .etch-heading span { background-position: -360px 0; }
-.etch-editor-panel .etch-clear-formatting span { background-position: -390px 0; }
+.etch-editor-panel .etch-link span { background-position: -13.177vw 0; }
+.etch-editor-panel .etch-save span { background-position: -15.373vw 0; }
+.etch-editor-panel .etch-justify-left span { background-position: -17.57vw 0; }
+.etch-editor-panel .etch-justify-center span { background-position: -19.766vw 0; }
+.etch-editor-panel .etch-justify-right span { background-position: -21.962vw 0; }
+.etch-editor-panel .etch-cite span { background-position: -24.158vw 0; }
+.etch-editor-panel .etch-heading span { background-position: -26.354vw 0; }
+.etch-editor-panel .etch-clear-formatting span { background-position: -28.55vw 0; }
 
 .etch-editor-panel .btn-group .btn:hover{
     background: #fff !important;
@@ -46,7 +47,7 @@
     border-top-color: #000 !important;
 }
 .etch-editor-panel .btn-group .caret{
-    margin-top: 0px;
+    margin-top: 0vw;
     margin-left: 0.25em;
 }
 .etch-editor-panel .btn-group .btn:hover .caret{
@@ -61,7 +62,7 @@
 
 .etch-editor-panel .btn-group li{
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 29.283vw;
 }
 .etch-editor-panel .btn-group li a:hover{
     color: #FFFFFF;
@@ -71,6 +72,12 @@
     background-image: linear-gradient(to bottom, #3498DB, #3491D0);
 }
 
+#etch-font-family ul{
+    min-width: 23.713vw;
+}
+#etch-font-family ul a{
+    padding: 0.21962vw 0.23vw;
+}
 #etch-font-family li{
     font-size: 1.25em;
 }
@@ -91,4 +98,14 @@
 .etch-underline, .etch-justify-right, .etch-ordered-list{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.is-etch-button{
+    width: 66% !important;
+    margin: 0 auto;
+    padding-top: 0.29vw;
+}
+
+.is-etch-button i{
+    font-size: 1.25vw;
 }
