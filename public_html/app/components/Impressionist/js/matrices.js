@@ -158,10 +158,11 @@
                     var element = $(document).find("[data-select='true']");
                     var el_height = element[0].offsetHeight;
 
-                    var initialPoint = $(element[0]).offset().top + el_height;
                     var container = $(".fullslider-slide-container");
                     var right_limit = container.offset().left + container.width();
                     var bottom_limit = container.offset().top + container.height();
+
+                    var initialPoint = $(element[0]).offset().top + el_height;
                     var difference = e.pageY - initialPoint;
                     var new_heigth = el_height + difference;
 
