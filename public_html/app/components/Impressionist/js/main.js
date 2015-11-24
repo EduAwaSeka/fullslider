@@ -124,7 +124,7 @@ Impressionist.prototype =
                     }
                     else
                     {
-                        me.openWelcomePanel();
+                        me.openNewPresentationWindow();
                     }
 
                 }
@@ -938,8 +938,8 @@ Impressionist.prototype =
                         console.log("saving now");
                         $("#presentationmetatitle").html($("#titleinput").val());
                         me.currentPresentation.title = $("#titleinput").val();
-                        $(".modal").modal("hide");
                     }
+                        $(".modal").modal("hide");
                 });
                 $("#savepresentationbtn").on("click", function(e)
                 {
@@ -981,6 +981,7 @@ Impressionist.prototype =
                 });
                 $(".newpresopanel").on("click", function(e)
                 {
+                    $(".modal").modal("hide");
                     console.log("open image modal...");
                     $("#newpresentationmodal").removeClass("hide");
                     $("#newpresentationmodal").modal("show");
