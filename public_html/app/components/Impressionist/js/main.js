@@ -466,7 +466,7 @@ Impressionist.prototype =
 
                 //only can moves in slide
                 $(function() {
-                    $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container"});
+                    $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container",scroll: false});
                 });
             },
             positionTransformControl: function( )

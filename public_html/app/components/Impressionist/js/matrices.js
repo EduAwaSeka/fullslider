@@ -159,19 +159,32 @@
                     var el_height = element[0].offsetHeight;
 
                     var initialPoint = $(element[0]).offset().top + el_height;
+                    var container = $(".fullslider-slide-container");
+                    var right_limit = container.offset().left + container.width();
+                    var bottom_limit = container.offset().top + container.height();
                     var difference = e.pageY - initialPoint;
                     var new_heigth = el_height + difference;
 
                     if (element.attr("data-type") === "text") {
                         var scale = new_heigth / el_height;
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
-                        fontsize *= scale;
-                        if (fontsize < 16) {
-                            fontsize = 16;
+                        var new_fontsize = fontsize * scale;
+                        if (new_fontsize < 16) {
+                            new_fontsize = 16;
                         }
-                        fontsize = pxToVw(fontsize);
-                        fontsize += "vw";
-                        me.selectedElement.css("font-size", fontsize);
+                        new_fontsize = pxToVw(new_fontsize);
+                        new_fontsize += "vw";
+                        me.selectedElement.css("font-size", new_fontsize);
+
+                        //If element with new size is out of container, undo resize
+                        var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
+                        var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
+                        if (right_pos > right_limit || bottom_pos > bottom_limit) {
+                            fontsize = pxToVw(fontsize);
+                            fontsize += "vw";
+                            me.selectedElement.css("font-size", fontsize);
+                        }
+
                     }
                     else {
                         var el_width = element[0].offsetWidth;
@@ -191,6 +204,15 @@
                         }
                         element.css("height", new_heigth + "vw");
                         element.css("width", new_width + "vw");
+
+                        var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
+                        var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
+                        if (right_pos > right_limit || bottom_pos > bottom_limit) {
+                            el_width = pxToVw(el_width);
+                            el_height = pxToVw(el_height);
+                            element.css("height", el_height + "vw");
+                            element.css("width", el_width + "vw");
+                        }
                     }
                     scalePlay(element[0]);
                     break;
