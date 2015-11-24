@@ -313,9 +313,16 @@ body
     -webkit-transition: opacity 0.5s ease;
     opacity: 1;
 }
+.grabbing{
+    cursor: move;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+}
 .movecursor
 {
     cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
 }
 .selectioncursor
 {

@@ -417,8 +417,8 @@ Impressionist.prototype =
                     if (me.selectedElement !== "") {
                         scalePlay(me.selectedElement[0]);
                     }
-                    else{
-                        
+                    else {
+
                     }
                 });
 
@@ -435,7 +435,8 @@ Impressionist.prototype =
                 {
                     me.selectElement(this);
                     if (!($(this).attr("contentEditable") == "true")) {
-                        $(this).addClass("movecursor");
+                        $(this).removeClass("movecursor");
+                        $(this).addClass("grabbing");
                     }
                 }).on("mouseover", function(e)
                 {
@@ -446,8 +447,13 @@ Impressionist.prototype =
                 {
                     console.log("mouse upping", me.selectedSlide);
                     me.selectElement(this);
+                    $(this).removeClass("grabbing");
+                    if (!($(this).attr("contentEditable") == "true")) {
+                        $(this).addClass("movecursor");
+                    }
                 }).on("drag", function(e)
                 {
+                    $(this).removeClass("movecursor");
                     if (me.isSelected(this)) {
                         scalePlay(this);
                     }
@@ -942,7 +948,7 @@ Impressionist.prototype =
                         $("#presentationmetatitle").html($("#titleinput").val());
                         me.currentPresentation.title = $("#titleinput").val();
                     }
-                        $(".modal").modal("hide");
+                    $(".modal").modal("hide");
                 });
                 $("#savepresentationbtn").on("click", function(e)
                 {
