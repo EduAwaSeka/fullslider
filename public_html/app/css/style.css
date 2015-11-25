@@ -214,6 +214,13 @@ p {
     height: 38.8vw !important;
 }
 
+.slidelement div,.slidelement span, .slidelement ul,
+.slidelement li, .slidelement ol, .slidelement b,
+.slidelement u, .slidelement p, .slidelement i,
+.slidelement a, .slidelement font { 
+    font-size: inherit !important
+}
+
 #markdown-editor{
     border-left: 0.0732vw solid #767575;
     background-color: #34495E;
