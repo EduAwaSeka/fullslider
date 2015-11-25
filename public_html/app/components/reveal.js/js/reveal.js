@@ -457,10 +457,11 @@
 
 		// Arrow controls
 		createSingletonNode( dom.wrapper, 'aside', 'controls',
-			'<div class="navigate-left"></div>' +
-			'<div class="navigate-right"></div>' +
-			'<div class="navigate-up"></div>' +
-			'<div class="navigate-down"></div>' );
+			'<div class="navigate-left" title="previous slide" alt="previous slide"></div>' +
+			'<div class="navigate-right" title="next slide" alt="next slide"></div>' +
+			'<div class="navigate-up" title="slide up" alt="slide up"></div>' +
+			'<div class="navigate-down" title="slide down" alt="slide down"></div>'+
+                        '<div class="fullscr" title="fullscreen" alt="fullscreen"><i class="fa fa-arrows-alt"></i></div>');
 
 		// Slide number
 		dom.slideNumber = createSingletonNode( dom.wrapper, 'div', 'slide-number', '' );
@@ -481,6 +482,14 @@
 		dom.controlsDown = toArray( document.querySelectorAll( '.navigate-down' ) );
 		dom.controlsPrev = toArray( document.querySelectorAll( '.navigate-prev' ) );
 		dom.controlsNext = toArray( document.querySelectorAll( '.navigate-next' ) );
+		dom.controlsFullScreen = toArray( document.querySelectorAll( '.fullscr' ) );
+                
+                $(".fullscr").on("mouseover", function(e){
+                    $(this).addClass("fshover");
+                });
+                $(".fullscr").on("mouseout", function(e){
+                    $(this).removeClass("fshover");
+                });
 
 		dom.statusDiv = createStatusDiv();
 	}
@@ -984,6 +993,7 @@
 			dom.controlsDown.forEach( function( el ) { el.addEventListener( eventName, onNavigateDownClicked, false ); } );
 			dom.controlsPrev.forEach( function( el ) { el.addEventListener( eventName, onNavigatePrevClicked, false ); } );
 			dom.controlsNext.forEach( function( el ) { el.addEventListener( eventName, onNavigateNextClicked, false ); } );
+			dom.controlsFullScreen.forEach( function( el ) { el.addEventListener( eventName, onFullScreenClicked, false ); } );
 		} );
 
 	}
@@ -4070,6 +4080,7 @@
 	function onNavigateDownClicked( event ) { event.preventDefault(); onUserInput(); navigateDown(); }
 	function onNavigatePrevClicked( event ) { event.preventDefault(); onUserInput(); navigatePrev(); }
 	function onNavigateNextClicked( event ) { event.preventDefault(); onUserInput(); navigateNext(); }
+	function onFullScreenClicked( event ) { event.preventDefault(); onUserInput(); toggleFullScreen(); }
 
 	/**
 	 * Handler for the window level 'hashchange' event.
