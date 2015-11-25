@@ -217,6 +217,7 @@ p {
     background-color: #34495E;
     height: 100%;
     padding: 0.5%;
+    z-index: 2;
 }
 
 #markdown-space{

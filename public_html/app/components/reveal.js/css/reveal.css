@@ -35,8 +35,9 @@ html, body {
 body {
   position: relative;
   line-height: 1;
-  background-color: #fff;
-  color: #000; }
+  background-color: #fff; 
+  color: #000; 
+  }
 
 /*********************************************
  * VIEW FRAGMENTS
@@ -745,7 +746,9 @@ body {
   top: 0;
   left: 0;
   -webkit-perspective: 600px;
-          perspective: 600px; }
+  perspective: 600px;
+  background-color: #fff;
+  }
 
 .reveal .slide-background {
   display: none;
