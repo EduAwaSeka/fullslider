@@ -466,7 +466,7 @@ Impressionist.prototype =
 
                 //only can moves in slide
                 $(function() {
-                    $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container",scroll: false});
+                    $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container", scroll: false});
                 });
             },
             positionTransformControl: function( )
@@ -937,17 +937,13 @@ Impressionist.prototype =
                 });
                 $(".createpresentation").on("click", function(e)
                 {
-                    console.log("Mode", me.mode);
-                    if (me.mode == "create")
-                    {
-                        me.createNewPresentation();
-                    }
-                    else
-                    {
-                        console.log("saving now");
-                        $("#presentationmetatitle").html($("#titleinput").val());
-                        me.currentPresentation.title = $("#titleinput").val();
-                    }
+
+                    me.createNewPresentation();
+
+                    console.log("saving now");
+                    $("#presentationmetatitle").html($("#titleinput").val());
+                    me.currentPresentation.title = $("#titleinput").val();
+
                     $(".modal").modal("hide");
                 });
                 $("#savepresentationbtn").on("click", function(e)
@@ -1110,25 +1106,25 @@ Impressionist.prototype =
             generateExportMarkup: function()
             {
                 var children = $(".slidethumbholder").children();
-                var count = 0;
+//                var count = 0;
                 for (var i = 0; i < children.length; i++)
                 {
                     var child = $(children[i]);
                     var id = child.attr("id").split("_")[1];
-                    var l = count;
-                    count += 200;
-                    var t = child.attr("data-top").split("px")[0];
+//                    var l = count;
+//                    count += 200;
+//                    var t = child.attr("data-top").split("px")[0];
 
-                    var coords = me.calculateSlideCoordinates(l, t);
+//                    var coords = me.calculateSlideCoordinates(l, t);
                     var el = $("#fullslider_slide_" + id);
-                    el.attr("data-x", coords.x - 500);
-                    el.attr("data-y", coords.y);
+//                    el.attr("data-x", coords.x - 500);
+//                    el.attr("data-y", coords.y);
 //                    el.attr("data-rotate", child.attr("data-rotate"));
 //                    el.attr("data-rotate-x", child.attr("data-rotate-x"));
 //                    el.attr("data-rotate-y", child.attr("data-rotate-y"));
 //                    el.attr("data-z", child.attr("data-z"));
 //                    el.attr("data-scale", child.attr("data-scale"));
-                    el.addClass("step");
+//                    el.addClass("step");
                 }
                 var outputcontainer = $(".fullslider-slide-container").clone();
                 console.log("output", $(".fullslider-slide-container").html().toString());
@@ -1143,8 +1139,15 @@ Impressionist.prototype =
             createNewPresentation: function()
             {
                 $(".slidethumbholder").html("");
-                $(".fullslider-slide-container").html();
+                $(".fullslider-slide-container").html("");
                 me.addSlide();
+                var presentation = {
+                    title: $("#presentationmetatitle").text(),
+                    contents: $(".fullslider-slide-container").html().toString(),
+                    thumbcontents: $(".slidethumbholder").html().toString(),
+                };
+                me.currentPresentation=presentation;
+                
             },
             openPresentationForEdit: function(id)
             {
@@ -1254,12 +1257,10 @@ Impressionist.prototype =
                 $("#savepresentationbtn").html('<i class="icon-ok-sign"></i>&nbsp;Save');
             },
             generateFile: function() {
-                var id = me.currentPresentation.id
                 var title = me.getTitle();
                 var contents = me.generateExportMarkup();
                 var thumbcontents = $(".slidethumbholder").html().toString();
                 var file = {
-                    'id': id,
                     'title': title,
                     'contents': contents,
                     'thumbcontents': thumbcontents
