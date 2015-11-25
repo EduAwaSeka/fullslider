@@ -167,8 +167,10 @@ p {
 }
 
 .deletebtn{
-    bottom: 37% !important;
-    right: 34% !important;
+    bottom: 80% !important;
+    right: -5% !important;
+    font-size: 0.8vw !important;
+    padding: 0.35vw 0.55vw !important;
 }
 
 
