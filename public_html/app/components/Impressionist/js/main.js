@@ -425,7 +425,9 @@ Impressionist.prototype =
                 //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
-                    me.editElement(this);
+                    if ($(this).attr("data-type") !== "image") {
+                        me.editElement(this);
+                    }
                 }).on("click", function(e)
                 {
                     e.stopPropagation();
@@ -544,7 +546,7 @@ Impressionist.prototype =
                         e.preventDefault();
                     };
                     var replacer = $("#tools").find(".sp-replacer");
-                    replacer.html('<i class="icon-tint"></i>');
+                    replacer.html('<i class="fa fa-tint"></i>');
                     replacer.addClass("btn btn-info menubtn");
                     replacer.removeClass("sp-replacer sp-dark");
                     $(".sp-replacer").mousedown(prevent);
@@ -576,7 +578,7 @@ Impressionist.prototype =
                 //$(".dropdownpopup").css("display", "none");
                 me.generateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (!(t.hasClass("is-etch-button")) && !($("#addElementsPanel").find(t).length)) {
+                if (!(t.hasClass("is-etch-button")) && !(t.parent().hasClass("is-etch-button")) && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
             },
@@ -1146,8 +1148,8 @@ Impressionist.prototype =
                     contents: $(".fullslider-slide-container").html().toString(),
                     thumbcontents: $(".slidethumbholder").html().toString(),
                 };
-                me.currentPresentation=presentation;
-                
+                me.currentPresentation = presentation;
+
             },
             openPresentationForEdit: function(id)
             {
@@ -1254,7 +1256,7 @@ Impressionist.prototype =
             },
             resetSaveButtonText: function()
             {
-                $("#savepresentationbtn").html('<i class="icon-ok-sign"></i>&nbsp;Save');
+                $("#savepresentationbtn").html('<i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Save');
             },
             generateFile: function() {
                 var title = me.getTitle();
@@ -1389,6 +1391,7 @@ Impressionist.prototype =
                 $(img).css("top", "15vw");
                 $(img).addClass("slidelement");
                 $(img).attr("src", src);
+                $(img).attr("data-type", "image");
                 console.log("selectedslide", me.selectedSlide);
                 me.selectedSlide.append($(img));
                 var im_height = $("#slidelement_" + id)[0].offsetHeight;

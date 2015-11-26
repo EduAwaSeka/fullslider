@@ -12,7 +12,6 @@ Eduardo Jiménez Grande
         <!-- IMPRESIONIST BEGIN -->
 
         <!-- Loading Bootstrap -->
-        <link type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link rel="icon" type="image/ico" href="app/images/" />
         <!-- Loading Flat UI -->
         <link type="text/css" href="app/components/Impressionist/css/flat-ui.css" rel="stylesheet">
@@ -20,7 +19,6 @@ Eduardo Jiménez Grande
         <link type="text/css" href="app/components/Impressionist/css/progressbar.css" rel="stylesheet">
         <link type="text/css" href="app/components/Impressionist/css/sliderskin.css" rel="stylesheet">
         <link type="text/css" href="app/components/Impressionist/css/codemirror.css" rel="stylesheet">
-        <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
         <!-- webfonts -->
         <link type="text/css" href="app/components/Impressionist/css/custom.css" rel="stylesheet">
@@ -55,28 +53,27 @@ Eduardo Jiménez Grande
                     </button>
                     <ul class="dropdown-menu">
                         <li><a id="newpresopanel" class="newpresopanel"><i class="fui-plus-24"></i>&nbsp; New Presentation</a></li>
-                        <li><a id="openpresentationsbtn"><i class="icon-time"></i>&nbsp; Recent presentations</a></li>
-
+<!--                        <li><a id="openpresentationsbtn"><i class="glyphicon glyphicon-time"></i>&nbsp; Recent presentations</a></li>-->
                     </ul>
                 </div>
 
                 <div id="tools" class="col-sm-11 navbar-brand sidebarfooter">
                     <div class="btn-group" id="addElementsPanel">
-                        <a class="btn btn-info toolbarblockleft" id="addtextbtn" href="#" title="Add text"><i class="icon-plus"></i> <i class="icon-font"></i></a>
-                        <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="icon-picture"></i></a>
+                        <a class="btn btn-info toolbarblockleft" id="addtextbtn" href="#" title="Add text"><i class="fa fa-plus"></i> <i class="fa fa-font"></i></a>
+                        <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="fa fa-image"></i></a>
                     </div>
                     <div class="btn-group" id="textTools">
-                        <a class="btn btn-info menubtn" href="#" id="makebold"><i class="icon-bold"></i></a>
-                        <a class="btn btn-info menubtn" href="#" id="makeitalic"><i class="icon-italic"></i></a>
-                        <a class="btn btn-info menubtn" href="#" id="makeunderline"><i class="icon-underline"></i></a>
-                        <a class="btn btn-info menubtn toolbarblockleft" href="#" id="makealignleft"><i class="icon-align-left"></i></a>
-                        <a class="btn btn-info menubtn" href="#"><i class="icon-align-center" id="makealigncenter"></i></a>
-                        <a class="btn btn-info menubtn" href="#"><i class="icon-align-right" id="makealignright"></i></a>
+                        <a class="btn btn-info menubtn" href="#" id="makebold"><i class="fa fa-bold"></i></a>
+                        <a class="btn btn-info menubtn" href="#" id="makeitalic"><i class="fa fa-italic"></i></a>
+                        <a class="btn btn-info menubtn" href="#" id="makeunderline"><i class="fa fa-underline"></i></a>
+                        <a class="btn btn-info menubtn toolbarblockleft" href="#" id="makealignleft"><i class="fa fa-align-left"></i></a>
+                        <a class="btn btn-info menubtn" href="#"><i class="fa fa-align-center" id="makealigncenter"></i></a>
+                        <a class="btn btn-info menubtn" href="#"><i class="fa fa-align-right" id="makealignright"></i></a>
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
                         <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fui-eye-16"></i>&nbsp; View</a>
-                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="icon-ok-sign"></i>&nbsp; Save</a> 
+                        <!--<a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp; Save</a>--> 
                         <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; Download</a> 
                         <button id="loadpresbtn" class="loadpresbtn btn btn-large btn-inline btn-info previewbtn" title="Open Presentation" data-loading-text="Loading..."><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open</button> 
                         <input id="inputFile" type="file" name="openFile" style="visibility: hidden;" accept=".fspf"/>
@@ -89,7 +86,7 @@ Eduardo Jiménez Grande
                     <div id="vertical-toolbar" class="col-sm-2 ">
                         <div class ="mainfooter palette-night col-sm-12">
                             <div class = "slidethumbholdercontainer">
-                                <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn" title="Add slide"><i class="icon-plus"></i>&nbsp;Add Slide</a>
+                                <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn" title="Add slide"><i class="fa fa-plus"></i>&nbsp;Add Slide</a>
 
                                 <div class = "slidethumbholder">
 
@@ -101,17 +98,17 @@ Eduardo Jiménez Grande
                     <div id="workspace" class="slideviewportcontainer col-sm-10">
                         <div class="presentationmeta">
                             <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
-                            <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary" title="Change title"><i class="icon-edit"></i></a>
+                            <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary" title="Change title"><i class="fa fa-edit"></i></a>
                         </div>
                         <div class="slideviewport col-sm-12">
                             <div class="fullslider-slide-container">
 
                             </div>
                             <span id="play">
-                                <span class="rotate label label-disabled" id="spanrotate"><i class="icon-rotate-left"></i></span>
-                                <span class="scale label label-important"><i class="icon-resize-horizontal"></i></span>
-                                <span class="skewx label label-disabled" id="spanskewx"><i class="icon-resize-horizontal"></i></span>
-                                <span class="skewy label label-disabled" id="spanskewy"><i class="icon-resize-vertical"></i></span>
+                                <span class="rotate label label-disabled" id="spanrotate"><i class="fa fa-rotate-left"></i></span>
+                                <span class="scale label label-important"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
+                                <span class="skewx label label-disabled" id="spanskewx"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
+                                <span class="skewy label label-disabled" id="spanskewy"><i class="glyphicon glyphicon-resize-vertical"></i></span>
                                 <span class="deleteicon label label-important" id="spandelete"><i class="fui-cross-16"></i></span>
 
                                 <!-- <span class="move">move</span>-->

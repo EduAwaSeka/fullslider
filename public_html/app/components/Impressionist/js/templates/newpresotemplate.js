@@ -7,7 +7,7 @@ var welcome_panel = '<!-- Welcome panel -->'+
                             '<div>You can create a new presentation or open file from your device</div>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-primary newpresopanel"> <i class="icon-plus"></i> &nbsp; New presentation</a>'+
+                            '<a href="#" class="btn btn-primary newpresopanel"> <i class="fa fa-plus"></i> &nbsp; New presentation</a>'+
                             '<a href="#" class="btn btn-success loadpresbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
                         '</div>'+
                     '</div>'+
@@ -26,7 +26,7 @@ var saved_presentations = '<div class="savedpresos">' +
                                     '</div>'+
                                     '<div class="presothumb" >'+
                                         '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn" style="position:absolute; right: 10px; top: 10px"><i class="glyphicon glyphicon-pencil"></i></a>' +
-                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-danger deletepresobtn" style="position:absolute; right: 60px; top: 10px"><i class="icon-trash"></i></a></br>'+
+                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-danger deletepresobtn" style="position:absolute; right: 60px; top: 10px"><i class="fa fa-trash"></i></a></br>'+
                                     '</div>' +
                             '</div>';
 var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
@@ -100,8 +100,8 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                             '<img id="previewimg"></img>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
-                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="icon-plus"></i> Add</a>'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="fa fa-plus"></i> Add</a>'+
                         '</div>'+
                     '</div>';
             
@@ -115,7 +115,7 @@ var my_pres_modal= '<!-- Saved Presentations Modal -->'+
                         '<div class="modal-body" id="savedpresentations">'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End Saved Presentations Modal -->';
@@ -131,8 +131,8 @@ var new_pres_modal= '<!-- New Presentation Modal -->'+
                             '<input type="text" id="titleinput" class="image-input" value="New Presentation"> </input>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="icon-remove"></i> Close</a>'+
-                            '<a href="#" class="btn btn-primary createpresentation"> <i class="icon-plus"></i> &nbsp; Save</a>'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary createpresentation"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
