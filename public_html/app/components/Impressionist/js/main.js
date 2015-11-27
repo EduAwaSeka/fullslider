@@ -72,7 +72,6 @@ Impressionist.prototype =
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
 
-                me.positionOrchestrationPanel();
                 me.setupColorpickerPopup();
                 me.setupMenuItemEvents();
                 me.enableSort();
@@ -556,18 +555,10 @@ Impressionist.prototype =
                     $colorChooser.find("div").css("backgroundColor", '#' + hex);
                 }
             },
-            positionOrchestrationPanel: function()
-            {
-                ypos = $(".mainfooter").position().top;
-                ht = $(".mainfooter").height();
-                orchestrationareapos = ypos + ht;
-                console.log("ypos", ypos);
-                //$(".orchgreyarea").css("top", orchestrationareapos+"px" );
-            },
             addSettingsPanel: function(type)
             {
                 if (!me.currentPresentation) {
-                    this.addSlide();
+                    me.createNewPresentation();
                 }
                 this.removelisteners();
                 this.attachListeners();
@@ -940,12 +931,18 @@ Impressionist.prototype =
                 $(".createpresentation").on("click", function(e)
                 {
 
-                    me.createNewPresentation();
-
-                    console.log("saving now");
-                    $("#presentationmetatitle").html($("#titleinput").val());
-                    me.currentPresentation.title = $("#titleinput").val();
-
+                    console.log("Mode", me.mode);
+                    if (me.mode == "create")
+                    {
+                        me.createNewPresentation();
+                    }
+                    else
+                    {
+                        console.log("saving now");
+                        $("#presentationmetatitle").html($("#titleinput").val());
+                        me.currentPresentation.title = $("#titleinput").val();
+                        me.savePresentation();
+                    }
                     $(".modal").modal("hide");
                 });
                 $("#savepresentationbtn").on("click", function(e)
@@ -1144,6 +1141,7 @@ Impressionist.prototype =
                 $(".fullslider-slide-container").html("");
                 me.addSlide();
                 var presentation = {
+                    id: Math.round(Math.random() * 201020),
                     title: $("#presentationmetatitle").text(),
                     contents: $(".fullslider-slide-container").html().toString(),
                     thumbcontents: $(".slidethumbholder").html().toString(),
@@ -1262,7 +1260,9 @@ Impressionist.prototype =
                 var title = me.getTitle();
                 var contents = me.generateExportMarkup();
                 var thumbcontents = $(".slidethumbholder").html().toString();
+                var id= me.currentPresentation.id;
                 var file = {
+                    'id': id,
                     'title': title,
                     'contents': contents,
                     'thumbcontents': thumbcontents
@@ -1326,6 +1326,7 @@ Impressionist.prototype =
                     });
                 });
                 me.enableDrag();
+                
             },
             existPresentation: function(id) {
                 var exist = false;

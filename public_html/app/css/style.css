@@ -93,7 +93,7 @@ p {
 #body-editor{
     position: absolute;
     width: 100%;
-    height: 42.3167vw;
+    height: 100%;
     overflow-y: hidden;
 }
 
@@ -149,7 +149,7 @@ p {
     right: initial;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 36.5vw;
+    height: 81%;
 }
 
 .slidethumb {
@@ -232,7 +232,7 @@ p {
 
 #markdown-space{
     width: 100%;
-    height: 92%;
+    height: 85%;
 }
 
 #markdown-space textArea{

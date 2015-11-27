@@ -5035,10 +5035,10 @@ a.label:focus {
 
 .label, .badge {
     display: inline-block;
-    padding: 2px 4px;
-    font-size: 11.844px;
+    padding: 0.1464vw 0.2928vw;
+    font-size: 0.8671vw;
     font-weight: bold;
-    line-height: 14px;
+    line-height: 1.025vw;
     color: #ffffff;
     vertical-align: baseline;
     white-space: nowrap;
