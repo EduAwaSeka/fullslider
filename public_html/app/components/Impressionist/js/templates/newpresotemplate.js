@@ -25,8 +25,8 @@ var saved_presentations = '<div class="savedpresos">' +
                                         '<h3 style="display:inline-block; color:#2980B9"> __presotitle__</h3>'+
                                     '</div>'+
                                     '<div class="presothumb" >'+
-                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn" style="position:absolute; right: 10px; top: 10px"><i class="glyphicon glyphicon-pencil"></i></a>' +
-                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-danger deletepresobtn" style="position:absolute; right: 60px; top: 10px"><i class="fa fa-trash"></i></a></br>'+
+                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-info openpresobtn"><i class="glyphicon glyphicon-pencil"></i></a>' +
+                                        '<a href="#"  data-id="__presoid__" class="btn btn-inline btn-danger deletepresobtn"><i class="fa fa-trash"></i></a></br>'+
                                     '</div>' +
                             '</div>';
 var font_size_selector = '<div id="etch-font-size" class="btn-group">'+

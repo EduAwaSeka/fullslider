@@ -21,26 +21,26 @@ body
 }
 .versiontext
 {
-    font-size: 12px;
+    font-size: 0.8785vw;
     font-weight: bold;
-    margin-left: 3px;
+    margin-left: 0.2196vw;
     color: #000;
 }
 .logoholder
 {
-    border-bottom: 3px solid #000;
+    border-bottom: 0.2196vw solid #000;
 }
 .logoimg
 {
     position: absolute;
-    left: 5px;
+    left: 0.366vw;
     top: -6px;
 }
 .logotext
 {
-    margin-left: 50px !important;
+    margin-left: 3.66vw !important;
     text-transform: none;
-    font-size: 20px;
+    font-size: 1.464vw;
     color: white;
 }
 .mainviewport
@@ -80,7 +80,7 @@ body
 {
     text-transform: none !important;
     opacity: 1;
-    border-bottom: 1px solid #34495E;
+    border-bottom: 0.0732vw solid #34495E;
 
 
 
@@ -90,18 +90,18 @@ body
     text-transform: none !important;
     opacity : 0.6;
     -webkit-transition: opacity 0.5s ease;
-    border-bottom: 1px solid #34495E;	
+    border-bottom: 0.0732vw solid #34495E;	
 }
 .menuheader
 {
-    margin-left: 20px;
-    padding-top: 15px;
+    margin-left: 1.464vw;
+    padding-top: 1.0981vw;
 }
 .menuicon
 {
     position: absolute;
-    right : 10px;
-    top : 20px;
+    right : 0.732vw;
+    top : 1.464vw;
 }
 .sidebarfooter
 {
@@ -109,7 +109,7 @@ body
     /* bottom:0px; */
     /* left:0px; */
     /* width: 229px; */
-    /* height: 100px; */
+    /* height: 7.321vw; */
     /* background-color: #2C3E50; */
 }
 .mainfooter
@@ -126,8 +126,8 @@ body
 .previewbtn
 {
     display: inline-block;
-    /* margin-left: 10px; */
-    /* margin-top: 30px; */
+    /* margin-left: 0.732vw; */
+    /* margin-top: 2.1962vw; */
 }
 .maingreyarea
 {
@@ -155,12 +155,12 @@ body
 .slideviewport
 {
     position: absolute;
-    left: 5px;
-    top: 10px;
+    left: 0.366vw;
+    top: 0.732vw;
     width: 930px;
     height : 530px;
     background-color: #FFF;
-    border : 1px dashed #ECF0F1;
+    border : 0.0732vw dashed #ECF0F1;
     text-transform: none;
     /*-webkit-user-select: none;*/
 }
@@ -184,7 +184,7 @@ body
 .mainheaderbar
 {
     width:100%;
-    height: 40px;
+    height: 2.928vw;
     margin-left: 230px;
 
 }
@@ -195,10 +195,10 @@ body
     top:0px;
     bottom:0px;
     width:500px;
-    border-right : 1px solid #2980B9;
+    border-right : 0.0732vw solid #2980B9;
     text-transform: none !important;
     background: rgba(74,89,108,1);
-    border-left: 1px solid #2980B9;
+    border-left: 0.0732vw solid #2980B9;
     z-index: 10;
 
 }
@@ -209,25 +209,25 @@ body
 }
 #newpreso
 {
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin-left: 2.1962vw;
+    margin-top: 0.732vw;
+    margin-bottom: 0.732vw;
+    margin-right: 0.732vw;
 
 }
 #presotitledescription
 {
-    width: 400px;
-    height : 200px;
+    width: 29.2826vw;
+    height : 14,641vw;
 }
 .toolbarblockboth
 {
-    border-right: 1px solid #2980B9;
-    border-left: 1px solid #2980B9;
+    border-right: 0.0732vw solid #2980B9;
+    border-left: 0.0732vw solid #2980B9;
 }
 .toolbarblockleft
 {
-    border-left: 1px solid #2980B9;
+    border-left: 0.0732vw solid #2980B9;
 }
 .dockedtoolbar
 {
@@ -247,16 +247,16 @@ body
 {
     position: absolute;
     left: 0px;
-    top:60px;
+    top: 4.392vw;
     bottom: 0px;
     right:0px;
     overflow-x: hidden;
 }
 .slidedisplay
 {
-    font-size: 14px;
-    margin-top: 30px;
-    margin-left: 40px;
+    font-size: 1.025vw;
+    margin-top: 2.1962vw;
+    margin-left: 2.928vw;
     color:#666;
 }
 #addslidebtn
@@ -268,17 +268,17 @@ body
 .viewtogglebtn
 {
     /*display: inline-block;
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-left: 0.732vw;
+    margin-top: 0.366vw;
     text-transform: none;*/
 }
 .slidethumb
 {
     display: block;
     width: 160px;
-    height : 110px;
-    margin-top: 10px;
-    margin-left: 10px;
+    height : 8.053vw;
+    margin-top: 0.732vw;
+    margin-left: 0.732vw;
     background-color: #ECF0F1;
     position: relative;
 }
@@ -286,10 +286,10 @@ body
 {
     display: block;
     width: 160px;
-    height : 110px;
-    border : 1px solid #BDC3C7 ;
-    margin-top: 10px;
-    margin-left: 10px;
+    height : 8.053vw;
+    border : 0.0732vw solid #BDC3C7 ;
+    margin-top: 0.732vw;
+    margin-left: 0.732vw;
     background-color: #ECF0F1;
     position: absolute;
     text-transform: none;
@@ -330,8 +330,8 @@ body
 .deletebtn
 {
     position: absolute;
-    bottom: 48px;
-    right : 60px;
+    bottom: 3.514vw;
+    right : 4.392vw;
     display: none;
 }
 .elementhover
@@ -340,11 +340,11 @@ body
 }
 .elementselected
 {
-    outline:2px solid #3498DB !important;
+    outline: 0.1464vw solid #3498DB !important;
 }
 
 .elementediting{
-    outline: 2px dotted #3498DB !important;
+    outline: 0.1464vw dotted #3498DB !important;
 }
 
 .transformdiv
@@ -352,7 +352,7 @@ body
     position: absolute;
     display: none;
     width: 250px;
-    height : 200px;
+    height : 14,641vw;
 }
 .thumbnailholder
 {
@@ -369,68 +369,68 @@ body
 {
     position: absolute;
     left:490px;
-    height : 50px;
-    top: 20px;
+    height : 3.66vw;
+    top: 1.464vw;
     color:black;
     background-color: #3498DB;
-    border-radius: 5px;
+    border-radius: 0.366vw;
 }
 .transformlabel
 {
     display:inline-block;
     font-size:150%;
     color : #999;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 0.732vw;
+    padding-left: 0.732vw;
 
 }
 .transformcontrolsholder
 {
     position: absolute;
-    left: 10px;
+    left: 0.732vw;
     top: 0px;
     width : 800px;
-    height : 50px;
+    height : 3.66vw;
     background-color: #ECF0F1;
     z-index: 20;
-    padding-left: 20px;
+    padding-left: 1.464vw;
     text-transform: none;
 }
 #skewxlabel
 {
     left:0px;
-    top: 10px;
-    width : 200px;
+    top: 0.732vw;
+    width : 14,641vw;
     font-weight: bold;
     text-transform: none;
     color: white;
-    font-size: 20px;
+    font-size: 1.464vw;
     position: absolute;
 }
 #skewylabel
 {
     left:140px;
-    top: 10px;
-    width : 200px;
+    top: 0.732vw;
+    width : 14,641vw;
     font-weight: bold;
     text-transform: none;
     color: white;
-    font-size: 16px;
+    font-size: 1.171vw;
     position: absolute;
 }
 .dropdownlist
 {
-    width: 100px !important;
+    width: 7.321vw !important;
     text-transform: none;
 }
 .dropdownpopup
 {
-    width : 100px;
+    width : 7.321vw;
 }
 .dk_toggle_custom
 {
     border-radius: 0px;
-    padding: 11px 5px 7px 13px !important;
+    padding: 0.8053vw 0.366vw 0.5424vw 0.952vw !important;
     background-color: #3498DB !important;
 }
 .dk_container_custom
@@ -450,8 +450,8 @@ body
     background-color: #FFF;
     width : 930px;
     height: 570px;
-    border : 1px dashed #CCC;
-    margin-top: 40px;
+    border : 0.0732vw dashed #CCC;
+    margin-top: 2.928vw;
     overflow: scroll;
     position: relative;
 }
@@ -466,12 +466,12 @@ body
 .ranges
 {
     vertical-align: top;
-    margin-top: 14px;
-    width : 100px;
+    margin-top: 1.025vw;
+    width : 7.321vw;
 }
 .currentselection
 {
-    border-bottom: 4px solid #1ABC9C;
+    border-bottom: 0.2928vw solid #1ABC9C;
 }
 .stylebg
 {
@@ -480,12 +480,12 @@ body
 .fblogin
 {
     position: absolute;
-    right : 200px;
-    top: 20px;
+    right : 14,641vw;
+    top: 1.464vw;
 }
 .descriptioninput
 {
-    width: 400px;
+    width: 29.2826vw;
     height : 250px;
 }
 .modalwindow
@@ -495,28 +495,40 @@ body
 .savedpresos
 {
     width: 100%;
-    height : 110px;
-    border-bottom:  1px dotted #DDD;
+    height : 8.053vw;
+    border-bottom:  0.0732vw dotted #DDD;
 }
 .presothumb
 {
-    width: 200px;
-    height : 100px;
+    width: 14.64vw;
+    height : 7.321vw;
     font-family: "entypo";
     display: inline-block;
-    /*border : 1px solid #CCC;*/
+    /*border : 0.0732vw solid #CCC;*/
     vertical-align: top;
     position: relative;
+}
+.presothumb .deletepresobtn{
+    position:absolute;
+    right: 4.392vw;
+    top: 0.732vw;
 }
 .presothumbcontent
 {
     display: inline-block;
-    width: 60%;
-    height : 100px;
+    width: 56%;
+    height : 7.321vw;
     background-color: #FFF;
     vertical-align: top;
-    padding-left: 10px;
+    padding-left: 0.732vw;
 }
+
+.openpresobtn{
+    position: absolute;
+    right: 0.732vw;
+    top: 0.732vw;
+}
+
 .placeholder
 {
     display : none;
@@ -524,8 +536,8 @@ body
 .presentationmeta
 {
     width : 932px;
-    height: 30px;
-    margin-left : 5px;
+    height: 2.1962vw;
+    margin-left : 0.366vw;
     margin-bottom: -10px;
     background-color: #BDC3C7;
     position: relative;
@@ -574,33 +586,33 @@ body
 }
 .preloadertext
 {
-    margin-left: 50px !important;
+    margin-left: 3.66vw !important;
     margin-top: -50px;
     text-transform: none;
-    font-size: 20px;
+    font-size: 1.464vw;
     color: white;
 }
 .stylethumbnail
 {
     width: 150px;
-    height : 100px;
-    margin-right: 5px;
-    margin-bottom: 15px;
-    margin-top:10px;
+    height : 7.321vw;
+    margin-right: 0.366vw;
+    margin-bottom: 1.0981vw;
+    margin-top: 0.732vw;
     background-color: white;
-    border: 1px dotted #CCC;
+    border: 0.0732vw dotted #CCC;
     position: relative;
     display: inline-block;
 }
 .styleh3
 {
-    margin-left: 30px;
+    margin-left: 2.1962vw;
     color: black;
     cursor: pointer;
 }
 .stylep
 {
-    margin-left: 50px;
+    margin-left: 3.66vw;
     font-size : 120%;
     cursor: pointer;
 }
@@ -611,9 +623,9 @@ body
     color: #3498DB;
     width: 97%;
     left: -1px;
-    padding-left: 5px;
+    padding-left: 0.366vw;
     background-color: #DDD;
-    border: 1px solid #DDD;
+    border: 0.0732vw solid #DDD;
     cursor:pointer;
 }
 .headingelement
@@ -633,7 +645,7 @@ body
 .landingcontenttext
 {
     position: absolute;
-    left: 100px;
+    left: 7.321vw;
     top:200px;
     width: 500px;
     height:200px;
@@ -644,9 +656,9 @@ body
 .landingcontentsubtext
 {
     position: absolute;
-    left: 100px;
+    left: 7.321vw;
     top:310px;
-    width: 400px;
+    width: 29.2826vw;
     height:200px;
     color:white;
     text-transform: none;
@@ -662,8 +674,8 @@ body
     color:white;
     text-transform: none;
     font-size: 180%;
-    border-left: 1px dotted #3498DB;
-    padding-left: 20px;
+    border-left: 0.0732vw dotted #3498DB;
+    padding-left: 1.464vw;
 
 }
 .landingheader

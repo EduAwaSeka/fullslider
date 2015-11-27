@@ -1195,7 +1195,8 @@ Impressionist.prototype =
             savePresentation: function()
             {
                 $("#savepresentationbtn").text("Saving...");
-                item = me.getItem(me.saveKey);
+                var item = me.getItem(me.saveKey);
+                var arr;
                 if (item)
                 {
                     arr = JSON.parse(item);
@@ -1213,6 +1214,7 @@ Impressionist.prototype =
                 {
                     arr = [];
                 }
+                var tempid;
                 if (this.mode == "save")
                 {
                     if (me.currentPresentation)
@@ -1326,7 +1328,8 @@ Impressionist.prototype =
                     });
                 });
                 me.enableDrag();
-                
+                me.mode="save";
+                me.savePresentation();
             },
             existPresentation: function(id) {
                 var exist = false;
