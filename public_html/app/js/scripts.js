@@ -40,3 +40,16 @@ function drawElement(element) {
     $(element).css("top", top + "vw");
     $(element).css("left", left + "vw");
 }
+
+function openAlert(type, msg) {    
+    var alertId="#"+type+"alert";
+    var msgId="#"+type+"msg";
+    
+    $(alertId).fadeOut(0);
+    $(msgId).html(msg);
+    $(alertId).fadeIn(500);
+
+    window.setTimeout(function() {
+        $(alertId).fadeOut(1200);
+    }, 5000);
+}

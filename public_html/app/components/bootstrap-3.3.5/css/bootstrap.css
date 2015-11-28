@@ -5163,6 +5163,11 @@ a.thumbnail.active {
     margin-bottom: 1.464vw;
     border: 0.0732vw solid transparent;
     border-radius: 0.2928vw;
+    z-index: 1050;
+    top: 4.76vw;
+    width: 30%;
+    right: 0px;
+    position: absolute;
 }
 .alert h4 {
     margin-top: 0;

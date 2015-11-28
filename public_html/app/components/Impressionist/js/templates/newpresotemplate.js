@@ -136,3 +136,15 @@ var new_pres_modal= '<!-- New Presentation Modal -->'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
+            
+            
+            
+var alert_danger ='<div id="dangeralert" class="alert alert-danger alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong>Error: </strong><span id="dangermsg"></span>'+
+                  '</div>';
+          
+var alert_success ='<div id="successalert" class="alert alert-success alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong>Success: </strong><span id="successmsg"></span>'+
+                  '</div>';

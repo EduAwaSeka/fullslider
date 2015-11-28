@@ -71,6 +71,7 @@ Impressionist.prototype =
                 me.initializeImageModal();
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
+                me.initializeAlerts();
 
                 me.setupColorpickerPopup();
                 me.setupMenuItemEvents();
@@ -103,6 +104,12 @@ Impressionist.prototype =
             },
             initializeWelcomePanel: function() {
                 $("#modals").append(welcome_panel);
+            },
+            initializeAlerts: function() {
+                $("#modals").append(alert_danger);
+                $("#dangeralert").fadeOut(0);
+                $("#modals").append(alert_success);
+                $("#successalert").fadeOut(0);
             },
             openWelcomePanel: function() {
                 $("#welcomemodal").removeClass("hide");
@@ -1043,29 +1050,45 @@ Impressionist.prototype =
                     var files = e.target.files;
                     var error = false;
                     if (!(/\.fspf$/).test(files[0].name)) {
-                        //error
+                        var msg = "File extension is not supported. Fullslider only supports '.fspf' files.";
+                        openAlert("danger", msg);
                         error = true;
+                        $('input[name=openFile]').removeAttr('value');
+                        $(".loadpresbtn").button('reset');
                     }
                     else {
                         var reader = new FileReader();
                         reader.addEventListener("loadend", function() {
-                            var presentation = JSON.parse(reader.result);
-                            if (!me.existPresentation(presentation.id)) {
-                                me.mypresentations.push(presentation);
-                            }
-                            me.loadPresentation(presentation);
-                            $('input[name=openFile]').removeAttr('value');
-                            error = false;
 
-                            if (error) {
-                                //error
+                            var presentation;
+                            try {
+                                presentation = JSON.parse(reader.result);
+                                if (!me.existPresentation(presentation.id)) {
+                                    me.mypresentations.push(presentation);
+                                }
+                                error = me.isFileCorrupted(presentation);
+                                if (error) {
+                                    var msg = "Could not open the file. File is corrupted.";
+                                    openAlert("danger", msg);
+                                }
+                                else {
+                                    me.loadPresentation(presentation);
+                                    var msg = "File has been loaded succesfully!";
+                                    openAlert("success", msg);
+                                    $("#welcomemodal").modal("hide");
+                                }
+                                $('input[name=openFile]').removeAttr('value');
+                                $(".loadpresbtn").button('reset');
                             }
-                            else {
-                                $("#welcomemodal").modal("hide");
+                            catch (e) {
+                                var msg = "Could not open the file. File is corrupted.";
+                                openAlert("danger", msg);
                             }
-                            $(".loadpresbtn").button('reset');
                         });
                         reader.readAsText(files[0]);
+                        if (reader.readyState == 1) {
+                            $(".loadpresbtn").button('reset');
+                        }
                     }
 
                 });
@@ -1161,6 +1184,14 @@ Impressionist.prototype =
                     }
                     $("#savedpresentationsmodal").modal("hide");
                 }
+            },
+            isFileCorrupted: function(presentation) {
+                var id = (presentation.id === undefined || presentation.id === null);
+                var title = (presentation.title === undefined || presentation.title === null);
+                var contents = (presentation.contents === undefined || presentation.contents === null);
+                var thumbcontents = (presentation.thumbcontents === undefined || presentation.thumbcontents === null);
+                var error = (id || title || contents || thumbcontents);
+                return error;
             },
             fetchAndPreview: function(id)
             {
@@ -1262,7 +1293,7 @@ Impressionist.prototype =
                 var title = me.getTitle();
                 var contents = me.generateExportMarkup();
                 var thumbcontents = $(".slidethumbholder").html().toString();
-                var id= me.currentPresentation.id;
+                var id = me.currentPresentation.id;
                 var file = {
                     'id': id,
                     'title': title,
@@ -1328,7 +1359,7 @@ Impressionist.prototype =
                     });
                 });
                 me.enableDrag();
-                me.mode="save";
+                me.mode = "save";
                 me.savePresentation();
             },
             existPresentation: function(id) {
