@@ -379,7 +379,7 @@
             }
             else {
                 if (value[0] === "\"") {
-                    value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
+                    value = value.substr(value.indexOf("\"") + 1, value.lastIndexOf("\"") - 1);
                 } else {
                     value = value.substr(0, value.lastIndexOf(","));
                 }
