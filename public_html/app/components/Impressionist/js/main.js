@@ -167,7 +167,7 @@ Impressionist.prototype =
                 }
                 $(".deletepresobtn").on("click", function(e)
                 {
-                    msg = confirm("Are you sure? You will lose your deck forever.");
+                    var msg = confirm("Are you sure?");
                     if (msg == true)
                     {
                         me.deleteSavedPresentation($(this).attr("data-id"));
@@ -1116,14 +1116,14 @@ Impressionist.prototype =
                 }
                 console.log("after delete", presentations);
                 me.saveItem(me.saveKey, JSON.stringify(presentations));
-                presentations = me.getSavedPresentations();
-                me.renderPresentations(presentations);
-                lastsaved = JSON.parse(me.getItem(me.lastSaved));
+                var lastsaved = JSON.parse(me.getItem(me.lastSaved));
                 if (lastsaved.id == id)
                 {
                     console.log("lastsaved", lastsaved.id);
                     localStorage.removeItem(me.lastSaved);
                 }
+                presentations = me.getSavedPresentations();
+                me.renderPresentations(presentations);
             },
             generateExportMarkup: function()
             {
