@@ -693,7 +693,7 @@ Impressionist.prototype =
                 {
                     //error.
                 }
-                console.log("aideeee", id);
+                console.log("id", id);
                 //console.log("element id", id);
                 //$("clonethumb_"+id).remove();
                 newel.attr("id", "clonethumb_" + id);
@@ -1512,7 +1512,9 @@ Impressionist.prototype =
             },
             getItem: function(key)
             {
-                return localStorage.getItem(key);
+                if (me.isSupported()) {
+                    return localStorage.getItem(key);
+                }
             },
             isSupported: function()
             {
