@@ -1105,6 +1105,7 @@ Impressionist.prototype =
             deleteSavedPresentation: function(id)
             {
                 var presentations = JSON.parse(me.getItem(me.saveKey));
+                var presentation;
                 for (var i = 0; i < presentations.length; i++)
                 {
                     presentation = presentations[i];
@@ -1117,7 +1118,7 @@ Impressionist.prototype =
                 console.log("after delete", presentations);
                 me.saveItem(me.saveKey, JSON.stringify(presentations));
                 var lastsaved = JSON.parse(me.getItem(me.lastSaved));
-                if (lastsaved.id == id)
+                if ((lastsaved !== null) && lastsaved.id == id)
                 {
                     console.log("lastsaved", lastsaved.id);
                     localStorage.removeItem(me.lastSaved);
