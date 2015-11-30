@@ -417,7 +417,7 @@ Impressionist.prototype =
             enableDrag: function()
             {
                 $(window).resize(function(e) {
-                    if ((me.selectedforedit !== "") &&  ($("#welcomemodal").css("display")== "none")) {
+                    if ((me.selectedforedit !== "") && ($("#welcomemodal").css("display") == "none")) {
                         launchEvent("dblclick", me.selectedforedit);
                     }
                     if (me.selectedElement !== "") {
@@ -462,6 +462,13 @@ Impressionist.prototype =
                 }).on("drag", function(e)
                 {
                     $(this).removeClass("movecursor");
+
+                    var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                    var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                    $(this).css("max-width", maxwidth + "vw");
+                    $(this).css("max-height", maxheight + "vw");
+
                     if (me.isSelected(this)) {
                         scalePlay(this);
                     }
@@ -676,6 +683,13 @@ Impressionist.prototype =
                 $(element).css("top", "3.66vw");
                 $(element).css("white-space", "nowrap");
                 $(element).css("font-family", "'Montserrat', sans-serif");
+
+                var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
+                var maxheight = calculateMaxHeight(element, $(".fullslider-slide-container"));
+
+                $(element).css("max-width", maxwidth + "vw");
+                $(element).css("max-height", maxheight + "vw");
+                $(element).css("overflow", "hidden");
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);

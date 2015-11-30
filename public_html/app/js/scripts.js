@@ -41,10 +41,10 @@ function drawElement(element) {
     $(element).css("left", left + "vw");
 }
 
-function openAlert(type, msg) {    
-    var alertId="#"+type+"alert";
-    var msgId="#"+type+"msg";
-    
+function openAlert(type, msg) {
+    var alertId = "#" + type + "alert";
+    var msgId = "#" + type + "msg";
+
     $(alertId).fadeOut(0);
     $(msgId).html(msg);
     $(alertId).fadeIn(500);
@@ -52,4 +52,16 @@ function openAlert(type, msg) {
     window.setTimeout(function() {
         $(alertId).fadeOut(1200);
     }, 5000);
+}
+
+function calculateMaxWidth(element, parent) {
+    var left = $(element).position().left;
+    var width = parent.width();
+    return pxToVw(width - left);
+}
+function calculateMaxHeight(element, parent) {
+    
+    var top = $(element).position().top;
+    var height = parent.height();
+    return pxToVw(height-top);
 }
