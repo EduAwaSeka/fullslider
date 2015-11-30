@@ -417,7 +417,7 @@ Impressionist.prototype =
             enableDrag: function()
             {
                 $(window).resize(function(e) {
-                    if (me.selectedforedit !== "") {
+                    if ((me.selectedforedit !== "") &&  ($("#welcomemodal").css("display")== "none")) {
                         launchEvent("dblclick", me.selectedforedit);
                     }
                     if (me.selectedElement !== "") {
