@@ -14,7 +14,6 @@ Eduardo Jiménez Grande
         <!-- Loading Bootstrap -->
         <link rel="icon" type="image/ico" href="app/images/" />
         <!-- Loading Flat UI -->
-        <link type="text/css" href="app/components/Impressionist/css/flat-ui.css" rel="stylesheet">
         <link type="text/css" href="app/components/Impressionist/css/matrices.css" rel="stylesheet">
         <link type="text/css" href="app/components/Impressionist/css/progressbar.css" rel="stylesheet">
         <link type="text/css" href="app/components/Impressionist/css/sliderskin.css" rel="stylesheet">
@@ -52,7 +51,7 @@ Eduardo Jiménez Grande
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a id="newpresopanel" class="newpresopanel"><i class="fui-plus-24"></i>&nbsp; New Presentation</a></li>
+                        <li><a id="newpresopanel" class="newpresopanel"><i class="fa fa-plus"></i>&nbsp; New Presentation</a></li>
                         <li><a id="openpresentationsbtn"><i class="glyphicon glyphicon-time"></i>&nbsp; Recent presentations</a></li>
                     </ul>
                 </div>
@@ -72,7 +71,7 @@ Eduardo Jiménez Grande
                         <input class="color-chooser colorpicker etch-color" />
                     </div>
                     <div id="view-save-btns">
-                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fui-eye-16"></i>&nbsp; View</a>
+                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fa fa-eye"></i>&nbsp; View</a>
                         <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp; Save</a> 
                         <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; Download</a> 
                         <button id="loadpresbtn" class="loadpresbtn btn btn-large btn-inline btn-info previewbtn" title="Open Presentation" data-loading-text="Loading..."><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open</button> 
@@ -96,7 +95,7 @@ Eduardo Jiménez Grande
                     </div>
 
                     <div id="workspace" class="slideviewportcontainer col-sm-10">
-                        <div class="presentationmeta">
+                        <div class="presentationmeta palette-night">
                             <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
                             <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary" title="Change title"><i class="fa fa-edit"></i></a>
                         </div>
@@ -109,14 +108,14 @@ Eduardo Jiménez Grande
                                 <span class="scale label label-important"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
                                 <span class="skewx label label-disabled" id="spanskewx"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
                                 <span class="skewy label label-disabled" id="spanskewy"><i class="glyphicon glyphicon-resize-vertical"></i></span>
-                                <span class="deleteicon label label-important" id="spandelete"><i class="fui-cross-16"></i></span>
+                                <span class="deleteicon label label-important" id="spandelete"><i class="fa fa-close"></i></span>
 
                                 <!-- <span class="move">move</span>-->
                             </span>
                         </div><!-- slideviewport -->
                     </div>
                 </div>
-                <div id="markdown-editor" class="col-sm-3">
+                <div id="markdown-editor" class="col-sm-3 palette-night">
                     <div class="center-block text-center h4">
                         <span class="glyphicon glyphicon-pencil"></span> Markdown
                     </div>

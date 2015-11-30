@@ -101,6 +101,10 @@ p {
     overflow-y: hidden;
 }
 
+.palette-night {
+    background-color: #34495e;
+}
+
 #deck{
     padding: 0;
     height: 100%;
@@ -173,8 +177,8 @@ p {
 .deletebtn{
     bottom: 80% !important;
     right: -5% !important;
-    font-size: 0.8vw !important;
-    padding: 0.35vw 0.55vw !important;
+    font-size: 1vw !important;
+    padding: 0.2vw 0.5vw !important;
 }
 
 
@@ -190,7 +194,6 @@ p {
     height: 2.1962vw;
     margin-left: 0;
     margin-bottom: 0.464vw;
-    background-color: #34495E;
     position: relative;
     /* margin-top: 0.2vw; */
 }
@@ -227,7 +230,6 @@ p {
 
 #markdown-editor{
     border-left: 0.0732vw solid #767575;
-    background-color: #34495E;
     height: 100%;
     padding: 0.5%;
     z-index: 2;

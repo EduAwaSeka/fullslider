@@ -881,7 +881,7 @@ Impressionist.prototype =
                     $(".maingreyarea").css("display", "none");
                     $(".orchgreyarea").css("display", "block");
                     $("#viewtoggleicon").removeClass("icon-th-large");
-                    $("#viewtoggleicon").addClass("fui-cross-24");
+                    $("#viewtoggleicon").addClass("fa fa-close");
                     me.currentview = "orchestration";
                     me.assembleOrchestrationTiles();
 
@@ -891,7 +891,7 @@ Impressionist.prototype =
                     //me.animatePanel( ".mainviewport", "0px" );
                     $(".maingreyarea").css("display", "block");
                     $(".orchgreyarea").css("display", "none");
-                    $("#viewtoggleicon").removeClass("fui-cross-24");
+                    $("#viewtoggleicon").removeClass("fa fa-close");
                     $("#viewtoggleicon").addClass("icon-th-large");
                     me.currentview = "mainarea";
                     me.persistOrchestrationCoordinates();

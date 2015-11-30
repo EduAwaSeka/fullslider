@@ -84,15 +84,10 @@ p {
 }
 #play span {
     position:absolute;
-    /*border:1px solid silver;
-    background:#FFCC00;
-    font-size:14px;
-    padding:4px 8px;
-    */
+    font-size:1vw;
     white-space:nowrap;
     cursor:pointer;
     display: block;
-
     /*
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

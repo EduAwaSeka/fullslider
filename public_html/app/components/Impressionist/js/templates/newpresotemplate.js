@@ -16,7 +16,7 @@ var welcome_panel = '<!-- Welcome panel -->'+
 var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block">'+
 					 '<div class="thumbnailholder"></div>'+
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
-					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fui-cross-16"></i></a>'+
+					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fa fa-close"></i></a>'+
 				 '</div>';
 var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="fullslider_slide__slidenumber__" data-type="text"><div>Sample Text</div> </div>';
 var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__"></section>';
