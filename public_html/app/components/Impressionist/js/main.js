@@ -980,7 +980,7 @@ Impressionist.prototype =
                     console.log("add btn clicked...");
                     me.addFullsliderSlideItem(me.selectedSlide);
 
-                    //On create text element, this is selected for edit with dblclick event
+                    //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
                 $("#addimagebtn").on("click", function(e)
