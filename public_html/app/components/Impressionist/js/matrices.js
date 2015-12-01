@@ -177,10 +177,13 @@
                         new_fontsize += "vw";
                         me.selectedElement.css("font-size", new_fontsize);
 
+                        var max_height = parseFloat(element.css("max-height"));
+                        var scroll_heigth = parseFloat(element[0].scrollHeight);
+                        var max_width = parseFloat(element.css("max-width"));
+                        var scroll_width = parseFloat(element[0].scrollWidth);
+                        
                         //If element with new size is out of container, undo resize
-                        var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
-                        var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
-                        if (right_pos > right_limit || bottom_pos > bottom_limit) {
+                        if (scroll_heigth > max_height || scroll_width > max_width) {
                             fontsize = pxToVw(fontsize);
                             fontsize += "vw";
                             me.selectedElement.css("font-size", fontsize);

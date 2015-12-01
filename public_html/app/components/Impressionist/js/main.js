@@ -463,17 +463,17 @@ Impressionist.prototype =
                 {
                     $(this).removeClass("movecursor");
 
-                    var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
-                    var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
-
-                    $(this).css("max-width", maxwidth + "vw");
-                    $(this).css("max-height", maxheight + "vw");
 
                     if (me.isSelected(this)) {
                         scalePlay(this);
                     }
                     $(".slidelement").draggable().on("mouseup", function(e)
                     {
+                        var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                        var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                        $(this).css("max-width", maxwidth + "vw");
+                        $(this).css("max-height", maxheight + "vw");
                         drawElement(this);
                     });
                     me.generateScaledSlide(me.selectedSlide);
@@ -583,7 +583,7 @@ Impressionist.prototype =
                 //$(".dropdownpopup").css("display", "none");
                 me.generateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (!(t.hasClass("is-etch-button")) && !(t.parent().hasClass("is-etch-button")) && !($("#addElementsPanel").find(t).length)) {
+                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *').size() && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
             },
