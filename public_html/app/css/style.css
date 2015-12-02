@@ -228,6 +228,11 @@ p {
     font-size: inherit !important
 }
 
+.slidelement ul, .slidelement ol{
+    list-style-position: inside;
+    padding-left:0;
+}
+
 #markdown-editor{
     border-left: 0.0732vw solid #767575;
     height: 100%;
