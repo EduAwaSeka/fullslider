@@ -13,7 +13,7 @@ Fullslider works in Chrome,Firefox, Opera)
 
 ### How to install? ###
 
-1st Method (Only for Chrome, Firefox, Opera, Safari):
+##### 1st Method (Only for Chrome, Firefox, Opera, Safari): #####
 
 1. Click on "Download Zip" button.
 2. Unpack it.
@@ -21,7 +21,7 @@ Fullslider works in Chrome,Firefox, Opera)
 4. Open "index.html" file in browser.
 5. You can already work with Fullslider!
 
-2nd Method (Chrome, Firefox, Opera, Safari, Microsoft Edge):
+##### 2nd Method (Chrome, Firefox, Opera, Safari, Microsoft Edge): #####
 
 1. Click on "Download Zip" button.
 2. Unpack it.
@@ -45,7 +45,7 @@ Fullslider works in Chrome,Firefox, Opera)
 
 ### RELEASE NOTES ###
 
-v0.1 - With Fullslider, you can do:
+###### v0.1 - With Fullslider, you can do: ######
  - Create new presentations.
  - Download presentation as .fspf file (FullSlider Presentation File).
  - Open downloaded presentations from Fullslider, with .fspf extension.
@@ -62,10 +62,11 @@ v0.1 - With Fullslider, you can do:
 
 ### Quick Guide ###
 
-1 Select New Presentation
+1 Select New Presentation.
+
 ![Welcomemodal](https://cloud.githubusercontent.com/assets/6854006/11539835/8c2558c4-9929-11e5-9a49-e66c05b45379.png)
 
-2 Enter a title
+2 Enter a title.
 
 ![newtitle](https://cloud.githubusercontent.com/assets/6854006/11539869/af8bbe0c-9929-11e5-8240-2c0a5612e528.png)
 
@@ -73,10 +74,12 @@ v0.1 - With Fullslider, you can do:
 3 For edit text element:
 
 	*One click: select it and shows buttons for delete, rotate, resize or skew it.
-	![select](https://cloud.githubusercontent.com/assets/6854006/11539994/71f98a64-992a-11e5-9efd-4c6a569cc885.png)
+
+![select](https://cloud.githubusercontent.com/assets/6854006/11539994/71f98a64-992a-11e5-9efd-4c6a569cc885.png)
 
 	*Double click: select for edit. You can write text, change size, colour, font, etc.
-	![edittext](https://cloud.githubusercontent.com/assets/6854006/11540010/914a49f8-992a-11e5-90f8-18ef169d69db.png)
+
+![edittext](https://cloud.githubusercontent.com/assets/6854006/11540010/914a49f8-992a-11e5-90f8-18ef169d69db.png)
 
 
 
