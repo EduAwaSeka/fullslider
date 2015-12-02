@@ -1,7 +1,7 @@
 Fullslider
 =======
 
-![fullslider](https://cloud.githubusercontent.com/assets/6854006/11456979/c60b27fc-969b-11e5-9dab-3af37a5569ae.png)
+![Fullslider](https://cloud.githubusercontent.com/assets/6854006/11539644/7f287be8-9928-11e5-9b8e-b9d1184d4b12.png)
 
 #### A multiplatform tool to create presentations####
 
@@ -21,12 +21,12 @@ Fullslider works in Chrome,Firefox, Opera)
 4. Open "index.html" file in browser.
 5. You can already work with Fullslider!
 
-2nd Method (Chrome, Firefox, Opera, Safari, Edge):
+2nd Method (Chrome, Firefox, Opera, Safari, Microsoft Edge):
 
 1. Click on "Download Zip" button.
 2. Unpack it.
-3. Open unpack folder and open "public_html" folder
-3. Download Mongoose installer compatible with your operating system from https://www.cesanta.com/products#binary
+3. Download Mongoose installer compatible with your operating system from https://www.cesanta.com/products#binary.
+
 	3.a- Windows: 
 	     *Copy downloaded file in "public_html" folder.
              *Open file.
@@ -40,6 +40,7 @@ Fullslider works in Chrome,Firefox, Opera)
 	     *Open downloaded .dmg file and open mounted device Mongoose.
 	     *Copy Mongoose file in fullslider/public_html folder.
              *Open Mongoose file.
+
 4. You can already work with Fullslider!
 
 ### RELEASE NOTES ###
@@ -58,6 +59,28 @@ v0.1 - With Fullslider, you can do:
  - Open recent presentations.
  - And view presentation!
 
+
+### Quick Guide ###
+
+1 Select New Presentation
+![Welcomemodal](https://cloud.githubusercontent.com/assets/6854006/11539835/8c2558c4-9929-11e5-9a49-e66c05b45379.png)
+
+2 Enter a title
+
+![newtitle](https://cloud.githubusercontent.com/assets/6854006/11539869/af8bbe0c-9929-11e5-8240-2c0a5612e528.png)
+
+
+3 For edit text element:
+
+	*One click: select it and shows buttons for delete, rotate, resize or skew it.
+	![select](https://cloud.githubusercontent.com/assets/6854006/11539994/71f98a64-992a-11e5-9efd-4c6a569cc885.png)
+
+	*Double click: select for edit. You can write text, change size, colour, font, etc.
+	![edittext](https://cloud.githubusercontent.com/assets/6854006/11540010/914a49f8-992a-11e5-90f8-18ef169d69db.png)
+
+
+
+
 ### Credits ###
 
 * Impressionist https://github.com/harish-io/Impressionist
@@ -66,5 +89,5 @@ v0.1 - With Fullslider, you can do:
 * Etch http://etchjs.com/
 * Bootstrap http://getbootstrap.com/
 * JQuery http://jquery.com/
-* Fontawesome fontawesome.io
+* Fontawesome http://fontawesome.io
 
