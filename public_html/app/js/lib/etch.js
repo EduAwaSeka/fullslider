@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
+            'text': ['undo','redo','bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
         }
     };
 
@@ -61,7 +61,9 @@
             'click .etch-save': 'save',
             'click .etch-eraser': 'clearFormatting',
             'click [data-option="fontSize"]': 'setFontSize',
-            'click [data-option="fontFamily"]': 'setFontFamily'
+            'click [data-option="fontFamily"]': 'setFontFamily',
+            'click .etch-undo': 'toggleUndo',
+            'click .etch-redo': 'toggleRedo'
         },
         changeEditable: function() {
             this.setButtonClass();
@@ -223,6 +225,14 @@
         toggleOrderedList: function(e) {
             e.preventDefault();
             document.execCommand('insertOrderedList', false, null);
+        },
+        toggleUndo: function(e) {
+            e.preventDefault();
+            document.execCommand('undo', false, null);
+        },
+        toggleRedo: function(e) {
+            e.preventDefault();
+            document.execCommand('redo', false, null);
         },
         justifyLeft: function(e) {
             e.preventDefault();

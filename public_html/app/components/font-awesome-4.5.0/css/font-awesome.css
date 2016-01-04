@@ -271,7 +271,8 @@
   content: "\f01d";
 }
 .fa-rotate-right:before,
-.fa-repeat:before {
+.fa-repeat:before,
+.fa-redo:before{
   content: "\f01e";
 }
 .fa-refresh:before {

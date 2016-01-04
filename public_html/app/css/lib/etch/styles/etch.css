@@ -82,20 +82,20 @@
     font-size: 1.25em;
 }
 
-.etch-bold, .etch-justify-left, .etch-unordered-list{
+.etch-bold, .etch-align-left, .etch-list-ul,.etch-undo{
     margin-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
 }
 
-.etch-italic, .etch-justify-center{
+.etch-italic, .etch-align-center{
     margin-right: 0;
     border-radius: 0;
     border-right: none;
 }
 
-.etch-underline, .etch-justify-right, .etch-ordered-list{
+.etch-underline, .etch-align-right, .etch-list-ol,.etch-redo{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
