@@ -700,7 +700,7 @@ Impressionist.prototype =
                 $(element).css("position", "absolute");
                 $(element).css("left", "15.373vw");
                 $(element).css("top", "3.66vw");
-                $(element).css("white-space", "nowrap");
+                $(element).css("white-space", "normal");
                 $(element).css("font-family", "'Montserrat', sans-serif");
 
                 var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
@@ -709,6 +709,7 @@ Impressionist.prototype =
                 $(element).css("max-width", maxwidth + "vw");
                 $(element).css("max-height", maxheight + "vw");
                 $(element).css("overflow", "hidden");
+                $(element).css("overflow-wrap", "break-word","important");
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);

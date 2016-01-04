@@ -226,7 +226,6 @@ p {
 .slidelement u, .slidelement p, .slidelement i,
 .slidelement a, .slidelement font {
     font-size: inherit !important;
-    margin: 0.2vw;
 }
 
 .slidelement ul, .slidelement ol{
