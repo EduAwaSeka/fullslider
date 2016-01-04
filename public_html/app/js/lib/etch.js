@@ -125,6 +125,7 @@
                         document.execCommand('foreColor', false, color.toHexString());
                     },
                     change: function(color) {
+//                      document.execCommand('foreColor', false, color.toHexString());
                         Backbone.trigger('etch:state', {
                             color: color.toHexString()
                         });

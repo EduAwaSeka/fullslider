@@ -60,8 +60,27 @@ function calculateMaxWidth(element, parent) {
     return pxToVw(width - left);
 }
 function calculateMaxHeight(element, parent) {
-    
+
     var top = $(element).position().top;
     var height = parent.height();
-    return pxToVw(height-top);
+    return pxToVw(height - top);
+}
+
+function decreaseSize(element) {
+    var size = getFontSize(element);
+    var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+    size = pxToVw(size);
+    if (size <= 1) {
+        if (size == 1) {
+            element.css("font-size", size + "vw");
+            fontSizeReadout.innerHTML = parseInt(getFontSize(element));
+        }
+        return false;
+    }
+    else {
+        size = size - 0.5;
+        element.css("font-size", size + "vw");
+        fontSizeReadout.innerHTML = parseInt(getFontSize(element));
+        return true;
+    }
 }

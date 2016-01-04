@@ -477,6 +477,13 @@ Impressionist.prototype =
                         drawElement(this);
                     });
                     me.generateScaledSlide(me.selectedSlide);
+                }).on('blur keyup paste input', function() {
+                    if($(this).attr("contentEditable")){
+                        var continue_drecreasing=true;
+                        while(continue_drecreasing && ((this.scrollWidth>$(this).css("max-width").replace(/[^-\d\.]/g, ''))||(this.scrollHeight>$(this).css("max-height").replace(/[^-\d\.]/g, '')))){
+                           continue_drecreasing=decreaseSize($(this));
+                       } 
+                    }
                 });
 
                 //only can moves in slide
@@ -622,12 +629,24 @@ Impressionist.prototype =
                 {
                     p = $("#" + $(this).attr("data-parent"));
                     slideid = $(this).attr("data-parent").split("_")[1];
+                    var index = $("#slidethumb_" + slideid).index();
                     console.log("parent", p, slideid);
                     p.animate({opacity: 0}, 200, function(e)
                     {
                         $(this).remove();
                         $("#fullslider_slide_" + slideid).remove();
                         me.assignSlideNumbers();
+                        var children = $(".slidethumbholder").children();
+                        var newslideid;
+                        if (children[index]) {
+                            newslideid = $(children[index]).attr("id");
+                        }
+                        else {
+                            newslideid = $(children[index - 1]).attr("id");
+                        }
+                        newslideid = newslideid.split("_")[1];
+                        me.selectSlide("#fullslider_slide_" + newslideid);
+                        me.selectThumb(newslideid);
                     });
                 });
                 $(".slidemask").on("click", function(e)
@@ -743,7 +762,6 @@ Impressionist.prototype =
             },
             selectSlide: function(id)
             {
-
                 children = $(".fullslider-slide-container").children();
                 //console.log("I am in selection", children)
                 for (var i = 0; i < children.length; i++)
