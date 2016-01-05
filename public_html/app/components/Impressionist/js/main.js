@@ -467,6 +467,9 @@ Impressionist.prototype =
                     if (me.isSelected(this)) {
                         scalePlay(this);
                     }
+                    drawElement(this);
+                    me.generateScaledSlide(me.selectedSlide);
+
                     $(".slidelement").draggable().on("mouseup", function(e)
                     {
                         var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
@@ -476,13 +479,45 @@ Impressionist.prototype =
                         $(this).css("max-height", maxheight + "vw");
                         drawElement(this);
                     });
-                    me.generateScaledSlide(me.selectedSlide);
                 }).on('blur keyup paste input', function() {
-                    if($(this).attr("contentEditable")){
-                        var continue_drecreasing=true;
-                        while(continue_drecreasing && ((this.scrollWidth>$(this).css("max-width").replace(/[^-\d\.]/g, ''))||(this.scrollHeight>$(this).css("max-height").replace(/[^-\d\.]/g, '')))){
-                           continue_drecreasing=decreaseSize($(this));
-                       } 
+                    if ($(this).attr("contentEditable")) {
+                        var mw = $(this).css("max-width").replace(/[^-\d\.]/g, '');
+                        var mh = $(this).css("max-height").replace(/[^-\d\.]/g, '');
+                        var left = $(this).css("left").replace(/[^-\d\.]/g, '');
+                        var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+                        var continue_drecreasing = true;
+                        while (continue_drecreasing && ((this.scrollWidth >= mw) || (this.scrollHeight >= mh))) {
+                            if (left > 0 && this.scrollWidth >= mw) {
+                                left -= 4;
+                                $(this).css("left", pxToVw(left) + "vw");
+
+                                mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                                mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                                $(this).css("max-width", mw + "vw");
+                                $(this).css("max-height", mh + "vw");
+
+                                mw = vwToPx(mw);
+                                mh = vwToPx(mh);
+                            }
+                            else {
+                                if (top > 0 && this.scrollHeight >= mh) {
+                                    top -= 4;
+                                    $(this).css("top", pxToVw(top) + "vw");
+
+                                    mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                                    mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                                    $(this).css("max-width", mw + "vw");
+                                    $(this).css("max-height", mh + "vw");
+                                    mw = vwToPx(mw);
+                                    mh = vwToPx(mh);
+                                }
+                                else {
+                                    continue_drecreasing = decreaseSize($(this));
+                                }
+                            }
+                        }
                     }
                 });
 
@@ -709,7 +744,7 @@ Impressionist.prototype =
                 $(element).css("max-width", maxwidth + "vw");
                 $(element).css("max-height", maxheight + "vw");
                 $(element).css("overflow", "hidden");
-                $(element).css("overflow-wrap", "break-word","important");
+                $(element).css("overflow-wrap", "break-word", "important");
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);
@@ -732,16 +767,18 @@ Impressionist.prototype =
                 //$("clonethumb_"+id).remove();
                 newel.attr("id", "clonethumb_" + id);
                 newel.attr("data-clone", true);
-                newel.css("transform", "scale(0.172, 0.21)");
-                newel.css("-webkit-transform", "scale(0.172, 0.21)"); /* Safari and Chrome */
-                newel.css("-moz-transform", "scale(0.172, 0.21)"); /* Firefox */
-                newel.css("-ms-transform", "scale(0.172, 0.21)"); /* IE 9 */
-                newel.css("-o-transform", "scale(0.172, 0.21)"); /* Opera */
+                newel.css("transform", "scale(0.17, 0.197)");
+                newel.css("-webkit-transform", "scale(0.17, 0.197)"); /* Safari and Chrome */
+                newel.css("-moz-transform", "scale(0.17, 0.197)"); /* Firefox */
+                newel.css("-ms-transform", "scale(0.17, 0.197)"); /* IE 9 */
+                newel.css("-o-transform", "scale(0.17, 0.197)"); /* Opera */
 
                 newel.removeClass("fullslider-slide-element");
                 //newel.css("border", "1px solid #999");
-                newel.css("left", "-7.2vw");
-                newel.css("top", "-5.38vw");
+                newel.css("left", "-25vw");
+                newel.css("top", "-15.48vw");
+                newel.css("width", "60.1896vw");
+                newel.css("height", "38.653vw");
                 children = $("#slidethumb_" + id).children();
                 //console.log("children", children)
                 for (var i = 0; i < children.length; i++)
@@ -753,6 +790,7 @@ Impressionist.prototype =
                         $(child).remove();
                     }
                 }
+                //alert($(children[2]).css("left"));
 
 
                 $("#slidethumb_" + id).append(newel);

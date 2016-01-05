@@ -168,6 +168,7 @@ p {
     margin-left: 0.732vw;
     background-color: #ECF0F1;
     position: relative;
+    border: 0.2196vw solid #C5C5C5;
 }
 
 .currentselection{

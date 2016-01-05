@@ -42,7 +42,7 @@ var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
                                           '<a class="is-etch-button" href="#" data-value="48">48px</a>' +
                                           '<a class="is-etch-button" href="#" data-value="36">36px</a>' +
                                           '<a class="is-etch-button" href="#" data-value="24">24px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="16">16px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="19">19px</a>' +
                                         '</li>' +
                                 '</ul>' +
                         '</div>';      
