@@ -486,37 +486,37 @@ Impressionist.prototype =
                         var left = $(this).css("left").replace(/[^-\d\.]/g, '');
                         var top = $(this).css("top").replace(/[^-\d\.]/g, '');
                         var continue_drecreasing = true;
-                        while (continue_drecreasing && ((this.scrollWidth >= mw) || (this.scrollHeight >= mh))) {
-                            if (left > 0 && this.scrollWidth >= mw) {
-                                left -= 4;
-                                $(this).css("left", pxToVw(left) + "vw");
-
-                                mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
-                                mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
-
-                                $(this).css("max-width", mw + "vw");
-                                $(this).css("max-height", mh + "vw");
-
-                                mw = vwToPx(mw);
-                                mh = vwToPx(mh);
-                            }
-                            else {
-                                if (top > 0 && this.scrollHeight >= mh) {
-                                    top -= 4;
-                                    $(this).css("top", pxToVw(top) + "vw");
-
-                                    mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
-                                    mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
-
-                                    $(this).css("max-width", mw + "vw");
-                                    $(this).css("max-height", mh + "vw");
-                                    mw = vwToPx(mw);
-                                    mh = vwToPx(mh);
-                                }
-                                else {
+                        while (continue_drecreasing && this.scrollWidth >= mw && this.scrollHeight >= mh){
+//                            if (left > 0) {
+//                                left -= 4;
+//                                $(this).css("left", pxToVw(left) + "vw");
+//
+//                                mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+//                                mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+//
+//                                $(this).css("max-width", mw + "vw");
+//                                $(this).css("max-height", mh + "vw");
+//
+//                                mw = vwToPx(mw);
+//                                mh = vwToPx(mh);
+//                            }
+//                            else {
+//                                if (top > 0) {
+//                                    top -= 4;
+//                                    $(this).css("top", pxToVw(top) + "vw");
+//
+//                                    mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+//                                    mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+//
+//                                    $(this).css("max-width", mw + "vw");
+//                                    $(this).css("max-height", mh + "vw");
+//                                    mw = vwToPx(mw);
+//                                    mh = vwToPx(mh);
+//                                }
+//                                else {
                                     continue_drecreasing = decreaseSize($(this));
-                                }
-                            }
+//                                }
+//                            }
                         }
                     }
                 });
