@@ -13,7 +13,7 @@ var welcome_panel = '<!-- Welcome panel -->'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
         
-var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block">'+
+var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block context-menu-slides">'+
 					 '<div class="thumbnailholder"></div>'+
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fa fa-close"></i></a>'+
