@@ -24,7 +24,7 @@ $(function() {
                 name: "Paste slide",
                 icon: "paste",
                 callback: function(key, options) {
-                    Impressionist.prototype.setCurrentClicked($(".slidethumbholder"));
+                    Impressionist.prototype.selectCurrentClicked($(this));
                     pasteEl();
                 }
             },
@@ -41,7 +41,7 @@ $(function() {
                 name: "Paste slide",
                 icon: "paste",
                 callback: function(key, options) {
-                    Impressionist.prototype.setCurrentClicked($(".slidethumbholder"));
+                    Impressionist.prototype.selectCurrentClicked($(".slidethumbholder"));
                     pasteEl();
                 }
             },

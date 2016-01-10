@@ -25,7 +25,12 @@ function pasteEl() {
         case "slidethumb":
             var currentClicked = Impressionist.prototype.getCurrentClicked();
             if (isInElement($(".slidethumbholder"), currentClicked)) {
-                Impressionist.prototype.cloneSlide(elClipboard.value);
+                if (isElementByClass("slidethumb", currentClicked)) {
+                    Impressionist.prototype.copySlideToSlide(elClipboard.value);
+                }
+                else {
+                    Impressionist.prototype.cloneSlide(elClipboard.value);
+                }
             }
             break;
     }

@@ -91,3 +91,7 @@ function decreaseSize(element) {
 function isInElement(parent,element){
     return ((parent.has(element).length > 0) || element.html()==parent.html());
 }
+
+function isElementByClass(parentClass,element){
+    return (element.hasClass(parentClass) || element.parent().hasClass(parentClass));
+}

@@ -5,7 +5,6 @@ Impressionist = function()
 {
 
     this.slidecounter = 0;
-
     this.menuopen = false;
     this.currentview = "mainarea";
     this.selectedElement;
@@ -20,22 +19,15 @@ Impressionist = function()
     this.mypresentations = [];
     this.mode = "create";
     this.loggedinstate = false;
-
     this.dropdownopen = false;
-
     this.currentClicked = "";
-
     this.selectedforedit;
-
-
     this.isBold = false;
     this.isItalic = false;
     this.isUnderlined = false;
-
     this.isLeftAligned = false;
     this.isRightAligned = false;
     this.isCenterAligned = false;
-
     this.vxmax = 6000;
     //Viewport x min
     this.vxmin = -6000;
@@ -51,7 +43,6 @@ Impressionist = function()
     this.wymax = 630;
     //Window y min
     this.wymin = 0;
-
     this.slidewxmax = 960;
     this.slidewxmin = 0;
     this.slidewymax = 630;
@@ -63,8 +54,6 @@ Impressionist.prototype =
             {
                 me = this;
                 me.continueInit();
-
-
 //                me.openNewPresentationWindow();
             },
             continueInit: function()
@@ -74,7 +63,6 @@ Impressionist.prototype =
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
                 me.initializeAlerts();
-
                 me.setupColorpickerPopup();
                 me.setupMenuItemEvents();
                 me.enableSort();
@@ -82,17 +70,13 @@ Impressionist.prototype =
 //                me.setupDials();
                 me.setupKeyboardShortcuts();
                 me.hideTransformControl();
-
                 //Load array with all saved presentations
                 var presentations = me.getSavedPresentations();
                 me.renderPresentations(presentations);
-
                 //Load last saved presentation
 //                 me.openLastSavedPresentation();
 
                 me.openWelcomePanel();
-
-
             },
             initializeImageModal: function() {
                 $("#modals").append(add_img_modal);
@@ -148,7 +132,6 @@ Impressionist.prototype =
                 $("#newpresentationmodal").modal("show");
                 $("#newpresoheader").html("Create New Presentation");
                 me.mode = "create";
-
             },
             renderPresentations: function(presentations)
             {
@@ -240,19 +223,16 @@ Impressionist.prototype =
                     e.stopPropagation();
                     document.execCommand('underline', false, null);
                 });
-
                 $("#makealignleft").on("click", function(e)
                 {
                     e.stopPropagation();
                     document.execCommand('justifyLeft', false, null);
                 });
-
                 $("#makealignright").on("click", function(e)
                 {
                     e.stopPropagation();
                     document.execCommand('justifyRight', false, null);
                 });
-
                 $("#makealigncenter").on("click", function(e)
                 {
                     e.stopPropagation();
@@ -278,24 +258,20 @@ Impressionist.prototype =
                 var clonedThumb = slide.clone();
                 clonedThumb.attr("id", "slidethumb_" + uid);
                 clonedThumb.removeClass("context-menu-active");
-
                 $(".slidethumbholder").append(clonedThumb);
                 $("#slidethumb_" + uid).animate({opacity: 1}, 200);
 
                 //Change old uid by new uid in new thumbnail's deletebtn and canvas
                 var deletebtn = $("#slidethumb_" + uid + " > #deletebtn");
                 deletebtn.attr("data-parent", "slidethumb_" + uid);
-
                 var thumbCanvas = $("#slidethumb_" + uid + " > canvas");
                 thumbCanvas.attr("id", "slidethumb_" + uid);
-
                 me.addSlideEvents();
 
                 //Clone Slide
                 var clonedSlide = $("#fullslider_slide_" + originalUid).clone();
                 clonedSlide.attr("id", "fullslider_slide_" + uid);
                 $(".fullslider-slide-container").append(clonedSlide);
-
                 var children = $("#fullslider_slide_" + uid).children();
                 for (var i = 0; i < children.length; i++)
                 {
@@ -306,6 +282,29 @@ Impressionist.prototype =
                 me.selectThumb(uid);
                 me.enableDrag();
                 me.updateScaledSlide(me.selectedSlide);
+                me.selectCurrentClicked($("#slidethumb_" + uid));
+            },
+            copySlideToSlide: function(slidethumb) {
+                var originalUid = slidethumb.attr("id").replace("slidethumb_", "");
+                var slideUid = me.currentClicked.attr("id").replace("slidethumb_", "");
+
+                var copiedSlide = $("#fullslider_slide_" + originalUid);
+                var slide = $("#fullslider_slide_" + slideUid);
+
+                slide.html(copiedSlide.html());
+
+                var children = slide.children();
+                for (var i = 0; i < children.length; i++)
+                {
+                    $(children[i]).attr("id", "slidelement_" + me.generateUID());
+                }
+
+                me.selectSlide("#fullslider_slide_" + slideUid);
+                me.updateScaledSlide(me.selectedSlide);
+                me.selectThumb(slideUid);
+                me.enableDrag();
+                me.selectCurrentClicked($("#slidethumb_" + slideUid));
+
             },
             reArrangeFullsliderSlides: function()
             {
@@ -356,7 +355,6 @@ Impressionist.prototype =
                     $("#slidethumb_" + id).attr("data-z", $(this).val());
                 });
                 $(".transformlabel").css("vertical-align", "top");
-
             },
             rotateElement: function(value)
             {
@@ -377,14 +375,11 @@ Impressionist.prototype =
                 me.selectedOrchElement.css("transform", str);
                 console.log("css", me.selectedOrchElement.css("transform"));
                 me.selectedOrchElement.attr("data-rotate", value);
-
                 id = me.selectedOrchElement.attr("id").split("_")[1];
                 console.log("Updating slidethumb", $("#slidethumb_" + id));
-
                 $("#slidethumb_" + id).attr("data-rotate-x", rotx);
                 $("#slidethumb_" + id).attr("data-rotate-y", roty);
                 $("#slidethumb_" + id).attr("data-rotate", value);
-
                 $("#slidethumb_" + id).attr("data-transform-string", str);
             },
             rotateElementX: function(value)
@@ -407,9 +402,7 @@ Impressionist.prototype =
                 me.selectedOrchElement.attr("data-rotate", value);
                 console.log("css", me.selectedOrchElement.css("transform"));
                 me.selectedOrchElement.attr("data-rotate-x", value);
-
                 id = me.selectedOrchElement.attr("id").split("_")[1];
-
                 console.log("Updating slidethumb", $("#slidethumb_" + id));
                 $("#slidethumb_" + id).attr("data-rotate-x", value);
                 $("#slidethumb_" + id).attr("data-rotate-y", roty);
@@ -436,10 +429,8 @@ Impressionist.prototype =
                 me.selectedOrchElement.attr("data-rotate", value);
                 console.log("css", me.selectedOrchElement.css("transform"));
                 me.selectedOrchElement.attr("data-rotate-y", value);
-
                 id = me.selectedOrchElement.attr("id").split("_")[1];
                 console.log("Updating slidethumb", $("#slidethumb_" + id));
-
                 $("#slidethumb_" + id).attr("data-rotate-x", rotx);
                 $("#slidethumb_" + id).attr("data-rotate-y", value);
                 $("#slidethumb_" + id).attr("data-rotate", rot);
@@ -462,7 +453,6 @@ Impressionist.prototype =
 
                     }
                 });
-
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
                     if ($(this).attr("data-type") !== "image") {
@@ -473,7 +463,6 @@ Impressionist.prototype =
                     e.stopPropagation();
                     me.selectElement(this);
                     me.updateScaledSlide(me.selectedSlide);
-
                 }).on("mousedown", function(e)
                 {
                     me.selectElement(this);
@@ -498,12 +487,10 @@ Impressionist.prototype =
                     }
                     drawElement(this);
                     me.updateScaledSlide(me.selectedSlide);
-
                     $(".slidelement").draggable().on("mouseup", function(e)
                     {
                         var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
                         var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
-
                         $(this).css("max-width", maxwidth + "vw");
                         $(this).css("max-height", maxheight + "vw");
                         drawElement(this);
@@ -551,13 +538,12 @@ Impressionist.prototype =
                         }
                     }
                 });
-
                 //only can moves in slide
                 $(function() {
                     $(".ui-draggable").draggable({autoscroll: false, containment: ".fullslider-slide-container", scroll: false});
                 });
             },
-            positionTransformControl: function( )
+            positionTransformControl: function()
             {
                 _transform = me.selectedElement.css("-webkit-transform");
                 $("#play").css("-webkit-transform", _transform);
@@ -579,7 +565,6 @@ Impressionist.prototype =
                 $("#rotationknob").val(rotation || 0);
                 $("#skewxknob").val(skewx || 0);
                 $("#skewyknob").val(skewy || 0);
-
             },
             selectElement: function(el)
             {
@@ -627,7 +612,6 @@ Impressionist.prototype =
                             });
                         }
                     });
-
                     var prevent = function(e) {
                         e.preventDefault();
                     };
@@ -638,7 +622,6 @@ Impressionist.prototype =
                     $(".sp-replacer").mousedown(prevent);
                     $(".sp-container").mousedown(prevent);
                     $colorChooser.mousedown(prevent);
-
                     $colorChooser.find("div").css("backgroundColor", '#' + hex);
                 }
             },
@@ -661,20 +644,17 @@ Impressionist.prototype =
                 }
 
                 me.selectCurrentClicked(t);
-
             },
             selectCurrentClicked: function(el) {
-                var t = el;
-                if (me.currentClicked !== "" && !isInElement($(".context-menu-list"),t)) {
+                if (me.currentClicked !== "" && !isInElement($(".context-menu-list"), el)) {
                     me.currentClicked.removeClass("currentClicked");
                     me.currentClicked = "";
                 }
-
-                if (isInElement($(".slidethumbholder"), t)) {
-                    var toSave = t;
-                    if (isInElement($(".slidethumb"), t) && t.attr("id") !== "deletebtn") {
-                        if (!t.hasClass("slidethumb")) {
-                            toSave = t.parent();
+                if (isInElement($(".slidethumbholder"), el)) {
+                    var toSave = el;
+                    if (isInElement($(".slidethumb"), el) && el.attr("id") !== "deletebtn") {
+                        if (!el.hasClass("slidethumb")) {
+                            toSave = el.parent();
                         }
                     }
                     toSave.addClass("currentClicked");
@@ -708,12 +688,9 @@ Impressionist.prototype =
                 thumb = thumb.split("slidethumb_^UID^").join("slidethumb_" + uid);
                 $(".slidethumbholder").append(thumb);
                 $("#slidethumb_" + uid).animate({opacity: 1}, 200);
-
-
                 //$("#slidethumb_" + uid).attr("data-left", me.lastslideleftpos + "px");
                 //$("#slidethumb_" + uid).attr("data-top", "0px");
                 me.addSlideEvents();
-
                 me.lastslideleftpos += 200;
                 me.assignSlideNumbers();
                 me.addFullsliderSlide(uid);
@@ -791,10 +768,8 @@ Impressionist.prototype =
                 $(element).css("top", "3.66vw");
                 $(element).css("white-space", "normal");
                 $(element).css("font-family", "'Montserrat', sans-serif");
-
                 var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
                 var maxheight = calculateMaxHeight(element, $(".fullslider-slide-container"));
-
                 $(element).css("max-width", maxwidth + "vw");
                 $(element).css("max-height", maxheight + "vw");
                 $(element).css("overflow", "hidden");
@@ -909,7 +884,6 @@ Impressionist.prototype =
                 {
                     $(".settingsbox").animate({"left": "230px", "opacity": 1}, {duration: 300, easing: "linear"});
                     me.menuopen = true;
-
                 }
             },
             animatePanel: function(panel, amount)
@@ -982,7 +956,6 @@ Impressionist.prototype =
                 {
                     console.log("add btn clicked...");
                     me.addFullsliderSlideItem(me.selectedSlide);
-
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
@@ -1157,8 +1130,6 @@ Impressionist.prototype =
                 outputcontainer.find(".fullslider-slide").each(function(i, object)
                 {
                     console.log("Physically adding sizing information");
-
-
                 });
                 return (outputcontainer.html().toString());
             },
@@ -1174,7 +1145,6 @@ Impressionist.prototype =
                     thumbcontents: $(".slidethumbholder").html().toString(),
                 };
                 me.currentPresentation = presentation;
-
             },
             openPresentationForEdit: function(id)
             {
@@ -1280,7 +1250,6 @@ Impressionist.prototype =
                 presentations = me.getSavedPresentations();
                 presentations.reverse();
                 me.renderPresentations(presentations);
-
                 $(".previewpresobtn").on("click", function(e)
                 {
                     console.log("data parent id", $(this).attr("data-id"));
@@ -1326,7 +1295,6 @@ Impressionist.prototype =
                 {
                     $(this).css("opacity", 1);
                 });
-
                 var first_slide_id = $(".fullslider-slide-container").find(".fullslider-slide-element").attr("id");
                 first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
                 me.selectSlide("#fullslider_slide_" + first_slide_id);
@@ -1334,11 +1302,7 @@ Impressionist.prototype =
                 me.currentPresentation = presentation;
                 $("#presentationmetatitle").html(me.currentPresentation.title);
                 console.log("rendered");
-
-
                 $("#savedpresentationsmodal").modal("hide");
-
-
                 $(".slidemask").on("click", function(e)
                 {
                     console.log("repopulated zone");
@@ -1479,7 +1443,6 @@ Impressionist.prototype =
             {
                 console.log("clicked");
                 me.animateSettingsPanel("left");
-
             },
             onMenuItemClicked: function(e)
             {
@@ -1534,6 +1497,6 @@ Impressionist.prototype =
                 return me.currentClicked;
             },
             setCurrentClicked: function(el) {
-                me.currentClicked=el;
+                me.currentClicked = el;
             }
         };
