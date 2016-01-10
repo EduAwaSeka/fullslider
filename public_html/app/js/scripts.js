@@ -86,3 +86,8 @@ function decreaseSize(element) {
         return true;
     }
 }
+
+
+function eventInto(parentClass,e){
+    return (($("."+parentClass).has(e.target).length > 0) || $(e.target).hasClass(parentClass));
+}

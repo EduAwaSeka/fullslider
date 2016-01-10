@@ -23,6 +23,8 @@ Impressionist = function()
 
     this.dropdownopen = false;
 
+    this.currentClicked = "";
+
     this.selectedforedit;
 
 
@@ -461,7 +463,6 @@ Impressionist.prototype =
                     }
                 });
 
-                //$(".slidelement").drags();
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
                     if ($(this).attr("data-type") !== "image") {
@@ -658,6 +659,24 @@ Impressionist.prototype =
                 if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *').size() && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
+
+                if (me.currentClicked !== "") {
+                    $("#"+me.currentClicked).removeClass("currentClicked");
+                    me.currentClicked = "";
+                }
+
+                if (eventInto("slidethumb", e) && t.attr("id") !== "deletebtn") {
+                    var toSave = "";
+                    if (t.hasClass("slidethumb")) {
+                        toSave = t;
+                    }
+                    else {
+                        toSave = t.parent();
+                    }
+                    toSave.addClass("currentClicked");
+                    me.currentClicked = t.attr("id");
+                }
+
             },
             clearElementSelections: function()
             {
@@ -725,7 +744,7 @@ Impressionist.prototype =
                 });
                 $(".slidemask").on("click", function(e)
                 {
-                    e.stopPropagation();
+//                    e.stopPropagation();
                     id = (e.target.id).split("_")[1];
                     console.log("slidemask", id);
                     me.selectSlide("#fullslider_slide_" + id);
@@ -829,7 +848,7 @@ Impressionist.prototype =
             updateScaledSlide: function(el)
             {
                 var id = el.attr("id").split("_")[2];
-                var section=$("#slidethumb_"+id+" > section");
+                var section = $("#slidethumb_" + id + " > section");
                 section.html(el.html());
             },
             selectSlide: function(id)
@@ -1507,5 +1526,8 @@ Impressionist.prototype =
                 {
                     return false;
                 }
+            },
+            getCurrentClicked: function() {
+                return me.currentClicked;
             }
         };
