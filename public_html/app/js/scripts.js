@@ -1,13 +1,15 @@
 function scalePlay(element) {
     var elem_height = element.offsetHeight;
+    var rel=getRel();
 
     $("#play").css("width", $(element).css("width"));
     $("#play").css("top", $(element).css("top"));
     $("#play").css("left", $(element).css("left"));
 
-    $("#play").children(".scale").css("top", ((elem_height - 3) / getRel()) + "vw");
-    $("#play").children(".skewy").css("top", ((elem_height * 2 / 5) / getRel()) + "vw");
-    $("#play").children(".rotate").css("top", ((elem_height * 2 / 5) / getRel()) + "vw");
+    $("#play").children(".scale").css("top", ((elem_height - 3) / rel) + "vw");
+    var skey_rotate_top=(elem_height * 2 / 5);
+    $("#play").children(".skewy").css("top", (skey_rotate_top / rel) + "vw");
+    $("#play").children(".rotate").css("top", (skey_rotate_top / rel) + "vw");
 }
 
 function getFontSize(element) {
