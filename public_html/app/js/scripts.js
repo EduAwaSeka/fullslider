@@ -88,6 +88,6 @@ function decreaseSize(element) {
 }
 
 
-function eventInto(parentClass,e){
-    return (($("."+parentClass).has(e.target).length > 0) || $(e.target).hasClass(parentClass));
+function isInElement(parent,element){
+    return ((parent.has(element).length > 0) || element.html()==parent.html());
 }

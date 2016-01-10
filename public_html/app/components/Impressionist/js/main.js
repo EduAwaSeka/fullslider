@@ -660,23 +660,26 @@ Impressionist.prototype =
                     me.clearElementSelections();
                 }
 
-                if (me.currentClicked !== "") {
-                    $("#"+me.currentClicked).removeClass("currentClicked");
+                me.selectCurrentClicked(t);
+
+            },
+            selectCurrentClicked: function(el) {
+                var t = el;
+                if (me.currentClicked !== "" && !isInElement($(".context-menu-list"),t)) {
+                    me.currentClicked.removeClass("currentClicked");
                     me.currentClicked = "";
                 }
 
-                if (eventInto("slidethumb", e) && t.attr("id") !== "deletebtn") {
-                    var toSave = "";
-                    if (t.hasClass("slidethumb")) {
-                        toSave = t;
-                    }
-                    else {
-                        toSave = t.parent();
+                if (isInElement($(".slidethumbholder"), t)) {
+                    var toSave = t;
+                    if (isInElement($(".slidethumb"), t) && t.attr("id") !== "deletebtn") {
+                        if (!t.hasClass("slidethumb")) {
+                            toSave = t.parent();
+                        }
                     }
                     toSave.addClass("currentClicked");
-                    me.currentClicked = t.attr("id");
+                    me.currentClicked = toSave;
                 }
-
             },
             clearElementSelections: function()
             {
@@ -1529,5 +1532,8 @@ Impressionist.prototype =
             },
             getCurrentClicked: function() {
                 return me.currentClicked;
+            },
+            setCurrentClicked: function(el) {
+                me.currentClicked=el;
             }
         };
