@@ -68,7 +68,6 @@ Impressionist.prototype =
                 me.enableSort();
 //                me.setupPopover();
 //                me.setupDials();
-                me.setupKeyboardShortcuts();
                 me.hideTransformControl();
                 //Load array with all saved presentations
                 var presentations = me.getSavedPresentations();
@@ -168,43 +167,25 @@ Impressionist.prototype =
             {
                 $("#play").css("display", "none");
             },
-            setupKeyboardShortcuts: function()
+            cloneElement: function(element)
             {
-
-                key('⌘+c, ctrl+c', function(event, handler)
-                {
-                    //console.log("hey there...")
-                    console.log(handler.shortcut, handler.scope);
-                    me.cloneElement();
-                });
-                key('⌘+v, ctrl+v', function(event, handler)
-                {
-                    //console.log("hey there...")
-                    console.log(handler.shortcut, handler.scope);
-                    me.appendClonedElement();
-                });
-                key.setScope("issues");
-            },
-            cloneElement: function()
-            {
-                if (me.selectedElement)
-                {
-                    clone = me.selectedElement.clone();
-                    clone.attr("id", "slideelement_" + me.generateUID());
-                    clone.css("left", me.selectedElement.position().left + 20 + "px");
-                    clone.css("top", me.selectedElement.position().top + 20 + "px");
-                    me.clonedElement = clone;
-                }
-                else
-                {
-                    console.log("Nothing is selected");
-                }
+                clone = element.clone();
+                clone.attr("id", "slideelement_" + me.generateUID());
+                clone.css("left", pxToVw(element.position().left) + 0.2 + "vw");
+                clone.css("top", pxToVw(element.position().top + 0.2) + "vw");
+                me.clonedElement = clone;
+                return me.clonedElement;
             },
             appendClonedElement: function()
             {
                 console.log(me.clonedElement, "clonedelement");
                 me.selectedSlide.append(me.clonedElement);
+                var id = $(me.clonedElement).attr("id");
                 me.enableDrag();
+                me.selectedElement = $("#"+id);
+                me.generateScaledSlide(me.selectedSlide);
+                //On create text element, this is selected with click event
+                launchEvent("click", me.selectedelement);
             },
             setupMenuItemEvents: function()
             {
@@ -453,6 +434,20 @@ Impressionist.prototype =
 
                     }
                 });
+
+//                $(".slidelement").resizable({
+//                    handles: {
+//                        'nw': '#play .ui-resizable-nw',
+//                        'ne': '#play .ui-resizable-ne',
+//                        'sw': '#play .ui-resizable-sw',
+//                        'se': '#play .ui-resizable-se',
+//                        'n': '#play .ui-resizable-n',
+//                        'e': '#play .ui-resizable-e',
+//                        's': '#play .ui-resizable-s',
+//                        'w': '#play .ui-resizable-w'
+//                    }
+//                });
+
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
                     if ($(this).attr("data-type") !== "image") {
@@ -460,6 +455,7 @@ Impressionist.prototype =
                     }
                 }).on("click", function(e)
                 {
+                    me.selectCurrentClicked($(this));
                     e.stopPropagation();
                     me.selectElement(this);
                     me.updateScaledSlide(me.selectedSlide);
@@ -552,9 +548,7 @@ Impressionist.prototype =
                 $("#spandelete").on("click", function(e)
                 {
                     e.stopPropagation();
-                    me.selectedElement.remove();
-                    me.updateScaledSlide(me.selectedSlide);
-                    $("#play").css("display", "none");
+                    me.deleteElement(me.selectedElement);
                 });
             },
             setTransformValues: function(el)
@@ -588,6 +582,11 @@ Impressionist.prototype =
                 $(el).draggable({disabled: true});
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
+            },
+            deleteElement: function(el) {
+                el.remove();
+                me.updateScaledSlide(me.selectedSlide);
+                $("#play").css("display", "none");
             },
             setupColorpickerPopup: function()
             {
@@ -650,16 +649,22 @@ Impressionist.prototype =
                     me.currentClicked.removeClass("currentClicked");
                     me.currentClicked = "";
                 }
+                var toSave = ""
                 if (isInElement($(".slidethumbholder"), el)) {
-                    var toSave = el;
+                    toSave = el;
                     if (isInElement($(".slidethumb"), el) && el.attr("id") !== "deletebtn") {
                         if (!el.hasClass("slidethumb")) {
                             toSave = el.parent();
                         }
                     }
                     toSave.addClass("currentClicked");
-                    me.currentClicked = toSave;
                 }
+                else {
+                    if (isInElement($(".slidelement"), el)) {
+                        toSave = el;
+                    }
+                }
+                me.currentClicked = toSave;
             },
             clearElementSelections: function()
             {
@@ -754,7 +759,7 @@ Impressionist.prototype =
                 var element = document.getElementById(id);
                 me.addTextStyle(element);
                 me.enableDrag();
-                me.selectedforedit = element;
+                me.selectedelement = element;
                 me.generateScaledSlide(me.selectedSlide);
             },
             addTextStyle: function(element) {
@@ -1496,7 +1501,13 @@ Impressionist.prototype =
             getCurrentClicked: function() {
                 return me.currentClicked;
             },
-            setCurrentClicked: function(el) {
-                me.currentClicked = el;
-            }
+            getSelectedElement: function() {
+                return me.selectedElement;
+            },
+            getSelectedForEdit: function() {
+                return me.selectedforedit;
+            },
+            getClonedElement: function() {
+                return me.clonedElement;
+            },
         };

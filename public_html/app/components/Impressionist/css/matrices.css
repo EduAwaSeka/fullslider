@@ -71,9 +71,9 @@ p {
 
     -webkit-user-select: none;
 
-    /*-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    /*-webkit-box-shadow: 0 0 0.732vw rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 0 0.732vw rgba(0,0,0,0.15);
+    box-shadow: 0 0 0.732vw rgba(0,0,0,0.15);
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -89,9 +89,9 @@ p {
     cursor:pointer;
     display: block;
     /*
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 0.366vw;
+    -moz-border-radius: 0.366vw;
+    border-radius: 0.366vw;
     */
 }
 #play span:hover {
@@ -107,7 +107,6 @@ p {
 #play .scale {
     right: -1.3177vw;
     cursor: nw-resize;
-
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -116,16 +115,15 @@ p {
 }
 
 #play .skewx {
-    left:50%;
-    top:-1.903vw;
+    left: calc(50% - 0.5vw);
+    top: -1.95vw;
     /*bottom:-15px;*/
     cursor: w-resize;
 }
 
 #play .skewy {
-    left:-1.7569vw;
+    left: -2.2vw;
     cursor: n-resize;
-
     /*-webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -134,8 +132,57 @@ p {
 }
 #play .deleteicon
 {
-    right:-1.3177vw;
-    top:-0.6588vw;
+    right: -1.3177vw;
+    top: -1.05vw;
+}
+
+
+.ui-resizable-handle {
+    width: 0.5vw;
+    height: 0.5vw;
+    background-color: #ffffff;
+    border: 0.0732vw solid #000000;
+    position: absolute;
+}
+.ui-resizable-nw {
+    left: -0.366vw;
+    top: -0.366vw;
+    cursor: nw-resize;
+}
+.ui-resizable-ne {
+    top: -0.366vw;
+    right: -0.366vw;
+    cursor: ne-resize;
+}
+.ui-resizable-sw {
+    top: 5.9vw;
+    left: -0.366vw;
+    cursor: sw-resize;
+}
+.ui-resizable-se {
+    top: 5.9vw;
+    right:-0.366vw;
+    cursor: se-resize;
+}
+.ui-resizable-n {
+    top: -0.366vw;
+    left:50%;
+    cursor: n-resize;
+}
+.ui-resizable-s {
+    top: 5.9vw;
+    left: 50%;
+    cursor: s-resize;
+}
+.ui-resizable-w {
+    left:-0.366vw;
+    top: calc(50% - -2.4vw);
+    cursor: w-resize;
+}
+.ui-resizable-e {
+    right:-0.366vw;
+    top: 2.85vw;
+    cursor: e-resize;
 }
 
 #play .move {

@@ -1,15 +1,26 @@
 function scalePlay(element) {
     var elem_height = element.offsetHeight;
     var rel=getRel();
+    var heightVW=elem_height/rel;
+    var halfHeightVW=heightVW/2;
 
     $("#play").css("width", $(element).css("width"));
     $("#play").css("top", $(element).css("top"));
     $("#play").css("left", $(element).css("left"));
 
-    $("#play").children(".scale").css("top", ((elem_height - 3) / rel) + "vw");
-    var skey_rotate_top=(elem_height * 2 / 5);
-    $("#play").children(".skewy").css("top", (skey_rotate_top / rel) + "vw");
-    $("#play").children(".rotate").css("top", (skey_rotate_top / rel) + "vw");
+    $("#play").children(".scale").css("top", ((elem_height - 2) / rel) + "vw");
+    $("#play").children(".skewy").css("top", halfHeightVW - 0.57 + "vw");
+    $("#play").children(".rotate").css("top", halfHeightVW - 0.49 + "vw");
+ 
+    //0.5 height of ui-resizable button / 2 = 0.25
+    var sTop=heightVW-0.25;
+    $("#play").children(".ui-resizable-s").css("top", sTop + "vw");
+    $("#play").children(".ui-resizable-sw").css("top", sTop + "vw");
+    $("#play").children(".ui-resizable-se").css("top", sTop + "vw");
+    
+    var sideTop=halfHeightVW - 0.25;
+    $("#play").children(".ui-resizable-e").css("top", sideTop + "vw");
+    $("#play").children(".ui-resizable-w").css("top", sideTop + "vw");
 }
 
 function getFontSize(element) {

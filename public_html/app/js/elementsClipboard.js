@@ -14,6 +14,11 @@ function copyEl() {
         if (currentClicked.hasClass("slidethumb")) {
             setElClipboard("slidethumb", currentClicked);
         }
+        else {
+            if (currentClicked.hasClass("slidelement")) {
+                setElClipboard("slidelement", currentClicked);
+            }
+        }
     }
     else {
         setElClipboard("", "");
@@ -21,9 +26,9 @@ function copyEl() {
 }
 
 function pasteEl() {
+    var currentClicked = Impressionist.prototype.getCurrentClicked();
     switch (elClipboard.type) {
         case "slidethumb":
-            var currentClicked = Impressionist.prototype.getCurrentClicked();
             if (isInElement($(".slidethumbholder"), currentClicked)) {
                 if (isElementByClass("slidethumb", currentClicked)) {
                     Impressionist.prototype.copySlideToSlide(elClipboard.value);
@@ -31,6 +36,13 @@ function pasteEl() {
                 else {
                     Impressionist.prototype.cloneSlide(elClipboard.value);
                 }
+            }
+            break;
+        case "slidelement":
+            if (isElementByClass("slidelement", elClipboard.value)) {
+                Impressionist.prototype.cloneElement(elClipboard.value);
+                Impressionist.prototype.appendClonedElement();
+
             }
             break;
     }
