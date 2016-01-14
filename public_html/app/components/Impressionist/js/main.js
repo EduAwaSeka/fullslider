@@ -6,35 +6,35 @@ Impressionist = function()
 
     this.slidecounter = 0;
     this.menuopen = false;
-    
+
     this.selectedElement;
     this.selectedforedit;
-    
+
     this.clonedElement;
     this.selectedSlide;
-    
+
     this.orchestrationcoords = [];
     this.selectedOrchElement;
     this.lastslideleftpos = 0;
-    
+
     this.saveKey = "fullslider_decks";
     this.lastSaved = "fullslider_lastsaved";
-    
+
     this.currentPresentation;
     this.mypresentations = [];
     this.mode = "create";
     this.loggedinstate = false;
     this.dropdownopen = false;
     this.currentClicked = "";
-    
-    
+
+
     this.isBold = false;
     this.isItalic = false;
     this.isUnderlined = false;
     this.isLeftAligned = false;
     this.isRightAligned = false;
     this.isCenterAligned = false;
-    
+
     this.vxmax = 6000;
     //Viewport x min
     this.vxmin = -6000;
@@ -54,10 +54,10 @@ Impressionist = function()
     this.slidewxmin = 0;
     this.slidewymax = 630;
     this.slidewymin = 0;
-    
-    this.titleText=3.5;
-    this.subtitleText=2.75;
-    this.normalText=1.75;
+
+    this.titleText = 3.5;
+    this.subtitleText = 2.75;
+    this.normalText = 1.75;
 };
 Impressionist.prototype =
         {
@@ -672,7 +672,7 @@ Impressionist.prototype =
                     toSave.addClass("currentClicked");
                 }
                 else {
-                    if (isInElement($(".slidelement"), el)) {
+                    if (isElementByClass("slidelement", el)) {
                         toSave = el;
                     }
                 }
@@ -758,31 +758,49 @@ Impressionist.prototype =
                 //$("#fullslider_slide_"+id).addClass(me.theme);
                 me.selectSlide("#fullslider_slide_" + id);
                 me.selectThumb(id);
-                me.addFullsliderSlideItem(me.selectedSlide);
+                me.addFullsliderText("normal");
                 me.enableDrag();
             },
-            addFullsliderSlideItem: function(el)
+            addFullsliderSlideItem: function()
             {
                 console.log("adding the new item....");
                 item = text_snippet;
                 var id = "slidelement_" + me.generateUID();
                 item = item.split("slidelement_id").join(id);
-                $(el).append(item);
-                var element = document.getElementById(id);
-                me.addTextStyle(element);
+                $(me.selectedSlide).append(item);
+                return (document.getElementById(id));
+            },
+            addFullsliderText: function(type) {
+                var element = me.addFullsliderSlideItem();
+                me.addTextStyle(element, type);
                 me.enableDrag();
                 me.selectedelement = element;
                 me.generateScaledSlide(me.selectedSlide);
             },
-            addTextStyle: function(element) {
+            addTextStyle: function(element, type) {
+                switch (type) {
+                    case "normal":
+                        $(element).css("font-size", this.normalText + "vw");
+
+                        break;
+                    case "title":
+                        $(element).css("font-size", this.titleText + "vw");
+                        break;
+                    case "subtitle":
+                        $(element).css("font-size", this.subtitleText + "vw");
+                        break;
+                    default:
+                        $(element).css("font-size", "1.75vw");
+                        break;
+                }
+                
+                $(element).css("position", "absolute");
+                $(element).css("left", "24.6vw");
+                $(element).css("top", "5.66vw");
                 $(element).css("line-height", "initial", "important");
                 $(element).css("color", "#000");
-                $(element).css("font-size", "5vw");
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
-                $(element).css("position", "absolute");
-                $(element).css("left", "15.373vw");
-                $(element).css("top", "3.66vw");
                 $(element).css("white-space", "normal");
                 $(element).css("font-family", "'Montserrat', sans-serif");
                 var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
@@ -969,10 +987,24 @@ Impressionist.prototype =
                     me.dropdownopen = true;
                     me.hideTransformControl();
                 });
-                $("#addtextbtn").on("click", function(e)
+                $("#addtextbtn,#normalTextBtn").on("click", function(e)
                 {
                     console.log("add btn clicked...");
-                    me.addFullsliderSlideItem(me.selectedSlide);
+                    me.addFullsliderText("normal");
+                    //On create text element, this is selected with click event
+                    launchEvent("click", me.selectedforedit);
+                });
+                $("#titleTextBtn").on("click", function(e)
+                {
+                    console.log("add btn clicked...");
+                    me.addFullsliderText("title");
+                    //On create text element, this is selected with click event
+                    launchEvent("click", me.selectedforedit);
+                });
+                $("#subtTextBtn").on("click", function(e)
+                {
+                    console.log("add btn clicked...");
+                    me.addFullsliderText("subtitle");
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });

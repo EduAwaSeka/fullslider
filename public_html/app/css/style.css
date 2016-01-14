@@ -71,6 +71,21 @@ p {
     height: 4.7291vw;
 }
 
+#addElementsPanel{
+    display: inline-block;
+}
+
+#textDropdown{
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
+    background-color: #E8EBEF;
+    border-left: 0.0732vw solid #4874A0;
+}
+
+#textDropdown .caret{
+    margin-left: 0;
+}
+
 .sidebarfooter {
     background-color: none;
 }

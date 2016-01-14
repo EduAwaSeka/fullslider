@@ -59,8 +59,23 @@ Eduardo Jiménez Grande
                 </div>
 
                 <div id="tools" class="col-sm-11 navbar-brand sidebarfooter">
-                    <div class="btn-group" id="addElementsPanel">
-                        <a class="btn btn-info toolbarblockleft" id="addtextbtn" href="#" title="Add text"><i class="fa fa-plus"></i> <i class="fa fa-font"></i></a>
+                    <div class="" id="addElementsPanel">
+                        <div class="btn-group">
+                            <button class="btn btn-info " id="addtextbtn" title="Add text">
+                                <i class="fa fa-plus"></i> 
+                                <span>Text</span>
+                            </button>
+                            <button id="textDropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Add Text Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">    
+                                <li><a id="normalTextBtn" href="#">Normal</a></li>
+                                <li><a id="titleTextBtn" href="#">Title</a></li>
+                                <li><a id="subtTextBtn" href="#">Subtitle</a></li>
+                            </ul>
+
+                        </div>
                         <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="fa fa-image"></i></a>
                     </div>
                     <div class="btn-group" id="textTools">
@@ -111,15 +126,15 @@ Eduardo Jiménez Grande
                                 <span class="skewx label label-disabled" id="spanskewx"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
                                 <span class="skewy label label-disabled" id="spanskewy"><i class="glyphicon glyphicon-resize-vertical"></i></span>
                                 <span class="deleteicon label label-important" id="spandelete"><i class="fa fa-close"></i></span>
-                                
-<!--                                <div class="ui-resizable-handle ui-resizable-nw"></div>
-                                <div class="ui-resizable-handle ui-resizable-ne"></div>
-                                <div class="ui-resizable-handle ui-resizable-sw"></div>
-                                <div class="ui-resizable-handle ui-resizable-se"></div>
-                                <div class="ui-resizable-handle ui-resizable-n"></div>
-                                <div class="ui-resizable-handle ui-resizable-s"></div>
-                                <div class="ui-resizable-handle ui-resizable-e"></div>
-                                <div class="ui-resizable-handle ui-resizable-w"></div>-->
+
+                                <!--                                <div class="ui-resizable-handle ui-resizable-nw"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-ne"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-sw"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-se"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-n"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-s"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-e"></div>
+                                                                <div class="ui-resizable-handle ui-resizable-w"></div>-->
                             </span>
                         </div><!-- slideviewport -->
                     </div>

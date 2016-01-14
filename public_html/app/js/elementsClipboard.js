@@ -35,6 +35,7 @@ function pasteEl() {
                 }
                 else {
                     Impressionist.prototype.cloneSlide(elClipboard.value);
+                    launchEvent("click", document.getElementsByClassName("slidethumbholder")[0]);
                 }
             }
             break;
@@ -42,7 +43,6 @@ function pasteEl() {
             if (isElementByClass("slidelement", elClipboard.value)) {
                 Impressionist.prototype.cloneElement(elClipboard.value);
                 Impressionist.prototype.appendClonedElement();
-
             }
             break;
     }
