@@ -73,6 +73,7 @@ Impressionist.prototype =
                 me.initializeImageModal();
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
+                me.initializeConfigModal();
                 me.initializeAlerts();
                 me.setupColorpickerPopup();
                 me.setupMenuItemEvents();
@@ -88,6 +89,9 @@ Impressionist.prototype =
 
                 me.openWelcomePanel();
             },
+            initializeWelcomePanel: function() {
+                $("#modals").append(welcome_panel);
+            },
             initializeImageModal: function() {
                 $("#modals").append(add_img_modal);
             },
@@ -97,8 +101,11 @@ Impressionist.prototype =
             initializeMyPresModal: function() {
                 $("#modals").append(my_pres_modal);
             },
-            initializeWelcomePanel: function() {
-                $("#modals").append(welcome_panel);
+            initializeConfigModal: function() {
+                $("#modals").append(config_modal);
+                $('#configTab a').click(function(e) {
+                    $(this).tab('show');
+                });
             },
             initializeAlerts: function() {
                 $("#modals").append(alert_danger);
@@ -793,7 +800,7 @@ Impressionist.prototype =
                         $(element).css("font-size", "1.75vw");
                         break;
                 }
-                
+
                 $(element).css("position", "absolute");
                 $(element).css("left", "24.6vw");
                 $(element).css("top", "5.66vw");
@@ -987,27 +994,28 @@ Impressionist.prototype =
                     me.dropdownopen = true;
                     me.hideTransformControl();
                 });
+
+                //Add Text buttons on click. 
                 $("#addtextbtn,#normalTextBtn").on("click", function(e)
                 {
-                    console.log("add btn clicked...");
                     me.addFullsliderText("normal");
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
                 $("#titleTextBtn").on("click", function(e)
                 {
-                    console.log("add btn clicked...");
                     me.addFullsliderText("title");
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
                 $("#subtTextBtn").on("click", function(e)
                 {
-                    console.log("add btn clicked...");
                     me.addFullsliderText("subtitle");
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
+                //End add text buttons on click
+
                 $("#addimagebtn").on("click", function(e)
                 {
                     console.log("open image modal...");
@@ -1021,7 +1029,7 @@ Impressionist.prototype =
                     console.log("open image modal...");
                     $("#newpresentationmodal").removeClass("hide");
                     $("#newpresentationmodal").modal("show");
-                    $("#titleinput").val("New Presentation")
+                    $("#titleinput").val("New Presentation");
                     $("#newpresoheader").html("Create New Presentation");
                     me.mode = "create";
                 });
@@ -1056,6 +1064,11 @@ Impressionist.prototype =
                     });
                     $("#savedpresentationsmodal").removeClass("hide");
                     $("#savedpresentationsmodal").modal("show");
+                });
+                $("#openconfiguration").on("click", function(e)
+                {
+                    $("#configmodal").removeClass("hide");
+                    $("#configmodal").modal("show");
                 });
                 $("#viewbtn").on("click", function(e)
                 {

@@ -143,7 +143,36 @@ var new_pres_modal= '<!-- New Presentation Modal -->'+
                             '<a href="#" class="btn btn-primary createpresentation"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
                         '</div>'+
                     '</div>'+
-                    '<!-- End of new preso modal-->';
+                    '<!-- End of New Presentation Modal-->';
+            
+var config_modal= '<!-- Design Configuration Modal -->'+
+                    '<div class="modal fade modalwindow" id="configmodal">'+
+                        '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Configuration</h3></div>'+
+                        '<div class="modal-body">'+
+                            '<ul id="configTab" class="nav nav-tabs">'+ 
+                                '<li role="presentation"><a href="#textFormat">Text Format</a></li>'+
+                            '</ul>'+
+                            '<div class="tab-content">'+
+                                '<div role="tabpanel" class="tab-pane active" id="textFormat">'+
+                                    '<div>'+
+                                        '<label class="col-sm-2">Type</label>'+
+                                        '<label class="col-sm-1">Size</label>'+
+                                    '</div>'+
+
+                                    '<ul style="clear: both;">'+
+                                        '<li class="row"><span class="col-sm-2">Normal</span> <input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
+                                        '<li class="row"><span class="col-sm-2">Title</span><input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
+                                        '<li class="row"><span class="col-sm-2">Subtitle</span><input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
+                                    '</ul>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
+                            '<a href="#" class="btn btn-primary saveconfiguration"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
+                        '</div>'+
+                    '</div>'+
+                    '<!-- End of Design Configuration Modal-->';
             
             
             

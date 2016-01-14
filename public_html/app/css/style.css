@@ -71,8 +71,13 @@ p {
     height: 4.7291vw;
 }
 
+#menu button i{
+    font-size: 0.95vw
+}
+
 #addElementsPanel{
     display: inline-block;
+    margin-left: 4.15vw;
 }
 
 #textDropdown{
@@ -276,4 +281,16 @@ p {
     top: 10% !important;
     bottom: inherit !important;
     color: #34495e !important;
+}
+
+
+#configmodal{
+    width: 61vw;
+    margin-left: -30vw;
+}
+#configmodal li{
+    list-style: none;
+}
+#configmodal .modal-body{
+    max-height: 46vw;
 }
