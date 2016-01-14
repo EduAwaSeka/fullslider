@@ -22,7 +22,7 @@
 .etch-editor-button span,
 .etch-editor-button span {
     /*background: url('images/editor_icons.png') no-repeat;*/
-                           display: block; height: 100%; width: 100%;
+    display: block; height: 100%; width: 100%;
 }
 
 .etch-editor-panel .etch-bold span { background-position: 0 0; }
@@ -70,6 +70,16 @@
     background-color: #f5f5f5;
     text-shadow: 0.0732vw 0.0732vw 0.1464vw #000;
     background-image: linear-gradient(to bottom, #3498DB, #3491D0);
+}
+
+#etch-font-size ul{
+    min-width: 7.713vw;
+}
+#etch-font-size li{
+    text-align: right;    
+}
+#etch-font-size li a{
+    width: initial !important;
 }
 
 #etch-font-family ul{

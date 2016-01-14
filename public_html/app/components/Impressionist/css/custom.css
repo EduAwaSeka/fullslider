@@ -320,6 +320,7 @@ body
     cursor: move;
     cursor: -webkit-grab;
     cursor: -moz-grab;
+    /* font-size: 12pt !important; */
 }
 .selectioncursor
 {

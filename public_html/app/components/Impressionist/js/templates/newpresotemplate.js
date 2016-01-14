@@ -34,15 +34,23 @@ var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
                                         '<span class="caret"></span></a>' +
                                 '<ul class="dropdown-menu" data-option="fontSize">' +
                                         '<li>' +
-                                          '<a class="is-etch-button" href="#" data-value="144">144px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="115">115px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="96">96px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="72">72px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="64">64px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="48">48px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="36">36px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="24">24px</a>' +
-                                          '<a class="is-etch-button" href="#" data-value="19">19px</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="10">10 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="9">9 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="8">8 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="7">7 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="6">6 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="5">5 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="4">4 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="3.5">3.5 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="3">3 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="2.75">2.75 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="2.5">2.5 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="2.25">2.25 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="2">2 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="1.75">1.75 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="1.5">1.5 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="1.25">1.25 vw</a>' +
+                                          '<a class="is-etch-button" href="#" data-value="1">1 vw</a>' +
                                         '</li>' +
                                 '</ul>' +
                         '</div>';      

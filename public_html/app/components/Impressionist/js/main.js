@@ -6,28 +6,35 @@ Impressionist = function()
 
     this.slidecounter = 0;
     this.menuopen = false;
-    this.currentview = "mainarea";
+    
     this.selectedElement;
+    this.selectedforedit;
+    
     this.clonedElement;
     this.selectedSlide;
+    
     this.orchestrationcoords = [];
     this.selectedOrchElement;
     this.lastslideleftpos = 0;
+    
     this.saveKey = "fullslider_decks";
     this.lastSaved = "fullslider_lastsaved";
+    
     this.currentPresentation;
     this.mypresentations = [];
     this.mode = "create";
     this.loggedinstate = false;
     this.dropdownopen = false;
     this.currentClicked = "";
-    this.selectedforedit;
+    
+    
     this.isBold = false;
     this.isItalic = false;
     this.isUnderlined = false;
     this.isLeftAligned = false;
     this.isRightAligned = false;
     this.isCenterAligned = false;
+    
     this.vxmax = 6000;
     //Viewport x min
     this.vxmin = -6000;
@@ -47,6 +54,10 @@ Impressionist = function()
     this.slidewxmin = 0;
     this.slidewymax = 630;
     this.slidewymin = 0;
+    
+    this.titleText=3.5;
+    this.subtitleText=2.75;
+    this.normalText=1.75;
 };
 Impressionist.prototype =
         {
@@ -182,7 +193,7 @@ Impressionist.prototype =
                 me.selectedSlide.append(me.clonedElement);
                 var id = $(me.clonedElement).attr("id");
                 me.enableDrag();
-                me.selectedElement = $("#"+id);
+                me.selectedElement = $("#" + id);
                 me.generateScaledSlide(me.selectedSlide);
                 //On create text element, this is selected with click event
                 launchEvent("click", me.selectedelement);
@@ -450,6 +461,7 @@ Impressionist.prototype =
 
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
+                    $(this).removeClass("grabbing");
                     if ($(this).attr("data-type") !== "image") {
                         me.editElement(this);
                     }
