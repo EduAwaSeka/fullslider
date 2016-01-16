@@ -58,6 +58,10 @@ Impressionist = function()
     this.titleText = 3.5;
     this.subtitleText = 2.75;
     this.normalText = 1.75;
+    
+    this.normalFont="Montserrat";
+    this.titleFont="Montserrat";
+    this.subtitleFont="Montserrat";
 };
 Impressionist.prototype =
         {
@@ -106,6 +110,24 @@ Impressionist.prototype =
                 $('#configTab a').click(function(e) {
                     $(this).tab('show');
                 });
+                var text_config_li=$("#textFormat").find("ul").children();
+                var normal_children= $(text_config_li[0]).children();
+                var title_children= $(text_config_li[1]).children();
+                var subt_children= $(text_config_li[2]).children();
+                
+                $(normal_children[1]).attr("id","normal_text_size");
+                $(normal_children[2]).attr("id","normal_text_font");
+                $(normal_children[3]).attr("id","normal_text_color");
+                
+                $(title_children[1]).attr("id","title_text_size");
+                $(title_children[2]).attr("id","title_text_font");
+                $(title_children[3]).attr("id","title_text_color");
+                
+                $(subt_children[1]).attr("id","subt_text_size");
+                $(subt_children[2]).attr("id","subt_text_font");
+                $(subt_children[3]).attr("id","subt_text_color");
+
+                
             },
             initializeAlerts: function() {
                 $("#modals").append(alert_danger);

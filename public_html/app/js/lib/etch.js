@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['undo','redo','bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
+            'text': ['undo', 'redo', 'bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
         }
     };
 
@@ -90,19 +90,21 @@
             _.each(this.model.get('buttons'), function(button) {
                 switch (button) {
                     case "font-size":
-                        var $buttonEl = $(font_size_selector);
+                        var buttonEl = $(font_size_selector);
                         break;
                     case "font-family":
-                        var $buttonEl = $(font_family_selector);
+                        var buttonEl = $(etch_font_family_selector);
+                        $(buttonEl).find("ul").attr("data-option", "fontFamily");
                         break;
                     case "color":
-                        var $buttonEl = $(color_selector);
+                        var buttonEl = $(color_selector);
+                        $(buttonEl).addClass("etch-color");
                         break;
                     default:
-                        var $buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-'+button+'"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
                 }
 
-                view.$el.append($buttonEl);
+                view.$el.append(buttonEl);
             });
 
             $(this.el).show('fast');
@@ -298,19 +300,15 @@
             //document.execCommand('fontName', false, value);
             var elementToChange = $(document).find("[contentEditable='true']");
             elementToChange.css("font-family", value);
-            if (value[0] === "'") {
-                value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
-            }
-            else {
-                value = value.substr(0, value.lastIndexOf(","));
-            }
+            
+            var value_name=get_font_name(value);
 
             //update value on editor button
             var fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
-            fontFamilyReadout[0].innerHTML = value;
+            fontFamilyReadout[0].innerHTML = value_name;
 
             Backbone.trigger('etch:state', {
-                face: value
+                face: value_name
             });
         },
         setFontSize: function(e) {
@@ -318,12 +316,12 @@
             var value = extractValue(e);
             var fontSizeReadout = this.$el.find(".fontSizeReadout");
             var elementToChange = $(document).find("[contentEditable='true']");
-            
+
             //Update element font-size value
             elementToChange.css("font-size", value + "vw");
 
             //update value on editor button
-            fontSizeReadout.text(value+" vw");
+            fontSizeReadout.text(value + " vw");
 
 
             Backbone.trigger('etch:state', {
@@ -380,7 +378,7 @@
 
             //initialize value of font-size etch-editor-button with selected element value
             fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-            fontSizeReadout.innerHTML=parseInt(pxToVw(getFontSize($editable)))+" vw";
+            fontSizeReadout.innerHTML = parseInt(pxToVw(getFontSize($editable))) + " vw";
 
             //initialize value of font-family etch-editor-button with selected element value
             fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');

@@ -53,48 +53,55 @@ var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
                                           '<a class="is-etch-button" href="#" data-value="1">1 vw</a>' +
                                         '</li>' +
                                 '</ul>' +
-                        '</div>';      
+                        '</div>'; 
+                
+var font_list='<ul class="dropdown-menu">'+
+                    '<li>'+
+                      '<a class="abril is-etch-button" href="#" data-value="\'Abril Fatface\', cursive">Abril</a>'+
+                      '<a class="architects is-etch-button" href="#" data-value="\'Architects Daughter\', cursive">Architects Daughter</a>'+
+                      '<a class="bangers is-etch-button" href="#" data-value="\'Bangers\', cursive">Bangers</a>'+
+                      '<a class="blackops is-etch-button" href="#" data-value="\'Black Ops One\', cursive">Black Ops One</a>'+
+                      '<a class="cabin-sketch is-etch-button" href="#" data-value="\'Cabin Sketch\', cursive">Cabin Sketch</a>'+
+                      '<a class="cookie is-etch-button" href="#" data-value="\'Cookie\', cursive">Cookie</a>'+
+                      '<a class="courgette is-etch-button" href="#" data-value="\'Courgette\', cursive">Courgette</a>'+
+                      '<a class="crimson is-etch-button" href="#" data-value="\'Crimson Text\', serif">Crimson Text</a>'+
+                      '<a class="dancingscript is-etch-button" href="#" data-value="\'Dancing Script\', cursive">Dancing Script</a>'+
+                      '<a class="droidsansmono is-etch-button" href="#" data-value="\'Droid Sans Mono\', monospace">Droid Sans Mono</a>'+
+                      '<a class="fredoka is-etch-button" href="#" data-value="\'Fredoka One\', cursive">Fredoka One</a>'+
+                      '<a class="gorditas is-etch-button" href="#" data-value="\'Gorditas\', cursive">Gorditas</a>'+
+                      '<a class="greatvibes is-etch-button" href="#" data-value="\'Great Vibes\', cursive">Great Vibes</a>'+
+                      '<a class="hammersmith is-etch-button" href="#" data-value="\'Hammersmith One\', sans-serif">Hammersmith One</a>'+
+                      '<a class="inconsolata is-etch-button" href="#" data-value="\'Inconsolata\',">Inconsolata</a>'+
+                      '<a class="indieflower is-etch-button" href="#" data-value="\'Indie Flower\', cursive">Indie Flower</a>'+
+                      '<a class="lato is-etch-button" href="#" data-value="\'Lato\', sans-serif">Lato</a>'+
+                      '<a class="leaguegothic is-etch-button" href="#" data-value="\'League Gothic\', sans-serif">League Gothic</a>'+
+                      '<a class="lobster is-etch-button" href="#" data-value="\'Lobster\', serif">Lobster</a>'+
+                      '<a class="miltonian is-etch-button" href="#" data-value="\'Miltonian\', cursive">Miltonian</a>'+
+                      '<a class="montserrat is-etch-button" href="#" data-value="\'Montserrat\', sans serif">Montserrat</a>'+
+                      '<a class="niconne is-etch-button" href="#" data-value="\'Niconne\', cursive">Niconne</a>'+
+                      '<a class="pacifico is-etch-button" href="#" data-value="\'Pacifico\', cursive">Pacifico</a>'+
+                      '<a class="playfair is-etch-button" href="#" data-value="\'Playfair Display\', cursive">Playfair Display</a>'+
+                      '<a class="pressstart is-etch-button" href="#" data-value="\'Press Start 2P\', cursive">Press Start 2P</a>'+
+                      '<a class="quicksand is-etch-button" href="#" data-value="\'Quicksand\', sans-serif">Quicksand</a>'+
+                      '<a class="satisfy is-etch-button" href="#" data-value="\'Satisfy\', cursive">Satisfy</a>'+
+                      '<a class="shadows is-etch-button" href="#" data-value="\'Shadows Into Light\', cursive">Shadows Into Light</a>'+
+                      '<a class="specialelite is-etch-button" href="#" data-value="\'Special Elite\', cursive">Special Elite</a>'+
+                      '<a class="tangerine is-etch-button" href="#" data-value="\'Tangerine\', cursive">Tangerine</a>'+
+                      '<a class="ubuntu is-etch-button" href="#" data-value="\'Ubuntu\', sans-serif">Ubuntu</a>'+
+                    '</li>'+
+            '</ul>';
 
-var font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
+var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
                                 '<a class="btn btn-inverse dropdown-toggle btn-small fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text fontFamilyReadout">Lato</span><span class="caret"></span></a>'+
-                                '<ul class="dropdown-menu menuBarOption" data-option="fontFamily">'+
-                                        '<li>'+
-                                          '<a class="abril is-etch-button" href="#" data-value="\'Abril Fatface\', cursive">Abril</a>'+
-                                          '<a class="architects is-etch-button" href="#" data-value="\'Architects Daughter\', cursive">Architects Daughter</a>'+
-                                          '<a class="bangers is-etch-button" href="#" data-value="\'Bangers\', cursive">Bangers</a>'+
-                                          '<a class="blackops is-etch-button" href="#" data-value="\'Black Ops One\', cursive">Black Ops One</a>'+
-                                          '<a class="cabin-sketch is-etch-button" href="#" data-value="\'Cabin Sketch\', cursive">Cabin Sketch</a>'+
-                                          '<a class="cookie is-etch-button" href="#" data-value="\'Cookie\', cursive">Cookie</a>'+
-                                          '<a class="courgette is-etch-button" href="#" data-value="\'Courgette\', cursive">Courgette</a>'+
-                                          '<a class="crimson is-etch-button" href="#" data-value="\'Crimson Text\', serif">Crimson Text</a>'+
-                                          '<a class="dancingscript is-etch-button" href="#" data-value="\'Dancing Script\', cursive">Dancing Script</a>'+
-                                          '<a class="droidsansmono is-etch-button" href="#" data-value="\'Droid Sans Mono\', monospace">Droid Sans Mono</a>'+
-                                          '<a class="fredoka is-etch-button" href="#" data-value="\'Fredoka One\', cursive">Fredoka One</a>'+
-                                          '<a class="gorditas is-etch-button" href="#" data-value="\'Gorditas\', cursive">Gorditas</a>'+
-                                          '<a class="greatvibes is-etch-button" href="#" data-value="\'Great Vibes\', cursive">Great Vibes</a>'+
-                                          '<a class="hammersmith is-etch-button" href="#" data-value="\'Hammersmith One\', sans-serif">Hammersmith One</a>'+
-                                          '<a class="inconsolata is-etch-button" href="#" data-value="\'Inconsolata\',">Inconsolata</a>'+
-                                          '<a class="indieflower is-etch-button" href="#" data-value="\'Indie Flower\', cursive">Indie Flower</a>'+
-                                          '<a class="lato is-etch-button" href="#" data-value="\'Lato\', sans-serif">Lato</a>'+
-                                          '<a class="leaguegothic is-etch-button" href="#" data-value="\'League Gothic\', sans-serif">League Gothic</a>'+
-                                          '<a class="lobster is-etch-button" href="#" data-value="\'Lobster\', serif">Lobster</a>'+
-                                          '<a class="miltonian is-etch-button" href="#" data-value="\'Miltonian\', cursive">Miltonian</a>'+
-                                          '<a class="montserrat is-etch-button" href="#" data-value="\'Montserrat\', sans serif">Montserrat</a>'+
-                                          '<a class="niconne is-etch-button" href="#" data-value="\'Niconne\', cursive">Niconne</a>'+
-                                          '<a class="pacifico is-etch-button" href="#" data-value="\'Pacifico\', cursive">Pacifico</a>'+
-                                          '<a class="playfair is-etch-button" href="#" data-value="\'Playfair Display\', cursive">Playfair Display</a>'+
-                                          '<a class="pressstart is-etch-button" href="#" data-value="\'Press Start 2P\', cursive">Press Start 2P</a>'+
-                                          '<a class="quicksand is-etch-button" href="#" data-value="\'Quicksand\', sans-serif">Quicksand</a>'+
-                                          '<a class="satisfy is-etch-button" href="#" data-value="\'Satisfy\', cursive">Satisfy</a>'+
-                                          '<a class="shadows is-etch-button" href="#" data-value="\'Shadows Into Light\', cursive">Shadows Into Light</a>'+
-                                          '<a class="specialelite is-etch-button" href="#" data-value="\'Special Elite\', cursive">Special Elite</a>'+
-                                          '<a class="tangerine is-etch-button" href="#" data-value="\'Tangerine\', cursive">Tangerine</a>'+
-                                          '<a class="ubuntu is-etch-button" href="#" data-value="\'Ubuntu\', sans-serif">Ubuntu</a>'+
-                                        '</li>'+
-                                '</ul>'+
+                                font_list+
                             '</div>';
                     
-var color_selector='<div class="btn-group"><input class="color-chooser colorpicker etch-color" /></div>';
+var config_font_family_selector =  '<div class="btn-group col-sm-2 fontconfig">'+
+                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" title="Choose the font family"><span>Lato</span><span class="caret"></span></a>'+
+                                font_list+
+                            '</div>';
+                    
+var color_selector='<div class="btn-group"><input class="color-chooser colorpicker" /></div>';
 
 var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                         '<div class="modal-header">'+
@@ -145,24 +152,38 @@ var new_pres_modal= '<!-- New Presentation Modal -->'+
                     '</div>'+
                     '<!-- End of New Presentation Modal-->';
             
+var editSize='<input class="fixSize col-sm-1" type="number" min="1" max="32">';
+
+var config_edit_text_menu= editSize+config_font_family_selector+color_selector;
+
 var config_modal= '<!-- Design Configuration Modal -->'+
                     '<div class="modal fade modalwindow" id="configmodal">'+
                         '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Configuration</h3></div>'+
                         '<div class="modal-body">'+
                             '<ul id="configTab" class="nav nav-tabs">'+ 
-                                '<li role="presentation"><a href="#textFormat">Text Format</a></li>'+
+                                '<li role="presentation" class="active"><a href="#textFormat">Text Format</a></li>'+
                             '</ul>'+
                             '<div class="tab-content">'+
                                 '<div role="tabpanel" class="tab-pane active" id="textFormat">'+
                                     '<div>'+
                                         '<label class="col-sm-2">Type</label>'+
                                         '<label class="col-sm-1">Size</label>'+
+                                        '<label class="col-sm-2">Font</label>'+
+                                        '<label class="col-sm-1">Color</label>'+
                                     '</div>'+
-
-                                    '<ul style="clear: both;">'+
-                                        '<li class="row"><span class="col-sm-2">Normal</span> <input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
-                                        '<li class="row"><span class="col-sm-2">Title</span><input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
-                                        '<li class="row"><span class="col-sm-2">Subtitle</span><input class="fixSize col-sm-1" type="number" min="1" max="32"></li>'+
+                                    '<ul style="clear: both;padding:1vw">'+
+                                        '<li class="row">'+
+                                            '<span class="col-sm-2">Normal</span>'+
+                                            config_edit_text_menu+
+                                        '</li>'+
+                                        '<li class="row">'+
+                                            '<span class="col-sm-2">Title</span>'+
+                                            config_edit_text_menu+
+                                        '</li>'+
+                                        '<li class="row">'+
+                                            '<span class="col-sm-2">Subtitle</span>'+
+                                            config_edit_text_menu+
+                                        '</li>'+
                                     '</ul>'+
                                 '</div>'+
                             '</div>'+

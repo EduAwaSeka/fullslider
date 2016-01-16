@@ -287,10 +287,29 @@ p {
 #configmodal{
     width: 61vw;
     margin-left: -30vw;
+    top: 8% !important;
 }
 #configmodal li{
     list-style: none;
 }
 #configmodal .modal-body{
-    max-height: 46vw;
+    max-height: 30vw;
+    height: 30vw;
+}
+
+#configTab{
+    margin-bottom: 0.7vw;
+}
+
+.fontconfig a{
+    width: 100%;
+}
+.fontconfig ul{
+    z-index: 56929 !important;
+    max-height: 19vw !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+.fontconfig ul a{
+    padding: 0.25vw 0.3vw !important;
 }
