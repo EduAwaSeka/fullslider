@@ -97,7 +97,7 @@ var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'
                             '</div>';
                     
 var config_font_family_selector =  '<div class="btn-group col-sm-2 fontconfig">'+
-                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" title="Choose the font family"><span>Lato</span><span class="caret"></span></a>'+
+                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" title="Choose the font family"><span class="fontFamilySelected">Lato</span><span class="caret"></span></a>'+
                                 font_list+
                             '</div>';
                     

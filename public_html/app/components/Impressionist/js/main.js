@@ -55,13 +55,17 @@ Impressionist = function()
     this.slidewymax = 630;
     this.slidewymin = 0;
 
-    this.titleText = 3.5;
-    this.subtitleText = 2.75;
-    this.normalText = 1.75;
-    
-    this.normalFont="Montserrat";
-    this.titleFont="Montserrat";
-    this.subtitleFont="Montserrat";
+    this.normalSize = 1.75;
+    this.titleSize = 3.5;
+    this.subtitleSize = 2.75;
+
+    this.normalFont = "'Montserrat', sans serif";
+    this.titleFont = "'Montserrat', sans serif";
+    this.subtitleFont = "'Montserrat', sans serif";
+
+    this.normalColor = "#000";
+    this.titleColor = "#000";
+    this.subtitleColor = "#000";
 };
 Impressionist.prototype =
         {
@@ -80,6 +84,7 @@ Impressionist.prototype =
                 me.initializeConfigModal();
                 me.initializeAlerts();
                 me.setupColorpickerPopup();
+                me.loadConfig();
                 me.setupMenuItemEvents();
                 me.enableSort();
 //                me.setupPopover();
@@ -110,24 +115,24 @@ Impressionist.prototype =
                 $('#configTab a').click(function(e) {
                     $(this).tab('show');
                 });
-                var text_config_li=$("#textFormat").find("ul").children();
-                var normal_children= $(text_config_li[0]).children();
-                var title_children= $(text_config_li[1]).children();
-                var subt_children= $(text_config_li[2]).children();
-                
-                $(normal_children[1]).attr("id","normal_text_size");
-                $(normal_children[2]).attr("id","normal_text_font");
-                $(normal_children[3]).attr("id","normal_text_color");
-                
-                $(title_children[1]).attr("id","title_text_size");
-                $(title_children[2]).attr("id","title_text_font");
-                $(title_children[3]).attr("id","title_text_color");
-                
-                $(subt_children[1]).attr("id","subt_text_size");
-                $(subt_children[2]).attr("id","subt_text_font");
-                $(subt_children[3]).attr("id","subt_text_color");
+                var text_config_li = $("#textFormat").find("ul").children();
+                var normal_children = $(text_config_li[0]).children();
+                var title_children = $(text_config_li[1]).children();
+                var subt_children = $(text_config_li[2]).children();
 
-                
+                $(normal_children[1]).attr("id", "normal_text_size");
+                $(normal_children[2]).attr("id", "normal_text_font");
+                $(normal_children[3]).attr("id", "normal_text_color");
+
+                $(title_children[1]).attr("id", "title_text_size");
+                $(title_children[2]).attr("id", "title_text_font");
+                $(title_children[3]).attr("id", "title_text_color");
+
+                $(subt_children[1]).attr("id", "subt_text_size");
+                $(subt_children[2]).attr("id", "subt_text_font");
+                $(subt_children[3]).attr("id", "subt_text_color");
+
+
             },
             initializeAlerts: function() {
                 $("#modals").append(alert_danger);
@@ -976,6 +981,11 @@ Impressionist.prototype =
                     console.log("data parent id", $(this).attr("data-id"));
                     me.fetchAndPreview($(this).attr("data-id"));
                 });
+                $(".saveconfiguration").on("click", function(e)
+                {
+                    me.updateConfig();
+                    $(".modal").modal("hide");
+                });
                 $(".createpresentation").on("click", function(e)
                 {
 
@@ -1589,4 +1599,67 @@ Impressionist.prototype =
             getClonedElement: function() {
                 return me.clonedElement;
             },
+            loadConfig: function() {
+                $("normal_text_size").attr("value", me.normalSize);
+                $("title_text_size").attr("value", me.titleSize);
+                $("subt_text_size").attr("value", me.subtitleSize);
+
+                me.loadFont("normal");
+                me.loadFont("title");
+                me.loadFont("subtitle");
+             
+                me.loadColor("normal");
+                me.loadColor("title");
+                me.loadColor("subtitle");
+
+            },
+            loadFont: function(type) {
+                var value = "";
+                var element_id = "";
+
+                switch (type) {
+                    case "normal":
+                        value = me.normalFont;
+                        element_id = "#normal_text_font";
+                        break;
+                    case "title":
+                        value = me.titleFont;
+                        element_id = "#title_text_font";
+                        break;
+                    case "subtitle":
+                        value = me.subtitleFont;
+                        element_id = "#subt_text_font";
+                        break;
+                }
+
+                var value_name = get_font_name(value);
+
+                //update value on button with selected font name
+                var fontFamilySelected = $(element_id).find('.fontFamilySelected');
+                fontFamilySelected.html(value_name);
+            },
+            loadColor: function(type) {
+                var value = "";
+                var element_id = "";
+
+                switch (type) {
+                    case "normal":
+                        value = me.normalColor;
+                        element_id = "#normal_text_color";
+                        break;
+                    case "title":
+                        value = me.titleColor;
+                        element_id = "#title_text_color";
+                        break;
+                    case "subtitle":
+                        value = me.subtitleColor;
+                        element_id = "#subt_text_color";
+                        break;
+                }
+                
+                $(element_id).find(".sp-preview-inner").css("background-color",value);
+            },
+            updateConfig: function() {
+
+            }
         };

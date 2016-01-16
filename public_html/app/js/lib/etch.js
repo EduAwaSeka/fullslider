@@ -22,15 +22,6 @@
         }
     };
 
-    function extractValue(e) {
-        var value = e.target.dataset.value;
-        if (value == null) {
-            $target = $(e.target);
-            value = $target.parent()[0].dataset.value;
-        }
-        return value;
-    }
-
     models.Editor = Backbone.Model;
 
     views.Editor = Backbone.View.extend({

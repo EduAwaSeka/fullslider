@@ -108,7 +108,7 @@ function isElementByClass(parentClass, element) {
 }
 
 function get_font_name(font) {
-    var name=font;
+    var name = font;
     if (font[0] === "'") {
         name = name.substr(name.indexOf("'") + 1, name.lastIndexOf("'") - 1);
     }
@@ -116,4 +116,14 @@ function get_font_name(font) {
         name = name.substr(0, name.lastIndexOf(","));
     }
     return name;
+}
+
+
+function extractValue(e) {
+    var value = e.target.dataset.value;
+    if (value == null) {
+        $target = $(e.target);
+        value = $target.parent()[0].dataset.value;
+    }
+    return value;
 }
