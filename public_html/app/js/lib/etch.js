@@ -310,9 +310,9 @@
 
             //Update element font-size value
             elementToChange.css("font-size", value + "vw");
-
+            
             //update value on editor button
-            fontSizeReadout.text(value + " vw");
+            fontSizeReadout.text(parseFloat(value).toFixed(2) + " vw");
 
 
             Backbone.trigger('etch:state', {
@@ -369,7 +369,7 @@
 
             //initialize value of font-size etch-editor-button with selected element value
             fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-            fontSizeReadout.innerHTML = parseInt(pxToVw(getFontSize($editable))) + " vw";
+            fontSizeReadout.innerHTML = parseFloat(pxToVw(getFontSize($editable))).toFixed(2) + " vw";
 
             //initialize value of font-family etch-editor-button with selected element value
             fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
