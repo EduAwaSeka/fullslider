@@ -301,8 +301,16 @@ p {
     margin-bottom: 0.7vw;
 }
 
+#textFormat .btn-group .btn:hover{
+    background: #fff !important;
+    border-color: #999 !important; 
+    color:#000 !important;
+    border-top-color: #000 !important;
+}
+
 .fontconfig a{
     width: 100%;
+    overflow-x: hidden;
 }
 .fontconfig ul{
     z-index: 56929 !important;

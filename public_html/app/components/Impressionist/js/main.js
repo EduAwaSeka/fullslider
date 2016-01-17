@@ -812,27 +812,33 @@ Impressionist.prototype =
                 me.generateScaledSlide(me.selectedSlide);
             },
             addTextStyle: function(element, type) {
+                var color=""
                 switch (type) {
                     case "normal":
-                        $(element).css("font-size", this.normalText + "vw");
-
+                        $(element).css("font-size", me.normalSize + "vw");
+                        color=me.normalColor;
                         break;
                     case "title":
-                        $(element).css("font-size", this.titleText + "vw");
+                        $(element).css("font-size", me.titleSize + "vw");
+                        color=me.titleColor;
                         break;
                     case "subtitle":
-                        $(element).css("font-size", this.subtitleText + "vw");
+                        $(element).css("font-size", me.subtitleSize+ "vw");
+                        color=me.subtitleColor;
                         break;
                     default:
                         $(element).css("font-size", "1.75vw");
                         break;
                 }
+                
+                var text_value=$(element).text();
+                $(element).children().html("<font color='"+color+"'>"+text_value+"</font>");
 
                 $(element).css("position", "absolute");
                 $(element).css("left", "24.6vw");
                 $(element).css("top", "5.66vw");
                 $(element).css("line-height", "initial", "important");
-                $(element).css("color", "#000");
+                //$(element).css("color", "#000");
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("white-space", "normal");
@@ -981,10 +987,24 @@ Impressionist.prototype =
                     console.log("data parent id", $(this).attr("data-id"));
                     me.fetchAndPreview($(this).attr("data-id"));
                 });
-                $(".saveconfiguration").on("click", function(e)
+                $("#saveconfiguration").on("click", function(e)
                 {
                     me.updateConfig();
                     $(".modal").modal("hide");
+                });
+                $("#closeconfiguration").on("click", function(e) {
+                    me.loadConfig();
+                });
+                $(".fontconfig li a").on("click", function(e) {
+                    var value = extractValue(e);
+
+                    var selected_font_link = $(e.target).closest("div").children("a");
+                    selected_font_link.attr("data-font", value);
+
+                    var value_name = get_font_name(value);
+
+                    //update value on editor button
+                    selected_font_link.find(".fontFamilySelected").html(value_name);
                 });
                 $(".createpresentation").on("click", function(e)
                 {
@@ -1600,14 +1620,14 @@ Impressionist.prototype =
                 return me.clonedElement;
             },
             loadConfig: function() {
-                $("normal_text_size").attr("value", me.normalSize);
-                $("title_text_size").attr("value", me.titleSize);
-                $("subt_text_size").attr("value", me.subtitleSize);
+                $("#normal_text_size").attr("value", me.normalSize);
+                $("#title_text_size").attr("value", me.titleSize);
+                $("#subt_text_size").attr("value", me.subtitleSize);
 
                 me.loadFont("normal");
                 me.loadFont("title");
                 me.loadFont("subtitle");
-             
+
                 me.loadColor("normal");
                 me.loadColor("title");
                 me.loadColor("subtitle");
@@ -1631,6 +1651,8 @@ Impressionist.prototype =
                         element_id = "#subt_text_font";
                         break;
                 }
+
+                $(element_id).children("a").attr("data-font", value);
 
                 var value_name = get_font_name(value);
 
@@ -1656,10 +1678,20 @@ Impressionist.prototype =
                         element_id = "#subt_text_color";
                         break;
                 }
-                
-                $(element_id).find(".sp-preview-inner").css("background-color",value);
+
+                $(element_id).find(".sp-preview-inner").css("background-color", value);
             },
             updateConfig: function() {
+                me.normalSize = parseFloat($("#normal_text_size").attr("value"));
+                me.titleSize = parseFloat($("#title_text_size").attr("value"));
+                me.subtitleSize = parseFloat($("#subt_text_size").attr("value"));
 
+                me.normalFont = $("#normal_text_font").children("a").attr("data-font");
+                me.titleFont = $("#title_text_font").children("a").attr("data-font");
+                me.subtitleFont = $("#subt_text_font").children("a").attr("data-font");
+
+                me.normalColor=rgbToHex($("#normal_text_color").find(".sp-preview-inner").css("background-color"));
+                me.titleColor=rgbToHex($("#title_text_color").find(".sp-preview-inner").css("background-color"));
+                me.subtitleColor=rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
             }
         };

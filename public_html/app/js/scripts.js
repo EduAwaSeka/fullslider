@@ -127,3 +127,20 @@ function extractValue(e) {
     }
     return value;
 }
+
+
+//Convert rgb color format to hexadecimal format
+function rgbToHex(total) {
+    var total = total.toString().split(',');
+    var r = total[0].substring(4);
+    var g = total[1].substring(1);
+    var b = total[2].substring(1,total[2].length-1);
+    return ("#"+checkNumber((r*1).toString(16))+checkNumber((g*1).toString(16))+checkNumber((b*1).toString(16))).toUpperCase();
+}
+function checkNumber(i){
+    i = i.toString();
+    if (i.length == 1) return '0'+i;
+    else return i;
+}
+
+//end rgbToHex

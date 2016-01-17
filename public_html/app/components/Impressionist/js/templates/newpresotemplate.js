@@ -97,7 +97,7 @@ var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'
                             '</div>';
                     
 var config_font_family_selector =  '<div class="btn-group col-sm-2 fontconfig">'+
-                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" title="Choose the font family"><span class="fontFamilySelected">Lato</span><span class="caret"></span></a>'+
+                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" data-font="\'Lato\', sans-serif" title="Choose the font family"><span class="fontFamilySelected">Lato</span><span class="caret"></span></a>'+
                                 font_list+
                             '</div>';
                     
@@ -189,8 +189,8 @@ var config_modal= '<!-- Design Configuration Modal -->'+
                             '</div>'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
-                            '<a href="#" class="btn btn-primary saveconfiguration"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
+                            '<a href="#" id="closeconfiguration" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
+                            '<a href="#" id="saveconfiguration" class="btn btn-primary"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of Design Configuration Modal-->';
