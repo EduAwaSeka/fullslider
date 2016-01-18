@@ -19,7 +19,7 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fa fa-close"></i></a>'+
 				 '</div>';
 var text_snippet = '<div class="slidelement editable" id="slidelement_id" data-button-class="text" data-parent="fullslider_slide__slidenumber__" data-type="text"><div>Sample Text</div> </div>';
-var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__"></section>';
+var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__" data-background="#fff"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
                                         '<h3 style="display:inline-block; color:#2980B9"> __presotitle__</h3>'+

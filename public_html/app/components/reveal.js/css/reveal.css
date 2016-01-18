@@ -220,7 +220,7 @@ body {
 .reveal .controls .fullscr{
     color: #59769C;
     top: 2.2vw;
-    right: 4vw;
+    right: 4.15vw;
     opacity: 1;
     font-size: 2vw;
 }
@@ -229,7 +229,7 @@ body {
     cursor:pointer;
     color: #ABB2CC !important;
     top: 2.1vw !important;
-    right: 4.1vw !important;
+    right: 4.2vw !important;
     font-size: 2.2vw !important;
 }
 /*********************************************
