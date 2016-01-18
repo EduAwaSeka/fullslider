@@ -812,27 +812,37 @@ Impressionist.prototype =
                 me.generateScaledSlide(me.selectedSlide);
             },
             addTextStyle: function(element, type) {
-                var color=""
+                var size = "";
+                var font = "";
+                var color = "";
                 switch (type) {
                     case "normal":
-                        $(element).css("font-size", me.normalSize + "vw");
-                        color=me.normalColor;
+                        size = me.normalSize;
+                        color = me.normalColor;
+                        font = me.normalFont;
                         break;
                     case "title":
-                        $(element).css("font-size", me.titleSize + "vw");
-                        color=me.titleColor;
+                        size = me.titleSize;
+                        color = me.titleColor;
+                        font = me.titleFont;
                         break;
                     case "subtitle":
-                        $(element).css("font-size", me.subtitleSize+ "vw");
-                        color=me.subtitleColor;
+                        size = me.subtitleSize;
+                        color = me.subtitleColor;
+                        font = me.subtitleFont;
                         break;
                     default:
-                        $(element).css("font-size", "1.75vw");
+                        size = "1.75vw";
+                        color = "#000";
+                        font = "'Montserrat', sans-serif";
                         break;
                 }
-                
-                var text_value=$(element).text();
-                $(element).children().html("<font color='"+color+"'>"+text_value+"</font>");
+
+                $(element).css("font-size", size + "vw");
+                var text_value = $(element).text();
+                $(element).children().html("<font color='" + color + "'>" + text_value + "</font>");
+                $(element).css("font-family", font);
+
 
                 $(element).css("position", "absolute");
                 $(element).css("left", "24.6vw");
@@ -842,7 +852,6 @@ Impressionist.prototype =
                 $(element).css("height", "initial");
                 $(element).css("width", "auto");
                 $(element).css("white-space", "normal");
-                $(element).css("font-family", "'Montserrat', sans-serif");
                 var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
                 var maxheight = calculateMaxHeight(element, $(".fullslider-slide-container"));
                 $(element).css("max-width", maxwidth + "vw");
@@ -1247,16 +1256,29 @@ Impressionist.prototype =
                 });
                 return (outputcontainer.html().toString());
             },
-            createNewPresentation: function()
-            {
+            cleanFullslider: function() {
                 $(".slidethumbholder").html("");
                 $(".fullslider-slide-container").html("");
+            },
+            createNewPresentation: function()
+            {
+                //Delete slides and slidethumbs
+                me.cleanFullslider();
+
+                //Load default text configuration
+                me.loadTextDefault();
+                me.loadConfig();
+
+                var config = me.getConfigVariable();
+                
+                //add new slide
                 me.addSlide();
                 var presentation = {
                     id: Math.round(Math.random() * 201020),
                     title: $("#presentationmetatitle").text(),
                     contents: $(".fullslider-slide-container").html().toString(),
-                    thumbcontents: $(".slidethumbholder").html().toString(),
+                    config: config
+
                 };
                 me.currentPresentation = presentation;
             },
@@ -1277,8 +1299,25 @@ Impressionist.prototype =
                 var id = (presentation.id === undefined || presentation.id === null);
                 var title = (presentation.title === undefined || presentation.title === null);
                 var contents = (presentation.contents === undefined || presentation.contents === null);
-                var thumbcontents = (presentation.thumbcontents === undefined || presentation.thumbcontents === null);
-                var error = (id || title || contents || thumbcontents);
+                var config = (presentation.config === undefined || presentation.config === null);
+
+                var normalText = (presentation.config.normalText === undefined || presentation.config.normalText === null);
+                var normalTextSize = (presentation.config.normalText.size === undefined || presentation.config.normalText.size === null);
+                var normalTextFont = (presentation.config.normalText.font === undefined || presentation.config.normalText.font === null);
+                var normalTextColor = (presentation.config.normalText.color === undefined || presentation.config.normalText.color === null);
+
+                var titleText = (presentation.config.titleText === undefined || presentation.config.titleText === null);
+                var titleTextSize = (presentation.config.titleText.size === undefined || presentation.config.titleText.size === null);
+                var titleTextFont = (presentation.config.titleText.font === undefined || presentation.config.titleText.font === null);
+                var titleTextColor = (presentation.config.titleText.color === undefined || presentation.config.titleText.color === null);
+
+                var subtText = (presentation.config.subtText === undefined || presentation.config.subtText === null);
+                var subtTextSize = (presentation.config.subtText.size === undefined || presentation.config.subtText.size === null);
+                var subtTextFont = (presentation.config.subtText.font === undefined || presentation.config.subtText.font === null);
+                var subtTextColor = (presentation.config.subtText.color === undefined || presentation.config.subtText.color === null);
+
+                var error = (id || title || contents || config || normalText || normalTextSize || normalTextFont || normalTextColor || titleText ||
+                        titleTextSize || titleTextFont || titleTextColor || subtText || subtTextSize || subtTextFont || subtTextColor);
                 return error;
             },
             fetchAndPreview: function(id)
@@ -1350,11 +1389,14 @@ Impressionist.prototype =
                 {
                     tempid = Math.round(Math.random() * 201020);
                 }
+
+                var config = me.getConfigVariable();
+
                 var o = {
                     id: tempid,
                     title: $("#presentationmetatitle").text(),
                     contents: $(".fullslider-slide-container").html().toString(),
-                    thumbcontents: $(".slidethumbholder").html().toString(),
+                    config: config
                 };
                 me.currentPresentation = o;
                 $("#presentationmetatitle").html(me.currentPresentation.title);
@@ -1379,13 +1421,14 @@ Impressionist.prototype =
             generateFile: function() {
                 var title = me.getTitle();
                 var contents = me.generateExportMarkup();
-                var thumbcontents = $(".slidethumbholder").html().toString();
                 var id = me.currentPresentation.id;
+                var config = me.getConfigVariable();
+                
                 var file = {
                     'id': id,
                     'title': title,
                     'contents': contents,
-                    'thumbcontents': thumbcontents
+                    'config': config
                 };
                 var text = JSON.stringify(file);
                 var blob = new Blob([text], {type: "application/json"});
@@ -1402,13 +1445,30 @@ Impressionist.prototype =
                 };
                 reader.readAsDataURL(content);
             },
-            loadPresentation: function(presentation) {
-                $(".fullslider-slide-container").html(presentation.contents);
-                $(".slidethumbholder").html(presentation.thumbcontents);
-                $(".slidethumbholder").each(function(i, object)
+            generateAllThumbs: function() {
+                var thumb;
+                var uid;
+                $(".fullslider-slide").each(function(i, object)
                 {
-                    $(this).css("opacity", 1);
+                    thumb = slidethumb;
+                    uid = $(this).attr("id").replace("fullslider_slide_", "");
+                    thumb = thumb.split("slidethumb_^UID^").join("slidethumb_" + uid);
+                    $(".slidethumbholder").append(thumb);
+                    $("#slidethumb_" + uid).animate({opacity: 1}, 200);
+                    me.addSlideEvents();
+                    me.lastslideleftpos += 200;
+                    me.assignSlideNumbers();
+                    me.selectSlide("#fullslider_slide_" + uid);
+                    me.generateScaledSlide(me.selectedSlide);
                 });
+
+            },
+            loadPresentation: function(presentation) {
+                me.cleanFullslider();
+
+                $(".fullslider-slide-container").html(presentation.contents);
+                me.generateAllThumbs();
+
                 var first_slide_id = $(".fullslider-slide-container").find(".fullslider-slide-element").attr("id");
                 first_slide_id = first_slide_id.replace(/[^-\d\.]/g, '');
                 me.selectSlide("#fullslider_slide_" + first_slide_id);
@@ -1417,30 +1477,13 @@ Impressionist.prototype =
                 $("#presentationmetatitle").html(me.currentPresentation.title);
                 console.log("rendered");
                 $("#savedpresentationsmodal").modal("hide");
-                $(".slidemask").on("click", function(e)
-                {
-                    console.log("repopulated zone");
-                    e.stopPropagation();
-                    id = (e.target.id).split("_")[1];
-                    console.log("slidemask", id);
-                    me.selectSlide("#fullslider_slide_" + id);
-                    me.selectThumb(id);
-                    me.hideTransformControl();
-                });
-                $(".deletebtn").on("click", function(e)
-                {
-                    p = $("#" + $(this).attr("data-parent"));
-                    slideid = $(this).attr("data-parent").split("_")[1];
-                    console.log("parent", p, slideid);
-                    p.animate({opacity: 0}, 200, function(e)
-                    {
-                        $(this).remove();
-                        $("#fullslider_slide_" + slideid).remove();
-                        me.assignSlideNumbers();
-                    });
-                });
                 me.enableDrag();
                 me.mode = "save";
+
+                //Load design configuration
+                me.updateConfigFromSaved(presentation.config);
+                me.loadConfig();
+
                 me.savePresentation();
             },
             existPresentation: function(id) {
@@ -1619,6 +1662,19 @@ Impressionist.prototype =
             getClonedElement: function() {
                 return me.clonedElement;
             },
+            loadTextDefault: function() {
+                me.normalSize = 1.75;
+                me.titleSize = 3.5;
+                me.subtitleSize = 2.75;
+
+                me.normalFont = "'Montserrat', sans serif";
+                me.titleFont = "'Montserrat', sans serif";
+                me.subtitleFont = "'Montserrat', sans serif";
+
+                me.normalColor = "#000";
+                me.titleColor = "#000";
+                me.subtitleColor = "#000";
+            },
             loadConfig: function() {
                 $("#normal_text_size").attr("value", me.normalSize);
                 $("#title_text_size").attr("value", me.titleSize);
@@ -1690,8 +1746,33 @@ Impressionist.prototype =
                 me.titleFont = $("#title_text_font").children("a").attr("data-font");
                 me.subtitleFont = $("#subt_text_font").children("a").attr("data-font");
 
-                me.normalColor=rgbToHex($("#normal_text_color").find(".sp-preview-inner").css("background-color"));
-                me.titleColor=rgbToHex($("#title_text_color").find(".sp-preview-inner").css("background-color"));
-                me.subtitleColor=rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
+                me.normalColor = rgbToHex($("#normal_text_color").find(".sp-preview-inner").css("background-color"));
+                me.titleColor = rgbToHex($("#title_text_color").find(".sp-preview-inner").css("background-color"));
+                me.subtitleColor = rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
+            },
+            updateConfigFromSaved: function(config) {
+                me.normalSize = parseFloat(config.normalText.size);
+                me.titleSize = parseFloat(config.titleText.size);
+                me.subtitleSize = parseFloat(config.subtText.size);
+
+                me.normalFont = config.normalText.font;
+                me.titleFont = config.titleText.font;
+                me.subtitleFont = config.subtText.font;
+
+                me.normalColor = config.normalText.color;
+                me.titleColor = config.titleText.color;
+                me.subtitleColor = config.subtText.color;
+            },
+            getConfigVariable: function() {
+                var normalText = {'size': me.normalSize, 'font': me.normalFont, 'color': me.normalColor};
+                var titleText = {'size': me.titleSize, 'font': me.titleFont, 'color': me.titleColor};
+                var subtitleText = {'size': me.subtitleSize, 'font': me.subtitleFont, 'color': me.subtitleColor};
+
+                var config = {
+                    'normalText': normalText,
+                    'titleText': titleText,
+                    'subtText': subtitleText
+                };
+                return config;
             }
         };
