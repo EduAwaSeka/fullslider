@@ -155,7 +155,7 @@
                     break;
 
                 case 'scale':
-                    var element = $(document).find("[data-select='true']");
+                    var element = me.selectedElement;
                     var el_height = element[0].offsetHeight;
 
                     var container = $(".fullslider-slide-container");
@@ -163,17 +163,17 @@
                     var bottom_limit = container.offset().top + container.height();
 
                     var initialPoint = $(element[0]).offset().top + el_height;
-                    var difference = e.pageY - initialPoint;
+                    var difference = (e.pageY - initialPoint);
                     var new_heigth = el_height + difference;
-
+                   
                     if (element.attr("data-type") === "text") {
                         var scale = new_heigth / el_height;
                         var fontsize = parseFloat(getFontSize(me.selectedElement));
                         var new_fontsize = fontsize * scale;
-                        if (new_fontsize < 16) {
-                            new_fontsize = 16;
+                        new_fontsize=pxToVw(new_fontsize);
+                        if (new_fontsize < 1) {
+                            new_fontsize = 1;
                         }
-                        new_fontsize = pxToVw(new_fontsize);
                         new_fontsize += "vw";
                         me.selectedElement.css("font-size", new_fontsize);
 
@@ -181,9 +181,9 @@
                         var scroll_heigth = parseFloat(element[0].scrollHeight);
                         var max_width = parseFloat(element.css("max-width"));
                         var scroll_width = parseFloat(element[0].scrollWidth);
-                        
+
                         //If element with new size is out of container, undo resize
-                        if (scroll_heigth > max_height || scroll_width > max_width) {
+                        if (scroll_heigth >= max_height || scroll_width >= max_width) {
                             fontsize = pxToVw(fontsize);
                             fontsize += "vw";
                             me.selectedElement.css("font-size", fontsize);

@@ -88,7 +88,6 @@ Impressionist.prototype =
                 me.setupMenuItemEvents();
                 me.enableSort();
 //                me.setupPopover();
-//                me.setupDials();
                 me.hideTransformControl();
                 //Load array with all saved presentations
                 var presentations = me.getSavedPresentations();
@@ -351,36 +350,6 @@ Impressionist.prototype =
                     $(".fullslider-slide-container").append(clonedElements[j]);
                 }
                 me.enableDrag();
-            },
-            setupDials: function()
-            {
-                $("#rotationknob").knob({change: function(v)
-                    {
-                        //me.rotateElement( v );
-                        me.rotateElement(v);
-                    }});
-                $("#skewxknob").knob({change: function(v)
-                    {
-                        me.rotateElementX(v);
-                    }});
-                $("#skewyknob").knob({change: function(v)
-                    {
-                        me.rotateElementY(v);
-                    }});
-                $("#scalerange").on("change", function(e)
-                {
-                    console.log("moving scale", $(this).val());
-                    me.selectedOrchElement.attr("data-scale", $(this).val());
-                    id = me.selectedOrchElement.attr("id").split("_")[1];
-                    $("#slidethumb_" + id).attr("data-scale", $(this).val());
-                });
-                $("#depthrange").on("change", function(e)
-                {
-                    me.selectedOrchElement.attr("data-z", $(this).val());
-                    id = me.selectedOrchElement.attr("id").split("_")[1];
-                    $("#slidethumb_" + id).attr("data-z", $(this).val());
-                });
-                $(".transformlabel").css("vertical-align", "top");
             },
             rotateElement: function(value)
             {
