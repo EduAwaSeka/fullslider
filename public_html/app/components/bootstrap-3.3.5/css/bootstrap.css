@@ -2539,6 +2539,9 @@ input[type="checkbox"] {
     margin: 0.2928vw 0 0;
     margin-top: 0.0732vw \9;
     line-height: normal;
+    border: 0px;
+    width: 0.8vw;
+    height: 0.8vw;
 }
 input[type="file"] {
     display: block;
@@ -2569,7 +2572,7 @@ output {
     display: block;
     width: 100%;
     height: 34px;
-    padding: 0.439vw 12px;
+    padding: 0.439vw 0.8785vw;
     font-size: 1.025vw;
     line-height: 1.42857143;
     color: #555;
@@ -2630,7 +2633,7 @@ input[type="search"] {
     .input-group-sm input[type="time"],
     .input-group-sm input[type="datetime-local"],
     .input-group-sm input[type="month"] {
-        line-height: 30px;
+        line-height: 2.196vw;
     }
     input[type="date"].input-lg,
     input[type="time"].input-lg,
@@ -2720,40 +2723,40 @@ fieldset[disabled] .checkbox label {
     padding-left: 0;
 }
 .input-sm {
-    height: 30px;
+    height: 2.196vw;
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
     border-radius: 0.21962vw;
 }
 select.input-sm {
-    height: 30px;
-    line-height: 30px;
+    height: 2.196vw;
+    line-height: 2.196vw;
 }
 textarea.input-sm,
 select[multiple].input-sm {
     height: auto;
 }
 .form-group-sm .form-control {
-    height: 30px;
+    height: 2.196vw;
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
     border-radius: 0.21962vw;
 }
 .form-group-sm select.form-control {
-    height: 30px;
-    line-height: 30px;
+    height: 2.196vw;
+    line-height: 2.196vw;
 }
 .form-group-sm textarea.form-control,
 .form-group-sm select[multiple].form-control {
     height: auto;
 }
 .form-group-sm .form-control-static {
-    height: 30px;
+    height: 2.196vw;
     min-height: 32px;
     padding: 0.439vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
 }
 .input-lg {
@@ -2821,9 +2824,9 @@ select[multiple].input-lg {
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 2.196vw;
+    height: 2.196vw;
+    line-height: 2.196vw;
 }
 .has-success .help-block,
 .has-success .control-label,
@@ -3012,7 +3015,7 @@ select[multiple].input-lg {
 @media (min-width: 768px) {
     .form-horizontal .form-group-sm .control-label {
         padding-top: 0.439vw;
-        font-size: 12px;
+        font-size: 0.8785vw;
     }
 }
 .btn {
@@ -3531,14 +3534,14 @@ fieldset[disabled] .btn-link:focus {
 .btn-sm,
 .btn-group-sm > .btn {
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
     border-radius: 0.21962vw;
 }
 .btn-xs,
 .btn-group-xs > .btn {
     padding: 0.0732vw 0.366vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
     border-radius: 0.21962vw;
 }
@@ -3626,8 +3629,8 @@ tbody.collapse.in {
     border: 0.0732vw solid #ccc;
     border: 0.0732vw solid rgba(0, 0, 0, .15);
     border-radius: 0.2928vw;
-    -webkit-box-shadow: 0 0.439vw 12px rgba(0, 0, 0, .175);
-    box-shadow: 0 0.439vw 12px rgba(0, 0, 0, .175);
+    -webkit-box-shadow: 0 0.439vw 0.8785vw rgba(0, 0, 0, .175);
+    box-shadow: 0 0.439vw 0.8785vw rgba(0, 0, 0, .175);
 }
 .dropdown-menu.pull-right {
     right: 0;
@@ -3694,7 +3697,7 @@ tbody.collapse.in {
 .dropdown-header {
     display: block;
     padding: 0.21962vw 1.464vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.42857143;
     color: #777;
     white-space: nowrap;
@@ -3840,8 +3843,8 @@ tbody.collapse.in {
     padding-left: 8px;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 0.8785vw;
+    padding-left: 0.8785vw;
 }
 .btn-group.open .dropdown-toggle {
     -webkit-box-shadow: inset 0 0.21962vw 0.366vw rgba(0, 0, 0, .125);
@@ -3974,17 +3977,17 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-    height: 30px;
+    height: 2.196vw;
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
     border-radius: 0.21962vw;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
-    height: 30px;
-    line-height: 30px;
+    height: 2.196vw;
+    line-height: 2.196vw;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -4011,7 +4014,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     vertical-align: middle;
 }
 .input-group-addon {
-    padding: 0.439vw 12px;
+    padding: 0.439vw 0.8785vw;
     font-size: 1.025vw;
     font-weight: normal;
     line-height: 1;
@@ -4023,7 +4026,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .input-group-addon.input-sm {
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     border-radius: 0.21962vw;
 }
 .input-group-addon.input-lg {
@@ -4836,7 +4839,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span {
     position: relative;
     float: left;
-    padding: 0.439vw 12px;
+    padding: 0.439vw 0.8785vw;
     margin-left: -0.0732vw;
     line-height: 1.42857143;
     color: #337ab7;
@@ -4906,7 +4909,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination-sm > li > a,
 .pagination-sm > li > span {
     padding: 0.366vw 0.732vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.5;
 }
 .pagination-sm > li:first-child > a,
@@ -5043,13 +5046,13 @@ a.label:focus {
     vertical-align: baseline;
     white-space: nowrap;
     text-shadow: 0 -0.0732vw 0 rgba(0, 0, 0, 0.25);
-    background-color: #999999;
+    background-color: #6D7277;
 }
 .badge {
     display: inline-block;
     min-width: 0.732vw;
     padding: 0.21962vw 0.5124vw;
-    font-size: 12px;
+    font-size: 0.8785vw;
     font-weight: bold;
     line-height: 1;
     color: #fff;
@@ -5092,9 +5095,9 @@ a.badge:focus {
     margin-left: 0.21962vw;
 }
 .jumbotron {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
+    padding-top: 2.196vw;
+    padding-bottom: 2.196vw;
+    margin-bottom: 2.196vw;
     color: inherit;
     background-color: #eee;
 }
@@ -5275,7 +5278,7 @@ a.thumbnail.active {
     float: left;
     width: 0;
     height: 100%;
-    font-size: 12px;
+    font-size: 0.8785vw;
     line-height: 1.464vw;
     color: #fff;
     text-align: center;
@@ -5822,11 +5825,11 @@ button.list-group-item-danger.active:focus {
     border-bottom: 0.0732vw solid #ddd;
 }
 .panel-default {
-    border-color: #ddd;
+    border-color: #72879B;
 }
 .panel-default > .panel-heading {
-    color: #333;
-    background-color: #f5f5f5;
+    color: #fff;
+    background-color: #4B5D6F;
     border-color: #ddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
@@ -6142,7 +6145,7 @@ button.close {
 @media (min-width: 768px) {
     .modal-dialog {
         width: 600px;
-        margin: 30px auto;
+        margin: 2.196vw auto;
     }
     .modal-content {
         -webkit-box-shadow: 0 0.366vw 1.0981vw rgba(0, 0, 0, .5);
@@ -6162,7 +6165,7 @@ button.close {
     z-index: 1070;
     display: block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 0.8785vw;
     font-style: normal;
     font-weight: normal;
     line-height: 1.42857143;
@@ -6581,8 +6584,8 @@ button.close {
     border-radius: 0.732vw;
 }
 .carousel-indicators .active {
-    width: 12px;
-    height: 12px;
+    width: 0.8785vw;
+    height: 0.8785vw;
     margin: 0;
     background-color: #fff;
 }
@@ -6606,10 +6609,10 @@ button.close {
     .carousel-control .glyphicon-chevron-right,
     .carousel-control .icon-prev,
     .carousel-control .icon-next {
-        width: 30px;
-        height: 30px;
+        width: 2.196vw;
+        height: 2.196vw;
         margin-top: -1.0981vw;
-        font-size: 30px;
+        font-size: 2.196vw;
     }
     .carousel-control .glyphicon-chevron-left,
     .carousel-control .icon-prev {
@@ -6622,7 +6625,7 @@ button.close {
     .carousel-caption {
         right: 20%;
         left: 20%;
-        padding-bottom: 30px;
+        padding-bottom: 2.196vw;
     }
     .carousel-indicators {
         bottom: 1.464vw;

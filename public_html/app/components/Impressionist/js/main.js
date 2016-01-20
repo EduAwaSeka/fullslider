@@ -66,6 +66,8 @@ Impressionist = function()
     this.normalColor = "#000";
     this.titleColor = "#000";
     this.subtitleColor = "#000";
+    
+    this.boundTextOption="nothingradio";
 };
 Impressionist.prototype =
         {
@@ -84,7 +86,6 @@ Impressionist.prototype =
                 me.initializeConfigModal();
                 me.initializeAlerts();
                 me.setupColorpickerPopup();
-                me.loadConfig();
                 me.setupMenuItemEvents();
                 me.enableSort();
 //                me.setupPopover();
@@ -516,36 +517,36 @@ Impressionist.prototype =
                         var top = $(this).css("top").replace(/[^-\d\.]/g, '');
                         var continue_drecreasing = true;
                         while (continue_drecreasing && this.scrollWidth >= mw && this.scrollHeight >= mh) {
-//                            if (left > 0) {
-//                                left -= 4;
-//                                $(this).css("left", pxToVw(left) + "vw");
-//
-//                                mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
-//                                mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
-//
-//                                $(this).css("max-width", mw + "vw");
-//                                $(this).css("max-height", mh + "vw");
-//
-//                                mw = vwToPx(mw);
-//                                mh = vwToPx(mh);
-//                            }
-//                            else {
-//                                if (top > 0) {
-//                                    top -= 4;
-//                                    $(this).css("top", pxToVw(top) + "vw");
-//
-//                                    mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
-//                                    mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
-//
-//                                    $(this).css("max-width", mw + "vw");
-//                                    $(this).css("max-height", mh + "vw");
-//                                    mw = vwToPx(mw);
-//                                    mh = vwToPx(mh);
-//                                }
-//                                else {
-                            continue_drecreasing = decreaseSize($(this));
-//                                }
-//                            }
+                            if (left > 0 && me.boundTextOption==="bothradio") {
+                                left -= 4;
+                                $(this).css("left", pxToVw(left) + "vw");
+
+                                mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                                mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                                $(this).css("max-width", mw + "vw");
+                                $(this).css("max-height", mh + "vw");
+
+                                mw = vwToPx(mw);
+                                mh = vwToPx(mh);
+                            }
+                            else {
+                                if (top > 0 && (me.boundTextOption==="topradio" || (left <= 0 && me.boundTextOption==="bothradio"))) {
+                                    top -= 4;
+                                    $(this).css("top", pxToVw(top) + "vw");
+
+                                    mw = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                                    mh = calculateMaxHeight(this, $(".fullslider-slide-container"));
+
+                                    $(this).css("max-width", mw + "vw");
+                                    $(this).css("max-height", mh + "vw");
+                                    mw = vwToPx(mw);
+                                    mh = vwToPx(mh);
+                                }
+                                else {
+                                    continue_drecreasing = decreaseSize($(this));
+                                }
+                            }
                         }
                     }
                 });
@@ -1284,9 +1285,11 @@ Impressionist.prototype =
                 var subtTextSize = (presentation.config.subtText.size === undefined || presentation.config.subtText.size === null);
                 var subtTextFont = (presentation.config.subtText.font === undefined || presentation.config.subtText.font === null);
                 var subtTextColor = (presentation.config.subtText.color === undefined || presentation.config.subtText.color === null);
+                
+                var boundTextOption = (presentation.config.boundTextOption === undefined || presentation.config.boundTextOption === null);
 
                 var error = (id || title || contents || config || normalText || normalTextSize || normalTextFont || normalTextColor || titleText ||
-                        titleTextSize || titleTextFont || titleTextColor || subtText || subtTextSize || subtTextFont || subtTextColor);
+                        titleTextSize || titleTextFont || titleTextColor || subtText || subtTextSize || subtTextFont || subtTextColor || boundTextOption);
                 return error;
             },
             fetchAndPreview: function(id)
@@ -1656,7 +1659,7 @@ Impressionist.prototype =
                 me.loadColor("normal");
                 me.loadColor("title");
                 me.loadColor("subtitle");
-
+                $("#"+me.boundTextOption).prop("checked", true);
             },
             loadFont: function(type) {
                 var value = "";
@@ -1718,6 +1721,9 @@ Impressionist.prototype =
                 me.normalColor = rgbToHex($("#normal_text_color").find(".sp-preview-inner").css("background-color"));
                 me.titleColor = rgbToHex($("#title_text_color").find(".sp-preview-inner").css("background-color"));
                 me.subtitleColor = rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
+                
+                me.boundTextOption=$("input[name='boundOption']:checked").attr("id");
+
             },
             updateConfigFromSaved: function(config) {
                 me.normalSize = parseFloat(config.normalText.size);
@@ -1731,6 +1737,8 @@ Impressionist.prototype =
                 me.normalColor = config.normalText.color;
                 me.titleColor = config.titleText.color;
                 me.subtitleColor = config.subtText.color;
+                
+                me.boundTextOption = config.boundTextOption;
             },
             getConfigVariable: function() {
                 var normalText = {'size': me.normalSize, 'font': me.normalFont, 'color': me.normalColor};
@@ -1740,7 +1748,8 @@ Impressionist.prototype =
                 var config = {
                     'normalText': normalText,
                     'titleText': titleText,
-                    'subtText': subtitleText
+                    'subtText': subtitleText,
+                    'boundTextOption': me.boundTextOption
                 };
                 return config;
             }

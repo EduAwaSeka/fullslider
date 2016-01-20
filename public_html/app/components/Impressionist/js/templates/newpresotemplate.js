@@ -185,6 +185,25 @@ var config_modal= '<!-- Design Configuration Modal -->'+
                                             config_edit_text_menu+
                                         '</li>'+
                                     '</ul>'+
+                                    '<div id="boundoptions" class="panel panel-default">'+
+                                        '<div class="panel-heading">In case of the margins are exceeded while typing, before resize do:</div>'+
+                                            '<div class="panel-body">'+
+                                                '<span class="col-sm-2">'+
+                                                    '<input id="nothingradio" type="radio" value="nothing" name="boundOption">'+
+                                                    '<label for="nothingradio" class="label">Nothing</label>'+
+                                                '</span>'+
+                                                '<span class="col-sm-10">'+
+                                                    '<span class="col-sm-5">'+
+                                                            '<input id="topradio" type="radio" value="top" name="boundOption">'+
+                                                            '<label for="topradio" class="label">Move only to top if is possible</label>'+
+                                                    '</span>'+
+                                                    '<span>'+
+                                                            '<input id="bothradio" type="radio" value="both" name="boundOption">'+
+                                                            '<label for="bothradio" class="label">Move to left or top if is possible</label>'+
+                                                    '</span>'+
+                                                '</span>'+
+                                            '</div>'+
+                                        '</div>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+
