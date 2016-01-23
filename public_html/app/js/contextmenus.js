@@ -78,7 +78,7 @@ $(function() {
                     $(this).attr("data-pattern", pattern_uid);
                     var cloned = me.clonePatternElement($(this));
                     me.addPattern(pattern_uid, cloned);
-                    
+
                     me.deleteElement($(this));
                     me.addElemOnAllSlides(cloned);
                 }
@@ -100,16 +100,8 @@ $(function() {
 
                     var pattern_uid = $(this).attr("data-pattern");
                     $(".fullslider-slide-container").find("[data-pattern='" + pattern_uid + "']").each(function() {
-                        var slide_parent=$(this).parent();
-                        
-                        $(this).removeClass();
-                        $(this).removeAttr("data-pattern");
-                        $(this).unbind();
-                        me.removePattern(pattern_uid);
-
-                        $(this).addClass("slidelement");
-                        $(this).addClass("editable");
-                        
+                        var slide_parent = $(this).parent();
+                        me.deleteElement($(this));
                         me.updateScaledSlide(slide_parent);
                     });
                     me.enableDrag();
