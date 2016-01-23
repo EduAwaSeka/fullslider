@@ -104,6 +104,7 @@ $(function() {
                         me.deleteElement($(this));
                         me.updateScaledSlide(slide_parent);
                     });
+                    me.removePattern(pattern_uid);
                 }
             },
         }
