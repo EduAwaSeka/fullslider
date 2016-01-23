@@ -670,7 +670,7 @@ Impressionist.prototype =
                     me.currentClicked.removeClass("currentClicked");
                     me.currentClicked = "";
                 }
-                var toSave = ""
+                var toSave = "";
                 if (isInElement($(".slidethumbholder"), el)) {
                     toSave = el;
                     if (isInElement($(".slidethumb"), el) && el.attr("id") !== "deletebtn") {
@@ -683,6 +683,13 @@ Impressionist.prototype =
                 else {
                     if (isElementByClass("slidelement", el)) {
                         toSave = el;
+                        toSave.addClass("currentClicked");
+                    }
+                    else {
+                        if (isElementByClass("fullslider-slide", el)) {
+                            toSave = el;
+                            toSave.addClass("currentClicked");
+                        }
                     }
                 }
                 me.currentClicked = toSave;

@@ -15,7 +15,7 @@ function copyEl() {
             setElClipboard("slidethumb", currentClicked);
         }
         else {
-            if (currentClicked.hasClass("slidelement")) {
+            if (currentClicked.hasClass("slidelement") && !currentClicked.hasClass("elementediting")) {
                 setElClipboard("slidelement", currentClicked);
             }
         }
@@ -40,9 +40,11 @@ function pasteEl() {
             }
             break;
         case "slidelement":
-            if (isElementByClass("slidelement", elClipboard.value)) {
-                Impressionist.prototype.cloneElement(elClipboard.value);
-                Impressionist.prototype.appendClonedElement();
+            if (isElementByClass("fullslider-slide", currentClicked) || isElementByClass("slidelement", currentClicked)) {
+                if (!isElementByClass("elementediting", currentClicked)) {
+                    Impressionist.prototype.cloneElement(elClipboard.value);
+                    Impressionist.prototype.appendClonedElement();
+                }
             }
             break;
     }
