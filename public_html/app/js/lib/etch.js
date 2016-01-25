@@ -420,7 +420,7 @@
             $('body').bind('mousedown.editor', function(e) {
                 // check to see if the click was in an etch tool
                 var target = e.target || e.srcElement;
-                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *').size()) {
+                if ($(target).not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *,.contextmenu-textEditing *').size()) {
                     // remove editor
                     $editor.css("display", "none");
 

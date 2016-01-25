@@ -597,6 +597,7 @@ Impressionist.prototype =
                 $(el).draggable({disabled: true});
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
+                $(el).removeClass("elementselectable");
             },
             deleteElement: function(el) {
                 el.remove();
@@ -655,11 +656,9 @@ Impressionist.prototype =
             },
             manageGlobalClick: function(e)
             {
-                //console.log("in globel ",e.target);
-                //$(".dropdownpopup").css("display", "none");
                 me.updateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *').size() && !($("#addElementsPanel").find(t).length)) {
+                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *').size() && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
 
@@ -700,6 +699,7 @@ Impressionist.prototype =
                 $(".slidelement").removeClass("elementhover");
                 $(".slidelement").removeClass("elementselected");
                 $(".slidelement").removeClass("elementediting");
+                $(".slidelement").addClass("elementselectable");
                 $(".slidelement").draggable({disabled: false});
                 $(".slidelement").attr("data-select", false);
                 $(".slidelement").attr("contentEditable", "false");
@@ -1782,5 +1782,18 @@ Impressionist.prototype =
             },
             removePattern: function(key) {
                 delete me.patterns[key];
-            }
+            },
+            copyTextToClipboard: function(element) {
+                var value = element.selectionText; // <-- Selected text
+                element.select();
+                document.execCommand('copy', false, null);
+            },
+            cutTextToClipboard: function(element) {
+                var value = element.selectionText; // <-- Selected text
+                element.select();
+                document.execCommand('cut', false, null);
+            },
+            pasteTextFromClipboard: function(element) {
+                document.execCommand('paste', false, "asd");
+            },
         };

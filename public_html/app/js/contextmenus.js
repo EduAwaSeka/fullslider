@@ -59,7 +59,7 @@ $(function() {
     });
 
     $.contextMenu({
-        selector: '.slidelement',
+        selector: '.elementselectable',
         callback: function(key, options) {
 
         },
@@ -81,6 +81,37 @@ $(function() {
 
                     me.deleteElement($(this));
                     me.addElemOnAllSlides(cloned);
+                }
+            },
+        }
+    });
+
+    $.contextMenu({
+        selector: '.elementediting',
+        className: 'contextmenu-textEditing',
+        callback: function(key, options) {
+
+        },
+        items: {
+            "Copy": {
+                name: "Copy",
+                icon: "copy",
+                callback: function(key, options) {
+                    me.copyTextToClipboard(this);
+                }
+            },
+            "Cut": {
+                name: "Cut",
+                icon: "cut",
+                callback: function(key, options) {
+                    me.cutTextToClipboard(this);
+                }
+            },
+            "Paste": {
+                name: "Paste",
+                icon: "paste",
+                callback: function(key, options) {
+                    me.pasteTextFromClipboard(this);
                 }
             },
         }
