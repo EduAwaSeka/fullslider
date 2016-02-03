@@ -81,6 +81,8 @@ Impressionist.prototype =
             },
             continueInit: function()
             {
+                me.removelisteners();
+                me.attachListeners();
                 me.initializeWelcomePanel();
                 me.initializeImageModal();
                 me.initializeNewPresModal();
@@ -277,12 +279,15 @@ Impressionist.prototype =
             },
             enableSort: function()
             {
-                $(".slidethumbholder").sortable({update: function(event, ui)
+                $(".slidethumbholder").sortable({
+                    update: function(event, ui)
                     {
                         console.log("sort updated", event, ui);
                         me.assignSlideNumbers();
                         me.reArrangeFullsliderSlides();
-                    }});
+                        changeContent();//Event for undo redo
+                    }
+                });
                 //$(".slidethumbholder").disableSelection();
             },
             cloneSlide: function(slide)
@@ -448,7 +453,7 @@ Impressionist.prototype =
             },
             enableDrag: function()
             {
-
+//                $(".slidelement").off(); //Delete all events before add again
 //                $(".slidelement").resizable({
 //                    handles: {
 //                        'nw': '#play .ui-resizable-nw',
@@ -498,16 +503,15 @@ Impressionist.prototype =
                     }
                     drawElement(this);
                     me.updateScaledSlide(me.selectedSlide);
-                    $(".slidelement").draggable().on("mouseup", function(e)
-                    {
-                        var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
-                        var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
-                        $(this).css("max-width", maxwidth + "vw");
-                        $(this).css("max-height", maxheight + "vw");
-                        drawElement(this);
+                }).on('dragstop', function() {
+                    var maxwidth = calculateMaxWidth(this, $(".fullslider-slide-container"));
+                    var maxheight = calculateMaxHeight(this, $(".fullslider-slide-container"));
+                    $(this).css("max-width", maxwidth + "vw");
+                    $(this).css("max-height", maxheight + "vw");
+                    drawElement(this);
 //                        me.selectElement(this);
-                        $(this).removeClass("grabbing");
-                    });
+                    $(this).removeClass("grabbing");
+                    changeContent();//Event for undo redo
                 }).on('blur keyup paste input', function() {
                     if ($(this).attr("contentEditable")) {
                         var mw = parseInt($(this).css("max-width").replace(/[^-\d\.]/g, ''));
@@ -560,10 +564,12 @@ Impressionist.prototype =
                 $("#play").css("-webkit-transform", _transform);
                 $("#play").css("display", "block");
                 scalePlay(me.selectedElement[0]);
+                $("#spandelete").off();//restore
                 $("#spandelete").on("click", function(e)
                 {
                     e.stopPropagation();
                     me.deleteElement(me.selectedElement);
+                    changeContent();//Event for undo redo
                 });
             },
             setTransformValues: function(el)
@@ -651,8 +657,6 @@ Impressionist.prototype =
                 if (!me.currentPresentation) {
                     me.createNewPresentation();
                 }
-                this.removelisteners();
-                this.attachListeners();
             },
             manageGlobalClick: function(e)
             {
@@ -728,6 +732,7 @@ Impressionist.prototype =
                 me.assignSlideNumbers();
                 me.addFullsliderSlide(uid);
                 $("#presentationmetatitle").html($("#titleinput").val());
+                changeContent();//Event for undo redo
             },
             addSlideEvents: function()
             {
@@ -754,6 +759,7 @@ Impressionist.prototype =
                         me.selectSlide("#fullslider_slide_" + newslideid);
                         me.selectThumb(newslideid);
                     });
+                    changeContent();//Event for undo redo
                 });
                 $(".slidemask").on("click", function(e)
                 {
@@ -959,7 +965,7 @@ Impressionist.prototype =
             {
                 $(".maskedcontainer").animate({"top": amount, "opacity": 1}, {duration: 300, easing: "linear"});
             },
-            attachListeners: function()
+            attachListeners: function() //On add event, add the same with off in removeListeners
             {
                 $("html").on("click", me.manageGlobalClick);
                 $(".settingsCancelBtn").on("click", me.onSettingsCancelClicked);
@@ -1045,18 +1051,23 @@ Impressionist.prototype =
                 $("#addtextbtn,#normalTextBtn").on("click", function(e)
                 {
                     me.addFullsliderText("normal");
+
+                    changeContent();//Event for undo redo
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
                 $("#titleTextBtn").on("click", function(e)
                 {
                     me.addFullsliderText("title");
+
+                    changeContent();//Event for undo redo
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
                 $("#subtTextBtn").on("click", function(e)
                 {
                     me.addFullsliderText("subtitle");
+                    changeContent();//Event for undo redo
                     //On create text element, this is selected with click event
                     launchEvent("click", me.selectedforedit);
                 });
@@ -1159,6 +1170,7 @@ Impressionist.prototype =
                                     me.loadPresentation(presentation);
                                     var msg = "File has been loaded succesfully!";
                                     openAlert("success", msg);
+                                    initializeUndoRedo();
                                     $("#welcomemodal").modal("hide");
                                 }
                                 $('input[name=openFile]').removeAttr('value');
@@ -1189,6 +1201,46 @@ Impressionist.prototype =
 
                     }
                 });
+            },
+            removelisteners: function()
+            {
+                $(".settingsCancelBtn").off();
+                $(".viewtogglebtn").off();
+
+
+                $("html").off();
+                $(".settingsCancelBtn").off();
+                $(".menuItemBtn").off();
+                $(".slidelement").off();
+                $(".slidelement").off();
+                $("#newstylepanel").off();
+                $("#exportpresopanel").off();
+                $("#editpresonamebtn").off();
+                $(".previewpresobtn").off();
+                $("#saveconfiguration").off();
+                $("#closeconfiguration").off();
+                $(".fontconfig li a").off();
+                $(".createpresentation").off();
+                $("#savepresentationbtn").off();
+                $(".dropdownitem").off();
+
+                //Add Text buttons on click. 
+                $("#addtextbtn,#normalTextBtn").off();
+                $("#titleTextBtn").off();
+                $("#subtTextBtn").off();
+                //End add text buttons on click
+
+                $("#addimagebtn").off();
+                $(".newpresopanel").off();
+                $("#imageinput").off();
+                $("#addslidebtn").off();
+                $("#appendimagebtn").off();
+                $("#openpresentationsbtn").off();
+                $("#openconfiguration").off();
+                $("#viewbtn").off();
+                $("#downloadpresbtn").off();
+                $(".loadpresbtn").off();
+                $('#inputFile').off();
             },
             openStyleSelector: function()
             {
@@ -1274,6 +1326,7 @@ Impressionist.prototype =
 
                 };
                 me.currentPresentation = presentation;
+                initializeUndoRedo();
             },
             openPresentationForEdit: function(id)
             {
@@ -1287,6 +1340,7 @@ Impressionist.prototype =
                     }
                     $("#savedpresentationsmodal").modal("hide");
                 }
+                initializeUndoRedo();
             },
             isFileCorrupted: function(presentation) {
                 var id = (presentation.id === undefined || presentation.id === null);
@@ -1587,11 +1641,6 @@ Impressionist.prototype =
             {
                 //$(e.target).attr("contentEditable", true);
             },
-            removelisteners: function()
-            {
-                $(".settingsCancelBtn").off();
-                $(".viewtogglebtn").off();
-            },
             onSettingsCancelClicked: function(e)
             {
                 console.log("clicked");
@@ -1634,6 +1683,16 @@ Impressionist.prototype =
                 if (me.isSupported()) {
                     return localStorage.getItem(key);
                 }
+            },
+            slideIdFromThumb: function(thumb)
+            {
+                var uid = thumb.attr("id").replace("slidethumb_", "");
+                return "fullslider_slide_" + uid;
+            },
+            thumbIdFromSlide: function(slide)
+            {
+                var uid = slide.attr("id").replace("fullslider_slide_", "");
+                return "slidethumb_" + uid;
             },
             isSupported: function()
             {

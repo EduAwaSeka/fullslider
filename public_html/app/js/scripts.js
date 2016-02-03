@@ -1,3 +1,35 @@
+function allowEdit() {
+    (function() {
+        var article = Backbone.Model.extend({
+            defaults: {
+                title: 'Default Title',
+                body: 'Default body text'
+            }
+        });
+
+        var articleView = Backbone.View.extend({
+            initialize: function() {
+                _.bindAll(this, 'save');
+                this.model.bind('save', this.save);
+            },
+            events: {
+                'dblclick .editable': 'editableClick'
+            },
+            editableClick: etch.editableInit,
+            save: function() {
+
+
+            }
+
+        });
+
+        $article = $('.slideviewportcontainer');
+        var model = new article();
+        var view = new articleView({model: model, el: $article[0], tagName: $article[0].tagName});
+    })()
+}
+
+
 function scalePlay(element) {
     var elem_height = element.offsetHeight;
     var rel = getRel();
@@ -134,13 +166,15 @@ function rgbToHex(total) {
     var total = total.toString().split(',');
     var r = total[0].substring(4);
     var g = total[1].substring(1);
-    var b = total[2].substring(1,total[2].length-1);
-    return ("#"+checkNumber((r*1).toString(16))+checkNumber((g*1).toString(16))+checkNumber((b*1).toString(16))).toUpperCase();
+    var b = total[2].substring(1, total[2].length - 1);
+    return ("#" + checkNumber((r * 1).toString(16)) + checkNumber((g * 1).toString(16)) + checkNumber((b * 1).toString(16))).toUpperCase();
 }
-function checkNumber(i){
+function checkNumber(i) {
     i = i.toString();
-    if (i.length == 1) return '0'+i;
-    else return i;
+    if (i.length == 1)
+        return '0' + i;
+    else
+        return i;
 }
 
 //end rgbToHex

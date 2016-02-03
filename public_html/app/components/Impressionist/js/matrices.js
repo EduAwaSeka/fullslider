@@ -261,6 +261,7 @@
             this.mode = null;
             this.save();
             $(".slideviewport").css("-webkit-user-select", "auto");
+            changeContent();
         },
         getTouch: function(e) {
             // multitouch vs mouse
