@@ -572,15 +572,6 @@ Impressionist.prototype =
                     changeContent();//Event for undo redo
                 });
             },
-            setTransformValues: function(el)
-            {
-                rotation = el.attr("data-rotate");
-                skewx = el.attr("data-skewx");
-                skewy = el.attr("data-skewy");
-                $("#rotationknob").val(rotation || 0);
-                $("#skewxknob").val(skewx || 0);
-                $("#skewyknob").val(skewy || 0);
-            },
             selectElement: function(el)
             {
                 console.log("click firing....");
@@ -590,7 +581,6 @@ Impressionist.prototype =
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");
                     $(el).attr("data-select", true);
-                    //me.setTransformValues($(el));
                     me.positionTransformControl();
                 }
             },

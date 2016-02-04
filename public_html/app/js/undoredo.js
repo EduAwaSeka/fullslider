@@ -11,19 +11,23 @@ function updateButtons(history) {
     $('.redo').attr('disabled', !history.canRedo());
 }
 
-function setEditorContents(contents) {
-    $('#body-editor').html(contents);
+function initEvents() {
     me.removelisteners();
     me.attachListeners();
     me.enableDrag();
     me.addSlideEvents();
     me.enableSort();
     allowEdit();
-
+    playInit();
     //Click on slide. It works with this form
     var thumbId = me.thumbIdFromSlide(me.selectedSlide);
-    var slidemask = $("#"+thumbId+"> .slidemask");
+    var slidemask = $("#" + thumbId + "> .slidemask");
     launchEvent("click", slidemask[0]);
+}
+
+function setEditorContents(contents) {
+    $('#body-editor').html(contents);
+    initEvents();
 }
 
 
