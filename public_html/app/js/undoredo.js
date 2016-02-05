@@ -77,7 +77,3 @@ function initializeUndoRedo() {
         });
     });
 }
-//$("#body-editor").change(function(){
-//    alert();
-//});
-

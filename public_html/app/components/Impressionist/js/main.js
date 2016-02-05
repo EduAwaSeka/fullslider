@@ -499,6 +499,16 @@ Impressionist.prototype =
                     if (!($(this).attr("contentEditable") == "true")) {
                         $(this).addClass("movecursor");
                     }
+                }).keydown(function(e)//Default contenteditable undo/redo shortcuts disabled
+                {
+                    if ($(this).attr("contentEditable") == "true") {
+                        if (isUndo(e)) {
+                            e.preventDefault();
+                        }
+                        if (isRedo(e)) {
+                            e.preventDefault();
+                        }
+                    }
                 }).on("drag", function(e)
                 {
                     if (me.isSelected(this)) {

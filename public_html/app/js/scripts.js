@@ -179,11 +179,48 @@ function checkNumber(i) {
 
 
 function clearSelection() {
-    if ( document.selection ) {
+    if (document.selection) {
         document.selection.empty();
-    } else if ( window.getSelection ) {
+    } else if (window.getSelection) {
         window.getSelection().removeAllRanges();
     }
 }
 
-//end rgbToHex
+
+function isUndo(e) {
+    var isUndo = false;
+    var thisKey = e.which;
+
+    if (e.ctrlKey) {
+        if (e.shiftKey) {
+            return isUndo;
+        } else {
+            if (thisKey == 90)
+            {
+                isUndo = true;
+            }
+        }
+    }
+    return isUndo;
+}
+
+function isRedo(e) {
+    var isRedo = false;
+
+    var thisKey = e.which;
+
+    if (e.ctrlKey) {
+        if (thisKey == 89) {
+            isRedo = true;
+        }
+        else {
+            if (e.shiftKey) {
+                if (thisKey == 90)
+                {
+                    isRedo = true;
+                }
+            }
+        }
+    }
+    return isRedo;
+}
