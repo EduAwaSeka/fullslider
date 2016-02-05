@@ -18,7 +18,7 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['undo', 'redo', 'bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
         }
     };
 
@@ -105,23 +105,23 @@
                 var hex = '333';
                 $colorChooser.spectrum({
                     color: '#' + hex,
+                    preferredFormat: "hex",
                     showSelectionPalette: true,
                     showPalette: true,
                     showInitial: true,
                     showInput: true,
+                    showButtons: true,
+                    cancelText: '<i class="fa fa-remove"></i>',
+                    chooseText: '<i class="fa fa-check"></i>',
                     palette: [],
-                    clickoutFiresChange: true,
+                    clickoutFiresChange: false,
                     theme: 'sp-dark',
-                    move: function(color) {
-                        // $colorChooser.find("div").css("backgroundColor", "#" + hex);
-                        //view.model.get('editableModel').set('color', hex)
-                        document.execCommand('foreColor', false, color.toHexString());
-                    },
                     change: function(color) {
-//                      document.execCommand('foreColor', false, color.toHexString());
+                        document.execCommand('foreColor', false, color.toHexString());
                         Backbone.trigger('etch:state', {
                             color: color.toHexString()
                         });
+                        changeContent();//Event for undo redo
                     }
                 });
 
@@ -133,7 +133,7 @@
                 $(".sp-container").mousedown(prevent);
                 $colorChooser.mousedown(prevent);
 
-                $colorChooser.find("div").css("backgroundColor", '#' + hex)
+                $colorChooser.find("div").css("backgroundColor", '#' + hex);
             }
 
             var $toggle = this.$el.find('.dropdown-toggle');
@@ -156,18 +156,22 @@
         clearFormatting: function(e) {
             e.preventDefault();
             document.execCommand('removeFormat', false, null);
+            changeContent();//Event for undo redo
         },
         toggleBold: function(e) {
             e.preventDefault();
             document.execCommand('bold', false, null);
+            changeContent();//Event for undo redo
         },
         toggleItalic: function(e) {
             e.preventDefault();
             document.execCommand('italic', false, null);
+            changeContent();//Event for undo redo
         },
         toggleUnderline: function(e) {
             e.preventDefault();
             document.execCommand('underline', false, null);
+            changeContent();//Event for undo redo
         },
         toggleHeading: function(e) {
             e.preventDefault();
@@ -179,6 +183,7 @@
             }
             var h3 = document.createElement('h3');
             range.surroundContents(h3);
+            changeContent();//Event for undo redo
         },
         urlPrompt: function(callback) {
             // This uses the default browser UI prompt to get a url.
@@ -211,14 +216,17 @@
                     document.execCommand('createLink', false, url);
                 });
             }
+            changeContent();//Event for undo redo
         },
         toggleUnorderedList: function(e) {
             e.preventDefault();
             document.execCommand('insertUnorderedList', false, null);
+            changeContent();//Event for undo redo
         },
         toggleOrderedList: function(e) {
             e.preventDefault();
             document.execCommand('insertOrderedList', false, null);
+            changeContent();//Event for undo redo
         },
         toggleUndo: function(e) {
             e.preventDefault();
@@ -231,20 +239,24 @@
         justifyLeft: function(e) {
             e.preventDefault();
             document.execCommand('justifyLeft', false, null);
+            changeContent();//Event for undo redo
         },
         justifyCenter: function(e) {
             e.preventDefault();
             document.execCommand('justifyCenter', false, null);
+            changeContent();//Event for undo redo
         },
         justifyRight: function(e) {
             e.preventDefault();
             document.execCommand('justifyRight', false, null);
+            changeContent();//Event for undo redo
         },
         getImage: function(e) {
             e.preventDefault();
 
             // call startUploader with callback to handle inserting it once it is uploded/cropped
             this.startUploader(this.insertImage);
+            changeContent();//Event for undo redo
         },
         startUploader: function(cb) {
             // initialize Image Uploader
@@ -284,6 +296,7 @@
             e.preventDefault();
             var editableModel = this.model.get('editableModel');
             editableModel.trigger('save');
+            changeContent();//Event for undo redo
         },
         setFontFamily: function(e) {
 
@@ -291,8 +304,8 @@
             //document.execCommand('fontName', false, value);
             var elementToChange = $(document).find("[contentEditable='true']");
             elementToChange.css("font-family", value);
-            
-            var value_name=get_font_name(value);
+
+            var value_name = get_font_name(value);
 
             //update value on editor button
             var fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
@@ -301,6 +314,7 @@
             Backbone.trigger('etch:state', {
                 face: value_name
             });
+            changeContent();//Event for undo redo
         },
         setFontSize: function(e) {
             //Extract selected value
@@ -310,7 +324,7 @@
 
             //Update element font-size value
             elementToChange.css("font-size", value + "vw");
-            
+
             //update value on editor button
             fontSizeReadout.text(parseFloat(value).toFixed(2) + " vw");
 
@@ -318,7 +332,7 @@
             Backbone.trigger('etch:state', {
                 size: value
             });
-
+            changeContent();//Event for undo redo
         }
 
     });

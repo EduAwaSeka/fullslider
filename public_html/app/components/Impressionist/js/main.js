@@ -479,6 +479,9 @@ Impressionist.prototype =
                     e.stopPropagation();
                     me.selectElement(this);
                     me.updateScaledSlide(me.selectedSlide);
+                    if ($(this).hasClass("elementediting")) {
+                        launchEvent("click", $(".etch-editor-panel")[0]); //For close color picker
+                    }
                 }).on("mousedown", function(e)
                 {
                     me.selectElement(this);
@@ -613,20 +616,22 @@ Impressionist.prototype =
                     var hex = '333';
                     $colorChooser.spectrum({
                         color: '#' + hex,
+                        preferredFormat: "hex",
                         showSelectionPalette: true,
                         showPalette: true,
                         showInitial: true,
                         showInput: true,
+                        cancelText: '<i class="fa fa-remove"></i>',
+                        chooseText: '<i class="fa fa-check"></i>',
                         palette: [],
-                        clickoutFiresChange: true,
+                        clickoutFiresChange: false,
                         theme: 'sp-dark',
-                        move: function(color) {
-                            document.execCommand('foreColor', false, color.toHexString());
-                        },
                         change: function(color) {
+                            document.execCommand('foreColor', false, color.toHexString());
                             Backbone.trigger('etch:state', {
                                 color: color.toHexString()
                             });
+                            changeContent();//Event for undo redo
                         }
                     });
                     var prevent = function(e) {

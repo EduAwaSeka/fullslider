@@ -26,7 +26,7 @@ function allowEdit() {
         $article = $('.slideviewportcontainer');
         var model = new article();
         var view = new articleView({model: model, el: $article[0], tagName: $article[0].tagName});
-    })()
+    })();
 }
 
 
@@ -175,6 +175,15 @@ function checkNumber(i) {
         return '0' + i;
     else
         return i;
+}
+
+
+function clearSelection() {
+    if ( document.selection ) {
+        document.selection.empty();
+    } else if ( window.getSelection ) {
+        window.getSelection().removeAllRanges();
+    }
 }
 
 //end rgbToHex

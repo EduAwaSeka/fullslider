@@ -447,6 +447,17 @@ input.sp-input {
     -o-box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
     box-shadow: inset 0 0 0.366vw 0.1464vw #aaaaaa, 0 0.0732vw 0 0 #eeeeee;
 }
+.sp-choose
+{
+    font-size: 0.805vw;
+    color: #58A90F !important;
+    margin:0;
+    padding:0.1464vw;
+    margin-right: 0.366vw;
+    vertical-align: middle;
+    text-decoration:none;
+
+}
 .sp-cancel
 {
     font-size: 0.805vw;
