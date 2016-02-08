@@ -302,7 +302,7 @@
 
             var value = extractValue(e);
             //document.execCommand('fontName', false, value);
-            var elementToChange = $(document).find("[contentEditable='true']");
+            var elementToChange = getElementEditing();
             elementToChange.css("font-family", value);
 
             var value_name = get_font_name(value);
@@ -320,7 +320,7 @@
             //Extract selected value
             var value = extractValue(e);
             var fontSizeReadout = this.$el.find(".fontSizeReadout");
-            var elementToChange = $(document).find("[contentEditable='true']");
+            var elementToChange = getElementEditing();
 
             //Update element font-size value
             elementToChange.css("font-size", value + "vw");

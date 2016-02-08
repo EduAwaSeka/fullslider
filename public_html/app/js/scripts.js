@@ -224,3 +224,8 @@ function isRedo(e) {
     }
     return isRedo;
 }
+
+
+function getElementEditing(){
+    return $(document).find("[contentEditable='true']");
+}

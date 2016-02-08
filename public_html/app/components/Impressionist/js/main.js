@@ -505,8 +505,27 @@ Impressionist.prototype =
                         if (isUndo(e)) {
                             e.preventDefault();
                         }
-                        if (isRedo(e)) {
-                            e.preventDefault();
+                        else {
+                            if (isRedo(e)) {
+                                e.preventDefault();
+                            }
+                            else {
+                                if (e.ctrlKey) {
+                                    if (e.ctrlKey && e.altKey && (e.which != "18" && e.which != "19")) { //Alt gr + key
+                                        changeContent();
+                                    }
+                                    else {
+                                    }
+                                }
+                                else {
+                                    if (e.altKey && e.which == "18" || e.shiftKey && e.which == "16") { // Only alt or only shift
+                                        //nothing
+                                    }
+                                    else {
+                                        changeContent();
+                                    }
+                                }
+                            }
                         }
                     }
                 }).on("drag", function(e)
