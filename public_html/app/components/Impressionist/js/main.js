@@ -511,7 +511,7 @@ Impressionist.prototype =
                             }
                             else {
                                 if (e.ctrlKey) {
-                                    if (e.ctrlKey && e.altKey && (e.which != "18" && e.which != "19")) { //Alt gr + key
+                                    if (e.ctrlKey && e.altKey && (e.which != "18" && e.which != "17" && e.which != "16")) { //Alt gr + key
                                         changeContent();
                                     }
                                     else {
