@@ -90,6 +90,7 @@
                     case "color":
                         var buttonEl = $(color_selector);
                         $(buttonEl).addClass("etch-color");
+                        $(buttonEl).removeClass("col-sm-2");
                         break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');

@@ -96,12 +96,12 @@ var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'
                                 font_list+
                             '</div>';
                     
-var config_font_family_selector =  '<div class="btn-group col-sm-2 fontconfig">'+
-                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" data-font="\'Lato\', sans-serif" title="Choose the font family"><span class="fontFamilySelected">Lato</span><span class="caret"></span></a>'+
+var config_font_family_selector =  '<div class="btn-group col-sm-3 fontconfig">'+
+                                '<a class="btn btn-inverse dropdown-toggle btn-small" data-toggle="dropdown" data-font="\'Lato\', sans-serif" title="Choose the font family"><div class="fontFamilySelected">Lato</div><span class="caret"></span></a>'+
                                 font_list+
                             '</div>';
                     
-var color_selector='<div class="btn-group"><input class="color-chooser colorpicker" /></div>';
+var color_selector='<div class="btn-group col-sm-2"><input class="color-chooser colorpicker" /></div>';
 
 var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                         '<div class="modal-header">'+
@@ -168,7 +168,7 @@ var config_modal= '<!-- Design Configuration Modal -->'+
                                     '<div>'+
                                         '<label class="col-sm-2">Type</label>'+
                                         '<label class="col-sm-1">Size</label>'+
-                                        '<label class="col-sm-2">Font</label>'+
+                                        '<label class="col-sm-3">Font</label>'+
                                         '<label class="col-sm-1">Color</label>'+
                                     '</div>'+
                                     '<ul style="clear: both;padding:1vw">'+

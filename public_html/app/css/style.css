@@ -17,11 +17,11 @@ body{
 
 //Background of selection
 *::-moz-selection{
-   background: #BED5DA;
+    background: #BED5DA;
 }
 
 *::selection {
-   background: #BED5DA;
+    background: #BED5DA;
 }
 
 p {
@@ -329,4 +329,12 @@ p {
 }
 .fontconfig ul a{
     padding: 0.25vw 0.3vw !important;
+}
+
+
+
+.fontFamilySelected{
+    float: left;
+    width: 86%;
+    overflow-x: hidden;
 }
