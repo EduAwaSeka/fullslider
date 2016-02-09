@@ -57,4 +57,5 @@ key('ctrl+c', function(e) {
 
 key('ctrl+v', function(e) {
     pasteEl();
+    changeContent();//Event for undo redo
 });

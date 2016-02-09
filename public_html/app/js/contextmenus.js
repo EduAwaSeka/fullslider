@@ -1,5 +1,6 @@
 var me = Impressionist.prototype;
 
+/* Slides */
 $(function() {
     $.contextMenu({
         selector: '.context-menu-slides',
@@ -12,6 +13,7 @@ $(function() {
                 icon: "copy",
                 callback: function(key, options) {
                     me.cloneSlide($(this));
+                    changeContent();//Event for undo redo
                 }
             },
             "Copy slide": {
@@ -28,6 +30,7 @@ $(function() {
                 callback: function(key, options) {
                     me.selectCurrentClicked($(this));
                     pasteEl();
+                    changeContent();//Event for undo redo
                 }
             },
             "sep1": "---------",
@@ -36,6 +39,7 @@ $(function() {
                 icon: "delete",
                 callback: function(key, options) {
                     $(this).find(".deletebtn").click();
+                    changeContent();//Event for undo redo
                 }
             },
         }
@@ -53,10 +57,16 @@ $(function() {
                 callback: function(key, options) {
                     me.selectCurrentClicked($(".slidethumbholder"));
                     pasteEl();
+                    changeContent();//Event for undo redo
                 }
             },
         }
     });
+    
+    /* End Slides */
+    
+    
+    /* Elements */
 
     $.contextMenu({
         selector: '.elementselectable',
@@ -81,37 +91,61 @@ $(function() {
 
                     me.deleteElement($(this));
                     me.addElemOnAllSlides(cloned);
+
+                    changeContent();//Event for undo redo
+                }
+            },
+            "Duplicate element": {
+                name: "Duplicate element",
+                icon: "copy",
+                callback: function(key, options) {
+                    me.cloneSlide($(this));
+                    changeContent();//Event for undo redo
+                }
+            },
+            "Copy element": {
+                name: "Copy element",
+                icon: "copy",
+                callback: function(key, options) {
+                    me.selectCurrentClicked($(this));
+                    copyEl();
+                }
+            },
+            "Paste element": {
+                name: "Paste element",
+                icon: "paste",
+                callback: function(key, options) {
+                    me.selectCurrentClicked($(this));
+                    pasteEl();
+                    changeContent();//Event for undo redo
+                }
+            },
+            "sep1": "---------",
+            "Delete element": {
+                name: "Delete element",
+                icon: "delete",
+                callback: function(key, options) {
+                    $(this).find(".deletebtn").click();
+                    changeContent();//Event for undo redo
                 }
             },
         }
     });
 
+
     $.contextMenu({
-        selector: '.elementediting',
-        className: 'contextmenu-textEditing',
+        selector: '.fullslider-slide',
         callback: function(key, options) {
 
         },
         items: {
-            "Copy": {
-                name: "Copy",
-                icon: "copy",
-                callback: function(key, options) {
-                    me.copyTextToClipboard(this);
-                }
-            },
-            "Cut": {
-                name: "Cut",
-                icon: "cut",
-                callback: function(key, options) {
-                    me.cutTextToClipboard(this);
-                }
-            },
-            "Paste": {
-                name: "Paste",
+            "Paste element": {
+                name: "Paste element",
                 icon: "paste",
                 callback: function(key, options) {
-                    me.pasteTextFromClipboard(this);
+                    me.selectCurrentClicked($(this));
+                    pasteEl();
+                    changeContent();//Event for undo redo
                 }
             },
         }
@@ -136,8 +170,47 @@ $(function() {
                         me.updateScaledSlide(slide_parent);
                     });
                     me.removePattern(pattern_uid);
+                    changeContent();//Event for undo redo
                 }
             },
         }
     });
+
+
+
+
+    $.contextMenu({
+        selector: '.elementediting',
+        className: 'contextmenu-textEditing',
+        callback: function(key, options) {
+
+        },
+        items: {
+            "Copy": {
+                name: "Copy",
+                icon: "copy",
+                callback: function(key, options) {
+                    me.copyTextToClipboard(this);
+                }
+            },
+            "Cut": {
+                name: "Cut",
+                icon: "cut",
+                callback: function(key, options) {
+                    me.cutTextToClipboard(this);
+                    changeContent();//Event for undo redo
+                }
+            },
+            "Paste": {
+                name: "Paste",
+                icon: "paste",
+                callback: function(key, options) {
+                    me.pasteTextFromClipboard(this);
+                    changeContent();//Event for undo redo
+                }
+            },
+        }
+    });
+    
+    /* End elements */
 });
