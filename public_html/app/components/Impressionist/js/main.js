@@ -82,7 +82,6 @@ Impressionist.prototype =
             continueInit: function()
             {
                 me.removelisteners();
-                me.attachListeners();
                 me.initializeWelcomePanel();
                 me.initializeImageModal();
                 me.initializeNewPresModal();
@@ -100,6 +99,7 @@ Impressionist.prototype =
                 //Load last saved presentation
 //                 me.openLastSavedPresentation();
 
+                me.attachListeners();
                 me.openWelcomePanel();
             },
             initializeWelcomePanel: function() {
