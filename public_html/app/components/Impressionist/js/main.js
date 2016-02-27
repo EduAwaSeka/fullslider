@@ -4,7 +4,6 @@
 Impressionist = function()
 {
 
-    this.slidecounter = 0;
     this.menuopen = false;
 
     this.selectedElement;
@@ -23,8 +22,6 @@ Impressionist = function()
     this.currentPresentation;
     this.mypresentations = [];
     this.mode = "create";
-    this.loggedinstate = false;
-    this.dropdownopen = false;
     this.currentClicked = "";
 
 
@@ -35,39 +32,19 @@ Impressionist = function()
     this.isRightAligned = false;
     this.isCenterAligned = false;
 
-    this.vxmax = 6000;
-    //Viewport x min
-    this.vxmin = -6000;
-    //Viewport y max
-    this.vymax = 6000;
-    //Viewport y min
-    this.vymin = -6000;
-    //Window x max
-    this.wxmax = 960;
-    //Window x min
-    this.wxmin = 0;
-    //Window y max
-    this.wymax = 630;
-    //Window y min
-    this.wymin = 0;
-    this.slidewxmax = 960;
-    this.slidewxmin = 0;
-    this.slidewymax = 630;
-    this.slidewymin = 0;
+    this.normalSize;
+    this.titleSize;
+    this.subtitleSize;
 
-    this.normalSize = 1.75;
-    this.titleSize = 3.5;
-    this.subtitleSize = 2.75;
+    this.normalFont;
+    this.titleFont;
+    this.subtitleFont;
 
-    this.normalFont = "'Montserrat', sans serif";
-    this.titleFont = "'Montserrat', sans serif";
-    this.subtitleFont = "'Montserrat', sans serif";
+    this.normalColor;
+    this.titleColor;
+    this.subtitleColor;
 
-    this.normalColor = "#000";
-    this.titleColor = "#000";
-    this.subtitleColor = "#000";
-
-    this.boundTextOption = "nothingradio";
+    this.boundTextOption;
 
     this.patterns = {};
 };
@@ -81,6 +58,7 @@ Impressionist.prototype =
             },
             continueInit: function()
             {
+                me.loadDefaultConfig();
                 me.removelisteners();
                 me.initializeWelcomePanel();
                 me.initializeImageModal();
@@ -96,11 +74,16 @@ Impressionist.prototype =
                 //Load array with all saved presentations
                 var presentations = me.getSavedPresentations();
                 me.renderPresentations(presentations);
+
                 //Load last saved presentation
-//                 me.openLastSavedPresentation();
+                //me.openLastSavedPresentation();
 
                 me.attachListeners();
                 me.openWelcomePanel();
+            },
+            loadDefaultConfig: function() { //Load default config on Fullslider attributes
+                me.loadDefaultText();
+                me.boundTextOption = "nothingradio";
             },
             initializeWelcomePanel: function() {
                 $("#modals").append(welcome_panel);
@@ -1060,16 +1043,6 @@ Impressionist.prototype =
                     me.mode = "save";
                     me.savePresentation();
                 });
-                $(".dropdownitem").on("click", function(e)
-                {
-                    console.log("Dd value: ", $(e.target).attr("data-dk-dropdown-value"));
-                    me.changeTextFormat($(e.target).attr("data-dk-dropdown-value"));
-                    $(".dropdownpopup").css("display", "block");
-                    $(".pulldownmenu").html($(e.target).html());
-                    //$(".dropdownpopup").css("display", "none");
-                    me.dropdownopen = true;
-                    me.hideTransformControl();
-                });
 
                 //Add Text buttons on click. 
                 $("#addtextbtn,#normalTextBtn").on("click", function(e)
@@ -1246,7 +1219,6 @@ Impressionist.prototype =
                 $(".fontconfig li a").off();
                 $(".createpresentation").off();
                 $("#savepresentationbtn").off();
-                $(".dropdownitem").off();
 
                 //Add Text buttons on click. 
                 $("#addtextbtn,#normalTextBtn").off();
@@ -1306,7 +1278,6 @@ Impressionist.prototype =
 //                    count += 200;
 //                    var t = child.attr("data-top").split("px")[0];
 
-//                    var coords = me.calculateSlideCoordinates(l, t);
                     var el = $("#fullslider_slide_" + id);
 //                    el.attr("data-x", coords.x - 500);
 //                    el.attr("data-y", coords.y);
@@ -1333,9 +1304,11 @@ Impressionist.prototype =
             {
                 //Delete slides and slidethumbs
                 me.cleanFullslider();
-
-                //Load default text configuration
-                me.loadTextDefault();
+                //Clean all patterns
+                me.patterns = {};
+                //Load default config on Fullslider attributes
+                me.loadDefaultConfig();
+                //Load default configuration on Config panel
                 me.loadConfig();
 
                 var config = me.getConfigVariable();
@@ -1361,10 +1334,11 @@ Impressionist.prototype =
                     if (id == presentation.id)
                     {
                         me.loadPresentation(presentation);
+                        initializeUndoRedo();
+                        break;
                     }
-                    $("#savedpresentationsmodal").modal("hide");
                 }
-                initializeUndoRedo();
+                $("#savedpresentationsmodal").modal("hide");
             },
             isFileCorrupted: function(presentation) {
                 var id = (presentation.id === undefined || presentation.id === null);
@@ -1539,7 +1513,9 @@ Impressionist.prototype =
             },
             loadPresentation: function(presentation) {
                 me.cleanFullslider();
-
+                //Clean all patterns
+                me.patterns = {};
+                
                 $(".fullslider-slide-container").html(presentation.contents);
                 me.generateAllThumbs();
 
@@ -1606,14 +1582,6 @@ Impressionist.prototype =
 //                window.open("app/components/impress.js/index.html");
                 window.open("app/components/reveal.js/index.html");
             },
-            calculateSlideCoordinates: function(wx, wy)
-            {
-                var vx = Math.round(((me.vxmax - me.vxmin) / (me.wxmax - me.wxmin)) * (wx - me.wxmin) + me.vxmin);
-                var vy = Math.round(((me.vymax - me.vymin) / (me.wymax - me.wymin)) * (wy - me.wymin) + me.vymin);
-                var object = {x: vx, y: vy};
-                console.log("object", object);
-                return object;
-            },
             addImageToSlide: function(src)
             {
                 console.log("adding image", src);
@@ -1677,23 +1645,6 @@ Impressionist.prototype =
                 $("#newpresoheader").html("Create New Presentation");
                 me.mode = "create";
             },
-            calculateThumbnailCoords: function(wx,
-                    wy,
-                    vxmax,
-                    vxmin,
-                    vymax,
-                    vymin,
-                    wxmax,
-                    wxmin,
-                    wymax,
-                    wymin
-                    )
-            {
-                var vx = Math.round(((vxmax - vxmin) / (wxmax - wxmin)) * (wx - wxmin) + vxmin);
-                var vy = Math.round(((vymax - vymin) / (wymax - wymin)) * (wy - wymin) + vymin);
-                var object = {x: vx, y: vy};
-                return object;
-            },
             saveItem: function(key, value)
             {
                 if (me.isSupported())
@@ -1741,7 +1692,7 @@ Impressionist.prototype =
             getClonedElement: function() {
                 return me.clonedElement;
             },
-            loadTextDefault: function() {
+            loadDefaultText: function() {
                 me.normalSize = 1.75;
                 me.titleSize = 3.5;
                 me.subtitleSize = 2.75;
@@ -1754,7 +1705,7 @@ Impressionist.prototype =
                 me.titleColor = "#000";
                 me.subtitleColor = "#000";
             },
-            loadConfig: function() {
+            loadConfig: function() {  //Load default configuration on Config panel
                 $("#normal_text_size").attr("value", me.normalSize);
                 $("#title_text_size").attr("value", me.titleSize);
                 $("#subt_text_size").attr("value", me.subtitleSize);
@@ -1865,6 +1816,9 @@ Impressionist.prototype =
             },
             removePattern: function(key) {
                 delete me.patterns[key];
+            },
+            removeAllPatterns: function() {
+                me.patterns = {};
             },
             copyTextToClipboard: function(element) {
                 var value = element.selectionText; // <-- Selected text
