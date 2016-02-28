@@ -1190,7 +1190,7 @@ Impressionist.prototype =
                 });
 
                 $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
-                    var image_name = data.files[0].name;
+                    var image_name = data.files[0].name.replace(/[^a-zA-Z0-9\.]/g, '');
                     var src = "uploaded-files/images/" + image_name;
                     $('#inputimage').fileinput('clear');
                     $('#inputimage').fileinput('refresh');
@@ -1596,19 +1596,26 @@ Impressionist.prototype =
             },
             addImageToSlide: function(src)
             {
-                console.log("adding image", src);
-                var img = new Image();
-                var id = me.generateUID();
-                $(img).attr("id", "slidelement_" + id);
-                $(img).css("left", "15vw");
-                $(img).css("top", "15vw");
-                $(img).addClass("slidelement");
-                $(img).attr("src", src);
-                $(img).attr("data-type", "image");
-                console.log("selectedslide", me.selectedSlide);
-                me.selectedSlide.append($(img));
-                var im_height = $("#slidelement_" + id)[0].offsetHeight;
-                var im_width = $("#slidelement_" + id)[0].offsetWidth;
+                var item = image_snippet;
+                var id = "slidelement_" + me.generateUID();
+                item = item.split("slidelement_id").join(id);
+                $(me.selectedSlide).append(item);
+
+                var element = "#" + id;
+
+                $(element + " > img").attr("src", src);
+                me.addImageStyle(element);
+
+                me.enableDrag();
+                me.selectedelement = element;
+                me.generateScaledSlide(me.selectedSlide);
+            },
+            addImageStyle: function(element) {
+                $(element).css("position", "absolute");
+                $(element).css("left", "15vw");
+                $(element).css("top", "15vw");
+                var im_height = $(element + " > img")[0].offsetHeight;
+                var im_width = $(element + " > img")[0].offsetWidth;
                 var scale;
                 if (im_height < im_width) {
                     scale = im_width / im_height;
@@ -1627,9 +1634,8 @@ Impressionist.prototype =
                     }
                 }
 
-                $(img).css("height", im_height + "vw");
-                $(img).css("width", im_width + "vw");
-                me.enableDrag();
+                $(element).css("height", im_height + "vw");
+                $(element).css("width", im_width + "vw");
             },
             removeSlide: function(el)
             {
