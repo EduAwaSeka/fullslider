@@ -12,9 +12,9 @@
 .file-loading {
     top: 0;
     right: 0;
-    width: 25px;
-    height: 25px;
-    font-size: 999px;
+    width: 1.83vw;
+    height: 1.83vw;
+    font-size: 73.13vw;
     text-align: right;
     color: #fff;
     background: transparent url('../img/loading.gif') top left no-repeat;
@@ -22,7 +22,7 @@
 }
 
 .file-object {
-    margin: 0 0 -5px 0;
+    margin: 0 0 -0.366vw 0;
     padding: 0;
 }
 
@@ -47,12 +47,12 @@
 .file-caption-name {
     display: inline-block;
     overflow: hidden;
-    height: 20px;
+    height: 1.464vw;
     word-break: break-all;
 }
 
 .input-group-lg .file-caption-name {
-    height: 25px;
+    height: 1.83vw;
 }
 
 .file-preview-detail-modal {
@@ -62,10 +62,10 @@
 .file-error-message {
     color: #a94442;
     background-color: #f2dede;
-    margin: 5px;
-    border: 1px solid #ebccd1;
-    border-radius: 4px;
-    padding: 15px;
+    margin: 0.366vw;
+    border: 0.0732vw solid #ebccd1;
+    border-radius: 0.2928vw;
+    padding: 1.098vw;
 }
 
 .file-error-message pre, .file-error-message ul {
@@ -74,7 +74,7 @@
 }
 
 .file-error-message pre {
-    margin: 5px 0;
+    margin: 0.366vw 0;
 }
 
 .file-caption-disabled {
@@ -84,38 +84,38 @@
 }
 
 .file-preview {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 5px;
+    border-radius: 0.366vw;
+    border: 0.0732vw solid #ddd;
+    padding: 0.366vw;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 0.366vw;
 }
 
 .file-preview-frame {
     display: table;
-    margin: 8px;
-    height: 160px;
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px 5px 0 #a2958a;
-    padding: 6px;
+    margin:  0.5857vw;
+    height: 11.713vw;
+    border: 0.0732vw solid #ddd;
+    box-shadow: 0.0732vw 0.0732vw 0.366vw 0 #a2958a;
+    padding: 0.4392vw;
     float: left;
     text-align: center;
     vertical-align: middle;
 }
 
 .file-preview-frame:not(.file-preview-error):hover {
-    box-shadow: 3px 3px 5px 0 #333;
+    box-shadow: 0.2196vw 0.2196vw 0.366vw 0 #333;
 }
 
 .file-preview-image {
-    height: 160px;
+    height: 11.713vw;
     vertical-align: middle;
 }
 
 .file-preview-text {
     text-align: left;
-    width: 160px;
-    margin-bottom: 2px;
+    width: 11.713vw;
+    margin-bottom: 0.1464vw;
     color: #428bca;
     background: #fff;
     overflow-x: hidden;
@@ -125,10 +125,10 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    width: 160px;
-    height: 160px;
-    border: 2px solid #999;
-    border-radius: 30px;
+    width: 11.713vw;
+    height: 11.713vw;
+    border: 0.1464vw solid #999;
+    border-radius: 2.1962vw;
 }
 
 .file-preview-other:hover {
@@ -162,7 +162,7 @@
 }
 
 .file-actions {
-    margin-top: 15px;
+    margin-top: 1.098vw;
 }
 
 .file-footer-buttons {
@@ -170,7 +170,7 @@
 }
 
 .file-upload-indicator {
-    padding-top: 2px;
+    padding-top: 0.1464vw;
     cursor: default;
     opacity: 0.8;
     width: 60%;
@@ -186,12 +186,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 160px;
+    width: 11.713vw;
     text-align: center;
-    padding-top: 4px;
-    font-size: 11px;
+    padding-top: 0.2928vw;
+    font-size: 0.805vw;
     color: #777;
-    margin: 5px auto 10px auto;
+    margin: 0.366vw auto 0.732vw auto;
 }
 
 .file-preview-error {
@@ -204,35 +204,35 @@
 }
 
 .file-drop-zone {
-    border: 1px dashed #aaa;
-    border-radius: 4px;
+    border: 0.0732vw dashed #aaa;
+    border-radius: 0.2928vw;
     height: 100%;
     text-align: center;
     vertical-align: middle;
-    margin: 12px 15px 12px 12px;
-    padding: 5px;
+    margin: 0.8785vw 1.098vw 0.8785vw 0.8785vw;
+    padding: 0.366vw;
 }
 
 .file-drop-zone-title {
     color: #aaa;
-    font-size: 40px;
-    padding: 85px 10px;
+    font-size: 2.9283vw;
+    padding: 5.223vw 0.732vw;
 }
 
 .file-highlighted {
-    border: 2px dashed #999 !important;
+    border: 0.1464vw dashed #999 !important;
     background-color: #f0f0f0;
 }
 
 .file-uploading {
-    background: url('../img/loading-sm.gif') no-repeat center bottom 10px;
+    background: url('../img/loading-sm.gif') no-repeat center bottom 0.732vw;
     opacity: 0.65;
 }
 
 .file-thumb-progress .progress, .file-thumb-progress .progress-bar {
-    height: 10px;
-    font-size: 9px;
-    line-height: 10px;
+    height: 0.732vw;
+    font-size: 0.6589vw;
+    line-height: 0.732vw;
 }
 
 .file-thumbnail-footer {
@@ -241,7 +241,7 @@
 
 .file-thumb-progress {
     position: absolute;
-    top: 22px;
+    top: 1.611vw;
     left: 0;
     right: 0;
 }

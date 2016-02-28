@@ -449,14 +449,14 @@
     };
     defaultPreviewTypes = ['image', 'html', 'text', 'video', 'audio', 'flash', 'object'];
     defaultPreviewSettings = {
-        image: {width: "auto", height: "160px"},
-        html: {width: "213px", height: "160px"},
-        text: {width: "160px", height: "136px"},
-        video: {width: "213px", height: "160px"},
-        audio: {width: "213px", height: "80px"},
-        flash: {width: "213px", height: "160px"},
-        object: {width: "160px", height: "160px"},
-        other: {width: "160px", height: "160px"}
+        image: {width: "auto", height: "8.713vw"},
+        html: {width: "15.593vw", height: "8.713vw"},
+        text: {width: "8.713vw", height: "9.957vw"},
+        video: {width: "15.593vw", height: "8.713vw"},
+        audio: {width: "15.593vw", height: "5.857vw"},
+        flash: {width: "15.593vw", height: "8.713vw"},
+        object: {width: "8.713vw", height: "8.713vw"},
+        other: {width: "8.713vw", height: "8.713vw"}
     };
     defaultFileTypeSettings = {
         image: function (vType, vName) {
