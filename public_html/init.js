@@ -5,9 +5,9 @@ var express  = require("express"),
     path = require("path"),
     fs = require("fs"),
     port = process.argv[2] || 8888;
+    upload = require('loadimage.js');
 	
-app.use(express.static(path.join(__dirname, 'public')));
-upload = require('./public/app/js/loadimage.js');
+app.use(express.static(__dirname + '/public/'));
 
 app.get("/",function(request, response) {
 

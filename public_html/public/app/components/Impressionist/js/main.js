@@ -1070,7 +1070,6 @@ Impressionist.prototype =
 
                 $("#addimagebtn").on("click", function(e)
                 {
-                    console.log("open image modal...");
                     $("#imagemodal").removeClass("hide");
                     $("#imagemodal").modal("show");
                     $("#imageinput").focus();
@@ -1078,7 +1077,6 @@ Impressionist.prototype =
                 $(".newpresopanel").on("click", function(e)
                 {
                     $(".modal").modal("hide");
-                    console.log("open image modal...");
                     $("#newpresentationmodal").removeClass("hide");
                     $("#newpresentationmodal").modal("show");
                     $("#titleinput").val("New Presentation");
@@ -1189,6 +1187,16 @@ Impressionist.prototype =
                     uploadUrl: "/upload", // server upload action
                     uploadAsync: true,
                     maxFileCount: 5
+                });
+
+                $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
+                    var image_name = data.files[0].name;
+                    var src = "uploaded-files/images/" + image_name;
+                    $('#inputimage').fileinput('clear');
+                    $('#inputimage').fileinput('refresh');
+                    $('#inputimage').fileinput('unlock');
+                    me.addImageToSlide(src);
+                    $("#imagemodal").modal("hide");
                 });
 
                 $(window).resize(function(e) {
