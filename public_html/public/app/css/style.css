@@ -331,10 +331,39 @@ p {
     padding: 0.25vw 0.3vw !important;
 }
 
-
-
 .fontFamilySelected{
     float: left;
     width: 86%;
     overflow-x: hidden;
+}
+
+
+/* Upload image modal */
+
+#imagemodal{
+    width: 65vw;
+    left: 41% !important;
+}
+
+#fileimgdiv{
+    width: 50%;
+    float: left;
+}
+
+#urlimgdiv{
+    width: 45%;
+    float: left;
+    margin-left: 5%;
+}
+
+#urlimageinput{
+    width: 100%;
+}
+
+#previewimg{
+    max-width: 50%;
+}
+
+#addurlimgbtn{
+    float:right;
 }

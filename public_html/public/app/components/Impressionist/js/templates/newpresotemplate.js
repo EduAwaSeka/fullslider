@@ -110,16 +110,24 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                             '<h3>Add Image</h3>'+
                         '</div>'+
                         '<div class="modal-body">'+
-                            '<label class="control-label">Select File</label>'+
-                            '<input id="inputimage"  name="inputimage" type="file" class="file-loading" accept="image/gif, image/jpeg, image/png"><br>'+
-                            '<p>Paste Image URL</p>'+
-                            '<input type="text" id="imageinput" class="image-input"> </input>'+
-                            '<p> Preview Will appear below</p>'+
-                            '<img id="previewimg"></img>'+
+                            '<div id="fileimgdiv">'+
+                                '<label class="control-label">Select File</label>'+
+                                '<input id="inputimage"  name="inputimage" type="file" class="file-loading" accept="image/gif, image/jpeg, image/png"><br>'+
+                            '</div>'+
+                            '<div id="urlimgdiv">'+
+                                '<label>Paste Image URL</label>'+
+                                '<form id="urlimgform" action="/upimagefromurl" method="post">'+
+                                '<div class="file-preview">'+
+                                    '<div><input type="text" id="urlimageinput" name="urlimageinput"></div>'+
+                                    '<p> Preview Will appear below</p>'+
+                                    '<img id="previewimg" class="center-block"></img>'+
+                                '</div>'+
+                                '<a href="#" class="btn btn-primary" id="addurlimgbtn"> <i class="fa fa-plus"></i> Add</a>'+
+                                '</form>'+
+                            '</div>'+
                         '</div>'+
                         '<div class="modal-footer">'+
                             '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
-                            '<a href="#" class="btn btn-primary" id="appendimagebtn"> <i class="fa fa-plus"></i> Add</a>'+
                         '</div>'+
                     '</div>';
             

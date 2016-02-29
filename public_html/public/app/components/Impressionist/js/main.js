@@ -1072,7 +1072,7 @@ Impressionist.prototype =
                 {
                     $("#imagemodal").removeClass("hide");
                     $("#imagemodal").modal("show");
-                    $("#imageinput").focus();
+                    $("#urlimageinput").focus();
                 });
                 $(".newpresopanel").on("click", function(e)
                 {
@@ -1083,7 +1083,7 @@ Impressionist.prototype =
                     $("#newpresoheader").html("Create New Presentation");
                     me.mode = "create";
                 });
-                $("#imageinput").on("blur keyup", function(e)
+                $("#urlimageinput").on("blur keyup", function(e)
                 {
                     image = $(this).val();
                     $("#previewimg").attr("src", image);
@@ -1091,13 +1091,6 @@ Impressionist.prototype =
                 $("#addslidebtn").on("click", function(e)
                 {
                     me.addSlide();
-                });
-                $("#appendimagebtn").on("click", function(e)
-                {
-                    console.log("append image to stage");
-                    image = $("#previewimg").attr("src");
-                    me.addImageToSlide(image);
-                    $("#imagemodal").modal("hide");
                 });
                 $("#openpresentationsbtn").on("click", function(e)
                 {
@@ -1182,7 +1175,7 @@ Impressionist.prototype =
 
                 });
 
-
+                //Upload image from device
                 $("#inputimage").fileinput({
                     uploadUrl: "/upload", // server upload action
                     uploadAsync: true,
@@ -1190,13 +1183,26 @@ Impressionist.prototype =
                 });
 
                 $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
-                    var image_name = data.files[0].name.replace(/[^a-zA-Z0-9\.]/g, '');
-                    var src = "uploaded-files/images/" + image_name;
                     $('#inputimage').fileinput('clear');
                     $('#inputimage').fileinput('refresh');
                     $('#inputimage').fileinput('unlock');
-                    me.addImageToSlide(src);
+                    me.addImageToSlide(data.response);
                     $("#imagemodal").modal("hide");
+                });
+
+                
+                //Upload image from url
+                $("#addurlimgbtn").on("click", function(e)
+                {
+                    $("#urlimgform").submit();
+                });
+
+                $('#urlimgform').submit(function() {
+                    $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                        me.addImageToSlide(json);
+                        $("#imagemodal").modal("hide");
+                    }, 'json');
+                    return false;
                 });
 
                 $(window).resize(function(e) {
@@ -1240,9 +1246,9 @@ Impressionist.prototype =
 
                 $("#addimagebtn").off();
                 $(".newpresopanel").off();
-                $("#imageinput").off();
+                $("#urlimageinput").off();
                 $("#addslidebtn").off();
-                $("#appendimagebtn").off();
+                $("#addurlimgbtn").off();
                 $("#openpresentationsbtn").off();
                 $("#openconfiguration").off();
                 $("#viewbtn").off();
@@ -1594,28 +1600,32 @@ Impressionist.prototype =
 //                window.open("app/components/impress.js/index.html");
                 window.open("app/components/reveal.js/index.html");
             },
-            addImageToSlide: function(src)
+            addImageToSlide: function(data)
             {
                 var item = image_snippet;
                 var id = "slidelement_" + me.generateUID();
                 item = item.split("slidelement_id").join(id);
                 $(me.selectedSlide).append(item);
 
-                var element = "#" + id;
-
-                $(element + " > img").attr("src", src);
-                me.addImageStyle(element);
+                data.id = id;
+                me.addImageStyle(data);
 
                 me.enableDrag();
-                me.selectedelement = element;
+                me.selectedelement = $("#" + id);
                 me.generateScaledSlide(me.selectedSlide);
             },
-            addImageStyle: function(element) {
+            addImageStyle: function(data) {
+                var element = "#" + data.id;
+
+                var src = data.src;
+                var im_width = data.width;
+                var im_height = data.height;
+
+                $(element + " > img").attr("src", src);
                 $(element).css("position", "absolute");
                 $(element).css("left", "15vw");
                 $(element).css("top", "15vw");
-                var im_height = $(element + " > img")[0].offsetHeight;
-                var im_width = $(element + " > img")[0].offsetWidth;
+
                 var scale;
                 if (im_height < im_width) {
                     scale = im_width / im_height;
