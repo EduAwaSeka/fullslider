@@ -1085,7 +1085,7 @@ Impressionist.prototype =
                 });
                 $("#urlimageinput").on("blur keyup", function(e)
                 {
-                    image = $(this).val();
+                    var image = $(this).val();
                     $("#previewimg").attr("src", image);
                 });
                 $("#addslidebtn").on("click", function(e)
