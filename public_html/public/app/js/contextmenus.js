@@ -62,10 +62,10 @@ $(function() {
             },
         }
     });
-    
+
     /* End Slides */
-    
-    
+
+
     /* Elements */
 
     $.contextMenu({
@@ -99,7 +99,9 @@ $(function() {
                 name: "Duplicate element",
                 icon: "copy",
                 callback: function(key, options) {
-                    me.cloneSlide($(this));
+                    me.selectCurrentClicked($(this));
+                    copyEl();
+                    pasteEl();
                     changeContent();//Event for undo redo
                 }
             },
@@ -211,6 +213,6 @@ $(function() {
             },
         }
     });
-    
+
     /* End elements */
 });
