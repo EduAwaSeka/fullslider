@@ -1177,20 +1177,25 @@ Impressionist.prototype =
 
                 //Upload image from device
                 $("#inputimage").fileinput({
-                    uploadUrl: "/upload", // server upload action
+                    uploadUrl: "/uploadimage", // server upload action
                     uploadAsync: true,
                     maxFileCount: 5
                 });
 
                 $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
+                    
+                    //Clear preview
                     $('#inputimage').fileinput('clear');
                     $('#inputimage').fileinput('refresh');
                     $('#inputimage').fileinput('unlock');
-                    me.addImageToSlide(data.response);
+//                    me.addImageToSlide(data.response);
+
+                    //Create image from returned json object of loadimage module
+                    createImageFromJSONFile(data.response);
                     $("#imagemodal").modal("hide");
                 });
 
-                
+
                 //Upload image from url
                 $("#addurlimgbtn").on("click", function(e)
                 {
@@ -1199,7 +1204,13 @@ Impressionist.prototype =
 
                 $('#urlimgform').submit(function() {
                     $.post($(this).attr('action'), $(this).serialize(), function(json) {
-                        me.addImageToSlide(json);
+//                        me.addImageToSlide(json);
+                        //Clear input and preview image
+                        $("#urlimageinput").val("");
+                        $("#previewimg").removeAttr("src");
+
+                        //Create image from returned json object of loadimage module
+                        createImageFromJSONFile(json);
                         $("#imagemodal").modal("hide");
                     }, 'json');
                     return false;

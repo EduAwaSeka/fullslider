@@ -59,8 +59,8 @@ app.get("/", function(request, response) {
 
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
-app.post('/upload', multipartMiddleware, upload.Uploads);
-app.post('/upimagefromurl', upload.UpImageFromUrl);
+app.post('/uploadimage', multipartMiddleware, upload.uploadImage);
+app.post('/upimagefromurl', upload.uploadUrlImage);
 
 app.listen(parseInt(port, 10));
 
