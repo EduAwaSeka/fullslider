@@ -212,7 +212,6 @@ var Style = (function() {
                     node.style[property] = value;
                 } :
                 function(node, property, value) {
-                    console.log("NODE: " + node);
                     node.style.setProperty(property, value, PRIORITY);
                 },
         // not used
@@ -237,8 +236,6 @@ var Style = (function() {
             cleaned[4] += 'px';
             cleaned[5] += 'px';
             var moz = cleaned.join(',');
-            console.log("toCSS called");
-            console.log("editedobject" + me.editedobject + " css " + css);
             me.selectedElement.css("-webkit-transform", "matrix(" + css + ")");
             return 'matrix(' + css + ');'
             /*return [
@@ -322,54 +319,115 @@ function handleMousemove(e) {
             var initialPoint = $(element[0]).offset().top + el_height;
             var difference = (e.pageY - initialPoint);
             var new_heigth = el_height + difference;
-            if (element.attr("data-type") === "text") {
-                var scale = new_heigth / el_height;
-                var fontsize = parseFloat(getFontSize(me.selectedElement));
-                var new_fontsize = fontsize * scale;
-                new_fontsize = pxToVw(new_fontsize);
-                if (new_fontsize < 1) {
-                    new_fontsize = 1;
-                }
-                new_fontsize += "vw";
-                me.selectedElement.css("font-size", new_fontsize);
-                var max_height = parseFloat(element.css("max-height"));
-                var scroll_heigth = parseFloat(element[0].scrollHeight);
-                var max_width = parseFloat(element.css("max-width"));
-                var scroll_width = parseFloat(element[0].scrollWidth);
-                //If element with new size is out of container, undo resize
-                if (scroll_heigth >= max_height || scroll_width >= max_width) {
-                    fontsize = pxToVw(fontsize);
-                    fontsize += "vw";
-                    me.selectedElement.css("font-size", fontsize);
-                }
 
-            }
-            else {
-                var el_width = element[0].offsetWidth;
-                var scale = el_height / el_width;
-                var new_width = element[0].offsetWidth * scale;
-                if (new_width < getRel()) {
-                    new_width = 1;
-                }
-                else {
+            switch (element.attr("data-type")) {
+                case "text":
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var scale = new_heigth / el_height;
+                    var fontsize = parseFloat(getFontSize(me.selectedElement));
+                    var new_fontsize = fontsize * scale;
+                    new_fontsize = pxToVw(new_fontsize);
+                    if (new_fontsize < 1) {
+                        new_fontsize = 1;
+                    }
+                    new_fontsize += "vw";
+                    me.selectedElement.css("font-size", new_fontsize);
+                    var max_height = parseFloat(element.css("max-height"));
+                    var scroll_heigth = parseFloat(element[0].scrollHeight);
+                    var max_width = parseFloat(element.css("max-width"));
+                    var scroll_width = parseFloat(element[0].scrollWidth);
+                    //If element with new size is out of container, undo resize
+                    if (scroll_heigth >= max_height || scroll_width >= max_width) {
+                        fontsize = pxToVw(fontsize);
+                        fontsize += "vw";
+                        me.selectedElement.css("font-size", fontsize);
+                    }
+                    break;
+
+                case "image":
+//                    var scale = el_height / el_width;
+//                    var new_width = element[0].offsetWidth * scale;
+//                    if (new_width < getRel()) {
+//                        new_width = 1;
+//                    }
+//                    else {
+//                        new_width = pxToVw(new_width);
+//                    }
+//                    if (new_heigth < getRel()) {
+//                        new_heigth = 1;
+//                    }
+//                    else {
+//                        new_heigth = pxToVw(new_heigth);
+//                    }
+//                    element.css("height", new_heigth + "vw");
+//                    element.css("width", new_width + "vw");
+//                    var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
+//                    var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
+//                    if (right_pos > right_limit || bottom_pos > bottom_limit) {
+//                        el_width = pxToVw(el_width);
+//                        el_height = pxToVw(el_height);
+//                        element.css("height", el_height + "vw");
+//                        element.css("width", el_width + "vw");
+//                    }
+                    
+                    var minSize=3*getRel(); // minimal size in Vw
+                    
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var el_width = element[0].offsetWidth;
+
+                    var mouse = {}, new_width, new_heigth, left, top, offset = me.selectedElement.offset();
+                    mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
+                    mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
+
+                    left = offset.left;
+                    top = offset.top;
+                    new_width = mouse.x - left;
+                    new_heigth = mouse.y - top;
+
+                    new_heigth = new_width / el_width * el_height;
+
+                    switch (true) {
+                        case (new_width < new_heigth):
+                            if (new_width < minSize) {
+                                new_width = minSize;
+                                new_heigth = (new_width / el_width) * el_height;
+                            }
+                            break;
+                        case (new_width > new_heigth):
+                            if (new_heigth < minSize) {
+                                new_heigth = minSize;
+                                new_width = (new_heigth / el_height) * el_width;
+                            }
+                            break;
+                        case (new_width == new_heigth):
+                            if (new_width < minSize) {
+                                new_width = minSize;
+                                new_heigth = minSize;
+                            }
+                            break;
+                    }
                     new_width = pxToVw(new_width);
-                }
-                if (new_heigth < getRel()) {
-                    new_heigth = 1;
-                }
-                else {
                     new_heigth = pxToVw(new_heigth);
-                }
-                element.css("height", new_heigth + "vw");
-                element.css("width", new_width + "vw");
-                var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
-                var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
-                if (right_pos > right_limit || bottom_pos > bottom_limit) {
-                    el_width = pxToVw(el_width);
-                    el_height = pxToVw(el_height);
-                    element.css("height", el_height + "vw");
-                    element.css("width", el_width + "vw");
-                }
+
+                    element.css("height", new_heigth + "vw");
+                    element.css("width", new_width + "vw");
+                    
+                    var right_pos = left + me.selectedElement.width();
+                    var bottom_pos = top + me.selectedElement.height();
+                    if (right_pos > right_limit || bottom_pos > bottom_limit) {
+                        el_width = pxToVw(el_width);
+                        el_height = pxToVw(el_height);
+                        element.css("height", el_height + "vw");
+                        element.css("width", el_width + "vw");
+                    }
+
+                    break;
+                default:
+                    break;
             }
             scalePlay(element[0]);
             break;
@@ -395,7 +453,6 @@ function handleMousemove(e) {
     this.current = matrix;
     //targetobject = me.editedobject.attr("id");
     this.transform(matrix);
-    console.log(this + " aodeeeee");
     //targetobject.transform(matrix);
 }
 function handleMouseup(e) {
