@@ -59,6 +59,10 @@ function getFontSize(element) {
     return element.css("font-size").replace(/[^-\d\.]/g, '');
 }
 
+function getNumericValue(value) {
+    return value.replace(/[^-\d\.]/g, '');
+}
+
 function pxToVw(value) {
     return value / getRel();
 }

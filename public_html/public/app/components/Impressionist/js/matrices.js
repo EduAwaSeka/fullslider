@@ -377,7 +377,8 @@ function handleMousemove(e) {
                     e.preventDefault();
                     e.stopPropagation();
 
-                    var el_width = element[0].offsetWidth;
+                    var el_width = element[0].getBoundingClientRect().width; //Not round int value
+                    el_height = element[0].getBoundingClientRect().height;
 
                     var mouse = {}, new_width, new_heigth, left, top, offset = me.selectedElement.offset();
                     mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
