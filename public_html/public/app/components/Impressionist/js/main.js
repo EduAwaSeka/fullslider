@@ -197,7 +197,7 @@ Impressionist.prototype =
             cloneElement: function(element)
             {
                 clone = element.clone();
-                clone.attr("id", "slideelement_" + me.generateUID());
+                clone.attr("id", "slidelement_" + me.generateUID());
                 clone.css("left", pxToVw(element.position().left) + 0.2 + "vw");
                 clone.css("top", pxToVw(element.position().top + 0.2) + "vw");
                 me.clonedElement = clone;
@@ -213,13 +213,13 @@ Impressionist.prototype =
             },
             appendClonedElement: function()
             {
+                me.clearCurrentClicked();
+                me.selectCurrentClicked($(me.clonedElement));
                 me.selectedSlide.append(me.clonedElement);
                 var id = $(me.clonedElement).attr("id");
                 me.enableDrag();
-                me.selectedElement = $("#" + id);
-                me.generateScaledSlide(me.selectedSlide);
-                //On create text element, this is selected with click event
-                launchEvent("click", me.selectedelement);
+                me.selectElement($("#" + id));
+                me.updateScaledSlide(me.selectedSlide);
             },
             setupMenuItemEvents: function()
             {
@@ -266,55 +266,38 @@ Impressionist.prototype =
                 });
                 //$(".slidethumbholder").disableSelection();
             },
-            cloneSlide: function(slide)
-            {
-                var uid = me.generateUID();
-                var originalUid = slide.attr("id").replace("slidethumb_", "");
-
-                //Clone thumbnail
-                var clonedThumb = slide.clone();
-                clonedThumb.attr("id", "slidethumb_" + uid);
-                clonedThumb.removeClass("context-menu-active");
-                $(".slidethumbholder").append(clonedThumb);
-                $("#slidethumb_" + uid).animate({opacity: 1}, 200);
-
-                //Change old uid by new uid in new thumbnail's deletebtn and canvas
-                var deletebtn = $("#slidethumb_" + uid + " > #deletebtn");
-                deletebtn.attr("data-parent", "slidethumb_" + uid);
-                var thumbCanvas = $("#slidethumb_" + uid + " > canvas");
-                thumbCanvas.attr("id", "slidethumb_" + uid);
-                me.addSlideEvents();
-
-                //Clone Slide
-                var clonedSlide = $("#fullslider_slide_" + originalUid).clone();
-                clonedSlide.attr("id", "fullslider_slide_" + uid);
-                $(".fullslider-slide-container").append(clonedSlide);
-                var children = $("#fullslider_slide_" + uid).children();
-                for (var i = 0; i < children.length; i++)
-                {
-                    $(children[i]).attr("id", "slidelement_" + me.generateUID());
-                }
-
-                me.selectSlide("#fullslider_slide_" + uid);
-                me.selectThumb(uid);
-                me.enableDrag();
-                me.updateScaledSlide(me.selectedSlide);
-                me.selectCurrentClicked($("#slidethumb_" + uid));
-            },
-            copySlideToSlide: function(slidethumb) {
-                var originalUid = slidethumb.attr("id").replace("slidethumb_", "");
-                var slideUid = me.currentClicked.attr("id").replace("slidethumb_", "");
-
-                var copiedSlide = $("#fullslider_slide_" + originalUid);
-                var slide = $("#fullslider_slide_" + slideUid);
-
-                slide.html(copiedSlide.html());
-
+            formatClonedSlide: function(slide) { //For cloned elements into slide
                 var children = slide.children();
                 for (var i = 0; i < children.length; i++)
                 {
                     $(children[i]).attr("id", "slidelement_" + me.generateUID());
                 }
+            },
+            cloneSlide: function(slide){
+                var uid = me.generateUID();
+                
+                var clonedSlide = slide.clone();
+                clonedSlide.attr("id", "fullslider_slide_" + uid);
+                $(".fullslider-slide-container").append(clonedSlide);
+                me.formatClonedSlide($("#fullslider_slide_" + uid));
+
+                me.addSlideThumb(uid);
+                me.selectSlide("#fullslider_slide_" + uid);
+                me.generateScaledSlide(me.selectedSlide);
+
+                me.addSlideEvents();
+                me.selectThumb(uid);
+                me.enableDrag();
+                me.selectCurrentClicked($("#slidethumb_" + uid));
+            },
+            copySlideToSlide: function(slide) {
+                var slideUid = me.currentClicked.attr("id").replace("slidethumb_", "");
+
+                var targetSlide = $("#fullslider_slide_" + slideUid);
+
+                targetSlide.html(slide.html());
+
+                me.formatClonedSlide(targetSlide);
 
                 me.selectSlide("#fullslider_slide_" + slideUid);
                 me.updateScaledSlide(me.selectedSlide);
@@ -657,8 +640,7 @@ Impressionist.prototype =
             },
             selectCurrentClicked: function(el) {
                 if (me.currentClicked !== "" && !isInElement($(".context-menu-list"), el)) {
-                    me.currentClicked.removeClass("currentClicked");
-                    me.currentClicked = "";
+                    me.clearCurrentClicked();
                 }
                 var toSave = "";
                 if (isInElement($(".slidethumbholder"), el)) {
@@ -684,6 +666,10 @@ Impressionist.prototype =
                 }
                 me.currentClicked = toSave;
             },
+            clearCurrentClicked: function() {
+                me.currentClicked.removeClass("currentClicked");
+                me.currentClicked = "";
+            },
             clearElementSelections: function()
             {
                 $("#play").css("display", "none");
@@ -705,13 +691,16 @@ Impressionist.prototype =
                 }
 
             },
-            addSlide: function()
-            {
+            addSlideThumb: function(uid) {
                 thumb = slidethumb;
-                uid = me.generateUID();
                 thumb = thumb.split("slidethumb_^UID^").join("slidethumb_" + uid);
                 $(".slidethumbholder").append(thumb);
                 $("#slidethumb_" + uid).animate({opacity: 1}, 200);
+            },
+            addSlide: function()
+            {
+                uid = me.generateUID();
+                me.addSlideThumb(uid);
                 //$("#slidethumb_" + uid).attr("data-left", me.lastslideleftpos + "px");
                 //$("#slidethumb_" + uid).attr("data-top", "0px");
                 me.addSlideEvents();
@@ -784,7 +773,7 @@ Impressionist.prototype =
                 me.addTextStyle(element, type);
                 me.enableDrag();
                 me.selectedelement = element;
-                me.generateScaledSlide(me.selectedSlide);
+                me.updateScaledSlide(me.selectedSlide);
             },
             addTextStyle: function(element, type) {
                 var size = "";

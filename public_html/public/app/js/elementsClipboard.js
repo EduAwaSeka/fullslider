@@ -9,14 +9,15 @@ function setElClipboard(type, value) {
 }
 
 function copyEl() {
-    var currentClicked = Impressionist.prototype.getCurrentClicked();
+    var currentClicked = me.getCurrentClicked();
     if (currentClicked !== "") {
         if (currentClicked.hasClass("slidethumb")) {
-            setElClipboard("slidethumb", currentClicked);
+            var slideId =me.slideIdFromThumb(currentClicked);
+            setElClipboard("slidethumb", $("#"+slideId).clone());
         }
         else {
             if (currentClicked.hasClass("slidelement") && !currentClicked.hasClass("elementediting")) {
-                setElClipboard("slidelement", currentClicked);
+                setElClipboard("slidelement", currentClicked.clone());
             }
         }
     }
@@ -26,15 +27,15 @@ function copyEl() {
 }
 
 function pasteEl() {
-    var currentClicked = Impressionist.prototype.getCurrentClicked();
+    var currentClicked = me.getCurrentClicked();
     switch (elClipboard.type) {
         case "slidethumb":
             if (isInElement($(".slidethumbholder"), currentClicked)) {
                 if (isElementByClass("slidethumb", currentClicked)) {
-                    Impressionist.prototype.copySlideToSlide(elClipboard.value);
+                    me.copySlideToSlide(elClipboard.value);
                 }
                 else {
-                    Impressionist.prototype.cloneSlide(elClipboard.value);
+                    me.cloneSlide(elClipboard.value);
                     launchEvent("click", document.getElementsByClassName("slidethumbholder")[0]);
                 }
             }
@@ -42,8 +43,8 @@ function pasteEl() {
         case "slidelement":
             if (isElementByClass("fullslider-slide", currentClicked) || isElementByClass("slidelement", currentClicked)) {
                 if (!isElementByClass("elementediting", currentClicked)) {
-                    Impressionist.prototype.cloneElement(elClipboard.value);
-                    Impressionist.prototype.appendClonedElement();
+                    me.cloneElement(elClipboard.value);
+                    me.appendClonedElement();
                 }
             }
             break;
