@@ -490,6 +490,16 @@
                 $(".fullscr").on("mouseout", function(e){
                     $(this).removeClass("fshover");
                 });
+                 $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e){
+                    if($(".fullscr i").hasClass("fa-arrows-alt")){
+                        $(".fullscr i").removeClass("fa-arrows-alt");
+                        $(".fullscr i").addClass("fa-compress");
+                    }
+                    else{
+                        $(".fullscr i").removeClass("fa-compress");
+                        $(".fullscr i").addClass("fa-arrows-alt");
+                    }
+                });
 
 		dom.statusDiv = createStatusDiv();
 	}

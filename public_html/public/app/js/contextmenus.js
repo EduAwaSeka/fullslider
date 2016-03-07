@@ -12,7 +12,10 @@ $(function() {
                 name: "Duplicate slide",
                 icon: "copy",
                 callback: function(key, options) {
-                    me.cloneSlide($(this));
+                    me.selectCurrentClicked($(this));
+                    copyEl();
+                    me.selectCurrentClicked($(".slidethumbholder"));
+                    pasteEl();
                     changeContent();//Event for undo redo
                 }
             },
