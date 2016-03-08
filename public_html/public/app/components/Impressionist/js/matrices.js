@@ -347,33 +347,8 @@ function handleMousemove(e) {
                     break;
 
                 case "image":
-//                    var scale = el_height / el_width;
-//                    var new_width = element[0].offsetWidth * scale;
-//                    if (new_width < getRel()) {
-//                        new_width = 1;
-//                    }
-//                    else {
-//                        new_width = pxToVw(new_width);
-//                    }
-//                    if (new_heigth < getRel()) {
-//                        new_heigth = 1;
-//                    }
-//                    else {
-//                        new_heigth = pxToVw(new_heigth);
-//                    }
-//                    element.css("height", new_heigth + "vw");
-//                    element.css("width", new_width + "vw");
-//                    var right_pos = me.selectedElement.offset().left + me.selectedElement.width();
-//                    var bottom_pos = me.selectedElement.offset().top + me.selectedElement.height();
-//                    if (right_pos > right_limit || bottom_pos > bottom_limit) {
-//                        el_width = pxToVw(el_width);
-//                        el_height = pxToVw(el_height);
-//                        element.css("height", el_height + "vw");
-//                        element.css("width", el_width + "vw");
-//                    }
-                    
-                    var minSize=3*getRel(); // minimal size in Vw
-                    
+                    var minSize = 3 * getRel(); // minimal size in Vw
+
                     e.preventDefault();
                     e.stopPropagation();
 
@@ -387,43 +362,46 @@ function handleMousemove(e) {
                     left = offset.left;
                     top = offset.top;
                     new_width = mouse.x - left;
-                    new_heigth = mouse.y - top;
 
                     new_heigth = new_width / el_width * el_height;
 
-                    switch (true) {
-                        case (new_width < new_heigth):
-                            if (new_width < minSize) {
-                                new_width = minSize;
-                                new_heigth = (new_width / el_width) * el_height;
-                            }
-                            break;
-                        case (new_width > new_heigth):
-                            if (new_heigth < minSize) {
-                                new_heigth = minSize;
-                                new_width = (new_heigth / el_height) * el_width;
-                            }
-                            break;
-                        case (new_width == new_heigth):
-                            if (new_width < minSize) {
-                                new_width = minSize;
-                                new_heigth = minSize;
-                            }
-                            break;
-                    }
-                    new_width = pxToVw(new_width);
-                    new_heigth = pxToVw(new_heigth);
+                    if (new_width > 0 && new_heigth > 0) {
 
-                    element.css("height", new_heigth + "vw");
-                    element.css("width", new_width + "vw");
-                    
-                    var right_pos = left + me.selectedElement.width();
-                    var bottom_pos = top + me.selectedElement.height();
-                    if (right_pos > right_limit || bottom_pos > bottom_limit) {
-                        el_width = pxToVw(el_width);
-                        el_height = pxToVw(el_height);
-                        element.css("height", el_height + "vw");
-                        element.css("width", el_width + "vw");
+
+                        switch (true) {
+                            case (new_width < new_heigth):
+                                if (new_width < minSize) {
+                                    new_width = minSize;
+                                    new_heigth = (new_width / el_width) * el_height;
+                                }
+                                break;
+                            case (new_width > new_heigth):
+                                if (new_heigth < minSize) {
+                                    new_heigth = minSize;
+                                    new_width = (new_heigth / el_height) * el_width;
+                                }
+                                break;
+                            case (new_width == new_heigth):
+                                if (new_width < minSize) {
+                                    new_width = minSize;
+                                    new_heigth = minSize;
+                                }
+                                break;
+                        }
+                        new_width = pxToVw(new_width);
+                        new_heigth = pxToVw(new_heigth);
+
+                        element.css("height", new_heigth + "vw");
+                        element.css("width", new_width + "vw");
+
+                        var right_pos = left + me.selectedElement.width();
+                        var bottom_pos = top + me.selectedElement.height();
+                        if (right_pos >= right_limit || bottom_pos >= bottom_limit) {
+                            el_width = pxToVw(el_width);
+                            el_height = pxToVw(el_height);
+                            element.css("height", el_height + "vw");
+                            element.css("width", el_width + "vw");
+                        }
                     }
 
                     break;
