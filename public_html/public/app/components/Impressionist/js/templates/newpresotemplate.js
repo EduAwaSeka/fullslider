@@ -131,6 +131,18 @@ var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                         '</div>'+
                     '</div>';
             
+var edit_img_modal ='<div class="modal hide fade modalwindow" id="editimgmodal">'+
+                        '<div class="modal-header">'+
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+                            '<h3>Edit Image</h3>'+
+                        '</div>'+
+                        '<div class="modal-body">'+
+                        '</div>'+
+                        '<div class="modal-footer">'+
+                            '<a href="#" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</a>'+
+                            '<a href="#" class="btn btn-primary doc-button" id="cropimgbtn" data-method="getCroppedImg"> <i class="fa fa-plus"></i> Save</a>'+
+                        '</div>'+
+                    '</div>';
 
 var my_pres_modal= '<!-- Saved Presentations Modal -->'+
                    '<div class="modal hide fade modalwindow" id="savedpresentationsmodal">'+

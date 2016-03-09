@@ -62,6 +62,7 @@ Impressionist.prototype =
                 me.removelisteners();
                 me.initializeWelcomePanel();
                 me.initializeImageModal();
+                me.initializeEditImageModal();
                 me.initializeNewPresModal();
                 me.initializeMyPresModal();
                 me.initializeConfigModal();
@@ -90,6 +91,10 @@ Impressionist.prototype =
             },
             initializeImageModal: function() {
                 $("#modals").append(add_img_modal);
+            },
+            initializeEditImageModal: function() {
+                $("#modals").append(edit_img_modal);
+                $("#editimgmodal").find(".modal-body").load("app/html/crop_menu.html");
             },
             initializeNewPresModal: function() {
                 $("#modals").append(new_pres_modal);
@@ -273,9 +278,9 @@ Impressionist.prototype =
                     $(children[i]).attr("id", "slidelement_" + me.generateUID());
                 }
             },
-            cloneSlide: function(slide){
+            cloneSlide: function(slide) {
                 var uid = me.generateUID();
-                
+
                 var clonedSlide = slide.clone();
                 clonedSlide.attr("id", "fullslider_slide_" + uid);
                 $(".fullslider-slide-container").append(clonedSlide);
@@ -417,8 +422,13 @@ Impressionist.prototype =
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
                     $(this).removeClass("grabbing");
-                    if ($(this).attr("data-type") !== "image") {
-                        me.editElement(this);
+                    switch ($(this).attr("data-type")) {
+                        case "text":
+                            me.editElement(this);
+                            break;
+                        case "image":
+                            me.editImageElement(this);
+                            break;
                     }
                 }).on("click", function(e)
                 {
@@ -572,6 +582,25 @@ Impressionist.prototype =
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
                 $(el).removeClass("elementselectable");
+            },
+            editImageElement: function(el) {
+                $("#editingImgId").val($(el).attr("id"));
+                var image_url = $(el).find("img").attr("src");
+                $("#image-crop").attr("src", image_url);
+                $("#image-crop").change(); //Change event for cropimage.js functiont
+
+                $("#editimgmodal").removeClass("hide");
+                $("#editimgmodal").modal("show");
+            },
+            saveEditImage: function(image_data) {
+                var target_id = $("#editingImgId").val();
+                $("#editingImgId").val("");
+
+                me.deleteElement($("#" + target_id));
+                createImageFromDataUrl(image_data);
+                
+                changeContent();//Event for undo redo
+                $(".modal").modal("hide");
             },
             deleteElement: function(el) {
                 el.remove();

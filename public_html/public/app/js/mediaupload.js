@@ -26,7 +26,7 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 function createImageFromDataUrl(data_url) {
     var i = new Image();
     i.onload = function() {
-        me.addImageToSlide({name: "name", src: this.src + name, width: this.width, height: this.height});
+        me.addImageToSlide({src: this.src, width: this.width, height: this.height});
     };
     i.src = data_url;
 }

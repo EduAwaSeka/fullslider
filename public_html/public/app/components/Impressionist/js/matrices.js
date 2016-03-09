@@ -252,11 +252,6 @@ var Style = (function() {
  * Run!
  * 
  */
-
-addEvent(window, 'DOMContentLoaded', function() {
-    var matrix = new Play();
-});
-
 /**
  * mousedown/touchstart handler
  *

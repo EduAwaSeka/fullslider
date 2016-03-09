@@ -367,3 +367,97 @@ p {
 #addurlimgbtn{
     float:right;
 }
+
+
+/* Edit image modal */
+
+#editimgmodal{
+    width: 70vw;
+    margin-left: -37vw;
+}
+#editimgmodal .modal-body{
+    max-height: 32.2825vw;
+}
+
+.img-container,
+.img-preview {
+  background-color: #f7f7f7;
+  width: 100%;
+  text-align: center;
+}
+
+.img-container {
+  min-height: 25vw;
+  max-height: 32vw;
+  margin-bottom: 1.464vw;
+}
+
+.img-container > img {
+  max-width: 100%;
+}
+
+.docs-preview {
+  margin-right: -1.098vw;
+}
+
+.img-preview {
+  float: left;
+  margin-right: 0.732vw;
+  margin-bottom: 0.732vw;
+  overflow: hidden;
+}
+
+.img-preview > img {
+  max-width: 100%;
+}
+
+.preview-lg {
+  width: 19.253vw;
+  height: 10.83vw;
+}
+
+.preview-md {
+  width: 10.18vw;
+  height: 5.71vw;
+}
+
+.preview-sm {
+  width: 5.05vw;
+  height: 2.855vw;
+}
+
+.preview-xs {
+  width: 2.562vw;
+  height: 1.464vw;
+  margin-right: 0;
+}
+
+.docs-data > .input-group {
+  margin-bottom: 0.732vw;
+}
+
+.docs-data > .input-group > label {
+  min-width: 5.86vw;
+}
+
+.docs-data > .input-group > span {
+  min-width: 3.66vw;
+}
+
+.docs-buttons > .btn,
+.docs-buttons > .btn-group,
+.docs-buttons > .form-control {
+  margin-right: 0.366vw;
+  margin-bottom: 0.732vw;
+}
+
+.docs-toggles > .btn,
+.docs-toggles > .btn-group,
+.docs-toggles > .dropdown {
+  margin-bottom: 0.732vw;
+}
+
+
+.btn-upload .tooltip-inner {
+  white-space: nowrap;
+}
