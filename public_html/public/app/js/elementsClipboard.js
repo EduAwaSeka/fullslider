@@ -72,7 +72,6 @@ document.onpaste = function(e)
         if (items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) { //If clipboard has an image, paste it
             var blob = items[i].getAsFile();
             createImageFromBlob(blob);
-            changeContent();//Event for undo redo  
         } else { //Else, paste Fullslider element
             pasteEl();
             changeContent();//Event for undo redo  
