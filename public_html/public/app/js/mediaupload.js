@@ -27,6 +27,7 @@ function createImageFromDataUrl(data_url) {
     var i = new Image();
     i.onload = function() {
         me.addImageToSlide({src: this.src, width: this.width, height: this.height});
+        changeContent();//Event for undo redo 
     };
     i.src = data_url;
 }

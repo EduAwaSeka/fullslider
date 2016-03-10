@@ -8,6 +8,8 @@ Impressionist = function()
 
     this.selectedElement;
     this.selectedforedit;
+    
+    this.imageOnEdit;
 
     this.clonedElement;
     this.selectedSlide;
@@ -564,7 +566,7 @@ Impressionist.prototype =
             selectElement: function(el)
             {
                 // if not is in editionmode, select it
-                if ($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined") {
+                if ($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined" || me.imageOnEdit == "") {
                     me.clearElementSelections();
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");
@@ -584,7 +586,8 @@ Impressionist.prototype =
                 $(el).removeClass("elementselectable");
             },
             editImageElement: function(el) {
-                $("#editingImgId").val($(el).attr("id"));
+                me.clearElementSelections();
+                me.imageOnEdit=el;
                 var image_url = $(el).find("img").attr("src");
                 $("#image-crop").attr("src", image_url);
                 $("#image-crop").change(); //Change event for cropimage.js functiont
@@ -592,15 +595,19 @@ Impressionist.prototype =
                 $("#editimgmodal").removeClass("hide");
                 $("#editimgmodal").modal("show");
             },
-            saveEditImage: function(image_data) {
-                var target_id = $("#editingImgId").val();
-                $("#editingImgId").val("");
+            saveEditImage: function(image_data) {    
+                var i = new Image();
+                i.onload = function() {
+                    var data = {src: this.src, width: this.width, height: this.height, element: $(me.imageOnEdit)};
+                    me.addImageStyle(data);
+                    
+                    me.selectElement(me.imageOnEdit);
+                    me.generateScaledSlide(me.selectedSlide);
 
-                me.deleteElement($("#" + target_id));
-                createImageFromDataUrl(image_data);
-                
-                changeContent();//Event for undo redo
-                $(".modal").modal("hide");
+                    changeContent();//Event for undo redo
+                    $(".modal").modal("hide");
+                };
+                i.src = image_data;
             },
             deleteElement: function(el) {
                 el.remove();
@@ -661,7 +668,7 @@ Impressionist.prototype =
             {
                 me.updateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *').size() && !($("#addElementsPanel").find(t).length)) {
+                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *, #editimgmodal *').size() && !($("#addElementsPanel").find(t).length)) {
                     me.clearElementSelections();
                 }
 
@@ -711,6 +718,7 @@ Impressionist.prototype =
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
                 me.selectedforedit = "";
+                me.imageOnEdit = "";
             },
             colorSelectedElement: function(color)
             {
@@ -1177,8 +1185,7 @@ Impressionist.prototype =
 //                    me.addImageToSlide(data.response);
 
                     //Create image from returned json object of loadimage module
-                    createImageFromJSONFile(data.response);
-                    changeContent();//Event for undo redo  
+                    createImageFromJSONFile(data.response); 
                     $("#imagemodal").modal("hide");
                 });
 
@@ -1198,7 +1205,6 @@ Impressionist.prototype =
 
                         //Create image from returned json object of loadimage module
                         createImageFromJSONFile(json);
-                        changeContent();//Event for undo redo  
                         $("#imagemodal").modal("hide");
                     }, 'json');
                     return false;
@@ -1597,7 +1603,7 @@ Impressionist.prototype =
                 item = item.split("slidelement_id").join(id);
                 $(me.selectedSlide).append(item);
 
-                data.id = id;
+                data.element = $("#"+id);
                 me.addImageStyle(data);
 
                 me.enableDrag();
@@ -1605,17 +1611,15 @@ Impressionist.prototype =
                 me.generateScaledSlide(me.selectedSlide);
             },
             addImageStyle: function(data) {
-                var element = "#" + data.id;
-
+                var element = data.element;
+ 
                 var src = data.src;
                 var im_width = data.width;
                 var im_height = data.height;
-
-                $(element + " > img").attr("src", src);
-                $(element).css("position", "absolute");
-                $(element).css("left", "15vw");
-                $(element).css("top", "15vw");
-
+                $(element).find("img").attr("src", src);
+                element.css("position", "absolute");
+                element.css("left", "15vw");
+                element.css("top", "15vw");
                 var scale;
                 if (im_height < im_width) {
                     scale = im_width / im_height;
@@ -1633,9 +1637,9 @@ Impressionist.prototype =
                         im_width = 7;
                     }
                 }
-
-                $(element).css("height", im_height + "vw");
-                $(element).css("width", im_width + "vw");
+                
+                element.css("height", im_height + "vw");
+                element.css("width", im_width + "vw");
             },
             removeSlide: function(el)
             {

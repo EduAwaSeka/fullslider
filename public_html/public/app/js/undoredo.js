@@ -1,7 +1,5 @@
 'use strict';
 
-var me = Impressionist.prototype;
-
 function changeContent() {
     $("#body-editor").change();
 }
@@ -29,7 +27,6 @@ function setEditorContents(contents) {
     $('#body-editor').html(contents);
     initEvents();
 }
-
 
 
 function initializeUndoRedo() {

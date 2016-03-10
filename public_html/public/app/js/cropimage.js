@@ -7,15 +7,7 @@ window.onload = function() {
         }};
     var container = document.querySelector('.img-container');
     var image = container.getElementsByTagName('img').item(0);
-    var download = document.getElementById('download');
-    var actions = document.getElementById('actions');
-    var dataX = document.getElementById('dataX');
-    var dataY = document.getElementById('dataY');
-    var dataHeight = document.getElementById('dataHeight');
-    var dataWidth = document.getElementById('dataWidth');
-    var dataRotate = document.getElementById('dataRotate');
-    var dataScaleX = document.getElementById('dataScaleX');
-    var dataScaleY = document.getElementById('dataScaleY');
+
     var options = {
         aspectRatio: 16 / 9,
         preview: '.img-preview',
@@ -30,13 +22,6 @@ window.onload = function() {
         cropend: function(data) {
         },
         crop: function(data) {
-            dataX.value = Math.round(data.x);
-            dataY.value = Math.round(data.y);
-            dataHeight.value = Math.round(data.height);
-            dataWidth.value = Math.round(data.width);
-            dataRotate.value = !isUndefined(data.rotate) ? data.rotate : '';
-            dataScaleX.value = !isUndefined(data.scaleX) ? data.scaleX : '';
-            dataScaleY.value = !isUndefined(data.scaleY) ? data.scaleY : '';
         },
         zoom: function(data) {
         }
@@ -77,12 +62,14 @@ window.onload = function() {
     // Options
     actions.querySelector('.docs-toggles').onclick = function(event) {
         var e = event || window.event;
+        e.preventDefault();
+        e.stopPropagation();
+
         var target = e.target || e.srcElement;
         var cropBoxData;
         var canvasData;
         var isCheckbox;
         var isRadio;
-
         if (!cropper) {
             return;
         }
@@ -105,19 +92,16 @@ window.onload = function() {
                 canvasData = cropper.getCanvasData();
 
                 options.built = function() {
-                    console.log('built');
                     cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
                 };
             } else {
                 options[target.name] = target.value;
                 options.built = function() {
-                    console.log('built');
                 };
             }
 
             // Restart
-            cropper.destroy();
-            cropper = new Cropper(image, options);
+            cropper.setAspectRatio(target.value);
         }
     };
 
