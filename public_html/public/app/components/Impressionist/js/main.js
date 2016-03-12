@@ -566,7 +566,7 @@ Impressionist.prototype =
             selectElement: function(el)
             {
                 // if not is in editionmode, select it
-                if ($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined" || me.imageOnEdit == "") {
+                if (($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable"))) == "undefined" && me.imageOnEdit == "") {
                     me.clearElementSelections();
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");

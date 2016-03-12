@@ -69,7 +69,8 @@ document.onpaste = function(e)
 
     var items = e.clipboardData.items;
     for (var i = 0; i < items.length; ++i) {
-        if (items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) { //If clipboard has an image, paste it
+        //If there is an image on clipboard and slide or slide element is current clicked -> paste image
+        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) && (isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked))) { //If clipboard has an image, paste it
             var blob = items[i].getAsFile();
             createImageFromBlob(blob);
         } else { //Else, paste Fullslider element
