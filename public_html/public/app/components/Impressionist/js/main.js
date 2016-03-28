@@ -8,7 +8,7 @@ Impressionist = function()
 
     this.selectedElement;
     this.selectedforedit;
-    
+
     this.imageOnEdit;
 
     this.clonedElement;
@@ -587,7 +587,7 @@ Impressionist.prototype =
             },
             editImageElement: function(el) {
                 me.clearElementSelections();
-                me.imageOnEdit=el;
+                me.imageOnEdit = el;
                 var image_url = $(el).find("img").attr("src");
                 $("#image-crop").attr("src", image_url);
                 $("#image-crop").change(); //Change event for cropimage.js functiont
@@ -595,13 +595,14 @@ Impressionist.prototype =
                 $("#editimgmodal").removeClass("hide");
                 $("#editimgmodal").modal("show");
             },
-            saveEditImage: function(image_data) {    
+            saveEditImage: function(image_data) {
                 var i = new Image();
                 i.onload = function() {
                     var data = {src: this.src, width: this.width, height: this.height, element: $(me.imageOnEdit)};
                     me.addImageStyle(data);
-                    
-                    me.selectElement(me.imageOnEdit);
+                    var element = me.imageOnEdit;
+                    me.clearElementSelections();
+                    me.selectElement(element);
                     me.generateScaledSlide(me.selectedSlide);
 
                     changeContent();//Event for undo redo
@@ -1169,6 +1170,12 @@ Impressionist.prototype =
 
                 });
 
+                $(".cancelimgedit").on("click", function(e) {
+                    var element = me.imageOnEdit;
+                    me.clearElementSelections();
+                    me.selectElement(element);
+                });
+
                 //Upload image from device
                 $("#inputimage").fileinput({
                     uploadUrl: "/uploadimage", // server upload action
@@ -1185,7 +1192,7 @@ Impressionist.prototype =
 //                    me.addImageToSlide(data.response);
 
                     //Create image from returned json object of loadimage module
-                    createImageFromJSONFile(data.response); 
+                    createImageFromJSONFile(data.response);
                     $("#imagemodal").modal("hide");
                 });
 
@@ -1603,7 +1610,7 @@ Impressionist.prototype =
                 item = item.split("slidelement_id").join(id);
                 $(me.selectedSlide).append(item);
 
-                data.element = $("#"+id);
+                data.element = $("#" + id);
                 me.addImageStyle(data);
 
                 me.enableDrag();
@@ -1612,7 +1619,7 @@ Impressionist.prototype =
             },
             addImageStyle: function(data) {
                 var element = data.element;
- 
+
                 var src = data.src;
                 var im_width = data.width;
                 var im_height = data.height;
@@ -1637,7 +1644,7 @@ Impressionist.prototype =
                         im_width = 7;
                     }
                 }
-                
+
                 element.css("height", im_height + "vw");
                 element.css("width", im_width + "vw");
             },
