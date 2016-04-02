@@ -1,0 +1,9 @@
+<extension 
+    name="VectorEditor"
+    description="This gadget is useful for creating graphics. Shapes can be added, resized, moved, and rotated. The application supports Lines, Freeform, Polygons, Rectangles, Ellipses, Text, Images, and multi-select."
+    thumbnailUrl="http://jsvectoreditor.googlecode.com/svn/trunk/screenshot.png"> 
+  <author name="antimatter15" email="antimatter15@gmail.com"/> 
+  <menuHook location="TOOLBAR" text="Insert VectorEditor gadget." iconUrl="http://jsvectoreditor.googlecode.com/svn/trunk/wave/icon.png"> 
+    <insertGadget url="http://jsvectoreditor.googlecode.com/svn/trunk/wave/vectoreditor.xml"/> 
+  </menuHook> 
+</extension>

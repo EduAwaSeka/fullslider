@@ -69,8 +69,8 @@ Impressionist.prototype =
                 me.initializeMyPresModal();
                 me.initializeConfigModal();
                 me.initializeAlerts();
+                me.initializeGraphicsModal();
                 me.setupColorpickerPopup();
-                me.setupMenuItemEvents();
                 me.enableSort();
 //                me.setupPopover();
                 me.hideTransformControl();
@@ -131,6 +131,14 @@ Impressionist.prototype =
                 $("#dangeralert").fadeOut(0);
                 $("#modals").append(alert_success);
                 $("#successalert").fadeOut(0);
+            },
+            initializeGraphicsModal: function() {
+                $("#modals").append(graphics_modal);
+                $.get("app/components/jsvectoreditor/index.html", function(data) {
+                    $("#graphicsmodal").find(".modal-body").append(data);
+                    jsvectoreditor_init();
+                });
+
             },
             openWelcomePanel: function() {
                 $("#welcomemodal").removeClass("hide");
@@ -227,39 +235,6 @@ Impressionist.prototype =
                 me.enableDrag();
                 me.selectElement($("#" + id));
                 me.updateScaledSlide(me.selectedSlide);
-            },
-            setupMenuItemEvents: function()
-            {
-                $("#makebold").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('bold', false, null);
-                });
-                $("#makeitalic").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('italic', false, null);
-                });
-                $("#makeunderline").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('underline', false, null);
-                });
-                $("#makealignleft").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('justifyLeft', false, null);
-                });
-                $("#makealignright").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('justifyRight', false, null);
-                });
-                $("#makealigncenter").on("click", function(e)
-                {
-                    e.stopPropagation();
-                    document.execCommand('justifyCenter', false, null);
-                });
             },
             enableSort: function()
             {
@@ -1070,6 +1045,11 @@ Impressionist.prototype =
                     $("#imagemodal").removeClass("hide");
                     $("#imagemodal").modal("show");
                     $("#urlimageinput").focus();
+                });
+                $("#graphicseditorbtn").on("click", function(e)
+                {
+                    $("#graphicsmodal").removeClass("hide");
+                    $("#graphicsmodal").modal("show");
                 });
                 $(".newpresopanel").on("click", function(e)
                 {

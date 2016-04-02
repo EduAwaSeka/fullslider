@@ -27,9 +27,9 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 28px; 
+  width: 2.05vw; 
   font-family: "context-menu-icons";
-  font-size: 16px;
+  font-size: 1.1713vw;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -79,23 +79,23 @@
 .context-menu-list {
   position: absolute; 
   display: inline-block;
-  min-width: 180px;
-  max-width: 360px;
-  padding: 4px 0;
-  margin: 5px;
+  min-width: 13.1772vw;
+  max-width: 26.354vw;
+  padding: 0.2928vw 0;
+  margin: 0.366vw;
   font-family: inherit;
   font-size: inherit;
   list-style-type: none;
   background: #fff;
-  border: 1px solid #bebebe;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
-          box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+  border: 0.0732vw solid #bebebe;
+  border-radius: 0.2196vw;
+  -webkit-box-shadow: 0 0.1464vw 0.366vw rgba(0, 0, 0, .5);
+          box-shadow: 0 0.1464vw 0.366vw rgba(0, 0, 0, .5);
 }
 
 .context-menu-item {
   position: relative;
-  padding: 3px 28px;
+  padding: 0.2196vw 2.05vw;
   color: #2f2f2f;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -106,8 +106,8 @@
 
 .context-menu-separator {
   padding: 0; 
-  margin: 5px 0;
-  border-bottom: 1px solid #e6e6e6;
+  margin: 0.366vw 0;
+  border-bottom: 0.0732vw solid #e6e6e6;
 }
 
 .context-menu-item > label > input,
@@ -142,14 +142,14 @@
 .context-menu-submenu:after {
   position: absolute;
   top: 50%;
-  right: 8px;
+  right: 0.5857vw;
   z-index: 1; 
   width: 0;
   height: 0;
   content: '';
   border-color: transparent transparent transparent #2f2f2f;
   border-style: solid;
-  border-width: 4px 0 4px 4px;
+  border-width: 0.2928vw 0 0.2928vw 0.2928vw;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
        -o-transform: translateY(-50%);
@@ -160,7 +160,7 @@
  * Inputs
  */
 .context-menu-item.context-menu-input {
-  padding: 5px 10px;
+  padding: 0.366vw 0.732vw;
 }
 
 /* vertically align inside labels */
@@ -172,7 +172,7 @@
 .context-menu-input > label > input[type="checkbox"],
 .context-menu-input > label > input[type="radio"] {
   position: relative;
-  top: 3px;
+  top: 0.2196vw;
 }
 
 .context-menu-input > label,
@@ -187,13 +187,13 @@
 }
 
 .context-menu-input > label > textarea {
-  height: 100px;
+  height: 7.321vw;
 }
 
 .context-menu-item > .context-menu-list {
-  top: 5px; 
+  top: 0.366vw; 
   /* re-positioned by js */
-  right: -5px;
+  right: -0.366vw;
   display: none;
 }
 

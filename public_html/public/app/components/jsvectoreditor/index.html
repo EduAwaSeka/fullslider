@@ -1,0 +1,118 @@
+<div id="graphicscontainer">
+    <div id="canvas" style="position: absolute;top:0;left:0; width: 100%; height: 100%; top: 0vw; left: 0vw;-webkit-user-select: none;"></div>
+    <!-- did i mention i suck at html? -->
+    <div id="dialog" style="position: absolute; display: none;background-color: gray; width: 90%; height: 90%;top: 1.464vw; left: 1.464vw; z-index: 99">
+        <input type="button" value="Import Shapes" onclick="import_shapes()">
+
+        <input type="button" value="Close" onclick="jQuery('#dialog').slideUp()">
+        <br><br>
+        <center>
+            <textarea id="data" style="width: 90%; height: 80%"></textarea>
+        </center>
+    </div>
+
+
+
+    <div id="tools_left">
+
+        <button id="select" onclick="setMode('select')"><i class="fa fa-mouse-pointer"></i></button>
+        <button id="selectp"onclick="setMode('selectp')"><i class="fa fa-mouse-pointer"></i><i class="fa fa-plus"></i></button>
+        <button id="rect" onclick="setMode('rect')"><i class="fa fa-square-o"></i></button>
+        <button id="line" onclick="setMode('line')"><i class="icon icon-slash"></i></button>
+        <button id="ellipse" onclick="setMode('ellipse')"><i class="fa fa-circle-o"></i></button>
+        <button id="path" onclick="setMode('path')"><i class="icon icon-pen"></i></button>
+        <button id="polygon" onclick="setMode('polygon')"><i class="icon icon-polygon"></i></button>
+        <button id="image" onclick="setMode('image')"><i class="fa fa-image"></i></button>
+        <button id="text" onclick="setMode('text')"><i class="fa fa-font"></i></button>
+        <button id="delete" onclick="setMode('delete')"><i class="fa fa-close"></i></button>
+        <button onclick="alert(editor.getMarkup())"><i class="fa fa-code"></i></button>
+        <button onclick="if (confirm('Are you sure you want to clear the canvas?'))
+                editor.deleteAll();"><i class="fa fa-undo"></i></button>
+
+        <button id="savesvg" onclick="save()"><i class="fa fa-save"></i></button>
+        <button id="open" onclick="opendialog()"><i class="fa fa-folder-open-o "></i></button>
+
+
+        <br>
+
+
+
+
+
+        <span>Fill:</span> 
+        <select id="fillcolor" onchange="setFillColor(this);" style="background-color:red"> 
+            <option style="background-color:red;" value="red"></option> 
+            <option style="background-color:black;" value="black"></option> 
+            <option style="background-color:navy;" value="navy"></option> 
+            <option style="background-color:fuchsia;" value="fuchsia"></option> 
+            <option style="background-color:red;" value="lime"></option> 
+            <option style="background-color:purple;" value="purple"></option> 
+            <option style="background-color:gray;" value="gray"></option> 
+            <option style="background-color:lime;" value="lime"></option> 
+            <option style="background-color:maroon;" value="maroon"></option> 
+            <option style="background-color:wheat;" value="wheat"></option> 
+            <option style="background-color:blue;" value="blue"></option> 
+            <option style="background-color:green;" value="green"></option> 
+            <option style="background-color:yellow;" value="yellow"></option> 
+            <option style="background-color:aqua;" value="aqua"></option> 
+            <option style="background-color:white;" value="white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+            <option style="background-color:white;" value="none">None</option> 
+        </select> 
+        <select id="fillopacity" onchange="setFillOpacity(this);"> 
+            <option value="1">100%</option> 
+            <option value=".90">90%</option> 
+            <option value=".80">80%</option> 
+            <option value=".70">70%</option> 
+            <option value=".60">60%</option> 
+            <option value=".50">50%</option> 
+            <option value=".40">40%</option> 
+            <option value=".30">30%</option> 
+            <option value=".20">20%</option>
+            <option value=".10">10%</option>  
+        </select> 
+        <span>Stroke:</span> 
+        <select id="strokecolor" onchange="setStrokeColor(this);" style="background-color:black"> 
+            <option style="background-color:red;" value="red"></option> 
+            <option style="background-color:black;" value="black"></option> 
+            <option style="background-color:navy;" value="navy"></option> 
+            <option style="background-color:fuchsia;" value="fuchsia"></option> 
+            <option style="background-color:red;" value="lime"></option> 
+            <option style="background-color:purple;" value="purple"></option> 
+            <option style="background-color:gray;" value="gray"></option> 
+            <option style="background-color:lime;" value="lime"></option> 
+            <option style="background-color:maroon;" value="maroon"></option> 
+            <option style="background-color:wheat;" value="wheat"></option> 
+            <option style="background-color:blue;" value="blue"></option> 
+            <option style="background-color:green;" value="green"></option> 
+            <option style="background-color:yellow;" value="yellow"></option> 
+            <option style="background-color:aqua;" value="aqua"></option> 
+            <option style="background-color:white;" value="white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+            <option style="background-color:white;" value="none">None</option>  
+        </select> 
+        <select id="strokewidth" onchange="setStrokeWidth(this);"> 
+            <option value="0.0732vw">1px</option> 
+            <option value="0.1464vw">2px</option> 
+            <option value="0.2196vw">3px</option> 
+            <option value="0.2928vw">4px</option> 
+            <option value="0.366vw">5px</option> 
+            <option value="0.439vw">6px</option>
+            <option value="0.5124vw">7px</option> 
+            <option value="0.5857vw">8px</option> 
+            <option value="0.659vw">9px</option> 
+            <option value="0.732vw">10px</option>
+        </select> 
+
+        <select id="strokeopacity" onchange="setStrokeOpacity(this);"> 
+            <option value="1">100%</option> 
+            <option value=".90">90%</option> 
+            <option value=".80">80%</option> 
+            <option value=".70">70%</option> 
+            <option value=".60">60%</option> 
+            <option value=".50">50%</option> 
+            <option value=".40">40%</option> 
+            <option value=".30">30%</option> 
+            <option value=".20">20%</option>
+            <option value=".10">10%</option>  
+        </select> 
+    </div>
+</div>

@@ -1,0 +1,129 @@
+@CHARSET "UTF-8";
+
+.redThing {
+	background-color:red;
+}
+
+.blackThing {
+	color: white;
+	background-color: black;
+}
+
+.navyThing {
+	background-color: navy;
+}
+
+.fuchsiaThing {
+	background-color: fuchsia;
+}
+
+.limeThing {
+	background-color: lime;
+}
+
+.purpleThing {
+	background-color: purple;
+}
+
+.grayThing {
+	background-color: gray;
+}
+
+.maroonThing {
+	background-color: maroon;
+}
+
+.wheatThing {
+	background-color: wheat;
+}
+
+.blueThing {
+	background-color: blue;
+}
+
+.greenThing {
+	background-color: green;
+}
+
+.yellowThing {
+	background-color: yellow;
+}
+
+.aquaThing {
+	background-color: aqua;
+}
+
+.whiteThing {
+	background-color: white;
+}
+
+
+button {
+	width: 2.05vw;
+	height: 2.05vw;
+	margin-bottom: 0.366vw;
+	padding: 0.0732vw;
+}
+
+#canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	top: 0vw;
+	left: 0vw;
+	-webkit-user-select: none;
+}
+
+#dialog {
+	position: absolute;
+	display: none;
+	background-color: gray;
+	border-color: black;
+	border-width: 0.1464vw;
+	border-style: solid;
+	width: 90%;
+	height: 90%;
+	top: 5%;
+	left: 5%;
+	z-index: 99;
+}
+
+.dialogButtons {
+	position: absolute;
+	right: 5%;
+}
+
+#data {
+	width: 90%;
+	height: 80%;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+#toolbar {
+	position: absolute;
+	top: 0.732vw;
+	left: 0.732vw;
+	width: 4.69vw;
+	
+	border-color: black;
+	border-width: 0.1464vw;
+	border-style: solid;
+
+	padding-top: 0.2196vw;
+	padding-bottom: 0.2196vw;
+	padding-left: 0.2196vw;
+}
+
+
+#fillcolor {
+	font-size: 0.5857vw;
+}
+
+#strokecolor {
+	font-size: 0.5857vw;
+}
+
