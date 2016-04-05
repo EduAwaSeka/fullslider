@@ -1644,14 +1644,6 @@ Impressionist.prototype =
 
                     $(element).find("svg").append($(graphic).clone());
                     me.addGraphicStyle(element, graphic);
-
-//                    var data_url = SvgToDataUrl($(element).html());
-//                    var json_elem={src: data_url, width: $(element).width(), height: $(element).height()};
-//                    console.log(json_elem);
-//                    $(element).remove();
-                    
-//                    me.addImageToSlide(json_elem);
-//                    changeContent();//Event for undo redo 
                     me.finishAddFile($(element));
                 }
             },
@@ -1660,8 +1652,7 @@ Impressionist.prototype =
                 //After append, because before has relative modal values
                 var width = pxToVw(graphic.getBoundingClientRect().width);
                 var height = pxToVw(graphic.getBoundingClientRect().height);
-                console.log(graphic.getBoundingClientRect().height);
-                console.log(graphic.getBoundingClientRect().bottom - graphic.getBoundingClientRect().top);
+
                 var left_translate = $(added_graphic).position().left * -1;
                 var top_translate = $(added_graphic).position().top * -1;
 
@@ -1671,6 +1662,10 @@ Impressionist.prototype =
                 $(element).find("svg").css("height", height + "vw");
                 $(element).css("width", width + "vw");
                 $(element).css("height", height + "vw");
+                $(element).css("position", "absolute");
+                $(element).css("left", "17vw");
+                $(element).css("top", "17vw");
+
             },
             removeSlide: function(el)
             {
