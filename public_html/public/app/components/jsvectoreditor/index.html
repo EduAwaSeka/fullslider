@@ -15,22 +15,21 @@
 
     <div id="tools_left">
 
-        <button id="select" onclick="setMode('select')"><i class="fa fa-mouse-pointer"></i></button>
-        <button id="selectp"onclick="setMode('selectp')"><i class="fa fa-mouse-pointer"></i><i class="fa fa-plus"></i></button>
-        <button id="rect" onclick="setMode('rect')"><i class="fa fa-square-o"></i></button>
-        <button id="line" onclick="setMode('line')"><i class="icon icon-slash"></i></button>
-        <button id="ellipse" onclick="setMode('ellipse')"><i class="fa fa-circle-o"></i></button>
-        <button id="path" onclick="setMode('path')"><i class="icon icon-pen"></i></button>
-        <button id="polygon" onclick="setMode('polygon')"><i class="icon icon-polygon"></i></button>
-        <button id="image" onclick="setMode('image')"><i class="fa fa-image"></i></button>
-        <button id="text" onclick="setMode('text')"><i class="fa fa-font"></i></button>
-        <button id="delete" onclick="setMode('delete')"><i class="fa fa-close"></i></button>
-        <button onclick="alert(editor.getMarkup())"><i class="fa fa-code"></i></button>
+        <button id="select" onclick="setMode('select')" title="Select"><i class="fa fa-mouse-pointer"></i></button>
+        <button id="selectp" onclick="setMode('selectp')" title="Multiple select"><i class="fa fa-mouse-pointer"></i><i class="fa fa-plus"></i></button>
+        <button id="rect" onclick="setMode('rect')" title="Draw rectangle"><i class="fa fa-square-o"></i></button>
+        <button id="line" onclick="setMode('line')" title="Draw line"><i class="icon icon-slash"></i></button>
+        <button id="ellipse" onclick="setMode('ellipse')" title="Draw ellipse"><i class="fa fa-circle-o"></i></button>
+        <button id="path" onclick="setMode('path')" title="Draw path"><i class="icon icon-pen"></i></button>
+        <button id="polygon" onclick="setMode('polygon')" title="Draw polygon"><i class="icon icon-polygon"></i></button>
+        <!--<button id="image" onclick="setMode('image')" title="Image"><i class="fa fa-image"></i></button>-->
+        <!--<button id="text" onclick="setMode('text')" title="Add Text"><i class="fa fa-font"></i></button>-->
+        <button id="delete" onclick="setMode('delete')" title="Delete"><i class="fa fa-close"></i></button>
+        <button onclick="alert(editor.getMarkup())" title="Edit code"><i class="fa fa-code"></i></button>
         <button onclick="if (confirm('Are you sure you want to clear the canvas?'))
-                editor.deleteAll();"><i class="fa fa-undo"></i></button>
-
-        <button id="savesvg" onclick="save()"><i class="fa fa-save"></i></button>
-        <button id="open" onclick="opendialog()"><i class="fa fa-folder-open-o "></i></button>
+            editor.deleteAll();"><i class="fa fa-undo" title="Clear workspace"></i></button>
+<!--        <button id="savesvg" onclick="save()" title="Save"><i class="fa fa-save"></i></button>
+        <button id="open" onclick="opendialog()" title="Open"><i class="fa fa-folder-open-o "></i></button>-->
 
 
         <br>

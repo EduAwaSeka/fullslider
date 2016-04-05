@@ -161,7 +161,7 @@
     if(mode == "delete"){
       editor.lastmode = "select";
     }
-    editor.setMode(mode=='selectp'?'select+':mode);
+    editor.setMode(mode=='selectp'?'selectp':mode);
     $("button").attr("disabled",null);
     $("#"+mode).attr("disabled","true");
   }

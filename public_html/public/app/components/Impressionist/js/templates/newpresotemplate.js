@@ -20,6 +20,7 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 				 '</div>';
 var text_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="text" data-type="text"><div>Sample Text</div> </div>';
 var image_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="image" data-type="image"><img style="width: 100%;" src=""></div>';
+var graphic_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="graphic" data-type="graphic"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"></svg></div>';
 var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__" data-background="#fff"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
@@ -255,12 +256,10 @@ var graphics_modal= '<!-- Graphics Modal -->'+
                     '<div class="modal fade modalwindow" id="graphicsmodal">'+
                         '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Graphics Editor</h3></div>'+
                         '<div class="modal-body">'+
-                           
-
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" id="closeconfiguration" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Close</a>'+
-                            '<a href="#" id="saveconfiguration" class="btn btn-primary"> <i class="fa fa-plus"></i> &nbsp;Save</a>'+
+                            '<a href="#" id="closeGraphics" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</a>'+
+                            '<a href="#" id="addGraphics" class="btn btn-primary"> <i class="fa fa-plus"></i> &nbsp;Add</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of Graphics Modal -->';

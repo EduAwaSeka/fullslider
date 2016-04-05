@@ -46,6 +46,68 @@ function addEvents(nodes, type, listener) {
     }
 }
 
+function resizeElement(element, e) {
+    var minSize = 3 * getRel(); // minimal size in Vw
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    var container = $(".fullslider-slide-container");
+    var right_limit = container.offset().left + container.width();
+    var bottom_limit = container.offset().top + container.height();
+
+    var el_width = element[0].getBoundingClientRect().width; //Not round int value
+    var el_height = element[0].getBoundingClientRect().height;
+
+    var mouse = {}, new_width, new_heigth, left, top, offset = me.selectedElement.offset();
+    mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
+    mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
+
+    left = offset.left;
+    top = offset.top;
+    new_width = mouse.x - left;
+
+    new_heigth = new_width / el_width * el_height;
+
+    if (new_width > 0 && new_heigth > 0) {
+
+
+        switch (true) {
+            case (new_width < new_heigth):
+                if (new_width < minSize) {
+                    new_width = minSize;
+                    new_heigth = (new_width / el_width) * el_height;
+                }
+                break;
+            case (new_width > new_heigth):
+                if (new_heigth < minSize) {
+                    new_heigth = minSize;
+                    new_width = (new_heigth / el_height) * el_width;
+                }
+                break;
+            case (new_width == new_heigth):
+                if (new_width < minSize) {
+                    new_width = minSize;
+                    new_heigth = minSize;
+                }
+                break;
+        }
+        new_width = pxToVw(new_width);
+        new_heigth = pxToVw(new_heigth);
+
+        element.css("height", new_heigth + "vw");
+        element.css("width", new_width + "vw");
+
+        var right_pos = left + me.selectedElement.width();
+        var bottom_pos = top + me.selectedElement.height();
+        if (right_pos >= right_limit || bottom_pos >= bottom_limit) {
+            el_width = pxToVw(el_width);
+            el_height = pxToVw(el_height);
+            element.css("height", el_height + "vw");
+            element.css("width", el_width + "vw");
+        }
+    }
+}
 
 /**
  * 2D vector for prettuer 2D <3 math <3
@@ -230,14 +292,14 @@ var Style = (function() {
          */
         toCSS: function(matrix, fix) {
             var cleaned = matrix.toArray().map(function(n) {
-                return (fix && (parseInt(n, 10) !== n)) ? n.toFixed(fix) : n
+                return (fix && (parseInt(n, 10) !== n)) ? n.toFixed(fix) : n;
             });
             var css = cleaned.join(',');
             cleaned[4] += 'px';
             cleaned[5] += 'px';
             var moz = cleaned.join(',');
             me.selectedElement.css("-webkit-transform", "matrix(" + css + ")");
-            return 'matrix(' + css + ');'
+            return 'matrix(' + css + ');';
             /*return [
              '-webkit-transform: matrix(' + css + ');',
              '-moz-transform: matrix(' + moz + ');',
@@ -342,62 +404,22 @@ function handleMousemove(e) {
                     break;
 
                 case "image":
-                    var minSize = 3 * getRel(); // minimal size in Vw
+                    resizeElement(element, e);
 
-                    e.preventDefault();
-                    e.stopPropagation();
+                    break;
+                case "graphic":
+                    var el_width = $(element.find("svg")).width();
+                    var el_height = $(element.find("svg")).height();
 
-                    var el_width = element[0].getBoundingClientRect().width; //Not round int value
-                    el_height = element[0].getBoundingClientRect().height;
+                    resizeElement(element, e);
 
-                    var mouse = {}, new_width, new_heigth, left, top, offset = me.selectedElement.offset();
-                    mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
-                    mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
+                    var new_width = element[0].getBoundingClientRect().width; //Not round int value
+                    var new_height = element[0].getBoundingClientRect().height;
 
-                    left = offset.left;
-                    top = offset.top;
-                    new_width = mouse.x - left;
+                    var ratio = Math.min(new_width / el_width, new_height / el_height);
 
-                    new_heigth = new_width / el_width * el_height;
-
-                    if (new_width > 0 && new_heigth > 0) {
-
-
-                        switch (true) {
-                            case (new_width < new_heigth):
-                                if (new_width < minSize) {
-                                    new_width = minSize;
-                                    new_heigth = (new_width / el_width) * el_height;
-                                }
-                                break;
-                            case (new_width > new_heigth):
-                                if (new_heigth < minSize) {
-                                    new_heigth = minSize;
-                                    new_width = (new_heigth / el_height) * el_width;
-                                }
-                                break;
-                            case (new_width == new_heigth):
-                                if (new_width < minSize) {
-                                    new_width = minSize;
-                                    new_heigth = minSize;
-                                }
-                                break;
-                        }
-                        new_width = pxToVw(new_width);
-                        new_heigth = pxToVw(new_heigth);
-
-                        element.css("height", new_heigth + "vw");
-                        element.css("width", new_width + "vw");
-
-                        var right_pos = left + me.selectedElement.width();
-                        var bottom_pos = top + me.selectedElement.height();
-                        if (right_pos >= right_limit || bottom_pos >= bottom_limit) {
-                            el_width = pxToVw(el_width);
-                            el_height = pxToVw(el_height);
-                            element.css("height", el_height + "vw");
-                            element.css("width", el_width + "vw");
-                        }
-                    }
+                    $(element.find("svg")).css("transform", "scale(" + ratio + ")");
+                    $(element.find("svg")).css("transform-origin", "top left");
 
                     break;
                 default:

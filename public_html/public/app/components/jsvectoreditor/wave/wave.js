@@ -338,7 +338,7 @@ dumpshape = function(shape){
     }
     
     
-    return info
+    return info;
 }
   
   function init(){
@@ -358,27 +358,27 @@ dumpshape = function(shape){
       return humanMsg.displayMsg("It's only a wave gadget if it's in wave...")
     }
 
-    $(window).resize(function(){
-      editor.draw.setSize($(window).width(),$(window).height())
-    })
+//    $(window).resize(function(){
+//      editor.draw.setSize($(window).width(),$(window).height());
+//    });
     //setInterval(function(){
     editor.on("mousemove",function(){
     if(!isPlayback()){
               if((new Date).getTime()-lastmove > 500){
             for(var i =0;i<editor.selected.length;i++){
-               shape = editor.selected[i]
+               shape = editor.selected[i];
                 //console.log("add shape (interval):",shape) 
                 //wave_set("data:"+shape.id,JSON.stringify(dumpshape(shape)))
                 set_shape(shape.id, dumpshape(shape));
         
-                lock_shape(shape.id)
+                lock_shape(shape.id);
             }
             lastmove = (new Date).getTime()
           }
         }else{
         playback_fail()
         }
-  })
+  });
     //},1000)
     
     editor.on("addedshape", function(event, shape, no_select){

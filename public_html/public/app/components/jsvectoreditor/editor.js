@@ -69,6 +69,7 @@ function VectorEditor(elem, width, height) {
             c.push(a[b]);
         return c;
     }
+    
     if (window.Ext) {
         Ext.get(elem).on("mousedown", function(event) {
             event.preventDefault();
@@ -329,7 +330,7 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
 
     }
     return false;
-}
+};
 
 VectorEditor.prototype.onMouseMove = function(x, y, target) {
 
@@ -337,7 +338,7 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
     this.fire("mousemove");
     if (this.mode == "select" || this.mode == "delete") {
         if (this.selectbox) {
-            this.resize(this.selectbox, x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1])
+            this.resize(this.selectbox, x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "select") {
             if (this.action == "move") {
                 for (var i = 0; i < this.selected.length; i++) {
@@ -356,13 +357,13 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
                 //this.rotateTracker(deg, (box.x + box.width/2), (box.y + box.height/2))
                 this.updateTracker();
             } else if (this.action.substr(0, 4) == "path") {
-                var num = parseInt(this.action.substr(4))
+                var num = parseInt(this.action.substr(4));
                 var pathsplit = Raphael.parsePathString(this.selected[0].attr("path"))
                 if (pathsplit[num]) {
-                    pathsplit[num][1] = x
-                    pathsplit[num][2] = y
+                    pathsplit[num][1] = x;
+                    pathsplit[num][2] = y;
                     this.selected[0].attr("path", pathsplit)
-                    this.updateTracker()
+                    this.updateTracker();
                 }
             } else if (this.action == "resize") {
                 if (!this.onGrabXY) { //technically a misnomer
@@ -370,49 +371,49 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
                         this.onGrabXY = [
                             this.selected[0].attr("cx"),
                             this.selected[0].attr("cy")
-                        ]
+                        ];
                     } else if (this.selected[0].type == "path") {
                         this.onGrabXY = [
                             this.selected[0].getBBox().x,
                             this.selected[0].getBBox().y,
                             this.selected[0].getBBox().width,
                             this.selected[0].getBBox().height
-                        ]
+                        ];
                     } else {
                         this.onGrabXY = [
                             this.selected[0].attr("x"),
                             this.selected[0].attr("y")
-                        ]
+                        ];
                     }
                     //this.onGrabBox = this.selected[0].getBBox()
                 }
-                var box = this.selected[0].getBBox()
-                var nxy = this.returnRotatedPoint(x, y, box.x + box.width / 2, box.y + box.height / 2, -this.selected[0].attr("rotation"))
-                x = nxy[0] - 5
-                y = nxy[1] - 5
+                var box = this.selected[0].getBBox();
+                var nxy = this.returnRotatedPoint(x, y, box.x + box.width / 2, box.y + box.height / 2, -this.selected[0].attr("rotation"));
+                x = nxy[0] - 5;
+                y = nxy[1] - 5;
                 if (this.selected[0].type == "rect") {
-                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1])
+                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "image") {
-                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1])
+                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "ellipse") {
-                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1])
+                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "text") {
-                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1])
+                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "path") {
-                    this.selected[0].scale((x - this.onGrabXY[0]) / this.onGrabXY[2], (y - this.onGrabXY[1]) / this.onGrabXY[3], this.onGrabXY[0], this.onGrabXY[1])
+                    this.selected[0].scale((x - this.onGrabXY[0]) / this.onGrabXY[2], (y - this.onGrabXY[1]) / this.onGrabXY[3], this.onGrabXY[0], this.onGrabXY[1]);
                 }
-                this.newTracker(this.selected[0])
+                this.newTracker(this.selected[0]);
             }
         }
     } else if (this.selected.length == 1) {
         if (this.mode == "rect") {
-            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1])
+            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "image") {
-            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1])
+            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "ellipse") {
-            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1])
+            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "text") {
-            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1])
+            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "path") {
             //this.selected[0].lineTo(x, y);
             this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y)
@@ -467,23 +468,22 @@ VectorEditor.prototype.getMarkup = function() {
 
 
 VectorEditor.prototype.onDblClick = function(x, y, target) {
-    this.fire("dblclick")
+    this.fire("dblclick");
     if (this.selected.length == 1) {
         if (this.selected[0].getBBox().height == 0 && this.selected[0].getBBox().width == 0) {
             this.deleteShape(this.selected[0])
         }
         if (this.mode == "polygon") {
             //this.selected[0].andClose()
-            this.unselect()
+            this.unselect();
         }
     }
     return false;
-}
-
+};
 
 
 VectorEditor.prototype.onMouseUp = function(x, y, target) {
-    this.fire("mouseup")
+    this.fire("mouseup");
     this.onGrabXY = null;
 
     if (this.mode == "select" || this.mode == "delete") {
@@ -522,7 +522,7 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
     } else if (this.selected.length == 1) {
         if (this.selected[0].getBBox().height == 0 && this.selected[0].getBBox().width == 0) {
             if (this.selected[0].subtype != "polygon") {
-                this.deleteShape(this.selected[0])
+                this.deleteShape(this.selected[0]);
             }
         }
         if (this.mode == "rect") {
@@ -552,6 +552,6 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
         delete this.lastmode;
     }
     return false;
-}
+};
 
 

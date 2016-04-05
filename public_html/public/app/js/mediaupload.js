@@ -62,3 +62,8 @@ function createImageFromJSONFile(json) {
     var blob = b64toBlob(json.file, json.type);
     createImageFromBlob(blob);
 }
+
+function SvgToDataUrl(svg) {
+    var url = 'data:image/svg+xml;base64,' + btoa(svg);
+    return url;
+}

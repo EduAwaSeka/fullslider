@@ -773,20 +773,23 @@ Impressionist.prototype =
                 }
                 me.generateScaledSlide(me.selectedSlide);
             },
-            addFullsliderSlideItem: function()
+            addFullsliderSlideItem: function(type)
             {
-                item = text_snippet;
+                var item = type;
                 var id = "slidelement_" + me.generateUID();
                 item = item.split("slidelement_id").join(id);
                 $(me.selectedSlide).append(item);
                 return (document.getElementById(id));
             },
-            addFullsliderText: function(type) {
-                var element = me.addFullsliderSlideItem();
-                me.addTextStyle(element, type);
+            finishAddFile: function(element) {
                 me.enableDrag();
                 me.selectedelement = element;
                 me.updateScaledSlide(me.selectedSlide);
+            },
+            addFullsliderText: function(type) {
+                var element = me.addFullsliderSlideItem(text_snippet);
+                me.addTextStyle(element, type);
+                me.finishAddFile($(element));
             },
             addTextStyle: function(element, type) {
                 var size = "";
@@ -952,7 +955,7 @@ Impressionist.prototype =
                 $(".settingsCancelBtn").on("click", me.onSettingsCancelClicked);
                 $(".menuItemBtn").on("click", me.onMenuItemClicked);
                 $(".slidelement").on("click", me.triggetElementEdit);
-                $(".slidelement").on("mouseup", me.createEditor);
+//                $(".slidelement").on("mouseup", me.createEditor);
                 $("#newstylepanel").on("click", me.openStyleSelector);
                 $("#exportpresopanel").on("click", me.openCodeExportWindow);
                 $("#editpresonamebtn").on("click", function(e)
@@ -1195,6 +1198,15 @@ Impressionist.prototype =
                         $("#imagemodal").modal("hide");
                     }, 'json');
                     return false;
+                });
+
+                //Add graphics
+                $("#addGraphics").on("click", function() {
+                    editor.unselect();
+                    me.addGraphics();
+                    $(".modal").modal("hide");
+                    editor.deleteAll();
+                    changeContent();
                 });
 
                 $(window).resize(function(e) {
@@ -1585,17 +1597,13 @@ Impressionist.prototype =
             },
             addImageToSlide: function(data)
             {
-                var item = image_snippet;
-                var id = "slidelement_" + me.generateUID();
-                item = item.split("slidelement_id").join(id);
-                $(me.selectedSlide).append(item);
+                var element = me.addFullsliderSlideItem(image_snippet);
+                var id = $(element).attr("id");
 
                 data.element = $("#" + id);
                 me.addImageStyle(data);
 
-                me.enableDrag();
-                me.selectedelement = $("#" + id);
-                me.generateScaledSlide(me.selectedSlide);
+                me.finishAddFile($("#" + id));
             },
             addImageStyle: function(data) {
                 var element = data.element;
@@ -1628,16 +1636,52 @@ Impressionist.prototype =
                 element.css("height", im_height + "vw");
                 element.css("width", im_width + "vw");
             },
+            addGraphics: function() {
+                var graphic_list = $("#graphicscontainer").find("svg").children();
+                for (var i = 0; i < graphic_list.length; i++) {
+                    var graphic = graphic_list[i];
+                    var element = me.addFullsliderSlideItem(graphic_snippet);
+
+                    $(element).find("svg").append($(graphic).clone());
+                    me.addGraphicStyle(element, graphic);
+
+//                    var data_url = SvgToDataUrl($(element).html());
+//                    var json_elem={src: data_url, width: $(element).width(), height: $(element).height()};
+//                    console.log(json_elem);
+//                    $(element).remove();
+                    
+//                    me.addImageToSlide(json_elem);
+//                    changeContent();//Event for undo redo 
+                    me.finishAddFile($(element));
+                }
+            },
+            addGraphicStyle: function(element, graphic) {
+                var added_graphic = $(element).find("svg").children()[0];
+                //After append, because before has relative modal values
+                var width = pxToVw(graphic.getBoundingClientRect().width);
+                var height = pxToVw(graphic.getBoundingClientRect().height);
+                console.log(graphic.getBoundingClientRect().height);
+                console.log(graphic.getBoundingClientRect().bottom - graphic.getBoundingClientRect().top);
+                var left_translate = $(added_graphic).position().left * -1;
+                var top_translate = $(added_graphic).position().top * -1;
+
+                $(added_graphic).attr("transform", "translate(" + left_translate + ", " + top_translate + ")");
+
+                $(element).find("svg").css("width", width + "vw");
+                $(element).find("svg").css("height", height + "vw");
+                $(element).css("width", width + "vw");
+                $(element).css("height", height + "vw");
+            },
             removeSlide: function(el)
             {
                 el.remove();
                 clearInterval(me.deleteslideinterval);
             },
-            createEditor: function(e)
-            {
-                editor = $(e.target).clone();
-                //editor.attr("contentEditable", "true");
-            },
+//            createEditor: function(e)
+//            {
+//                editor = $(e.target).clone();
+//                //editor.attr("contentEditable", "true");
+//            },
             triggetElementEdit: function(e)
             {
                 //$(e.target).attr("contentEditable", true);
