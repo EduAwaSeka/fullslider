@@ -296,7 +296,7 @@ body {
     margin: auto;
     overflow: visible;
     z-index: 1;
-    text-align: center;
+/*    text-align: center;*/ //Conflicts with scaled svg position
     -webkit-perspective: 43.9239vw;
     perspective: 43.9239vw;
     -webkit-perspective-origin: 50% 40%;

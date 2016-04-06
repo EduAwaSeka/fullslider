@@ -1648,7 +1648,8 @@ Impressionist.prototype =
                 }
             },
             addGraphicStyle: function(element, graphic) {
-                var added_graphic = $(element).find("svg").children()[0];
+                var svg_element = $(element).find("svg");
+                var added_graphic = $(svg_element).children()[0];
                 //After append, because before has relative modal values
                 var width = pxToVw(graphic.getBoundingClientRect().width);
                 var height = pxToVw(graphic.getBoundingClientRect().height);
@@ -1658,14 +1659,19 @@ Impressionist.prototype =
 
                 $(added_graphic).attr("transform", "translate(" + left_translate + ", " + top_translate + ")");
 
-                $(element).find("svg").css("width", width + "vw");
-                $(element).find("svg").css("height", height + "vw");
+                $(svg_element).css("width", width + "vw");
+                $(svg_element).css("height", height + "vw");
                 $(element).css("width", width + "vw");
                 $(element).css("height", height + "vw");
                 $(element).css("position", "absolute");
                 $(element).css("left", "17vw");
                 $(element).css("top", "17vw");
 
+
+                //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive
+                $(svg_element)[0].setAttribute('preserveAspectRatio', "xMinYMin meet");
+                $(svg_element)[0].setAttribute('viewBox', "0 0 " + graphic.getBoundingClientRect().width + " " + graphic.getBoundingClientRect().height);
+                
             },
             removeSlide: function(el)
             {
