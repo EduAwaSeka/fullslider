@@ -27,9 +27,9 @@
         <button id="delete" onclick="setMode('delete')" title="Delete"><i class="fa fa-close"></i></button>
         <button onclick="alert(editor.getMarkup())" title="Edit code"><i class="fa fa-code"></i></button>
         <button onclick="if (confirm('Are you sure you want to clear the canvas?'))
-            editor.deleteAll();"><i class="fa fa-undo" title="Clear workspace"></i></button>
-<!--        <button id="savesvg" onclick="save()" title="Save"><i class="fa fa-save"></i></button>
-        <button id="open" onclick="opendialog()" title="Open"><i class="fa fa-folder-open-o "></i></button>-->
+                    editor.deleteAll();"><i class="fa fa-undo" title="Clear workspace"></i></button>
+        <!--        <button id="savesvg" onclick="save()" title="Save"><i class="fa fa-save"></i></button>
+                <button id="open" onclick="opendialog()" title="Open"><i class="fa fa-folder-open-o "></i></button>-->
 
 
         <br>
@@ -37,81 +37,63 @@
 
 
 
+        <div class="panel panel-default">
+            <div class="panel-heading">Fill:</div>
+            <div class="panel-body">
+                <label>Color:</label>
+                <div id="fillcolor" class=""><input class="color-chooser colorpicker" /></div>
 
-        <span>Fill:</span> 
-        <select id="fillcolor" onchange="setFillColor(this);" style="background-color:red"> 
-            <option style="background-color:red;" value="red"></option> 
-            <option style="background-color:black;" value="black"></option> 
-            <option style="background-color:navy;" value="navy"></option> 
-            <option style="background-color:fuchsia;" value="fuchsia"></option> 
-            <option style="background-color:red;" value="lime"></option> 
-            <option style="background-color:purple;" value="purple"></option> 
-            <option style="background-color:gray;" value="gray"></option> 
-            <option style="background-color:lime;" value="lime"></option> 
-            <option style="background-color:maroon;" value="maroon"></option> 
-            <option style="background-color:wheat;" value="wheat"></option> 
-            <option style="background-color:blue;" value="blue"></option> 
-            <option style="background-color:green;" value="green"></option> 
-            <option style="background-color:yellow;" value="yellow"></option> 
-            <option style="background-color:aqua;" value="aqua"></option> 
-            <option style="background-color:white;" value="white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-            <option style="background-color:white;" value="none">None</option> 
-        </select> 
-        <select id="fillopacity" onchange="setFillOpacity(this);"> 
-            <option value="1">100%</option> 
-            <option value=".90">90%</option> 
-            <option value=".80">80%</option> 
-            <option value=".70">70%</option> 
-            <option value=".60">60%</option> 
-            <option value=".50">50%</option> 
-            <option value=".40">40%</option> 
-            <option value=".30">30%</option> 
-            <option value=".20">20%</option>
-            <option value=".10">10%</option>  
-        </select> 
-        <span>Stroke:</span> 
-        <select id="strokecolor" onchange="setStrokeColor(this);" style="background-color:black"> 
-            <option style="background-color:red;" value="red"></option> 
-            <option style="background-color:black;" value="black"></option> 
-            <option style="background-color:navy;" value="navy"></option> 
-            <option style="background-color:fuchsia;" value="fuchsia"></option> 
-            <option style="background-color:red;" value="lime"></option> 
-            <option style="background-color:purple;" value="purple"></option> 
-            <option style="background-color:gray;" value="gray"></option> 
-            <option style="background-color:lime;" value="lime"></option> 
-            <option style="background-color:maroon;" value="maroon"></option> 
-            <option style="background-color:wheat;" value="wheat"></option> 
-            <option style="background-color:blue;" value="blue"></option> 
-            <option style="background-color:green;" value="green"></option> 
-            <option style="background-color:yellow;" value="yellow"></option> 
-            <option style="background-color:aqua;" value="aqua"></option> 
-            <option style="background-color:white;" value="white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-            <option style="background-color:white;" value="none">None</option>  
-        </select> 
-        <select id="strokewidth" onchange="setStrokeWidth(this);"> 
-            <option value="0.0732vw">1px</option> 
-            <option value="0.1464vw">2px</option> 
-            <option value="0.2196vw">3px</option> 
-            <option value="0.2928vw">4px</option> 
-            <option value="0.366vw">5px</option> 
-            <option value="0.439vw">6px</option>
-            <option value="0.5124vw">7px</option> 
-            <option value="0.5857vw">8px</option> 
-            <option value="0.659vw">9px</option> 
-            <option value="0.732vw">10px</option>
-        </select> 
+                <label>Opacity:</label>
+                <select id="fillopacity" onchange="setFillOpacity(this);"> 
+                    <option value="1">100%</option> 
+                    <option value=".90">90%</option> 
+                    <option value=".80">80%</option> 
+                    <option value=".70">70%</option> 
+                    <option value=".60">60%</option> 
+                    <option value=".50">50%</option> 
+                    <option value=".40">40%</option> 
+                    <option value=".30">30%</option> 
+                    <option value=".20">20%</option>
+                    <option value=".10">10%</option>  
+                </select> 
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">Stroke:</div>
+            <div class="panel-body">
 
-        <select id="strokeopacity" onchange="setStrokeOpacity(this);"> 
-            <option value="1">100%</option> 
-            <option value=".90">90%</option> 
-            <option value=".80">80%</option> 
-            <option value=".70">70%</option> 
-            <option value=".60">60%</option> 
-            <option value=".50">50%</option> 
-            <option value=".40">40%</option> 
-            <option value=".30">30%</option> 
-            <option value=".20">20%</option>
-            <option value=".10">10%</option>  
-        </select> 
+                <label>Color:</label>
+                <div id="strokecolor" class=""><input class="color-chooser colorpicker" /></div>
+
+                <label>Width:</label>
+                <select id="strokewidth" onchange="setStrokeWidth(this);"> 
+                    <option value="0.0732vw">1px</option> 
+                    <option value="0.1464vw">2px</option> 
+                    <option value="0.2196vw">3px</option> 
+                    <option value="0.2928vw">4px</option> 
+                    <option value="0.366vw">5px</option> 
+                    <option value="0.439vw">6px</option>
+                    <option value="0.5124vw">7px</option> 
+                    <option value="0.5857vw">8px</option> 
+                    <option value="0.659vw">9px</option> 
+                    <option value="0.732vw">10px</option>
+                </select> 
+
+                <label>Opacity:</label>
+                <select id="strokeopacity" onchange="setStrokeOpacity(this);"> 
+                    <option value="1">100%</option> 
+                    <option value=".90">90%</option> 
+                    <option value=".80">80%</option> 
+                    <option value=".70">70%</option> 
+                    <option value=".60">60%</option> 
+                    <option value=".50">50%</option> 
+                    <option value=".40">40%</option> 
+                    <option value=".30">30%</option> 
+                    <option value=".20">20%</option>
+                    <option value=".10">10%</option>  
+                </select> 
+            </div>
+        </div>
     </div>
 </div>

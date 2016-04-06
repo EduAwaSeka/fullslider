@@ -24,6 +24,15 @@ function setFillColor(colors)
             .addClass(color.value + "Thing");
 }
 
+function setFillHexColor(color)
+{
+    editor.set("fill", color);
+
+    $("#fillcolor")
+            .removeClass()
+            .addClass(color + "Thing");
+}
+
 
 function setStrokeColor(colors)
 {
@@ -34,6 +43,16 @@ function setStrokeColor(colors)
     $("#strokecolor")
             .removeClass()
             .addClass(color.value + "Thing");
+
+}
+
+function setStrokeHexColor(color)
+{
+    editor.set("stroke", color);
+
+    $("#strokecolor")
+            .removeClass()
+            .addClass(color + "Thing");
 
 }
 
@@ -297,10 +316,10 @@ function jsvectoreditor_init() {
     $("#closeDialogButton").click(onCloseDialog);
     $("#importShapesButton").click(import_shapes);
 
-    $("#fillcolor").change(onFillColorChange);
+//    $("#fillcolor").change(onFillColorChange);
     $("#fillopacity").change(onFillOpacityChange);
 
-    $("#strokecolor").change(onStrokeColorChange);
+//    $("#strokecolor").change(onStrokeColorChange);
     $("#strokeopacity").change(onStrokeOpacityChange);
     $("#strokewidth").change(onStrokeWidthChange);
 
@@ -320,14 +339,15 @@ function jsvectoreditor_init() {
 
     $("#savesvg").click(save);
     $("#open").click(opendialog);
-
+    setupColorPicker($("#fillcolor"),setFillHexColor);
+    setupColorPicker($("#strokecolor"),setStrokeHexColor);
 
     editor = new VectorEditor(document.getElementById("canvas"), $("#graphicsmodal").width(), $("#graphicscontainer").height());
 
     $("#tools_left").on("click", function() {
         editor.unselect();
     });
-    
+
     // editor.draw.rect(100,100,480,272).attr("stroke-width",
     // 0).attr("fill", "white")
     setMode("select");
@@ -341,3 +361,35 @@ function jsvectoreditor_init() {
 //    });
 //});
 
+
+
+function setupColorPicker(elem,fn)
+{
+    var $colorChooser = elem.find(".color-chooser");
+    if ($colorChooser.length > 0) {
+        var hex = '333';
+        $colorChooser.spectrum({
+            color: '#' + hex,
+            preferredFormat: "hex",
+            showSelectionPalette: true,
+            showPalette: true,
+            showInitial: true,
+            showInput: true,
+            cancelText: '<i class="fa fa-remove"></i>',
+            chooseText: '<i class="fa fa-check"></i>',
+            palette: [],
+            clickoutFiresChange: false,
+            theme: 'sp-dark',
+            change: function(color) {
+                color = color.toHexString();
+                fn(color);
+            }
+        });
+        var prevent = function(e) {
+            e.preventDefault();
+        };
+        $(".sp-container").mousedown(prevent);
+        $colorChooser.mousedown(prevent);
+        $colorChooser.find("div").css("backgroundColor", '#' + hex);
+    }
+}

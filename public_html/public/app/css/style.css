@@ -466,9 +466,9 @@ p {
 
 /* Edit graphics modal */
 #graphicsmodal{
-    width: 90vw;
-    left: 28% !important;
-    top: 4% !important;
+    width: 80vw;
+    left: 32% !important;
+    top: 5% !important;
 }
 #graphicsmodal .modal-header{
     padding: 0.7vw;
@@ -476,4 +476,7 @@ p {
 #graphicsmodal .modal-body{
     max-height: 36vw !important;
     padding: 0.01vw 0.8vw !important;
+}
+#graphicsmodal .modal-footer{
+    padding:0.8vw 1.098vw 0.8vw
 }
