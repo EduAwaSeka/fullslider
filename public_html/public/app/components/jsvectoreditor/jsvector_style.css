@@ -32,14 +32,15 @@
     top: 2.928vw;
     bottom: 2.928vw;
     right: 1.025vw;
-    background-color: #FAFAFA;
+    /*background-color: #FAFAFA;*/
     border: 0.0732vw solid #808080;
     overflow: auto;
     text-align: center;
-    
-    width: 90.5% !important;
+
+    width: 88.4% !important;
     height: 98.5% !important;
     left: 7.5vw !important;
+    background: rgba(255, 255, 255, 0.72);
 }
 
 #tools_left {
@@ -52,7 +53,7 @@
     padding-left: 0.1464vw;
     background: #D0D0D0; /* Needed so flyout icons don't appear on the left */
     z-index: 4;
-    padding-top: 0.2vw;
+    padding: 0.2vw;
 }
 
 #graphicscontainer button {

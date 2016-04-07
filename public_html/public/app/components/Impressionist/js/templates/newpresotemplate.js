@@ -181,7 +181,7 @@ var editSize='<input class="fixSize col-sm-1" type="number" min="1" max="32">';
 var config_edit_text_menu= editSize+config_font_family_selector+color_selector;
 
 var config_modal= '<!-- Design Configuration Modal -->'+
-                    '<div class="modal fade modalwindow" id="configmodal">'+
+                    '<div class="modal hide fade modalwindow" id="configmodal">'+
                         '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Configuration</h3></div>'+
                         '<div class="modal-body">'+
                             '<ul id="configTab" class="nav nav-tabs">'+ 
@@ -253,13 +253,13 @@ var alert_success ='<div id="successalert" class="alert alert-success alert-dism
           
           
 var graphics_modal= '<!-- Graphics Modal -->'+
-                    '<div class="modal fade modalwindow" id="graphicsmodal">'+
+                    '<div class="modal hide fade modalwindow" id="graphicsmodal">'+
                         '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Graphics Editor</h3></div>'+
                         '<div class="modal-body">'+
                         '</div>'+
                         '<div class="modal-footer">'+
-                            '<a href="#" id="closeGraphics" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</a>'+
-                            '<a href="#" id="addGraphics" class="btn btn-primary"> <i class="fa fa-plus"></i> &nbsp;Add</a>'+
+                            '<a href="#" id="closeGraphics" class="btn btn-danger graphicsfooterbtn" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</a>'+
+                            '<a href="#" id="addGraphics" class="btn btn-primary graphicsfooterbtn"> <i class="fa fa-plus"></i> &nbsp;Add</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of Graphics Modal -->';

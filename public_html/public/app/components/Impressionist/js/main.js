@@ -1664,8 +1664,8 @@ Impressionist.prototype =
                 $(element).css("width", width + "vw");
                 $(element).css("height", height + "vw");
                 $(element).css("position", "absolute");
-                $(element).css("left", "17vw");
-                $(element).css("top", "17vw");
+                $(element).css("left", "0vw");
+                $(element).css("top", "0vw");
 
 
                 //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive

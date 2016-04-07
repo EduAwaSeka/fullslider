@@ -463,20 +463,42 @@ p {
 }
 
 
-
 /* Edit graphics modal */
-#graphicsmodal{
-    width: 80vw;
-    left: 32% !important;
-    top: 5% !important;
+#graphicsmodal {
+    /*left: 32% !important;*/
+    /*top: 5% !important;*/
+    width: 68vw;
+    left: 28.2% !important;
+    top: 9% !important;
+    display: block;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 #graphicsmodal .modal-header{
     padding: 0.7vw;
+    border: none;
+    color:transparent;
+}
+
+#graphicsmodal .modal-header .close {
+    color: #FFFFFF;
+    opacity: 0.9;
+    text-shadow: 0.0832vw 0.0832vw 0.0932vw #000;
 }
 #graphicsmodal .modal-body{
     max-height: 36vw !important;
     padding: 0.01vw 0.8vw !important;
 }
 #graphicsmodal .modal-footer{
-    padding:0.8vw 1.098vw 0.8vw
+    padding: 0.3vw;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.graphicsfooterbtn{
+    color: #fff !important;
+    border: 0.15vw #fff solid !important;
+    border-radius: 0.5vw !important;
 }

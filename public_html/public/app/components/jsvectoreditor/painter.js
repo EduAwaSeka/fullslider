@@ -339,6 +339,7 @@ function jsvectoreditor_init() {
 
     $("#savesvg").click(save);
     $("#open").click(opendialog);
+    
     setupColorPicker($("#fillcolor"),setFillHexColor);
     setupColorPicker($("#strokecolor"),setStrokeHexColor);
 
