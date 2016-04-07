@@ -1,47 +1,85 @@
 Fullslider
 =======
 
-![Fullslider](https://cloud.githubusercontent.com/assets/6854006/11539644/7f287be8-9928-11e5-9b8e-b9d1184d4b12.png)
+![fullslider](https://cloud.githubusercontent.com/assets/6854006/14361027/5059a0dc-fcf9-11e5-8f54-267bd0661346.png)
 
 #### A multiplatform tool to create presentations####
 
 You can create presentations and view it, using Reveal.js. You can check out the Reveal.JS demo presentation: http://lab.hakim.se/reveal-js/
 
 ### Browser Compatibility
-Fullslider works in Chrome,Firefox, Opera)
+Fullslider works in Chrome and Opera browsers.
 
 
-### How to install? ###
+### How to install?###
 
-##### 1st Method (Only for Chrome, Firefox, Opera, Safari): #####
+First, you need install Node JS:
+
+##### Linux: #####
+Open shell and type the following commands:
+```
+sudo apt-get install nodejs
+```
+
+```
+sudo apt-get install npm
+```
+
+```
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+##### Mac OSX #####
+Open shell and type the following commands:
+
+```
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
+```	
+
+```
+nvm
+```	
+
+```
+nvm install stable
+```	
+
+```
+nvm ls
+```	
+
+```
+nvm use stable
+```	
+
+```
+nvm ls-remote
+```	
+
+```
+nvm alias default stable
+```
+
+##### Windows #####
+Download NodeJS installer from:
+https://nodejs.org/en/
+
+
+##### Common steps #####
+Once NodeJS has been installed, continue with following steps:
 
 1. Click on "Download Zip" button.
 2. Unpack it.
-3. Open unpack folder and open "public_html" folder
-4. Open "index.html" file in browser.
-5. You can already work with Fullslider!
-
-##### 2nd Method (Chrome, Firefox, Opera, Safari, Microsoft Edge): #####
-
-1. Click on "Download Zip" button.
-2. Unpack it.
-3. Download Mongoose installer compatible with your operating system from https://www.cesanta.com/products#binary.
-
-	3.a- Windows: 
-	     *Copy downloaded file in "public_html" folder.
-             *Open file.
-
-	3.b- Linux: 
-	     *Copy downloaded file in "public_html" folder.
-	     *If is necessary, give all permissions to file.
-             *Open command prompt, place you with cd in fullslider/public_html folder and execute downloaded file with ./"file_name"
-
-	3.c- MacOS: 
-	     *Open downloaded .dmg file and open mounted device Mongoose.
-	     *Copy Mongoose file in fullslider/public_html folder.
-             *Open Mongoose file.
-
-4. You can already work with Fullslider!
+3. On console, go to unpacked folder and open "public_html" folder
+4. Type command:
+```
+node init.js 
+```
+5. Open your browser and write url: 
+```
+localhost:8888
+```
+6 You can already work with Fullslider!
 
 ### RELEASE NOTES ###
 
@@ -52,9 +90,18 @@ Fullslider works in Chrome,Firefox, Opera)
  - Add/remove slides.
  - Add/remove text element
  - Edit text element: change color, font, size, align, rotate, skew, add link, add bold, italic, underline and list format.
- - Add Image from URL and resize.
+ - Add Image from:
+	*URL
+	*Local file
+	*Clipboard
+ - Edit uploaded images (resize, rotate and crop)
+ - Create graphics with Graphic editor
  - Change presentation title.
  - Reorder slides.
+ - Duplicate slides
+ - Copy and paste elements
+ - Set element as a pattern. This element repeats on all slides.
+ - Configure default values of text (color, font, etc.)
  - Save presentation on session storage
  - Open recent presentations.
  - And view presentation!
@@ -93,4 +140,11 @@ Fullslider works in Chrome,Firefox, Opera)
 * Bootstrap http://getbootstrap.com/
 * JQuery http://jquery.com/
 * Fontawesome http://fontawesome.io
+* Bootstrap File-input https://github.com/kartik-v/bootstrap-fileinput
+* CropperJS https://github.com/fengyuanchen/cropperjs
+* Fontello http://fontello.com/
+* jQuery ContextMenu https://github.com/swisnl/jQuery-contextMenu
+* JSVectorEditor https://code.google.com/archive/p/jsvectoreditor/
+* Simple-Undo https://github.com/mattjmattj/simple-undo/
+* NodeJS https://nodejs.org/en/
 
