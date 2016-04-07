@@ -467,8 +467,8 @@ p {
 #graphicsmodal {
     /*left: 32% !important;*/
     /*top: 5% !important;*/
-    width: 68vw;
-    left: 28.2% !important;
+    width: 69vw;
+    left: 28% !important;
     top: 9% !important;
     display: block;
     background: transparent;
@@ -491,7 +491,7 @@ p {
     padding: 0.01vw 0.8vw !important;
 }
 #graphicsmodal .modal-footer{
-    padding: 0.3vw;
+    padding: 0.3vw 1.4vw;
     background: transparent;
     border: none;
     box-shadow: none;

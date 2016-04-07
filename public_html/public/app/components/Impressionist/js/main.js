@@ -1641,7 +1641,10 @@ Impressionist.prototype =
                 for (var i = 0; i < graphic_list.length; i++) {
                     var graphic = graphic_list[i];
                     var element = me.addFullsliderSlideItem(graphic_snippet);
-
+                    
+                    //On resize svg, transform is defined an set to " " -> remove transform attr.
+                    $(graphic).removeAttr('transform');
+                    
                     $(element).find("svg").append($(graphic).clone());
                     me.addGraphicStyle(element, graphic);
                     me.finishAddFile($(element));
@@ -1671,7 +1674,7 @@ Impressionist.prototype =
                 //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive
                 $(svg_element)[0].setAttribute('preserveAspectRatio', "xMinYMin meet");
                 $(svg_element)[0].setAttribute('viewBox', "0 0 " + graphic.getBoundingClientRect().width + " " + graphic.getBoundingClientRect().height);
-                
+
             },
             removeSlide: function(el)
             {
