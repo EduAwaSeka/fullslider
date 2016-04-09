@@ -6,10 +6,10 @@
     height: 36vw;
 }
 
-#graphicscontainer svg:not(:root) {
+#canvas svg:not(:root) {
     overflow: hidden;
     width: 100%;
-    height: 35vw;
+    height: 100%;
 }
 
 #graphicscontainer img {
@@ -27,20 +27,15 @@
 }
 
 #canvas{
-    display: inline-table-cell;
-    position:absolute !important;
-    top: 2.928vw;
-    bottom: 2.928vw;
-    right: 1.025vw;
-    /*background-color: #FAFAFA;*/
-    border: 0.0732vw solid #808080;
-    overflow: auto;
-    text-align: center;
-
-    width: 86.2% !important;
-    height: 98.5% !important;
-    left: 8vw !important;
-    background: rgba(255, 255, 255, 0.72);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: -50;
 }
 
 #tools_left {

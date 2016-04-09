@@ -6,8 +6,20 @@
 
 
 key('delete', function(e) {
-    var selectedElement=Impressionist.prototype.getSelectedElement();
+    var selectedElement = Impressionist.prototype.getSelectedElement();
     if (selectedElement !== "") {
         Impressionist.prototype.deleteElement(selectedElement);
     }
+});
+
+key('ctrl+s', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    me.savePresentationOnSession();
+});
+
+key('ctrl+o', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $("#inputFile").click();
 });

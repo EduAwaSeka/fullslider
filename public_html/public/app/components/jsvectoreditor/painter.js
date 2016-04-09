@@ -1,17 +1,72 @@
 function setMode(mode)
 {
+    enableEditor();
     if (mode == "text") {
         editor.prop.text = prompt("Text:", editor.prop.text);
     } else if (mode == "image") {
         editor.prop.src = prompt("Image Source URL:", editor.prop.src);
     }
 
-    $("#graphicsmodal button").attr("disabled", null);
+    removeDisabledBtns();
     $("#" + mode).attr("disabled", "true");
 
     editor.setMode(mode == 'selectp' ? 'selectp' : mode);
 }
 
+function removeDisabledBtns() {
+    var btn_list = $("#graphics-tools").children();
+
+    for (var i = 0; i < btn_list.length; i++) {
+        $(btn_list[i]).attr("disabled", null);
+    }
+}
+
+function manageOnEditBtnEvents(e) {
+    var t = $(e.target);
+    if (!($("#graphics-tools").find(t).length)) {
+        onEditEnd();
+    }
+}
+
+var undo_disabled = "true";
+var redo_disabled = "true";
+
+function enableEditor() {
+    if (!isEnabledEditor()) {
+        undo_disabled = $(".undo").attr("disabled");
+        if (undo_disabled === undefined || undo_disabled === null) {
+            undo_disabled = false;
+        }
+
+        redo_disabled = $(".redo").attr("disabled");
+        if (redo_disabled === undefined || redo_disabled === null) {
+            redo_disabled = false;
+        }
+
+        $("#canvas").css("z-index", "50");
+        $(".btn").on("click", manageOnEditBtnEvents);
+        $("#addtextbtn").attr("disabled", "true");
+        $("#textDropdown").attr("disabled", "true");
+        $("#addimagebtn").attr("disabled", "true");
+        $(".undo").attr("disabled", "true");
+        $(".redo").attr("disabled", "true");
+    }
+}
+function disableEditor() {
+    if (isEnabledEditor()) {
+        $("#canvas").css("z-index", "-50");
+        $(".btn").off("click", manageOnEditBtnEvents);
+        $("#addtextbtn").attr("disabled", null);
+        $("#textDropdown").attr("disabled", null);
+        $("#addimagebtn").attr("disabled", null);
+        $(".undo").attr("disabled", undo_disabled);
+        $(".redo").attr("disabled", redo_disabled);
+    }
+}
+
+function isEnabledEditor() {
+    return ($("#canvas").css("z-index") == 50);
+}
 
 function setFillColor(colors)
 {
@@ -250,6 +305,16 @@ function onStrokeWidthChange(e)
     setStrokeWidth(ourElement);
 }
 
+function onEditEnd() {
+    removeDisabledBtns();
+    $("#editEnd").attr("disabled", "true");
+    $("#cancelEdit").attr("disabled", "true");
+    $("#selectSvg").attr("disabled", "true");
+    $("#deleteSvg").attr("disabled", "true");
+    disableEditor();
+    editor.deleteAll();
+}
+
 function onSelect() {
     setMode('select');
 }
@@ -323,35 +388,35 @@ function jsvectoreditor_init() {
     $("#strokeopacity").change(onStrokeOpacityChange);
     $("#strokewidth").change(onStrokeWidthChange);
 
-    $('#select').click(onSelect);
-    $('#selectp').click(onSelectp);
-    $('#rect').click(onRect);
-    $('#line').click(onLine);
-    $('#ellipse').click(onEllipse);
-    $('#path').click(onPath);
-    $('#polygon').click(onPolygon);
-    $('#image').click(onImage);
-    $('#text').click(onText);
-    $('#delete').click(onDelete);
+    $('#selectSvg').on("click", onSelect);
+    $('#selectp').on("click", onSelectp);
+    $('#rect').on("click", onRect);
+    $('#line').on("click", onLine);
+    $('#ellipse').on("click", onEllipse);
+    $('#path').on("click", onPath);
+    $('#polygon').on("click", onPolygon);
+    $('#image').on("click", onImage);
+    $('#text').on("click", onText);
+    $('#deleteSvg').on("click", onDelete);
 
-    $('#getMarkup').click(onGetMarkup);
-    $('#clearCanvas').click(onClearCanvas);
+    $('#getMarkup').on("click", onGetMarkup);
+    $('#clearCanvas').on("click", onClearCanvas);
 
-    $("#savesvg").click(save);
-    $("#open").click(opendialog);
-    
-    setupColorPicker($("#fillcolor"),setFillHexColor);
-    setupColorPicker($("#strokecolor"),setStrokeHexColor);
+    $("#savesvg").on("click", save);
+    $("#open").on("click", opendialog);
+
+    setupColorPicker($("#fillcolor"), setFillHexColor);
+    setupColorPicker($("#strokecolor"), setStrokeHexColor);
 
     editor = new VectorEditor(document.getElementById("canvas"), $("#graphicsmodal").width(), $("#graphicscontainer").height());
 
-    $("#tools_left").on("click", function() {
+    $("#graphics-tools").on("click", function() {
         editor.unselect();
     });
 
     // editor.draw.rect(100,100,480,272).attr("stroke-width",
     // 0).attr("fill", "white")
-    setMode("select");
+    onEditEnd();
 }
 ;
 
@@ -364,7 +429,7 @@ function jsvectoreditor_init() {
 
 
 
-function setupColorPicker(elem,fn)
+function setupColorPicker(elem, fn)
 {
     var $colorChooser = elem.find(".color-chooser");
     if ($colorChooser.length > 0) {

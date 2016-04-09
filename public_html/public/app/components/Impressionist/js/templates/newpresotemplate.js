@@ -249,17 +249,3 @@ var alert_success ='<div id="successalert" class="alert alert-success alert-dism
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
                     '<strong>Success: </strong><span id="successmsg"></span>'+
                   '</div>';
-          
-          
-          
-var graphics_modal= '<!-- Graphics Modal -->'+
-                    '<div class="modal hide fade modalwindow" id="graphicsmodal">'+
-                        '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3>Graphics Editor</h3></div>'+
-                        '<div class="modal-body">'+
-                        '</div>'+
-                        '<div class="modal-footer">'+
-                            '<a href="#" id="closeGraphics" class="btn btn-danger graphicsfooterbtn" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</a>'+
-                            '<a href="#" id="addGraphics" class="btn btn-primary graphicsfooterbtn"> <i class="fa fa-plus"></i> &nbsp;Add</a>'+
-                        '</div>'+
-                    '</div>'+
-                    '<!-- End of Graphics Modal -->';

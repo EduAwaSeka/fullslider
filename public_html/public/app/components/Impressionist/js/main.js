@@ -69,7 +69,7 @@ Impressionist.prototype =
                 me.initializeMyPresModal();
                 me.initializeConfigModal();
                 me.initializeAlerts();
-                me.initializeGraphicsModal();
+                me.initializeGraphics();
                 me.setupColorpickerPopup();
                 me.enableSort();
 //                me.setupPopover();
@@ -132,13 +132,8 @@ Impressionist.prototype =
                 $("#modals").append(alert_success);
                 $("#successalert").fadeOut(0);
             },
-            initializeGraphicsModal: function() {
-                $("#modals").append(graphics_modal);
-                $.get("app/components/jsvectoreditor/index.html", function(data) {
-                    $("#graphicsmodal").find(".modal-body").append(data);
-                    jsvectoreditor_init();
-                });
-
+            initializeGraphics: function() {
+                jsvectoreditor_init();
             },
             openWelcomePanel: function() {
                 $("#welcomemodal").removeClass("hide");
@@ -409,13 +404,8 @@ Impressionist.prototype =
                     }
                 }).on("click", function(e)
                 {
-                    me.selectCurrentClicked($(this));
                     e.stopPropagation();
-                    me.selectElement(this);
-                    me.updateScaledSlide(me.selectedSlide);
-                    if ($(this).hasClass("elementediting")) {
-                        launchEvent("click", $(".etch-editor-panel")[0]); //For close color picker
-                    }
+                    me.toSelectElement(this);
                 }).on("mousedown", function(e)
                 {
                     me.selectElement(this);
@@ -538,6 +528,14 @@ Impressionist.prototype =
                     changeContent();//Event for undo redo
                 });
             },
+            toSelectElement: function(el) {
+                me.selectCurrentClicked($(el));
+                me.selectElement(el);
+                me.updateScaledSlide(me.selectedSlide);
+                if ($(el).hasClass("elementediting")) {
+                    launchEvent("click", $(".etch-editor-panel")[0]); //For close color picker
+                }
+            },
             selectElement: function(el)
             {
                 // if not is in editionmode, select it
@@ -644,7 +642,7 @@ Impressionist.prototype =
             {
                 me.updateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
-                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *, #editimgmodal *').size() && !($("#addElementsPanel").find(t).length)) {
+                if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *, #editimgmodal *').size()) {
                     me.clearElementSelections();
                 }
 
@@ -783,7 +781,7 @@ Impressionist.prototype =
             },
             finishAddFile: function(element) {
                 me.enableDrag();
-                me.selectedelement = element;
+                me.toSelectElement($(element)[0]);
                 me.updateScaledSlide(me.selectedSlide);
             },
             addFullsliderText: function(type) {
@@ -1006,40 +1004,33 @@ Impressionist.prototype =
                 });
                 $("#savepresentationbtn").on("click", function(e)
                 {
-                    if (me.currentPresentation)
-                    {
-                        me.clearElementSelections();
-                        $("#titleinput").val(me.currentPresentation.title);
-                    }
-//                    $("#newpresentationmodal").removeClass("hide");
-//                    $("#newpresentationmodal").modal("show");
-                    me.mode = "save";
-                    me.savePresentation();
+                    me.savePresentationOnSession();
                 });
 
                 //Add Text buttons on click. 
                 $("#addtextbtn,#normalTextBtn").on("click", function(e)
                 {
+                    e.stopPropagation();
                     me.addFullsliderText("normal");
-
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected with click event
-                    launchEvent("click", me.selectedforedit);
+                    //On create text element, this is selected
+                    me.toSelectElement(me.selectedElement);
                 });
                 $("#titleTextBtn").on("click", function(e)
                 {
+                    e.stopPropagation();
                     me.addFullsliderText("title");
-
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected with click event
-                    launchEvent("click", me.selectedforedit);
+                    //On create text element, this is selected
+                    me.toSelectElement(me.selectedElement);
                 });
                 $("#subtTextBtn").on("click", function(e)
                 {
+                    e.stopPropagation();
                     me.addFullsliderText("subtitle");
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected with click event
-                    launchEvent("click", me.selectedforedit);
+                    //On create text element, this is selected
+                    me.toSelectElement(me.selectedElement);
                 });
                 //End add text buttons on click
 
@@ -1200,14 +1191,16 @@ Impressionist.prototype =
                     return false;
                 });
 
-                //Add graphics
-                $("#addGraphics").on("click", function() {
+                //Add/cancel graphics
+                $('#editEnd').on("click", function(e) {
+                    e.stopPropagation();
                     editor.unselect();
                     me.addGraphics();
-                    $(".modal").modal("hide");
-                    editor.deleteAll();
+                    onEditEnd();
                     changeContent();
                 });
+
+                $('#cancelEdit').on("click", onEditEnd);
 
                 $(window).resize(function(e) {
                     if ((me.selectedforedit !== "") && ($("#welcomemodal").css("display") == "none")) {
@@ -1475,6 +1468,17 @@ Impressionist.prototype =
                 $(".modal").modal("hide");
                 setTimeout(me.resetSaveButtonText, 1000);
             },
+            savePresentationOnSession: function() {
+                if (me.currentPresentation)
+                {
+                    me.clearElementSelections();
+                    $("#titleinput").val(me.currentPresentation.title);
+                }
+//                    $("#newpresentationmodal").removeClass("hide");
+//                    $("#newpresentationmodal").modal("show");
+                me.mode = "save";
+                me.savePresentation();
+            },
             resetSaveButtonText: function()
             {
                 $("#savepresentationbtn").html('<i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Save');
@@ -1637,14 +1641,14 @@ Impressionist.prototype =
                 element.css("width", im_width + "vw");
             },
             addGraphics: function() {
-                var graphic_list = $("#graphicscontainer").find("svg").children();
+                var graphic_list = $("#canvas").find("svg").children();
                 for (var i = 0; i < graphic_list.length; i++) {
                     var graphic = graphic_list[i];
                     var element = me.addFullsliderSlideItem(graphic_snippet);
-                    
+
                     //On resize svg, transform is defined an set to " " -> remove transform attr.
                     $(graphic).removeAttr('transform');
-                    
+
                     $(element).find("svg").append($(graphic).clone());
                     me.addGraphicStyle(element, graphic);
                     me.finishAddFile($(element));
@@ -1667,8 +1671,8 @@ Impressionist.prototype =
                 $(element).css("width", width + "vw");
                 $(element).css("height", height + "vw");
                 $(element).css("position", "absolute");
-                $(element).css("left", "0vw");
-                $(element).css("top", "0vw");
+                $(element).css("left", pxToVw($(graphic).position().left)+"vw");
+                $(element).css("top", pxToVw($(graphic).position().top)+"vw");
 
 
                 //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive

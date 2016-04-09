@@ -83,10 +83,13 @@ p {
 #menu button i{
     font-size: 0.95vw
 }
+#undo-redo-btns{
+    margin-left: 4.15vw;
+    margin-right: 0.5vw;
+}
 
 #addElementsPanel{
     display: inline-block;
-    margin-left: 4.15vw;
 }
 
 #textDropdown{
@@ -107,12 +110,12 @@ p {
 #view-save-btns{
     display: inline-block;
     position: absolute;
-    right: 2%;
+    right: 0.1vw;
     margin: -0.0732vw auto;
 }
 
 #view-save-btns .btn{
-    padding: 0.7320vw 1.61vw;
+    padding: 0.7vw 0.9vw;
 }
 
 .previewbtn {
