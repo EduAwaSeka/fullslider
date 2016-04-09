@@ -17,8 +17,8 @@ function VectorEditor(elem, width, height) {
     this.prop = {
         "src": "http://upload.wikimedia.org/wikipedia/commons/a/a5/ComplexSinInATimeAxe.gif",
         "stroke-width": 1,
-        "stroke": "#000000",
-        "fill": "#ff0000",
+        "stroke": $("#strokecolor").attr("data-dfcolor"),
+        "fill": $("#fillcolor").attr("data-dfcolor"),
         "stroke-opacity": 1,
         "fill-opacity": 1,
         "text": "Text"

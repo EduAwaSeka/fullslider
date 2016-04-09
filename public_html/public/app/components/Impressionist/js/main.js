@@ -70,7 +70,7 @@ Impressionist.prototype =
                 me.initializeConfigModal();
                 me.initializeAlerts();
                 me.initializeGraphics();
-                me.setupColorpickerPopup();
+                me.setupColorpickerPopup($("#configmodal"));
                 me.enableSort();
 //                me.setupPopover();
                 me.hideTransformControl();
@@ -594,9 +594,9 @@ Impressionist.prototype =
                     me.updateScaledSlide($(this));
                 });
             },
-            setupColorpickerPopup: function()
+            setupColorpickerPopup: function(element)
             {
-                var $colorChooser = $(document).find(".color-chooser");
+                var $colorChooser = $(element).find(".color-chooser");
                 if ($colorChooser.length > 0) {
                     var hex = '333';
                     $colorChooser.spectrum({

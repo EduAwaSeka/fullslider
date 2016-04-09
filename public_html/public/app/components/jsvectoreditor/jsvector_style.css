@@ -58,30 +58,52 @@
     padding: 0.0732vw;
 }
 
-#graphicscontainer .panel {
+#graphic-options {
     margin-bottom: 0.464vw;
     font-size: 0.7vw;
+    z-index: -50;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: transparent;
+    width: 6vw;
+    height: 100%;
+    border-right: none;    
+    margin-top: -0.1464vw;
+    padding-left: 0.1464vw;
+    padding: 0.2vw;
 }
-#graphicscontainer .panel-heading {
+#graphic-options .panel-heading {
     padding: 0.25vw 1.0981vw
 }
-#graphicscontainer .panel-body {
+#graphic-options .panel-body {
     text-align: center; 
-    padding: 0;
+    padding: 0; 
+    color:#000;
 }
-#graphicscontainer .sp-replacer {
+#graphic-options .sp-replacer {
     padding: 0.228vw;
 }
-#graphicscontainer .sp-preview {
+#graphic-options .sp-preview {
     width: 1.7vw;
     height: 1.19vw;
 }
-#graphicscontainer label{
+#graphic-options label{
     margin-top: 0.12vw;
     margin-bottom: 0.26vw;
 }
-#graphicscontainer select {
+#graphic-options select {
     width: 4.9vw;
     font-size: 0.8vw;
     height: 1.8vw;
+}
+
+#fillcolor {
+    font-size: 0.5857vw;
+}
+
+#strokecolor {
+    font-size: 0.5857vw;
 }

@@ -249,3 +249,37 @@ var alert_success ='<div id="successalert" class="alert alert-success alert-dism
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
                     '<strong>Success: </strong><span id="successmsg"></span>'+
                   '</div>';
+          
+var graphic_tools_options = '<div class="panel panel-default">'+
+                                '<div class="panel-heading">Stroke:</div>'+
+                                '<div class="panel-body">'+
+                                    '<label>Color:</label>'+
+                                    '<div id="strokecolor" class=""><input class="color-chooser colorpicker" /></div>'+
+                                    '<label>Width:</label>'+
+                                    '<select id="strokewidth" onchange="setStrokeWidth(this);">'+
+                                        '<option value="0.0732vw">1px</option>'+ 
+                                        '<option value="0.1464vw">2px</option>'+ 
+                                        '<option value="0.2196vw">3px</option>'+ 
+                                        '<option value="0.2928vw">4px</option>'+ 
+                                        '<option value="0.366vw">5px</option>'+ 
+                                        '<option value="0.439vw">6px</option>'+
+                                        '<option value="0.5124vw">7px</option>'+ 
+                                        '<option value="0.5857vw">8px</option>'+ 
+                                        '<option value="0.659vw">9px</option>'+ 
+                                        '<option value="0.732vw">10px</option>'+
+                                    '</select>'+ 
+                                    '<label>Opacity:</label>'+
+                                    '<select id="strokeopacity" onchange="setStrokeOpacity(this);">'+ 
+                                        '<option value="1">100%</option>'+
+                                        '<option value=".90">90%</option>'+
+                                        '<option value=".80">80%</option>'+
+                                        '<option value=".70">70%</option>'+
+                                        '<option value=".60">60%</option>'+ 
+                                        '<option value=".50">50%</option>'+ 
+                                        '<option value=".40">40%</option>'+ 
+                                        '<option value=".30">30%</option>'+ 
+                                        '<option value=".20">20%</option>'+
+                                        '<option value=".10">10%</option>'+  
+                                    '</select>'+ 
+                                '</div>'+
+                            '</div>';

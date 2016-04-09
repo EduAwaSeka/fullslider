@@ -150,6 +150,7 @@ p {
     background-color: #555;
     float: left;
     padding: 0;
+    z-index: 1;
 }
 
 .mainfooter {

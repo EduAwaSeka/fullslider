@@ -44,6 +44,7 @@ function enableEditor() {
         }
 
         $("#canvas").css("z-index", "50");
+        $("#graphic-options").css("z-index", "50");
         $(".btn").on("click", manageOnEditBtnEvents);
         $("#addtextbtn").attr("disabled", "true");
         $("#textDropdown").attr("disabled", "true");
@@ -55,6 +56,7 @@ function enableEditor() {
 function disableEditor() {
     if (isEnabledEditor()) {
         $("#canvas").css("z-index", "-50");
+        $("#graphic-options").css("z-index", "-50");
         $(".btn").off("click", manageOnEditBtnEvents);
         $("#addtextbtn").attr("disabled", null);
         $("#textDropdown").attr("disabled", null);
@@ -433,7 +435,7 @@ function setupColorPicker(elem, fn)
 {
     var $colorChooser = elem.find(".color-chooser");
     if ($colorChooser.length > 0) {
-        var hex = '333';
+        var hex = elem.attr("data-dfcolor");
         $colorChooser.spectrum({
             color: '#' + hex,
             preferredFormat: "hex",
