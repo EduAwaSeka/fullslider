@@ -360,6 +360,10 @@ function onText() {
     setMode('text');
 }
 
+function onArrow(){
+    setMode('arrow');
+}
+
 
 function onDelete() {
     setMode('delete');
@@ -392,13 +396,14 @@ function jsvectoreditor_init() {
 
     $('#selectSvg').on("click", onSelect);
     $('#selectp').on("click", onSelectp);
-    $('#rect').on("click", onRect);
-    $('#line').on("click", onLine);
-    $('#ellipse').on("click", onEllipse);
-    $('#path').on("click", onPath);
-    $('#polygon').on("click", onPolygon);
-    $('#image').on("click", onImage);
-    $('#text').on("click", onText);
+    $('#drawRect').on("click", onRect);
+    $('#drawLine').on("click", onLine);
+    $('#drawEllipse').on("click", onEllipse);
+    $('#drawPath').on("click", onPath);
+    $('#drawPolygon').on("click", onPolygon);
+    $('#drawImage').on("click", onImage);
+    $('#drawText').on("click", onText);
+    $('#drawArrow').on("click", onArrow);
     $('#deleteSvg').on("click", onDelete);
 
     $('#getMarkup').on("click", onGetMarkup);
@@ -416,8 +421,7 @@ function jsvectoreditor_init() {
         editor.unselect();
     });
 
-    // editor.draw.rect(100,100,480,272).attr("stroke-width",
-    // 0).attr("fill", "white")
+
     onEditEnd();
 }
 ;
