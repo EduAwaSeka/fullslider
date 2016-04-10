@@ -6,29 +6,41 @@ function VectorEditor(elem, width, height) {
 
     this.container = elem;
     this.draw = Raphael(elem, width, height);
+
     this.draw.editor = this;
+
     this.onHitXY = [0, 0];
     this.offsetXY = [0, 0];
     this.tmpXY = [0, 0];
+
     //cant think of any better way to do it
     this.prop = {
         "src": "http://upload.wikimedia.org/wikipedia/commons/a/a5/ComplexSinInATimeAxe.gif",
-        "stroke-width": vwToPx(parseFloat($("#strokewidth" ).val())),
+        "stroke-width": 1,
         "stroke": $("#strokecolor").attr("data-dfcolor"),
         "fill": $("#fillcolor").attr("data-dfcolor"),
         "stroke-opacity": 1,
         "fill-opacity": 1,
         "text": "Text"
     };
+
     this.mode = "select";
     this.selectbox = null;
     this.selected = [];
+
     this.action = "";
+
     this.selectadd = false;
+
     this.shapes = [];
     this.trackers = [];
+
     this.listeners = {};
+
+
     var draw = this.draw;
+
+
     //THE FOLLOWING LINES ARE MOSTLY POINTLESS!
 
     function offset() {
@@ -57,10 +69,11 @@ function VectorEditor(elem, width, height) {
             c.push(a[b]);
         return c;
     }
-
+    
     if (window.Ext) {
         Ext.get(elem).on("mousedown", function(event) {
             event.preventDefault();
+
             if (event.button == 2) {
                 //this.lastmode = this.mode;
                 this.setMode("select"); //tempselect
@@ -82,13 +95,14 @@ function VectorEditor(elem, width, height) {
             return false;
         }, this);
         Ext.get(elem).on("dblclick", function(event) {
-            event.preventDefault();
+            event.preventDefault()
             this.onDblClick(event.getPageX() - offset()[0], event.getPageY() - offset()[1], event.getTarget());
             return false;
         }, this);
     } else if (window.jQuery) {
         $(elem).mousedown(bind(function(event) {
             event.preventDefault();
+
             if (event.button == 2) {
                 //this.lastmode = this.mode;
                 this.setMode("select"); //tempselect
@@ -112,6 +126,7 @@ function VectorEditor(elem, width, height) {
                 event.preventDefault();
                 this.onMouseDown(event.touches[0].pageX - offset()[0], event.touches[0].pageY - offset()[1], event.target);
             }, this), false);
+
             elem.addEventListener("touchmove", bind(function(event) {
                 event.preventDefault();
                 this.onMouseMove(event.touches[0].pageX - offset()[0], event.touches[0].pageY - offset()[1], event.target);
@@ -146,6 +161,7 @@ VectorEditor.prototype.setMode = function(mode) {
         this.mode = mode;
     }
 };
+
 VectorEditor.prototype.on = function(event, callback) {
     if (!this.listeners[event]) {
         this.listeners[event] = []
@@ -155,6 +171,8 @@ VectorEditor.prototype.on = function(event, callback) {
         this.listeners[event].push(callback);
     }
 };
+
+
 VectorEditor.prototype.returnRotatedPoint = function(x, y, cx, cy, a) {
     // http://mathforum.org/library/drmath/view/63184.html
 
@@ -162,10 +180,13 @@ VectorEditor.prototype.returnRotatedPoint = function(x, y, cx, cy, a) {
     var r = Math.sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy));
     // initial angle in relation to center
     var iA = Math.atan2((y - cy), (x - cx)) * (180 / Math.PI);
+
     var nx = r * Math.cos((a + iA) / (180 / Math.PI));
     var ny = r * Math.sin((a + iA) / (180 / Math.PI));
+
     return [cx + nx, cy + ny];
 };
+
 VectorEditor.prototype.fire = function(event) {
     if (this.listeners[event]) {
         for (var i = 0; i < this.listeners[event].length; i++) {
@@ -175,6 +196,7 @@ VectorEditor.prototype.fire = function(event) {
         }
     }
 };
+
 VectorEditor.prototype.un = function(event, callback) {
     if (!this.listeners[event])
         return;
@@ -183,32 +205,40 @@ VectorEditor.prototype.un = function(event, callback) {
         this.listeners[event].splice(index, 1);
     }
 };
+
 //from the vXJS JS Library
 VectorEditor.prototype.in_array = function(v, a) {
     for (var i = a.length; i-- && a[i] != v; )
         ;
     return i;
 };
+
 //from vX JS, is it at all strange that I'm using my own work?
 VectorEditor.prototype.array_remove = function(e, o) {
     var x = this.in_array(e, o);
     x != -1 ? o.splice(x, 1) : 0;
 };
+
+
 VectorEditor.prototype.is_selected = function(shape) {
     return this.in_array(shape, this.selected) != -1;
 };
+
 VectorEditor.prototype.set_attr = function() {
     for (var i = 0; i < this.selected.length; i++) {
         this.selected[i].attr.apply(this.selected[i], arguments);
     }
 };
+
 VectorEditor.prototype.set = function(name, value) {
     this.prop[name] = value;
     this.set_attr(name, value);
 };
+
 VectorEditor.prototype.onMouseDown = function(x, y, target) {
     this.fire("mousedown");
     this.tmpXY = this.onHitXY = [x, y];
+
     if (this.mode == "select" && !this.selectbox) {
 
         var shape_object = null;
@@ -239,7 +269,8 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
         } else {
             this.action = "move";
         }
-        this.offsetXY = [shape_object.attr("x") - x, shape_object.attr("y") - y];
+        this.offsetXY = [shape_object.attr("x") - x, shape_object.attr("y") - y]
+
     } else if (this.mode == "delete" && !this.selectbox) {
         var shape_object = null;
         if (target.shape_object) {
@@ -256,8 +287,8 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
         } else {
             return; //likely tracker
         }
-        this.deleteShape(shape_object);
-        this.offsetXY = [shape_object.attr("x") - x, shape_object.attr("y") - y];
+        this.deleteShape(shape_object)
+        this.offsetXY = [shape_object.attr("x") - x, shape_object.attr("y") - y]
     } else if (this.selected.length == 0) {
         var shape = null;
         if (this.mode == "rect") {
@@ -275,16 +306,14 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
             shape.subtype = "polygon";
         } else if (this.mode == "image") {
             shape = this.draw.image(this.prop.src, x, y, 0, 0);
+
             //WARNING NEXT IS A HACK!!!!!!
             //shape.attr("src",this.prop.src); //raphael won't return src correctly otherwise
         } else if (this.mode == "text") {
-            shape = this.draw.text(x, y, this.prop['text']).attr('font-size', 0);
+            shape = this.draw.text(x, y, this.prop['text']).attr('font-size', 0)
             shape.text = this.prop['text'];
             //WARNING NEXT IS A HACK!!!!!!
             //shape.attr("text",this.prop.text); //raphael won't return src correctly otherwise
-        } else if (this.mode == "arrow") {
-            shape = this.draw.path("M{0},{1}", x, y);
-            shape.subtype = "line";
         }
         if (shape) {
             shape.id = this.generateUUID();
@@ -302,6 +331,7 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
     }
     return false;
 };
+
 VectorEditor.prototype.onMouseMove = function(x, y, target) {
 
 
@@ -317,21 +347,22 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
                 //this.moveTracker(x - this.tmpXY[0], y - this.tmpXY[1])
                 this.updateTracker();
                 this.tmpXY = [x, y];
+
             } else if (this.action == "rotate") {
                 //no multi-rotate
                 var box = this.selected[0].getBBox();
-                var rad = Math.atan2(y - (box.y + box.height / 2), x - (box.x + box.width / 2));
+                var rad = Math.atan2(y - (box.y + box.height / 2), x - (box.x + box.width / 2))
                 var deg = ((((rad * (180 / Math.PI)) + 90) % 360) + 360) % 360;
                 this.selected[0].rotate(deg, true); //absolute!
                 //this.rotateTracker(deg, (box.x + box.width/2), (box.y + box.height/2))
                 this.updateTracker();
             } else if (this.action.substr(0, 4) == "path") {
                 var num = parseInt(this.action.substr(4));
-                var pathsplit = Raphael.parsePathString(this.selected[0].attr("path"));
+                var pathsplit = Raphael.parsePathString(this.selected[0].attr("path"))
                 if (pathsplit[num]) {
                     pathsplit[num][1] = x;
                     pathsplit[num][2] = y;
-                    this.selected[0].attr("path", pathsplit);
+                    this.selected[0].attr("path", pathsplit)
                     this.updateTracker();
                 }
             } else if (this.action == "resize") {
@@ -385,10 +416,8 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
             this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
         } else if (this.mode == "path") {
             //this.selected[0].lineTo(x, y);
-            this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y);
-//        } else if (this.mode == "arrow") {
-//            this.resize(this.selected[0], x - this.onHitXY[0], y - this.onHitXY[1], this.onHitXY[0], this.onHitXY[1]);
-        } else if (this.mode == "polygon" || this.mode == "line" || this.mode == "arrow") {
+            this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y)
+        } else if (this.mode == "polygon" || this.mode == "line") {
             //this.selected[0].path[this.selected[0].path.length - 1].arg[0] = x
             //this.selected[0].path[this.selected[0].path.length - 1].arg[1] = y
             //this.selected[0].redraw();
@@ -396,52 +425,53 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
 
             //theres a few freaky bugs that happen due to this new IE capable way that is probably better
 
-            var pathsplit = Raphael.parsePathString(this.selected[0].attr("path"));
+            var pathsplit = Raphael.parsePathString(this.selected[0].attr("path"))
             if (pathsplit.length > 1) {
                 //var hack = pathsplit.reverse().slice(3).reverse().join(" ")+' ';
 
                 //console.log(pathsplit)
                 if (this.mode == "line") {
                     //safety measure, the next should work, but in practice, no
-                    pathsplit.splice(1);
+                    pathsplit.splice(1)
                 } else {
-                    if (this.mode == "arrow") {
-                        pathsplit.splice(1);
-                    } else {
-                        var last = pathsplit[pathsplit.length - 1];
-                        //console.log(this.selected[0].polypoints.length, pathsplit.length)
-                        if (this.selected[0].polypoints.length < pathsplit.length) {
-                            //if(Math.floor(last[1]) == this.lastpointsX && Math.floor(last[2]) == this.lastpointsY){
-                            pathsplit.splice(pathsplit.length - 1, 1);
-                        }
-                        //}else{
-                        //  console.log(last[1], last[2], this.lastpointsX, this.lastpointsY)
-                        //}
+                    var last = pathsplit[pathsplit.length - 1];
+                    //console.log(this.selected[0].polypoints.length, pathsplit.length)
+                    if (this.selected[0].polypoints.length < pathsplit.length) {
+                        //if(Math.floor(last[1]) == this.lastpointsX && Math.floor(last[2]) == this.lastpointsY){
+                        pathsplit.splice(pathsplit.length - 1, 1);
                     }
+                    //}else{
+                    //  console.log(last[1], last[2], this.lastpointsX, this.lastpointsY)
+                    //}
                 }
                 //this.lastpointsX = x; //TO FIX A NASTY UGLY BUG
                 //this.lastpointsY = y; //SERIOUSLY
 
-                this.selected[0].attr("path", pathsplit.toString() + 'L' + x + ' ' + y);
+                this.selected[0].attr("path", pathsplit.toString() + 'L' + x + ' ' + y)
+
             } else {
                 //console.debug(pathsplit)
                 //normally when this executes there's somethign strange that happened
-                this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y);
+                this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y)
             }
             //this.selected[0].lineTo(x, y)
         }
     }
 
     return false;
-};
+}
+
+
 VectorEditor.prototype.getMarkup = function() {
     return this.draw.canvas.parentNode.innerHTML;
-};
+}
+
+
 VectorEditor.prototype.onDblClick = function(x, y, target) {
     this.fire("dblclick");
     if (this.selected.length == 1) {
         if (this.selected[0].getBBox().height == 0 && this.selected[0].getBBox().width == 0) {
-            this.deleteShape(this.selected[0]);
+            this.deleteShape(this.selected[0])
         }
         if (this.mode == "polygon") {
             //this.selected[0].andClose()
@@ -450,21 +480,24 @@ VectorEditor.prototype.onDblClick = function(x, y, target) {
     }
     return false;
 };
+
+
 VectorEditor.prototype.onMouseUp = function(x, y, target) {
     this.fire("mouseup");
     this.onGrabXY = null;
+
     if (this.mode == "select" || this.mode == "delete") {
         if (this.selectbox) {
-            var sbox = this.selectbox.getBBox();
+            var sbox = this.selectbox.getBBox()
             var new_selected = [];
             for (var i = 0; i < this.shapes.length; i++) {
                 if (this.rectsIntersect(this.shapes[i].getBBox(), sbox)) {
-                    new_selected.push(this.shapes[i]);
+                    new_selected.push(this.shapes[i])
                 }
             }
 
             if (new_selected.length == 0 || this.selectadd == false) {
-                this.unselect();
+                this.unselect()
             }
 
             if (new_selected.length == 1 && this.selectadd == false) {
@@ -478,6 +511,7 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
                 this.selectbox.remove();
             }
             this.selectbox = null;
+
             if (this.mode == "delete") {
                 this.deleteSelection();
             }
@@ -497,9 +531,6 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
             this.unselect();
         } else if (this.mode == "path") {
             this.unselect();
-        } else if (this.mode == "arrow") {
-            this.selected[0].attr("arrow-end", 'block');
-            this.unselect();
         } else if (this.mode == "line") {
             this.unselect();
         } else if (this.mode == "image") {
@@ -511,7 +542,8 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
             this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y);
             if (!this.selected[0].polypoints)
                 this.selected[0].polypoints = [];
-            this.selected[0].polypoints.push([x, y]);
+            this.selected[0].polypoints.push([x, y])
+
         }
     }
     if (this.lastmode) {
@@ -521,5 +553,3 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
     }
     return false;
 };
-
-
