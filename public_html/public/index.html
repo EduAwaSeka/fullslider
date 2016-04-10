@@ -93,11 +93,12 @@ Eduardo Jiménez Grande
                         <div id="graphics-tools" class="btn-group">
                             <a id="selectSvg" class="btn btn-info" title="Select"><i class="fa fa-mouse-pointer"></i></a>
                             <a id="deleteSvg" class="btn btn-info" title="Delete"><i class="fa fa-eraser"></i></a>
-                            <a id="rect" class="btn btn-info" title="Draw rectangle"><i class="fa fa-square-o"></i></a>
-                            <a id="line" class="btn btn-info" title="Draw line"><i class="icon icon-slash"></i></a>
-                            <a id="ellipse" class="btn btn-info" title="Draw ellipse"><i class="fa fa-circle-o"></i></a>
-                            <a id="path" class="btn btn-info" title="Draw path"><i class="icon icon-pen"></i></a>
-                            <a id="polygon" class="btn btn-info" title="Draw polygon"><i class="icon icon-polygon"></i></a>
+                            <a id="drawRect" class="btn btn-info" title="Draw rectangle"><i class="fa fa-square-o"></i></a>
+                            <a id="drawLine" class="btn btn-info" title="Draw line"><i class="icon icon-slash"></i></a>
+                            <a id="drawEllipse" class="btn btn-info" title="Draw ellipse"><i class="fa fa-circle-o"></i></a>
+                            <a id="drawPath" class="btn btn-info" title="Draw path"><i class="icon icon-pen"></i></a>
+                            <a id="drawPolygon" class="btn btn-info" title="Draw polygon"><i class="icon icon-polygon"></i></a>
+                            <a id="drawArrow" class="btn btn-info" title="Draw Arrow"><i class="fa fa-long-arrow-right"></i></a>
                             <a id="cancelEdit" class="btn btn-warning" title="Cancel Edit"><i class="fa fa-close"></i></a>
                             <a id="editEnd" class="btn btn-success" title="End Edit"><i class="glyphicon glyphicon-ok-sign"></i></a>
                         </div>
@@ -146,7 +147,7 @@ Eduardo Jiménez Grande
                                         <div id="fillcolor" data-dfcolor="#f3350b" class=""><input class="color-chooser colorpicker" /></div>
 
                                         <label>Opacity:</label>
-                                        <select id="fillopacity" onchange="setFillOpacity(this);"> 
+                                        <select id="fillopacity"> 
                                             <option value="1">100%</option> 
                                             <option value=".90">90%</option> 
                                             <option value=".80">80%</option> 
@@ -169,12 +170,12 @@ Eduardo Jiménez Grande
                                         <div id="strokecolor" data-dfcolor="#000000" class=""><input class="color-chooser colorpicker" /></div>
 
                                         <label>Width:</label>
-                                        <select id="strokewidth" onchange="setStrokeWidth(this);"> 
+                                        <select id="strokewidth"> 
                                             <option value="0.0732vw">1px</option> 
                                             <option value="0.1464vw">2px</option> 
                                             <option value="0.2196vw">3px</option> 
                                             <option value="0.2928vw">4px</option> 
-                                            <option value="0.366vw">5px</option> 
+                                            <option value="0.366vw" selected>5px</option> 
                                             <option value="0.439vw">6px</option>
                                             <option value="0.5124vw">7px</option> 
                                             <option value="0.5857vw">8px</option> 
@@ -183,7 +184,7 @@ Eduardo Jiménez Grande
                                         </select> 
 
                                         <label>Opacity:</label>
-                                        <select id="strokeopacity" onchange="setStrokeOpacity(this);"> 
+                                        <select id="strokeopacity"> 
                                             <option value="1">100%</option> 
                                             <option value=".90">90%</option> 
                                             <option value=".80">80%</option> 
