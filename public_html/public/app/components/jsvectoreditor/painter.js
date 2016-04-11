@@ -116,8 +116,16 @@ function setStrokeHexColor(color)
 
 function setStrokeWidth(widths)
 {
-    var width = widths.options[widths.selectedIndex].value;
+    var width = widths.value;
+    if (width > widths.max) {
+        width = widths.max;
+        widths.value = widths.max;
+    }
 
+    if (width < widths.min) {
+        width = widths.min;
+        widths.value = widths.min;
+    }
     editor.set("stroke-width", width);
 }
 
@@ -360,7 +368,7 @@ function onText() {
     setMode('text');
 }
 
-function onArrow(){
+function onArrow() {
     setMode('arrow');
 }
 

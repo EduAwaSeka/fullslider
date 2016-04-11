@@ -13,7 +13,7 @@ function VectorEditor(elem, width, height) {
     //cant think of any better way to do it
     this.prop = {
         "src": "http://upload.wikimedia.org/wikipedia/commons/a/a5/ComplexSinInATimeAxe.gif",
-        "stroke-width": vwToPx(parseFloat(getNumericValue($("#strokewidth").val()))),
+        "stroke-width": parseFloat(getNumericValue($("#strokewidth").val())),
         "stroke": $("#strokecolor").attr("data-dfcolor"),
         "fill": $("#fillcolor").attr("data-dfcolor"),
         "stroke-opacity": 1,

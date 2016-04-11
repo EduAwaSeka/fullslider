@@ -347,6 +347,8 @@ function handleMousemove(e) {
     }
 
     e.preventDefault();
+    e.stopPropagation();
+
     var ev = this.getTouch(e);
     var point = new Vector(ev.clientX, ev.clientY);
     var center = this.center;
@@ -365,14 +367,19 @@ function handleMousemove(e) {
             var y = moved.y;
             var x = point.subtract(center).x;
             var r = Math.atan2(y, x);
-            matrix = matrix.rotate(r);
+//            matrix = matrix.rotate(r);
+            var offset = $(me.selectedElement[0]).offset();
+            var center_x = (offset.left) + ($(me.selectedElement[0]).width() / 2);
+            var center_y = (offset.top) + ($(me.selectedElement[0]).height() / 2);
+            var radians = Math.atan2(x - center_x, y - center_y);
+            var angle = (r * (180 / Math.PI));
+
+            $(me.selectedElement[0]).css("transform", 'rotate(' + angle + 'deg)', "important");
             break;
         case 'scale':
             var element = me.selectedElement;
             var el_height = element[0].offsetHeight;
-            var container = $(".fullslider-slide-container");
-            var right_limit = container.offset().left + container.width();
-            var bottom_limit = container.offset().top + container.height();
+
             var initialPoint = $(element[0]).offset().top + el_height;
             var difference = (e.pageY - initialPoint);
             var new_heigth = el_height + difference;
@@ -436,20 +443,25 @@ function handleMousemove(e) {
             matrix = matrix.skew(
                     new Vector(moved.x / offset.y, 0)
                     );
+            // store and show the current transformation
+            this.current = matrix;
+            //targetobject = me.editedobject.attr("id");
+            this.transform(matrix);
+            //targetobject.transform(matrix);
             break;
         case 'skewy':
             var moved = point.subtract(anchor);
             matrix = matrix.skew(
                     new Vector(0, moved.y / offset.x)
                     );
+            // store and show the current transformation
+            this.current = matrix;
+            //targetobject = me.editedobject.attr("id");
+            this.transform(matrix);
+            //targetobject.transform(matrix);
             break;
     }
 
-    // store and show the current transformation
-    this.current = matrix;
-    //targetobject = me.editedobject.attr("id");
-    this.transform(matrix);
-    //targetobject.transform(matrix);
 }
 function handleMouseup(e) {
     // yes. I know
@@ -460,7 +472,7 @@ function handleMouseup(e) {
     e.preventDefault();
     // clear the mode, update display and output result.
     this.mode = null;
-    this.save();
+//    this.save();
     $(".slideviewport").css("-webkit-user-select", "auto");
     changeContent();
 }

@@ -1675,7 +1675,7 @@ Impressionist.prototype =
                 var svg_element = $(element).find("svg");
                 var added_graphic = $(svg_element).children()[0];
 
-                var stroke_width = parseFloat(getNumericValue($("#strokewidth").val()));
+                var stroke_width = pxToVw(parseFloat(getNumericValue($("#strokewidth").val())));
 
                 var is_arrow = false;
 
