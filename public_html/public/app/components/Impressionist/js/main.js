@@ -1642,42 +1642,109 @@ Impressionist.prototype =
             },
             addGraphics: function() {
                 var graphic_list = $("#canvas").find("svg").children();
+                var defs = $("#canvas").find("defs");
+                var svgtype = "";
+
                 for (var i = 0; i < graphic_list.length; i++) {
                     var graphic = graphic_list[i];
-                    var element = me.addFullsliderSlideItem(graphic_snippet);
 
-                    //On resize svg, transform is defined an set to " " -> remove transform attr.
-                    $(graphic).removeAttr('transform');
+                    if (!$(graphic).is("defs")) {
+                        var element = me.addFullsliderSlideItem(graphic_snippet);
+                        svgtype = $(graphic).attr("data-svgtype");
 
-                    $(element).find("svg").append($(graphic).clone());
-                    me.addGraphicStyle(element, graphic);
-                    me.finishAddFile($(element));
+                        //On resize svg, transform is defined an set to " " -> remove transform attr.
+                        $(graphic).removeAttr('transform');
+
+                        $(element).find("svg").append($(graphic).clone());
+
+                        switch (svgtype) {
+                            case "arrow":
+                                $(element).find("svg").prepend($(defs).clone()); //Prepend: Append in first position
+                                break;
+                            default:
+                                break;
+                        }
+
+                        me.addGraphicStyle(element, graphic);
+
+                        me.finishAddFile($(element));
+                    }
                 }
             },
             addGraphicStyle: function(element, graphic) {
                 var svg_element = $(element).find("svg");
                 var added_graphic = $(svg_element).children()[0];
-                //After append, because before has relative modal values
-                var width = pxToVw(graphic.getBoundingClientRect().width);
-                var height = pxToVw(graphic.getBoundingClientRect().height);
 
-                var left_translate = $(added_graphic).position().left * -1;
-                var top_translate = $(added_graphic).position().top * -1;
+                var stroke_width = parseFloat(getNumericValue($("#strokewidth").val()));
+
+                var is_arrow = false;
+
+                if ($(added_graphic).is("defs")) {
+                    is_arrow = true;
+                    var added_graphic = $(svg_element).children()[1];
+                    stroke_width *= 3;
+                }
+
+
+                //After append, because before has relative modal values
+                var width = parseFloat(pxToVw(graphic.getBBox().width));
+                var height = parseFloat(pxToVw(graphic.getBBox().height));
+
+                var left = graphic.getBBox().x;
+                var top = graphic.getBBox().y;
+
+                var left_translate = (left * -1);
+                var top_translate = (top * -1);
+
+                switch (true) {
+                    case (height != 0 && width != 0):
+                        if (width > height) {
+                            var w_rel = (stroke_width + 1 * height / width);
+                        }
+                        else {
+                            var w_rel = (stroke_width + 1 * width / height);
+                        }
+
+                        width += w_rel;
+                        left_translate += vwToPx(w_rel / 2);
+
+                        height += w_rel;
+                        top_translate += vwToPx(w_rel / 2);
+                        break;
+                    case(height != 0 && width == 0):
+                        width += stroke_width+1;
+                        left_translate += vwToPx((stroke_width+1) / 2);
+                        if (is_arrow) {
+                            height += stroke_width;
+                            top_translate += vwToPx(stroke_width / 3);
+                        }
+                        break
+                    case(height == 0 && width != 0):
+                        height += stroke_width+1;
+                        top_translate += vwToPx((stroke_width+1) / 2);
+                        if (is_arrow) {
+                            width += stroke_width;
+                            left_translate += vwToPx(stroke_width / 3);
+                        }
+                        break
+                }
+
 
                 $(added_graphic).attr("transform", "translate(" + left_translate + ", " + top_translate + ")");
 
                 $(svg_element).css("width", width + "vw");
                 $(svg_element).css("height", height + "vw");
+                $(svg_element).css("position", "absolute");
                 $(element).css("width", width + "vw");
                 $(element).css("height", height + "vw");
                 $(element).css("position", "absolute");
-                $(element).css("left", pxToVw($(graphic).position().left)+"vw");
-                $(element).css("top", pxToVw($(graphic).position().top)+"vw");
+                $(element).css("left", pxToVw(left) + "vw");
+                $(element).css("top", pxToVw(top) + "vw");
 
 
                 //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive
                 $(svg_element)[0].setAttribute('preserveAspectRatio', "xMinYMin meet");
-                $(svg_element)[0].setAttribute('viewBox', "0 0 " + graphic.getBoundingClientRect().width + " " + graphic.getBoundingClientRect().height);
+                $(svg_element)[0].setAttribute('viewBox', "0 0 " + vwToPx(width) + " " + vwToPx(height));
 
             },
             removeSlide: function(el)

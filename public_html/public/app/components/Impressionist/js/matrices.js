@@ -47,7 +47,7 @@ function addEvents(nodes, type, listener) {
 }
 
 function resizeElement(element, e) {
-    var minSize = 3 * getRel(); // minimal size in Vw
+    var minSize = 1.5 * getRel(); // minimal size in Vw
 
     e.preventDefault();
     e.stopPropagation();

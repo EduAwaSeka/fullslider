@@ -13,7 +13,7 @@ function VectorEditor(elem, width, height) {
     //cant think of any better way to do it
     this.prop = {
         "src": "http://upload.wikimedia.org/wikipedia/commons/a/a5/ComplexSinInATimeAxe.gif",
-        "stroke-width": vwToPx(parseFloat($("#strokewidth" ).val())),
+        "stroke-width": vwToPx(parseFloat(getNumericValue($("#strokewidth").val()))),
         "stroke": $("#strokecolor").attr("data-dfcolor"),
         "fill": $("#fillcolor").attr("data-dfcolor"),
         "stroke-opacity": 1,
@@ -293,7 +293,7 @@ VectorEditor.prototype.onMouseDown = function(x, y, target) {
                 "stroke": this.prop.stroke,
                 "stroke-width": this.prop["stroke-width"],
                 "fill-opacity": this.prop['fill-opacity'],
-                "stroke-opacity": this.prop["stroke-opacity"]
+                "stroke-opacity": this.prop["stroke-opacity"],
             });
             this.addShape(shape);
         }
@@ -401,30 +401,24 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
                 //var hack = pathsplit.reverse().slice(3).reverse().join(" ")+' ';
 
                 //console.log(pathsplit)
-                if (this.mode == "line") {
+                if (this.mode == "line" || this.mode == "arrow") {
                     //safety measure, the next should work, but in practice, no
                     pathsplit.splice(1);
                 } else {
-                    if (this.mode == "arrow") {
-                        pathsplit.splice(1);
-                    } else {
-                        var last = pathsplit[pathsplit.length - 1];
-                        //console.log(this.selected[0].polypoints.length, pathsplit.length)
-                        if (this.selected[0].polypoints.length < pathsplit.length) {
-                            //if(Math.floor(last[1]) == this.lastpointsX && Math.floor(last[2]) == this.lastpointsY){
-                            pathsplit.splice(pathsplit.length - 1, 1);
-                        }
-                        //}else{
-                        //  console.log(last[1], last[2], this.lastpointsX, this.lastpointsY)
-                        //}
+                    var last = pathsplit[pathsplit.length - 1];
+                    //console.log(this.selected[0].polypoints.length, pathsplit.length)
+                    if (this.selected[0].polypoints.length < pathsplit.length) {
+                        //if(Math.floor(last[1]) == this.lastpointsX && Math.floor(last[2]) == this.lastpointsY){
+                        pathsplit.splice(pathsplit.length - 1, 1);
                     }
+
                 }
                 //this.lastpointsX = x; //TO FIX A NASTY UGLY BUG
                 //this.lastpointsY = y; //SERIOUSLY
 
                 this.selected[0].attr("path", pathsplit.toString() + 'L' + x + ' ' + y);
             } else {
-                //console.debug(pathsplit)
+
                 //normally when this executes there's somethign strange that happened
                 this.selected[0].attr("path", this.selected[0].attrs.path + 'L' + x + ' ' + y);
             }
@@ -499,6 +493,7 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
             this.unselect();
         } else if (this.mode == "arrow") {
             this.selected[0].attr("arrow-end", 'block');
+            this.selected[0].node.setAttribute("data-svgtype",this.mode);
             this.unselect();
         } else if (this.mode == "line") {
             this.unselect();
@@ -521,5 +516,3 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
     }
     return false;
 };
-
-
