@@ -96,7 +96,7 @@ Impressionist.prototype =
             },
             initializeEditImageModal: function() {
                 $("#modals").append(edit_img_modal);
-                $("#editimgmodal").find(".modal-body").load("app/html/crop_menu.html");
+                $("#editimgmodal").find(".modal-body").append(crop_menu);
             },
             initializeNewPresModal: function() {
                 $("#modals").append(new_pres_modal);

@@ -298,7 +298,7 @@ var Style = (function() {
             cleaned[4] += 'px';
             cleaned[5] += 'px';
             var moz = cleaned.join(',');
-            me.selectedElement.css("-webkit-transform", "matrix(" + css + ")");
+            $(me.selectedElement).css("-webkit-transform", "matrix(" + css + ")");
             return 'matrix(' + css + ');';
             /*return [
              '-webkit-transform: matrix(' + css + ');',
