@@ -8,7 +8,7 @@ Fullslider
 You can create presentations and view it, using Reveal.js. You can check out the Reveal.JS demo presentation: http://lab.hakim.se/reveal-js/
 
 ### Browser Compatibility
-Fullslider works in Chrome and Opera browsers.
+Fullslider works in Chrome, Mozilla Firefox and Opera browsers.
 
 
 ### How to install?###

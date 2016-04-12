@@ -612,7 +612,7 @@ Impressionist.prototype =
                         clickoutFiresChange: false,
                         theme: 'sp-dark',
                         change: function(color) {
-                            document.execCommand('foreColor', false, color.toHexString());
+//                            document.execCommand('foreColor', false, color.toHexString());
                             Backbone.trigger('etch:state', {
                                 color: color.toHexString()
                             });
@@ -1008,6 +1008,7 @@ Impressionist.prototype =
                 });
 
                 //Add Text buttons on click. 
+
                 $("#addtextbtn,#normalTextBtn").on("click", function(e)
                 {
                     e.stopPropagation();
@@ -1154,7 +1155,12 @@ Impressionist.prototype =
                 $("#inputimage").fileinput({
                     uploadUrl: "/uploadimage", // server upload action
                     uploadAsync: true,
-                    maxFileCount: 5
+                    maxFileCount: 5,
+                    showUpload: false, // hide upload button
+                    showRemove: false, // hide remove button
+                }).on("filebatchselected", function(event, files) { //For auto-upload images
+                    // trigger upload method immediately after files are selected
+                    $("#inputimage").fileinput("upload");
                 });
 
                 $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
@@ -1712,16 +1718,16 @@ Impressionist.prototype =
                         top_translate += vwToPx(w_rel / 2);
                         break;
                     case(height != 0 && width == 0):
-                        width += stroke_width+1;
-                        left_translate += vwToPx((stroke_width+1) / 2);
+                        width += stroke_width + 1;
+                        left_translate += vwToPx((stroke_width + 1) / 2);
                         if (is_arrow) {
                             height += stroke_width;
                             top_translate += vwToPx(stroke_width / 3);
                         }
                         break
                     case(height == 0 && width != 0):
-                        height += stroke_width+1;
-                        top_translate += vwToPx((stroke_width+1) / 2);
+                        height += stroke_width + 1;
+                        top_translate += vwToPx((stroke_width + 1) / 2);
                         if (is_arrow) {
                             width += stroke_width;
                             left_translate += vwToPx(stroke_width / 3);

@@ -39,6 +39,7 @@ Eduardo Jiménez Grande
         <script src="http://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
         <script type="text/javascript" src="app/components/bootstrap-3.3.5/js/bootstrap.js"></script>
+        <script type="text/javascript" src="app/components/bootstrap-3.3.5/js/bootstrap-hoverplugin.js"></script>
         <link type="text/css" rel="stylesheet" href="app/css/lib/etch/styles/etch.css" />
 
         <link type="text/css" rel="stylesheet" href="app/components/spectrum/spectrum.css">
@@ -72,11 +73,11 @@ Eduardo Jiménez Grande
                         <a href="#" class="redo btn btn-info menubtn" title="redo"><i class="fa fa-redo"></i></a>
                     </div>
                     <div class="" id="addElementsPanel">
-                        <div class="btn-group">
+                        <div id="text-tools" class="btn-group">
                             <button class="btn btn-info " id="addtextbtn" title="Add text">
                                 <i class="icon icon-text-ico"></i>
                             </button>
-                            <button id="textDropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button id="textDropdown" type="button" class="btn btn-default dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Add Text Dropdown</span>
                             </button>
@@ -158,6 +159,7 @@ Eduardo Jiménez Grande
                                             <option value=".30">30%</option> 
                                             <option value=".20">20%</option>
                                             <option value=".10">10%</option>  
+                                            <option value=".05">5%</option>  
                                         </select> 
                                     </div>
                                 </div>
@@ -185,6 +187,7 @@ Eduardo Jiménez Grande
                                             <option value=".30">30%</option> 
                                             <option value=".20">20%</option>
                                             <option value=".10">10%</option>  
+                                            <option value=".05">5%</option>  
                                         </select> 
                                     </div>
                                 </div>

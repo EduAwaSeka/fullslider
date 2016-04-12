@@ -117,12 +117,12 @@ function setStrokeHexColor(color)
 function setStrokeWidth(widths)
 {
     var width = widths.value;
-    if (width > widths.max) {
+    if (parseFloat(width) > parseFloat(widths.max)) {
         width = widths.max;
         widths.value = widths.max;
     }
 
-    if (width < widths.min) {
+    if (parseFloat(width) < parseFloat(widths.min)) {
         width = widths.min;
         widths.value = widths.min;
     }
@@ -283,35 +283,35 @@ function onCloseDialog()
 
 function onFillColorChange(e)
 {
-    var ourElement = e.srcElement || e.originalTarget;
+    var ourElement = this;
     setFillColor(ourElement);
 }
 
 
 function onFillOpacityChange(e)
 {
-    var ourElement = e.srcElement || e.originalTarget;
+    var ourElement = this;
     setFillOpacity(ourElement);
 }
 
 
 function onStrokeColorChange(e)
 {
-    var ourElement = e.srcElement || e.originalTarget;
+    var ourElement = this;
     setStrokeColor(ourElement);
 }
 
 
 function onStrokeOpacityChange(e)
 {
-    var ourElement = e.srcElement || e.originalTarget;
+    var ourElement = this;
     setStrokeOpacity(ourElement);
 }
 
 
 function onStrokeWidthChange(e)
 {
-    var ourElement = e.srcElement || e.originalTarget;
+    var ourElement = $("#strokewidth")[0];
     setStrokeWidth(ourElement);
 }
 

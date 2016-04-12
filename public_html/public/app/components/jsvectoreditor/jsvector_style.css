@@ -99,6 +99,11 @@
     font-size: 0.8vw;
     height: 1.8vw;
 }
+#graphic-options input {
+    width: 4.9vw;
+    font-size: 1vw;
+    height: 1.9vw;
+}
 
 #fillcolor {
     font-size: 0.5857vw;
