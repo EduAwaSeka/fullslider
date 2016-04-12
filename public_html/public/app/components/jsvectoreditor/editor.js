@@ -21,6 +21,8 @@ function VectorEditor(elem, width, height) {
         "text": "Text"
     };
     this.mode = "select";
+    this.arrow_start="none";
+    this.arrow_end="none";
     this.selectbox = null;
     this.selected = [];
     this.action = "";
@@ -146,9 +148,18 @@ VectorEditor.prototype.setMode = function(mode) {
         this.mode = mode;
     }
 };
+
+VectorEditor.prototype.setArrowStart= function(type) {
+    this.arrow_start=type;
+};
+VectorEditor.prototype.setArrowEnd= function(type) {
+    this.arrow_end=type;
+};
+
+
 VectorEditor.prototype.on = function(event, callback) {
     if (!this.listeners[event]) {
-        this.listeners[event] = []
+        this.listeners[event] = [];
     }
 
     if (this.in_array(callback, this.listeners[event]) == -1) {
@@ -492,8 +503,10 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
         } else if (this.mode == "path") {
             this.unselect();
         } else if (this.mode == "arrow") {
-            this.selected[0].attr("arrow-end", 'block');
-            this.selected[0].node.setAttribute("data-svgtype",this.mode);
+            
+            this.selected[0].attr("arrow-start", this.arrow_start);
+            this.selected[0].attr("arrow-end", this.arrow_end);
+            this.selected[0].node.setAttribute("data-svgtype", this.mode);
             this.unselect();
         } else if (this.mode == "line") {
             this.unselect();

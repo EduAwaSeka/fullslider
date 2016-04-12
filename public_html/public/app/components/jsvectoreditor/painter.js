@@ -6,6 +6,9 @@ function setMode(mode)
     } else if (mode == "image") {
         editor.prop.src = prompt("Image Source URL:", editor.prop.src);
     }
+    if (mode != "arrow") {
+        $("#arrow-type").css("display", "none");
+    }
 
     removeDisabledBtns();
     $("#" + mode).attr("disabled", "true");
@@ -63,6 +66,7 @@ function disableEditor() {
         $("#addimagebtn").attr("disabled", null);
         $(".undo").attr("disabled", undo_disabled);
         $(".redo").attr("disabled", redo_disabled);
+        $("#arrow-type").css("display", "none");
     }
 }
 
@@ -369,7 +373,22 @@ function onText() {
 }
 
 function onArrow() {
+    $("#arrow-start").val("none");
+    $("#arrow-end").val("block");
+    onArrowStart();
+    onArrowEnd();
+    
+    $("#arrow-type").css("display", "block");
+    
     setMode('arrow');
+}
+function onArrowStart() {
+    var type = $("#arrow-start").val();
+    editor.setArrowStart(type);
+}
+function onArrowEnd() {
+    var type = $("#arrow-end").val();
+    editor.setArrowEnd(type);
 }
 
 
@@ -412,6 +431,8 @@ function jsvectoreditor_init() {
     $('#drawImage').on("click", onImage);
     $('#drawText').on("click", onText);
     $('#drawArrow').on("click", onArrow);
+    $('#arrow-start').on("change", onArrowStart);
+    $('#arrow-end').on("change", onArrowEnd);
     $('#deleteSvg').on("click", onDelete);
 
     $('#getMarkup').on("click", onGetMarkup);

@@ -76,7 +76,7 @@
     padding: 0.2vw;
 }
 #graphic-options .panel-heading {
-    padding: 0.25vw 1.0981vw
+    padding: 0.25vw 0.0981vw 0.25vw 1.0981vw;
 }
 #graphic-options .panel-body {
     text-align: center; 
@@ -103,6 +103,10 @@
     width: 4.9vw;
     font-size: 1vw;
     height: 1.9vw;
+}
+
+#arrow-type{
+    display: none;
 }
 
 #fillcolor {
