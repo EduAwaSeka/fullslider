@@ -83,7 +83,7 @@ localhost:8888
 
 ### RELEASE NOTES ###
 
-###### v0.1 - With Fullslider, you can do: ######
+###### v0.2 - With Fullslider, you can do: ######
  - Create new presentations.
  - Download presentation as .fspf file (FullSlider Presentation File).
  - Open downloaded presentations from Fullslider, with .fspf extension.
