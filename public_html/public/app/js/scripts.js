@@ -60,7 +60,11 @@ function getFontSize(element) {
 }
 
 function getNumericValue(value) {
-    return value.replace(/[^-\d\.]/g, '');
+    return value.toString().replace(/[^-\d\.]/g, '');
+}
+
+function getFloatValue(value){
+    return parseFloat(getNumericValue(value));
 }
 
 function pxToVw(value) {

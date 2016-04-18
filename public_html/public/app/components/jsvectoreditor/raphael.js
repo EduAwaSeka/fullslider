@@ -577,6 +577,7 @@
             opacity: 1,
             path: "M0,0",
             r: 0,
+            rotation: 0,
             rx: 0,
             ry: 0,
             src: "",

@@ -13,7 +13,7 @@ function VectorEditor(elem, width, height) {
     //cant think of any better way to do it
     this.prop = {
         "src": "http://upload.wikimedia.org/wikipedia/commons/a/a5/ComplexSinInATimeAxe.gif",
-        "stroke-width": parseFloat(getNumericValue($("#strokewidth").val())),
+        "stroke-width": getFloatValue($("#strokewidth").val()),
         "stroke": $("#strokecolor").attr("data-dfcolor"),
         "fill": $("#fillcolor").attr("data-dfcolor"),
         "stroke-opacity": 1,
@@ -21,8 +21,8 @@ function VectorEditor(elem, width, height) {
         "text": "Text"
     };
     this.mode = "select";
-    this.arrow_start="none";
-    this.arrow_end="none";
+    this.arrow_start = "none";
+    this.arrow_end = "none";
     this.selectbox = null;
     this.selected = [];
     this.action = "";
@@ -99,7 +99,9 @@ function VectorEditor(elem, width, height) {
         }, this));
         $(elem).mousemove(bind(function(event) {
             event.preventDefault();
-            this.onMouseMove(event.clientX - offset()[0], event.clientY - offset()[1], event.target);
+            var x=getFloatValue(event.clientX) - getFloatValue(offset()[0]);
+            var y=getFloatValue(event.clientY) - getFloatValue(offset()[1]);
+            this.onMouseMove(x, y, event.target);
         }, this));
         $(elem).mouseup(bind(function(event) {
             event.preventDefault();
@@ -149,11 +151,11 @@ VectorEditor.prototype.setMode = function(mode) {
     }
 };
 
-VectorEditor.prototype.setArrowStart= function(type) {
-    this.arrow_start=type;
+VectorEditor.prototype.setArrowStart = function(type) {
+    this.arrow_start = type;
 };
-VectorEditor.prototype.setArrowEnd= function(type) {
-    this.arrow_end=type;
+VectorEditor.prototype.setArrowEnd = function(type) {
+    this.arrow_end = type;
 };
 
 
@@ -376,9 +378,11 @@ VectorEditor.prototype.onMouseMove = function(x, y, target) {
                 } else if (this.selected[0].type == "image") {
                     this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "ellipse") {
+//                    var xi= x - getFloatValue(this.onGrabXY[0]);
+//                    console.log(x);
                     this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
                 } else if (this.selected[0].type == "text") {
-                    this.resize(this.selected[0], x - this.onGrabXY[0], y - this.onGrabXY[1], this.onGrabXY[0], this.onGrabXY[1]);
+                    this.resize(this.selected[0], x - getFloatValue(this.onGrabXY[0]), y - getFloatValue(this.onGrabXY[1]), getFloatValue(this.onGrabXY[0]), getFloatValue(this.onGrabXY[1]));
                 } else if (this.selected[0].type == "path") {
                     this.selected[0].scale((x - this.onGrabXY[0]) / this.onGrabXY[2], (y - this.onGrabXY[1]) / this.onGrabXY[3], this.onGrabXY[0], this.onGrabXY[1]);
                 }
@@ -503,7 +507,7 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
         } else if (this.mode == "path") {
             this.unselect();
         } else if (this.mode == "arrow") {
-            
+
             this.selected[0].attr("arrow-start", this.arrow_start);
             this.selected[0].attr("arrow-end", this.arrow_end);
             this.selected[0].node.setAttribute("data-svgtype", this.mode);

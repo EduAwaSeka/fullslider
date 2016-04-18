@@ -128,8 +128,8 @@ VectorEditor.prototype.trackerBox = function(x, y, action){
      
   }).mouseout(function(){
     this.attr("fill", "white");
-    if(this.paper && this.paper.editor && this.paper.editor.hideTooltip)
-      this.paper.editor.hideTooltip();
+//    if(this.paper && this.paper.editor && this.paper.editor.hideTooltip)
+//      this.paper.editor.hideTooltip();
     
   }).mousedown(function(event){
     //console.log(event)
