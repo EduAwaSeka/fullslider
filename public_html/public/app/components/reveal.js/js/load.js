@@ -1,5 +1,20 @@
-document.getElementById("slides").innerHTML = sessionStorage.preview;
-document.title = sessionStorage.title;
+function cleanBase64Params(param){
+    param=param.replace(/ /g, '+');
+    param=param.replace(/=/g, '');
+    return param;
+}
+
+if (sessionStorage.preview) {
+    document.getElementById("slides").innerHTML = sessionStorage.preview;
+    document.title = sessionStorage.title;
+}
+else {
+    var params = purl(window.location.href).param(); // returns 'blue'
+    if (params.slides) {
+        document.getElementById("slides").innerHTML = atob(cleanBase64Params(params.slides));
+    }
+
+}
 
 function exitFullscreen() {
 
@@ -19,7 +34,7 @@ function exitFullscreen() {
 }
 
 function toggleFullScreen() {
-    var elem=document.body;
+    var elem = document.body;
     // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
     if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
         if (elem.requestFullScreen) {

@@ -6,6 +6,7 @@ var express = require("express"),
         fs = require("fs"),
         port = process.argv[2] || 8888,
         upload = require('loadimage.js'),
+        pdf = require('toPDF.js'),
         bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public/'));
@@ -61,6 +62,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 app.post('/uploadimage', multipartMiddleware, upload.uploadImage);
 app.post('/upimagefromurl', upload.uploadUrlImage);
+app.post('/toPDF', pdf.toPDF);
 
 app.listen(parseInt(port, 10));
 

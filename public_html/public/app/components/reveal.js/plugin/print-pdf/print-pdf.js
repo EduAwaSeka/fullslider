@@ -40,9 +40,8 @@ console.log( 'Printing PDF (Paper size: '+ page.paperSize.width + 'x' + page.pap
 
 page.open( inputFile, function( status ) {
 	window.setTimeout( function() {
-		console.log( 'Printed succesfully' );
+		console.log( 'Printed successfully' );
 		page.render( outputFile );
 		phantom.exit();
 	}, 1000 );
 } );
-

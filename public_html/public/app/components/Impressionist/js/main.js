@@ -49,6 +49,8 @@ Impressionist = function()
     this.boundTextOption;
 
     this.patterns = {};
+
+    this.wait_s = false;
 };
 Impressionist.prototype =
         {
@@ -131,6 +133,10 @@ Impressionist.prototype =
                 $("#dangeralert").fadeOut(0);
                 $("#modals").append(alert_success);
                 $("#successalert").fadeOut(0);
+                $("#modals").append(alert_warning);
+                $("#warningalert").fadeOut(0);
+                $("#modals").append(alert_info);
+                $("#infoalert").fadeOut(0);
             },
             initializeGraphics: function() {
                 jsvectoreditor_init();
@@ -1083,6 +1089,28 @@ Impressionist.prototype =
                     $("#configmodal").removeClass("hide");
                     $("#configmodal").modal("show");
                 });
+                $("#pdfbtn").on("click", function(e) {
+                    if (!me.wait_s) { //Only one click
+                        me.wait_s=true;
+                        var slides = me.generateExportMarkup();
+                        var title = me.getTitle();
+
+                        $("#pdfbtn").button('loading');
+                        $("#pdfbtn").html('Generating PDF...');
+                        var msg = "Generating pdf. Wait please...";
+                        openAlert("info", msg);
+
+                        $.post("/toPDF", {'slides': slides, title: title}, function(json) {
+                            if (json.end_code == 0) { //If no error
+                                window.open("cache/" + title + ".pdf");    // Opens the pdf download prompt
+                            }
+                            $("#infoalert").fadeOut(0);
+                            $("#pdfbtn").button('reset');
+                            me.wait_s=false;
+                        }, 'json');
+                    }
+                });
+
                 $("#viewbtn").on("click", function(e)
                 {
                     var slides = me.generateExportMarkup();

@@ -106,11 +106,11 @@
 		margin-right: 0;
 	}
 	.reveal pre code {
-		padding: 20px;
-		border: 1px solid #ddd;
+		padding: 1.464vw;
+		border: 0.0732vw solid #ddd;
 	}
 	.reveal blockquote {
-		margin: 20px 0;
+		margin: 1.464vw 0;
 	}
 	.reveal .slides {
 		position: static !important;
@@ -150,7 +150,7 @@
 		top: 0 !important;
 		margin-left: 0 !important;
 		margin-top: 0 !important;
-		padding: 60px 20px !important;
+		padding: 4.39vw 1.464vw !important;
 		z-index: auto !important;
 
 		opacity: 1 !important;
@@ -189,9 +189,9 @@
 	}
 	.reveal section img {
 		display: block;
-		margin: 15px 0px;
+		margin: 1.098vw 0vw;
 		background: rgba(255,255,255,1);
-		border: 1px solid #666;
+		border: 0.0732vw solid #666;
 		box-shadow: none;
 	}
 

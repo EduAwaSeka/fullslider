@@ -250,6 +250,16 @@ var alert_success ='<div id="successalert" class="alert alert-success alert-dism
                     '<strong>Success: </strong><span id="successmsg"></span>'+
                   '</div>';
           
+var alert_warning ='<div id="warningalert" class="alert alert-warning alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong>Warning: </strong><span id="warningmsg"></span>'+
+                  '</div>';
+          
+var alert_info ='<div id="infoalert" class="alert alert-info alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong>Info: </strong><span id="infomsg"></span>'+
+                  '</div>';
+          
 var graphic_tools_options = '<div class="panel panel-default">'+
                                 '<div class="panel-heading">Stroke:</div>'+
                                 '<div class="panel-body">'+
