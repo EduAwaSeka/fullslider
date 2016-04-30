@@ -1091,7 +1091,7 @@ Impressionist.prototype =
                 });
                 $("#pdfbtn").on("click", function(e) {
                     if (!me.wait_s) { //Only one click
-                        me.wait_s=true;
+                        me.wait_s = true;
                         var slides = me.generateExportMarkup();
                         var title = me.getTitle();
 
@@ -1100,13 +1100,18 @@ Impressionist.prototype =
                         var msg = "Generating pdf. Wait please...";
                         openAlert("info", msg);
 
-                        $.post("/toPDF", {'slides': slides, title: title}, function(json) {
+                        $.post("/toPDF", {'slides': btoa(slides), title: title}, function(json) {
                             if (json.end_code == 0) { //If no error
-                                window.open("cache/" + title + ".pdf");    // Opens the pdf download prompt
+                                window.open("tmp_files/" + title + ".pdf");    // Opens the pdf download prompt
+                                $("#infoalert").fadeOut(0);
                             }
-                            $("#infoalert").fadeOut(0);
+                            else {
+                                $("#infoalert").fadeOut(0);
+                                msg = "";
+                                openAlert("danger", msg);
+                            }
                             $("#pdfbtn").button('reset');
-                            me.wait_s=false;
+                            me.wait_s = false;
                         }, 'json');
                     }
                 });
@@ -1749,16 +1754,16 @@ Impressionist.prototype =
                         width += stroke_width + 1;
                         left_translate += vwToPx((stroke_width + 1) / 2);
                         if (is_arrow) {
-                            height += stroke_width;
-                            top_translate += vwToPx(stroke_width / 3);
+                            height += stroke_width + 1;
+                            top_translate += vwToPx(stroke_width / 1.75);
                         }
                         break
                     case(height == 0 && width != 0):
                         height += stroke_width + 1;
                         top_translate += vwToPx((stroke_width + 1) / 2);
                         if (is_arrow) {
-                            width += stroke_width;
-                            left_translate += vwToPx(stroke_width / 3);
+                            width += stroke_width + 1;
+                            left_translate += vwToPx(stroke_width / 1.75);
                         }
                         break
                 }

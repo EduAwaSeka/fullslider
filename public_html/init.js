@@ -6,16 +6,17 @@ var express = require("express"),
         fs = require("fs"),
         port = process.argv[2] || 8888,
         upload = require('loadimage.js'),
-        pdf = require('toPDF.js'),
+        managepresentation = require('managepresentation.js'),
         bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public/'));
 
 app.use(bodyParser.urlencoded({
+    limit: '100mb',
     extended: true
 }));
-app.use(bodyParser.json());
 
+app.use(bodyParser.json({ limit: '100mb' }));
 
 app.get("/", function(request, response) {
 
@@ -62,7 +63,8 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 app.post('/uploadimage', multipartMiddleware, upload.uploadImage);
 app.post('/upimagefromurl', upload.uploadUrlImage);
-app.post('/toPDF', pdf.toPDF);
+app.post('/toPDF', managepresentation.toPDF);
+app.post('/viewPres', managepresentation.viewPresentation);
 
 app.listen(parseInt(port, 10));
 
