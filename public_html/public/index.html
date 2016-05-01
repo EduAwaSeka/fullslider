@@ -48,6 +48,7 @@ Eduardo Jiménez Grande
 
         <link rel="stylesheet" href="app/components/jsvectoreditor/jsvector_style.css" type="text/css"/>
 
+        <link rel="stylesheet" href="app/css/code-styles.css" type="text/css"/>
 
         <!-- FULLSLIDER END -->
     </head>
@@ -90,6 +91,9 @@ Eduardo Jiménez Grande
                                 <li><a id="subtTextBtn" href="#">Subtitle</a></li>
                             </ul>
 
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-info" id="addcodebtn" href="#" title="Add code"><i class="fa fa-code"></i></a>
                         </div>
                         <div class="btn-group">
                             <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="fa fa-image"></i></a>
@@ -262,7 +266,6 @@ Eduardo Jiménez Grande
         <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 
         <!-- code formatting -->
-
         <script src="app/components/Impressionist/js/main.js"></script>
         <script src ="app/components/Impressionist/js/startup.js"></script>
 
@@ -297,7 +300,8 @@ Eduardo Jiménez Grande
         <script type="text/javascript" src="app/components/jsvectoreditor/painter.js"></script>
         <script src="app/components/jsvectoreditor/tinyjson.js" type="text/javascript"></script>
 
-
+        <script src="app/components/highlight/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
 
         <script>
             allowEdit();

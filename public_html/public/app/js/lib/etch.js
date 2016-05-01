@@ -18,7 +18,8 @@
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color']
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
+            'code': ['codestyle', 'shownumbers'],
         }
     };
 
@@ -54,7 +55,9 @@
             'click [data-option="fontSize"]': 'setFontSize',
             'click [data-option="fontFamily"]': 'setFontFamily',
             'click .etch-undo': 'toggleUndo',
-            'click .etch-redo': 'toggleRedo'
+            'click .etch-redo': 'toggleRedo',
+            'click [data-option="codestyle"]': 'setCodeStyle',
+            'click .etch-shownumbers': 'shownumbers',
         },
         changeEditable: function() {
             this.setButtonClass();
@@ -91,6 +94,12 @@
                         var buttonEl = $(color_selector);
                         $(buttonEl).addClass("etch-color");
                         $(buttonEl).removeClass("col-sm-2");
+                        break;
+                    case "codestyle":
+                        var buttonEl = $(code_style_selector);
+                        break;
+                    case "shownumbers":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
                         break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
@@ -299,6 +308,32 @@
             editableModel.trigger('save');
             changeContent();//Event for undo redo
         },
+        shownumbers: function(e) {
+            var elementToChange = getElementEditing();
+            var ol = $($(elementToChange).find("ol"));
+            if (ol.css("list-style-type") == "decimal") {
+                ol.css("list-style-type", "none");
+            }
+            else {
+                ol.css("list-style-type", "decimal");
+            }
+            changeContent();//Event for undo redo
+        },
+        setCodeStyle: function(e) {
+            e.preventDefault();
+            var elementToChange = getElementEditing();
+            elementToChange = $(elementToChange.find("pre"));
+
+            var current = elementToChange.attr("data-class");
+            var value = extractValue(e);
+            elementToChange.removeClass(current);
+            elementToChange.addClass(value);
+            elementToChange.attr("data-class", value);
+
+            var codestyle = document.getElementsByClassName('codeStyleReadout')[0];
+            codestyle.innerHTML = value;
+            changeContent();//Event for undo redo
+        },
         setFontFamily: function(e) {
 
             var value = extractValue(e);
@@ -352,8 +387,9 @@
             var $editable = $(target).etchFindEditable();
             var fontSizeReadout;
             var fontFamilyReadout;
-            $(".slidelement").attr("contentEditable", "false");
-            $editable.attr('contenteditable', true);
+            var codestyle;
+//            $(".slidelement").attr("contentEditable", "false");
+//            $editable.attr('contenteditable', true);
 
             // if the editor isn't already built, build it
             var $editor = $('.etch-editor-panel');
@@ -382,25 +418,32 @@
                 $editor.css("overflow", "initial");
             }
 
-            //initialize value of font-size etch-editor-button with selected element value
-            fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-            fontSizeReadout.innerHTML = parseFloat(pxToVw(getFontSize($editable))).toFixed(2) + " vw";
+            if ($editable.attr('data-button-class') == "text") {
+                //initialize value of font-size etch-editor-button with selected element value
+                fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+                fontSizeReadout.innerHTML = parseFloat(pxToVw(getFontSize($editable))).toFixed(2) + " vw";
 
-            //initialize value of font-family etch-editor-button with selected element value
-            fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
-            var value = $editable.css("font-family");
-            if (value[0] === "'") {
-                value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
-            }
-            else {
-                if (value[0] === "\"") {
-                    value = value.substr(value.indexOf("\"") + 1, value.lastIndexOf("\"") - 1);
-                } else {
-                    value = value.substr(0, value.lastIndexOf(","));
+                //initialize value of font-family etch-editor-button with selected element value
+                fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
+                var value = $editable.css("font-family");
+                if (value[0] === "'") {
+                    value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
                 }
+                else {
+                    if (value[0] === "\"") {
+                        value = value.substr(value.indexOf("\"") + 1, value.lastIndexOf("\"") - 1);
+                    } else {
+                        value = value.substr(0, value.lastIndexOf(","));
+                    }
+                }
+                fontFamilyReadout[0].innerHTML = value;
             }
-            fontFamilyReadout[0].innerHTML = value;
 
+            if ($editable.attr('data-button-class') == "code") {
+                var codevalue = $($($editable).find("pre")).attr("data-class");
+                codestyle = document.getElementsByClassName('codeStyleReadout')[0];
+                codestyle.innerHTML = codevalue;
+            }
 
             // Firefox seems to be only browser that defaults to `StyleWithCSS == true`
             // so we turn it off here. Plus a try..catch to avoid an error being thrown in IE8.
