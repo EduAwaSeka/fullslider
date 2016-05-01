@@ -402,6 +402,7 @@ Impressionist.prototype =
                     $(this).removeClass("grabbing");
                     switch ($(this).attr("data-type")) {
                         case "text":
+                        case "code":
                             me.editElement(this);
                             break;
                         case "image":
@@ -452,7 +453,18 @@ Impressionist.prototype =
                                         //nothing
                                     }
                                     else {
-                                        changeContent();
+                                        switch (e.which) {
+                                            case 37:
+                                                break;
+                                            case 38:
+                                                break;
+                                            case 39:
+                                                break;
+                                            case 40:
+                                                break;
+                                            default:
+                                                changeContent();
+                                        }
                                     }
                                 }
                             }
@@ -559,6 +571,8 @@ Impressionist.prototype =
             editElement: function(el) {
                 me.clearElementSelections();
                 me.selectedforedit = el;
+                $(".slidelement").attr("contentEditable", "false");
+                $(el).attr('contenteditable', true);
                 $(el).draggable({disabled: true});
                 $(el).addClass("elementediting");
                 $(el).removeClass("movecursor");
@@ -649,6 +663,10 @@ Impressionist.prototype =
                 me.updateScaledSlide(me.selectedSlide);
                 var t = $(e.target);
                 if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *, #editimgmodal *').size()) {
+                    if ($(me.selectedforedit).attr("data-type") == "code") {
+                        $($(me.selectedforedit).find("code")[0]).removeClass();
+                        hljs.highlightBlock($(me.selectedforedit).find("code")[0]);
+                    }
                     me.clearElementSelections();
                 }
 
@@ -828,6 +846,29 @@ Impressionist.prototype =
                 $(element).css("font-family", font);
 
 
+                $(element).css("position", "absolute");
+                $(element).css("left", "24.6vw");
+                $(element).css("top", "5.66vw");
+                $(element).css("line-height", "initial", "important");
+                //$(element).css("color", "#000");
+                $(element).css("height", "initial");
+                $(element).css("width", "auto");
+                $(element).css("white-space", "normal");
+                var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
+                var maxheight = calculateMaxHeight(element, $(".fullslider-slide-container"));
+                $(element).css("max-width", maxwidth + "vw");
+                $(element).css("max-height", maxheight + "vw");
+                $(element).css("overflow", "hidden");
+                $(element).css("word-break", "break-word", "important");
+            },
+            addFullsliderCode: function() {
+                var element = me.addFullsliderSlideItem(code_snippet);
+                me.addCodeStyle(element);
+                hljs.highlightBlock($(element).find("code")[0]);
+                me.finishAddFile($(element));
+            },
+            addCodeStyle: function(element) {
+                $(element).css("font-size", "1.3vw");
                 $(element).css("position", "absolute");
                 $(element).css("left", "24.6vw");
                 $(element).css("top", "5.66vw");
@@ -1040,6 +1081,15 @@ Impressionist.prototype =
                     me.toSelectElement(me.selectedElement);
                 });
                 //End add text buttons on click
+
+                $("#addcodebtn").on("click", function(e)
+                {
+                    e.stopPropagation();
+                    me.addFullsliderCode();
+                    changeContent();//Event for undo redo
+                    //On create text element, this is selected
+                    me.toSelectElement(me.selectedElement);
+                });
 
                 $("#addimagebtn").on("click", function(e)
                 {

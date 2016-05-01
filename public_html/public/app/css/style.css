@@ -265,6 +265,7 @@ p {
 .slidelement ul, .slidelement ol{
     list-style-position: inside;
     padding-left:0;
+    color: initial;
 }
 
 #markdown-editor{
@@ -505,4 +506,23 @@ p {
     color: #fff !important;
     border: 0.15vw #fff solid !important;
     border-radius: 0.5vw !important;
+}
+
+pre.prettyprint code{
+    padding: 0.5vw;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    white-space: pre-wrap;
+}
+
+pre.prettyprint, code.prettyprint{
+    margin:0 !important;
+    font-size: inherit !important;
+    background-color: #fff;
+    padding: 0.01vw !important;
+}
+pre.prettyprint ol{
+    color:inherit;
+    list-style-type: decimal;
+    margin-top: 0;
+    margin-bottom: 0;
 }

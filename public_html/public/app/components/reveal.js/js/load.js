@@ -1,36 +1,38 @@
 function initializeReveal() {
     // Full list of configuration options available at:
     // https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-        keyboard: true,
-        touch: true,
-        mouseWheel: true,
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+    $(document).ready(function() {
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            slideNumber: true,
+            keyboard: true,
+            touch: true,
+            mouseWheel: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-        // Optional reveal.js plugins
-        dependencies: [
-            {src: 'lib/js/classList.js', condition: function() {
-                    return !document.body.classList;
-                }},
-            {src: 'plugin/markdown/marked.js', condition: function() {
-                    return !!document.querySelector('[data-markdown]');
-                }},
-            {src: 'plugin/markdown/markdown.js', condition: function() {
-                    return !!document.querySelector('[data-markdown]');
-                }},
-            {src: 'plugin/highlight/highlight.js', async: true, condition: function() {
-                    return !!document.querySelector('pre code');
-                }, callback: function() {
-                    hljs.initHighlightingOnLoad();
-                }},
-            {src: 'plugin/zoom-js/zoom.js', async: true},
-            {src: 'plugin/notes/notes.js', async: true}
-        ]
+            // Optional reveal.js plugins
+            dependencies: [
+                {src: 'lib/js/classList.js', condition: function() {
+                        return !document.body.classList;
+                    }},
+                {src: 'plugin/markdown/marked.js', condition: function() {
+                        return !!document.querySelector('[data-markdown]');
+                    }},
+                {src: 'plugin/markdown/markdown.js', condition: function() {
+                        return !!document.querySelector('[data-markdown]');
+                    }},
+//                {src: 'plugin/highlight/highlight.js', async: true, condition: function() {
+//                        return !!document.querySelector('pre code');
+//                    }, callback: function() {
+//                        hljs.initHighlightingOnLoad();
+//                    }},
+                {src: 'plugin/zoom-js/zoom.js', async: true},
+                {src: 'plugin/notes/notes.js', async: true}
+            ]
+        });
     });
 }
 
@@ -85,9 +87,7 @@ function toggleFullScreen() {
 if (sessionStorage.preview) { //View presentation
     document.getElementById("slides").innerHTML = sessionStorage.preview;
     document.title = sessionStorage.title;
-    $(document).ready(function(){
-        initializeReveal();
-    });
+    initializeReveal();
 }
 //else { //PDF
 //    var params = purl(window.location.href).param();

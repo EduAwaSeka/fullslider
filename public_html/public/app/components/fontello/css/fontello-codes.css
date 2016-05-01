@@ -250,3 +250,7 @@
 .icon-zelda-triforce:before { content: '\e8f8'; } /* '' */
 .icon-splatoon-inkling:before { content: '\e8f9'; } /* '' */
 .icon-forrst:before { content: '\e8fa'; } /* '' */
+.icon-sort-numeric-outline:before { content: '\e8fb'; } /* '' */
+.icon-sort-numeric:before { content: '\e8fc'; } /* '' */
+.icon-sort-alphabet-outline:before { content: '\e8fd'; } /* '' */
+.icon-sort-alphabet:before { content: '\e8fe'; } /* '' */

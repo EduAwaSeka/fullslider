@@ -92,6 +92,12 @@
     font-size: 1.25em;
 }
 
+.etch-shownumbers{
+    margin-right: 0.7vw !important;
+    width: 3vw;
+    height: 2.5vw;
+}
+
 .etch-bold, .etch-align-left, .etch-list-ul,.etch-undo{
     margin-right: 0;
     border-top-right-radius: 0;

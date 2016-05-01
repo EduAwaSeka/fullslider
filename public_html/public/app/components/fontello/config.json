@@ -2434,6 +2434,30 @@
       "search": [
         "nintendo-games-console"
       ]
+    },
+    {
+      "uid": "03df30a09d260eb427edcd7a65c1a84c",
+      "css": "sort-numeric-outline",
+      "code": 59643,
+      "src": "typicons"
+    },
+    {
+      "uid": "2d220a22480861b15878d1632e31ab47",
+      "css": "sort-numeric",
+      "code": 59644,
+      "src": "typicons"
+    },
+    {
+      "uid": "ef8560a06ed46a192092bf1f08c142a6",
+      "css": "sort-alphabet-outline",
+      "code": 59645,
+      "src": "typicons"
+    },
+    {
+      "uid": "67f793f91864e379458a92ccc61d9ccf",
+      "css": "sort-alphabet",
+      "code": 59646,
+      "src": "typicons"
     }
   ]
 }

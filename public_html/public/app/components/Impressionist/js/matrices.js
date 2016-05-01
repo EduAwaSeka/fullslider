@@ -386,6 +386,7 @@ function handleMousemove(e) {
 
             switch (element.attr("data-type")) {
                 case "text":
+                case "code":
                     e.preventDefault();
                     e.stopPropagation();
 

@@ -1,0 +1,1480 @@
+/*
+
+Darkula color scheme from the JetBrains family of IDEs
+
+*/
+
+
+.darkula .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.darkula .5em;
+  background: #2b2b2b;
+}
+
+.darkula .hljs {
+  color: #bababa;
+}
+
+.darkula .hljs-strong,
+.darkula .hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.darkula .hljs-bullet,
+.darkula .hljs-quote,
+.darkula .hljs-link,
+.darkula .hljs-number,
+.darkula .hljs-regexp,
+.darkula .hljs-literal {
+  color: #6896ba;
+}
+
+.darkula .hljs-code,
+.darkula .hljs-selector-class {
+  color: #a6e22e;
+}
+
+.darkula .hljs-emphasis {
+  font-style: italic;
+}
+
+.darkula .hljs-keyword,
+.darkula .hljs-selector-tag,
+.darkula .hljs-section,
+.darkula .hljs-attribute,
+.darkula .hljs-name,
+.darkula .hljs-variable {
+  color: #cb7832;
+}
+
+.darkula .hljs-params {
+  color: #b9b9b9;
+}
+
+.darkula .hljs-string,
+.darkula .hljs-subst,
+.darkula .hljs-type,
+.darkula .hljs-built_in,
+.darkula .hljs-builtin-name,
+.darkula .hljs-symbol,
+.darkula .hljs-selector-id,
+.darkula .hljs-selector-attr,
+.darkula .hljs-selector-pseudo,
+.darkula .hljs-template-tag,
+.darkula .hljs-template-variable,
+.darkula .hljs-addition {
+  color: #e0c46c;
+}
+
+.darkula .hljs-comment,
+.darkula .hljs-deletion,
+.darkula .hljs-meta {
+  color: #7f7f7f;
+}
+
+
+/*
+
+Original highlight.default .js style (c) Ivan Sagalaev <maniac@softwaremaniacs.default .org>
+
+*/
+
+.default .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.default .5em;
+  background: #F0F0F0;
+}
+
+
+/* Base color: saturation 0; */
+
+.default .hljs,
+.default .hljs-subst {
+  color: #444;
+}
+
+.default .hljs-comment {
+  color: #888888;
+}
+
+.default .hljs-keyword,
+.default .hljs-attribute,
+.default .hljs-selector-tag,
+.default .hljs-meta-keyword,
+.default .hljs-doctag,
+.default .hljs-name {
+  font-weight: bold;
+}
+
+
+/* User color: hue: 0 */
+
+.default .hljs-type,
+.default .hljs-string,
+.default .hljs-number,
+.default .hljs-selector-id,
+.default .hljs-selector-class,
+.default .hljs-quote,
+.default .hljs-template-tag,
+.default .hljs-deletion {
+  color: #880000;
+}
+
+.default .hljs-title,
+.default .hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.default .hljs-regexp,
+.default .hljs-symbol,
+.default .hljs-variable,
+.default .hljs-template-variable,
+.default .hljs-link,
+.default .hljs-selector-attr,
+.default .hljs-selector-pseudo {
+  color: #BC6060;
+}
+
+
+/* Language color: hue: 90; */
+
+.default .hljs-literal {
+  color: #78A960;
+}
+
+.default .hljs-built_in,
+.default .hljs-bullet,
+.default .hljs-code,
+.default .hljs-addition {
+  color: #397300;
+}
+
+
+/* Meta color: hue: 200 */
+
+.default .hljs-meta {
+  color: #1f7199;
+}
+
+.default .hljs-meta-string {
+  color: #4d99bf;
+}
+
+
+/* Misc effects */
+
+.default .hljs-emphasis {
+  font-style: italic;
+}
+
+.default .hljs-strong {
+  font-weight: bold;
+}
+
+
+/*!
+ * Agate by Taufik Nurrohman <https://github.agate .com/tovic>
+ * ----------------------------------------------------
+ */
+
+.agate .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.agate .5em;
+  background: #333;
+  color: white;
+}
+
+.agate .hljs-name,
+.agate .hljs-strong {
+  font-weight: bold;
+}
+
+.agate .hljs-code,
+.agate .hljs-emphasis {
+  font-style: italic;
+}
+
+.agate .hljs-tag {
+  color: #62c8f3;
+}
+
+.agate .hljs-variable,
+.agate .hljs-template-variable,
+.agate .hljs-selector-id,
+.agate .hljs-selector-class {
+  color: #ade5fc;
+}
+
+.agate .hljs-string,
+.agate .hljs-bullet {
+  color: #a2fca2;
+}
+
+.agate .hljs-type,
+.agate .hljs-title,
+.agate .hljs-section,
+.agate .hljs-attribute,
+.agate .hljs-quote,
+.agate .hljs-built_in,
+.agate .hljs-builtin-name {
+  color: #ffa;
+}
+
+.agate .hljs-number,
+.agate .hljs-symbol,
+.agate .hljs-bullet {
+  color: #d36363;
+}
+
+.agate .hljs-keyword,
+.agate .hljs-selector-tag,
+.agate .hljs-literal {
+  color: #fcc28c;
+}
+
+.agate .hljs-comment,
+.agate .hljs-deletion,
+.agate .hljs-code {
+  color: #888;
+}
+
+.agate .hljs-regexp,
+.agate .hljs-link {
+  color: #c6b4f0;
+}
+
+.agate .hljs-meta {
+  color: #fc9b9b;
+}
+
+.agate .hljs-deletion {
+  background-color: #fc9b9b;
+  color: #333;
+}
+
+.agate .hljs-addition {
+  background-color: #a2fca2;
+  color: #333;
+}
+
+.agate .hljs a {
+  color: inherit;
+}
+
+.agate .hljs a:focus,
+.agate .hljs a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/*
+Date: 24 Fev 2015
+Author: Pedro Oliveira <kanytu@gmail .androidstudio . com>
+*/
+
+.androidstudio .hljs {
+  color: #a9b7c6;
+  background: #282b2e;
+  display: block;
+  overflow-x: auto;
+  padding: 0.androidstudio .5em;
+}
+
+.androidstudio .hljs-number,
+.androidstudio .hljs-literal,
+.androidstudio .hljs-symbol,
+.androidstudio .hljs-bullet {
+  color: #6897BB;
+}
+
+.androidstudio .hljs-keyword,
+.androidstudio .hljs-selector-tag,
+.androidstudio .hljs-deletion {
+  color: #cc7832;
+}
+
+.androidstudio .hljs-variable,
+.androidstudio .hljs-template-variable,
+.androidstudio .hljs-link {
+  color: #629755;
+}
+
+.androidstudio .hljs-comment,
+.androidstudio .hljs-quote {
+  color: #808080;
+}
+
+.androidstudio .hljs-meta {
+  color: #bbb529;
+}
+
+.androidstudio .hljs-string,
+.androidstudio .hljs-attribute,
+.androidstudio .hljs-addition {
+  color: #6A8759;
+}
+
+.androidstudio .hljs-section,
+.androidstudio .hljs-title,
+.androidstudio .hljs-type {
+  color: #ffc66d;
+}
+
+.androidstudio .hljs-name,
+.androidstudio .hljs-selector-id,
+.androidstudio .hljs-selector-class {
+  color: #e8bf6a;
+}
+
+.androidstudio .hljs-emphasis {
+  font-style: italic;
+}
+
+.androidstudio .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+
+Arduino® Light Theme - Stefania Mellai <s.arduinolight .mellai@arduino.arduinolight .cc>
+
+*/
+
+.arduinolight .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.arduinolight .5em;
+  background: #FFFFFF;
+}
+
+.arduinolight .hljs,
+.arduinolight .hljs-subst {
+  color: #434f54;
+}
+
+.arduinolight .hljs-keyword,
+.arduinolight .hljs-attribute,
+.arduinolight .hljs-selector-tag,
+.arduinolight .hljs-doctag,
+.arduinolight .hljs-name {
+}
+
+.arduinolight .hljs-built_in,
+.arduinolight .hljs-literal,
+.arduinolight .hljs-bullet,
+.arduinolight .hljs-code,
+.arduinolight .hljs-addition {
+  color: #D35400;
+}
+
+.arduinolight .hljs-regexp,
+.arduinolight .hljs-symbol,
+.arduinolight .hljs-variable,
+.arduinolight .hljs-template-variable,
+.arduinolight .hljs-link,
+.arduinolight .hljs-selector-attr,
+.arduinolight .hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.arduinolight .hljs-type,
+.arduinolight .hljs-string,
+.arduinolight .hljs-selector-id,
+.arduinolight .hljs-selector-class,
+.arduinolight .hljs-quote,
+.arduinolight .hljs-template-tag,
+.arduinolight .hljs-deletion {
+  color: #005C5F;
+}
+
+.arduinolight .hljs-title,
+.arduinolight .hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.arduinolight .hljs-comment {
+  color: rgba(149,165,166, .8);
+}
+
+.arduinolight .hljs-meta-keyword {
+  color: #728E00;
+}
+
+.arduinolight .hljs-meta {
+  color: #728E00;
+  color: #434f54;
+}
+
+.arduinolight .hljs-emphasis {
+  font-style: italic;
+}
+
+.arduinolight .hljs-strong {
+  font-weight: bold;
+}
+
+.arduinolight .hljs-function {
+  color: #728E00;
+}
+
+.arduinolight .hljs-number {
+  color: #8A7B52;  
+}
+
+/*
+
+grayscale style (c) MY Sun <simonmysun@gmail.grayscale .com>
+
+*/
+
+.grayscale .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5vw;
+  color: #333;
+  background: #fff;
+}
+
+.grayscale .hljs-comment,
+.grayscale .hljs-quote {
+  color: #777;
+  font-style: italic;
+}
+
+.grayscale .hljs-keyword,
+.grayscale .hljs-selector-tag,
+.grayscale .hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.grayscale .hljs-number,
+.grayscale .hljs-literal {
+  color: #777;
+}
+
+.grayscale .hljs-string,
+.grayscale .hljs-doctag,
+.grayscale .hljs-formula {
+  color: #333;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJ0lEQVQIW2O8e/fufwYGBgZBQUEQxcCIIfDu3Tuwivfv30NUoAsAALHpFMMLqZlPAAAAAElFTkSuQmCC) repeat;
+}
+
+.grayscale .hljs-title,
+.grayscale .hljs-section,
+.grayscale .hljs-selector-id {
+  color: #000;
+  font-weight: bold;
+}
+
+.grayscale .hljs-subst {
+  font-weight: normal;
+}
+
+.grayscale .hljs-class .hljs-title,
+.grayscale .hljs-type,
+.grayscale .hljs-name {
+  color: #333;
+  font-weight: bold;
+}
+
+.grayscale .hljs-tag {
+  color: #333;
+}
+
+.grayscale .hljs-regexp {
+    color: #333;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAPUlEQVQYV2NkQAN37979r6yszIgujiIAU4RNMVwhuiQ6H6wQl3XI4oy4FMHcCJPHcDS6J2A2EqUQpJhohQDexSef15DBCwAAAABJRU5ErkJggg==) repeat;
+}
+
+.grayscale .hljs-symbol,
+.grayscale .hljs-bullet,
+.grayscale .hljs-link {
+  color: #000;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKElEQVQIW2NkQAO7d+/+z4gsBhJwdXVlhAvCBECKwIIwAbhKZBUwBQA6hBpm5efZsgAAAABJRU5ErkJggg==) repeat;
+}
+
+.grayscale .hljs-built_in,
+.grayscale .hljs-builtin-name {
+  color: #000;
+  text-decoration: underline;
+}
+
+.grayscale .hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.grayscale .hljs-deletion {
+  color: #fff;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAYAAABS3WWCAAAAE0lEQVQIW2MMDQ39zzhz5kwIAQAyxweWgUHd1AAAAABJRU5ErkJggg==) repeat;
+}
+
+.grayscale .hljs-addition {
+  color: #000;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAALUlEQVQYV2N89+7dfwYk8P79ewZBQUFkIQZGOiu6e/cuiptQHAPl0NtNxAQBAM97Oejj3Dg7AAAAAElFTkSuQmCC) repeat;
+}
+
+.grayscale .hljs-emphasis {
+  font-style: italic;
+}
+
+.grayscale .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+
+Google Code style (c) Aahan Krish <geekpanth3r@gmail.googlecode .com>
+
+*/
+
+.googlecode .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.googlecode .5em;
+  background: white;
+  color: black;
+}
+
+.googlecode .hljs-comment,
+.googlecode .hljs-quote {
+  color: #800;
+}
+
+.googlecode .hljs-keyword,
+.googlecode .hljs-selector-tag,
+.googlecode .hljs-section,
+.googlecode .hljs-title,
+.googlecode .hljs-name {
+  color: #008;
+}
+
+.googlecode .hljs-variable,
+.googlecode .hljs-template-variable {
+  color: #660;
+}
+
+.googlecode .hljs-string,
+.googlecode .hljs-selector-attr,
+.googlecode .hljs-selector-pseudo,
+.googlecode .hljs-regexp {
+  color: #080;
+}
+
+.googlecode .hljs-literal,
+.googlecode .hljs-symbol,
+.googlecode .hljs-bullet,
+.googlecode .hljs-meta,
+.googlecode .hljs-number,
+.googlecode .hljs-link {
+  color: #066;
+}
+
+.googlecode .hljs-title,
+.googlecode .hljs-doctag,
+.googlecode .hljs-type,
+.googlecode .hljs-attr,
+.googlecode .hljs-built_in,
+.googlecode .hljs-builtin-name,
+.googlecode .hljs-params {
+  color: #606;
+}
+
+.googlecode .hljs-attribute,
+.googlecode .hljs-subst {
+  color: #000;
+}
+
+.googlecode .hljs-formula {
+  background-color: #eee;
+  font-style: italic;
+}
+
+.googlecode .hljs-selector-id,
+.googlecode .hljs-selector-class {
+  color: #9B703F
+}
+
+.googlecode .hljs-addition {
+  background-color: #baeeba;
+}
+
+.googlecode .hljs-deletion {
+  background-color: #ffc8bd;
+}
+
+.googlecode .hljs-doctag,
+.googlecode .hljs-strong {
+  font-weight: bold;
+}
+
+.googlecode .hljs-emphasis {
+  font-style: italic;
+}
+
+/*
+    Name:     Kimbie (light)
+    Author:   Jan T.kimbielight . Sott
+    License:  Creative Commons Attribution-ShareAlike 4.kimbielight .0 Unported License
+    URL:      https://github.kimbielight .com/idleberg/Kimbie-highlight.kimbielight .js
+*/
+
+/* Kimbie Comment */
+.kimbielight .hljs-comment,
+.kimbielight .hljs-quote {
+  color: #a57a4c;
+}
+
+/* Kimbie Red */
+.kimbielight .hljs-variable,
+.kimbielight .hljs-template-variable,
+.kimbielight .hljs-tag,
+.kimbielight .hljs-name,
+.kimbielight .hljs-selector-id,
+.kimbielight .hljs-selector-class,
+.kimbielight .hljs-regexp,
+.kimbielight .hljs-meta {
+  color: #dc3958;
+}
+
+/* Kimbie Orange */
+.kimbielight .hljs-number,
+.kimbielight .hljs-built_in,
+.kimbielight .hljs-builtin-name,
+.kimbielight .hljs-literal,
+.kimbielight .hljs-type,
+.kimbielight .hljs-params,
+.kimbielight .hljs-deletion,
+.kimbielight .hljs-link {
+  color: #f79a32;
+}
+
+/* Kimbie Yellow */
+.kimbielight .hljs-title,
+.kimbielight .hljs-section,
+.kimbielight .hljs-attribute {
+  color: #f06431;
+}
+
+/* Kimbie Green */
+.kimbielight .hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #889b4a;
+}
+
+/* Kimbie Purple */
+.kimbielight .hljs-keyword,
+.kimbielight .hljs-selector-tag,
+.kimbielight .hljs-function {
+  color: #98676a;
+}
+
+.kimbielight .hljs {
+  display: block;
+  overflow-x: auto;
+  background: #fbebd4;
+  color: #84613d;
+  padding: 0.5em;
+}
+
+.kimbielight .hljs-emphasis {
+  font-style: italic;
+}
+
+.kimbielight .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+
+Qt Creator light color scheme
+
+*/
+
+.qtcreatorlight .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.qtcreatorlight .5em;
+  background: #ffffff;
+}
+
+.qtcreatorlight .hljs,
+.qtcreatorlight .hljs-subst,
+.qtcreatorlight .hljs-tag,
+.qtcreatorlight .hljs-title {
+  color: #000000;
+}
+
+.qtcreatorlight .hljs-strong,
+.qtcreatorlight .hljs-emphasis {
+  color: #000000;
+}
+
+.qtcreatorlight .hljs-bullet,
+.qtcreatorlight .hljs-quote,
+.qtcreatorlight .hljs-number,
+.qtcreatorlight .hljs-regexp,
+.qtcreatorlight .hljs-literal {
+  color: #000080;
+}
+
+.qtcreatorlight .hljs-code
+.qtcreatorlight .hljs-selector-class {
+  color: #800080;
+}
+
+.qtcreatorlight .hljs-emphasis,
+.qtcreatorlight .hljs-stronge,
+.qtcreatorlight .hljs-type {
+  font-style: italic;
+}
+
+.qtcreatorlight .hljs-keyword,
+.qtcreatorlight .hljs-selector-tag,
+.qtcreatorlight .hljs-function,
+.qtcreatorlight .hljs-section,
+.qtcreatorlight .hljs-symbol,
+.qtcreatorlight .hljs-name {
+  color: #808000;
+}
+
+.qtcreatorlight .hljs-attribute {
+  color: #800000;
+}
+
+.qtcreatorlight .hljs-variable,
+.qtcreatorlight .hljs-params,
+.hljs-class .hljs-title {
+  color: #0055AF;
+}
+
+.qtcreatorlight .hljs-string,
+.qtcreatorlight .hljs-selector-id,
+.qtcreatorlight .hljs-selector-attr,
+.qtcreatorlight .hljs-selector-pseudo,
+.qtcreatorlight .hljs-type,
+.qtcreatorlight .hljs-built_in,
+.qtcreatorlight .hljs-builtin-name,
+.qtcreatorlight .hljs-template-tag,
+.qtcreatorlight .hljs-template-variable,
+.qtcreatorlight .hljs-addition,
+.qtcreatorlight .hljs-link {
+  color: #008000;
+}
+
+.qtcreatorlight .hljs-comment,
+.qtcreatorlight .hljs-meta,
+.qtcreatorlight .hljs-deletion {
+  color: #008000;
+}
+
+/*
+
+XCode style (c) Angel Garcia <angelgarcia.xcode .mail@gmail.xcode .com>
+
+*/
+
+.xcode .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.xcode .5em;
+  background: #fff;
+  color: black;
+}
+
+.xcode .hljs-comment,
+.xcode .hljs-quote {
+  color: #006a00;
+}
+
+.xcode .hljs-keyword,
+.xcode .hljs-selector-tag,
+.xcode .hljs-literal {
+  color: #aa0d91;
+}
+
+.xcode .hljs-name {
+  color: #008;
+}
+
+.xcode .hljs-variable,
+.xcode .hljs-template-variable {
+  color: #660;
+}
+
+.xcode .hljs-string {
+  color: #c41a16;
+}
+
+.xcode .hljs-regexp,
+.xcode .hljs-link {
+  color: #080;
+}
+
+.xcode .hljs-title,
+.xcode .hljs-tag,
+.xcode .hljs-symbol,
+.xcode .hljs-bullet,
+.xcode .hljs-number,
+.xcode .hljs-meta {
+  color: #1c00cf;
+}
+
+.xcode .hljs-section,
+.xcode .hljs-class .hljs-title,
+.xcode .hljs-type,
+.xcode .hljs-attr,
+.xcode .hljs-built_in,
+.xcode .hljs-builtin-name,
+.xcode .hljs-params {
+  color: #5c2699;
+}
+
+.xcode .hljs-attribute,
+.xcode .hljs-subst {
+  color: #000;
+}
+
+.xcode .hljs-formula {
+  background-color: #eee;
+  font-style: italic;
+}
+
+.xcode .hljs-addition {
+  background-color: #baeeba;
+}
+
+.xcode .hljs-deletion {
+  background-color: #ffc8bd;
+}
+
+.xcode .hljs-selector-id,
+.xcode .hljs-selector-class {
+  color: #9b703f;
+}
+
+.xcode .hljs-doctag,
+.xcode .hljs-strong {
+  font-weight: bold;
+}
+
+.xcode .hljs-emphasis {
+  font-style: italic;
+}
+
+
+/*
+  xt256.xt256 .css
+
+  Contact: initbar [at] protonmail [dot] ch
+         : github.xt256 .com/initbar
+*/
+
+.xt256 .hljs {
+  display: block;
+  overflow-x: auto;
+  color: #eaeaea;
+  background: #000;
+  padding: 0.xt256 .5e;
+}
+
+.xt256 .hljs-subst {
+  color: #eaeaea;
+}
+
+.xt256 .hljs-emphasis {
+  font-style: italic;
+}
+
+.xt256 .hljs-strong {
+  font-weight: bold;
+}
+
+.xt256 .hljs-builtin-name,
+.xt256 .hljs-type {
+  color: #eaeaea;
+}
+
+.xt256 .hljs-params {
+  color: #da0000;
+}
+
+.xt256 .hljs-literal,
+.xt256 .hljs-number,
+.xt256 .hljs-name {
+  color: #ff0000;
+  font-weight: bolder;
+}
+
+.xt256 .hljs-comment {
+  color: #969896;
+}
+
+.xt256 .hljs-selector-id,
+.xt256 .hljs-quote {
+  color: #00ffff;
+}
+
+.xt256 .hljs-template-variable,
+.xt256 .hljs-variable,
+.xt256 .hljs-title {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.xt256 .hljs-selector-class,
+.xt256 .hljs-keyword,
+.xt256 .hljs-symbol {
+  color: #fff000;
+}
+
+.xt256 .hljs-string,
+.xt256 .hljs-bullet {
+  color: #00ff00;
+}
+
+.xt256 .hljs-tag,
+.xt256 .hljs-section {
+  color: #000fff;
+}
+
+.xt256 .hljs-selector-tag {
+  color: #000fff;
+  font-weight: bold;
+}
+
+.xt256 .hljs-attribute,
+.xt256 .hljs-built_in,
+.xt256 .hljs-regexp,
+.xt256 .hljs-link {
+  color: #ff00ff;
+}
+
+.xt256 .hljs-meta {
+  color: #fff;
+  font-weight: bolder;
+}
+
+
+/*
+
+Sunburst-like style (c) Vasily Polovnyov <vast@whiteants.sunburst .net>
+
+*/
+
+.sunburst .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.sunburst .5em;
+  background: #000;
+  color: #f8f8f8;
+}
+
+.sunburst .hljs-comment,
+.sunburst .hljs-quote {
+  color: #aeaeae;
+  font-style: italic;
+}
+
+.sunburst .hljs-keyword,
+.sunburst .hljs-selector-tag,
+.sunburst .hljs-type {
+  color: #e28964;
+}
+
+.sunburst .hljs-string {
+  color: #65b042;
+}
+
+.sunburst .hljs-subst {
+  color: #daefa3;
+}
+
+.sunburst .hljs-regexp,
+.sunburst .hljs-link {
+  color: #e9c062;
+}
+
+.sunburst .hljs-title,
+.sunburst .hljs-section,
+.sunburst .hljs-tag,
+.sunburst .hljs-name {
+  color: #89bdff;
+}
+
+.sunburst .hljs-class .hljs-title,
+.sunburst .hljs-doctag {
+  text-decoration: underline;
+}
+
+.sunburst .hljs-symbol,
+.sunburst .hljs-bullet,
+.sunburst .hljs-number {
+  color: #3387cc;
+}
+
+.sunburst .hljs-params,
+.sunburst .hljs-variable,
+.sunburst .hljs-template-variable {
+  color: #3e87e3;
+}
+
+.sunburst .hljs-attribute {
+  color: #cda869;
+}
+
+.sunburst .hljs-meta {
+  color: #8996a8;
+}
+
+.sunburst .hljs-formula {
+  background-color: #0e2231;
+  color: #f8f8f8;
+  font-style: italic;
+}
+
+.sunburst .hljs-addition {
+  background-color: #253b22;
+  color: #f8f8f8;
+}
+
+.sunburst .hljs-deletion {
+  background-color: #420e09;
+  color: #f8f8f8;
+}
+
+.sunburst .hljs-selector-class {
+  color: #9b703f;
+}
+
+.sunburst .hljs-selector-id {
+  color: #8b98ab;
+}
+
+.sunburst .hljs-emphasis {
+  font-style: italic;
+}
+
+.sunburst .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.monokai .org
+*/
+
+.monokai .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.monokai .5em;
+  background: #272822; color: #ddd;
+}
+
+.monokai .hljs-tag,
+.monokai .hljs-keyword,
+.monokai .hljs-selector-tag,
+.monokai .hljs-literal,
+.monokai .hljs-strong,
+.monokai .hljs-name {
+  color: #f92672;
+}
+
+.monokai .hljs-code {
+  color: #66d9ef;
+}
+
+.monokai .hljs-class .hljs-title {
+  color: white;
+}
+
+.monokai .hljs-attribute,
+.monokai .hljs-symbol,
+.monokai .hljs-regexp,
+.monokai .hljs-link {
+  color: #bf79db;
+}
+
+.monokai .hljs-string,
+.monokai .hljs-bullet,
+.monokai .hljs-subst,
+.monokai .hljs-title,
+.monokai .hljs-section,
+.monokai .hljs-emphasis,
+.monokai .hljs-type,
+.monokai .hljs-built_in,
+.monokai .hljs-builtin-name,
+.monokai .hljs-selector-attr,
+.monokai .hljs-selector-pseudo,
+.monokai .hljs-addition,
+.monokai .hljs-variable,
+.monokai .hljs-template-tag,
+.monokai .hljs-template-variable {
+  color: #a6e22e;
+}
+
+.monokai .hljs-comment,
+.monokai .hljs-quote,
+.monokai .hljs-deletion,
+.monokai .hljs-meta {
+  color: #75715e;
+}
+
+.monokai .hljs-keyword,
+.monokai .hljs-selector-tag,
+.monokai .hljs-literal,
+.monokai .hljs-doctag,
+.monokai .hljs-title,
+.monokai .hljs-section,
+.monokai .hljs-type,
+.monokai .hljs-selector-id {
+  font-weight: bold;
+}
+
+/**
+ * Obsidian style
+ * ported by Alexander Marenin (http://github.obsidian .com/ioncreature)
+ */
+
+.obsidian .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.obsidian .5em;
+  background: #282b2e;
+}
+
+.obsidian .hljs-keyword,
+.obsidian .hljs-selector-tag,
+.obsidian .hljs-literal,
+.obsidian .hljs-selector-id {
+  color: #93c763;
+}
+
+.obsidian .hljs-number {
+  color: #ffcd22;
+}
+
+.obsidian .hljs {
+  color: #e0e2e4;
+}
+
+.obsidian .hljs-attribute {
+  color: #668bb0;
+}
+
+.obsidian .hljs-code,
+.obsidian .hljs-class .obsidian .hljs-title,
+.obsidian .hljs-section {
+  color: white;
+}
+
+.obsidian .hljs-regexp,
+.obsidian .hljs-link {
+  color: #d39745;
+}
+
+.obsidian .hljs-meta {
+  color: #557182;
+}
+
+.obsidian .hljs-tag,
+.obsidian .hljs-name,
+.obsidian .hljs-bullet,
+.obsidian .hljs-subst,
+.obsidian .hljs-emphasis,
+.obsidian .hljs-type,
+.obsidian .hljs-built_in,
+.obsidian .hljs-selector-attr,
+.obsidian .hljs-selector-pseudo,
+.obsidian .hljs-addition,
+.obsidian .hljs-variable,
+.obsidian .hljs-template-tag,
+.obsidian .hljs-template-variable {
+  color: #8cbbad;
+}
+
+.obsidian .hljs-string,
+.obsidian .hljs-symbol {
+  color: #ec7600;
+}
+
+.obsidian .hljs-comment,
+.obsidian .hljs-quote,
+.obsidian .hljs-deletion {
+  color: #818e96;
+}
+
+.obsidian .hljs-selector-class {
+  color: #A082BD
+}
+
+.obsidian .hljs-keyword,
+.obsidian .hljs-selector-tag,
+.obsidian .hljs-literal,
+.obsidian .hljs-doctag,
+.obsidian .hljs-title,
+.obsidian .hljs-section,
+.obsidian .hljs-type,
+.obsidian .hljs-name,
+.obsidian .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+
+Intellij Idea-like styling (c) Vasily Polovnyov <vast@whiteants.idea .net>
+
+*/
+
+.idea .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.idea .5em;
+  color: #000;
+  background: #fff;
+}
+
+.idea .hljs-subst,
+.idea .hljs-title {
+  font-weight: normal;
+  color: #000;
+}
+
+.idea .hljs-comment,
+.idea .hljs-quote {
+  color: #808080;
+  font-style: italic;
+}
+
+.idea .hljs-meta {
+  color: #808000;
+}
+
+.idea .hljs-tag {
+  background: #efefef;
+}
+
+.idea .hljs-section,
+.idea .hljs-name,
+.idea .hljs-literal,
+.idea .hljs-keyword,
+.idea .hljs-selector-tag,
+.idea .hljs-type,
+.idea .hljs-selector-id,
+.idea .hljs-selector-class {
+  font-weight: bold;
+  color: #000080;
+}
+
+.idea .hljs-attribute,
+.idea .hljs-number,
+.idea .hljs-regexp,
+.idea .hljs-link {
+  font-weight: bold;
+  color: #0000ff;
+}
+
+.idea .hljs-number,
+.idea .hljs-regexp,
+.idea .hljs-link {
+  font-weight: normal;
+}
+
+.idea .hljs-string {
+  color: #008000;
+  font-weight: bold;
+}
+
+.idea .hljs-symbol,
+.idea .hljs-bullet,
+.idea .hljs-formula {
+  color: #000;
+  background: #d0eded;
+  font-style: italic;
+}
+
+.idea .hljs-doctag {
+  text-decoration: underline;
+}
+
+.idea .hljs-variable,
+.idea .hljs-template-variable {
+  color: #660e7a;
+}
+
+.idea .hljs-addition {
+  background: #baeeba;
+}
+
+.idea .hljs-deletion {
+  background: #ffc8bd;
+}
+
+.idea .hljs-emphasis {
+  font-style: italic;
+}
+
+.idea .hljs-strong {
+  font-weight: bold;
+}
+
+
+/*
+
+Pojoaque Style by Jason Tate
+http://web-cms-designs.pojoaque .com/ftopict-10-pojoaque-style-for-highlight-js-code-highlighter.pojoaque .html
+Based on Solarized Style from http://ethanschoonover.pojoaque .com/solarized
+
+*/
+
+.pojoaque .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.pojoaque .5em;
+  color: #dccf8f;
+  background: #000;
+}
+
+.pojoaque .hljs-comment,
+.pojoaque .hljs-quote {
+  color: #586e75;
+  font-style: italic;
+}
+
+.pojoaque .hljs-keyword,
+.pojoaque .hljs-selector-tag,
+.pojoaque .hljs-literal,
+.pojoaque .hljs-addition {
+  color: #b64926;
+}
+
+.pojoaque .hljs-number,
+.pojoaque .hljs-string,
+.pojoaque .hljs-doctag,
+.pojoaque .hljs-regexp {
+  color: #468966;
+}
+
+.pojoaque .hljs-title,
+.pojoaque .hljs-section,
+.pojoaque .hljs-built_in,
+.pojoaque .hljs-name {
+  color: #ffb03b;
+}
+
+.pojoaque .hljs-variable,
+.pojoaque .hljs-template-variable,
+.pojoaque .hljs-class .pojoaque .hljs-title,
+.pojoaque .hljs-type,
+.pojoaque .hljs-tag {
+  color: #b58900;
+}
+
+.pojoaque .hljs-attribute {
+  color: #b89859;
+}
+
+.pojoaque .hljs-symbol,
+.pojoaque .hljs-bullet,
+.pojoaque .hljs-link,
+.pojoaque .hljs-subst,
+.pojoaque .hljs-meta {
+  color: #cb4b16;
+}
+
+.pojoaque .hljs-deletion {
+  color: #dc322f;
+}
+
+.pojoaque .hljs-selector-id,
+.pojoaque .hljs-selector-class {
+  color: #d3a60c;
+}
+
+.pojoaque .hljs-formula {
+  background: #073642;
+}
+
+.pojoaque .hljs-emphasis {
+  font-style: italic;
+}
+
+.pojoaque .hljs-strong {
+  font-weight: bold;
+}
+
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.vs .name>
+
+*/
+.vs .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.vs .5em;
+  background: white;
+  color: black;
+}
+
+.vs .hljs-comment,
+.vs .hljs-quote,
+.vs .hljs-variable {
+  color: #008000;
+}
+
+.vs .hljs-keyword,
+.vs .hljs-selector-tag,
+.vs .hljs-built_in,
+.vs .hljs-name,
+.vs .hljs-tag {
+  color: #00f;
+}
+
+.vs .hljs-string,
+.vs .hljs-title,
+.vs .hljs-section,
+.vs .hljs-attribute,
+.vs .hljs-literal,
+.vs .hljs-template-tag,
+.vs .hljs-template-variable,
+.vs .hljs-type,
+.vs .hljs-addition {
+  color: #a31515;
+}
+
+.vs .hljs-deletion,
+.vs .hljs-selector-attr,
+.vs .hljs-selector-pseudo,
+.vs .hljs-meta {
+  color: #2b91af;
+}
+
+.vs .hljs-doctag {
+  color: #808080;
+}
+
+.vs .hljs-attr {
+  color: #f00;
+}
+
+.vs .hljs-symbol,
+.vs .hljs-bullet,
+.vs .hljs-link {
+  color: #00b0e8;
+}
+
+
+.vs .hljs-emphasis {
+  font-style: italic;
+}
+
+.vs .hljs-strong {
+  font-weight: bold;
+}

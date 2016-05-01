@@ -21,6 +21,7 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 var text_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="text" data-type="text"><div>Sample Text</div> </div>';
 var image_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="image" data-type="image"><img style="width: 100%;" src=""></div>';
 var graphic_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="graphic" data-type="graphic"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" ></svg></div>';
+var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;</li></ol></code></pre></div>';
 var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__" data-background="#fff"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
@@ -104,6 +105,32 @@ var config_font_family_selector =  '<div class="btn-group col-sm-3 fontconfig">'
                             '</div>';
                     
 var color_selector='<div class="btn-group col-sm-2"><input class="color-chooser colorpicker" /></div>';
+
+var code_style_list='<ul class="dropdown-menu" data-option="codestyle">'+
+                    '<li>'+
+                      '<a class="is-etch-button" href="#" data-value="agate">Agate</a>'+
+                      '<a class="is-etch-button" href="#" data-value="androidstudio">Android studio</a>'+
+                      '<a class="is-etch-button" href="#" data-value="arduinolight">Arduino light</a>'+
+                      '<a class="is-etch-button" href="#" data-value="darkula">Darkula</a>'+
+                      '<a class="is-etch-button" href="#" data-value="default">Default</a>'+
+                      '<a class="is-etch-button" href="#" data-value="grayscale">Grayscale</a>'+
+                      '<a class="is-etch-button" href="#" data-value="googlecode">Google code</a>'+
+                      '<a class="is-etch-button" href="#" data-value="idea">Idea</a>'+
+                      '<a class="is-etch-button" href="#" data-value="kimbielight">Kimbie light</a>'+
+                      '<a class="is-etch-button" href="#" data-value="monokai">Monokai</a>'+
+                      '<a class="is-etch-button" href="#" data-value="obsidian">Obsidian</a>'+
+                      '<a class="is-etch-button" href="#" data-value="pojoaque">Pojoaque</a>'+
+                      '<a class="is-etch-button" href="#" data-value="qtcreatorlight">Qtcreator light</a>'+
+                      '<a class="is-etch-button" href="#" data-value="sunburst">Sunburst</a>'+
+                      '<a class="is-etch-button" href="#" data-value="vs">Vs</a>'+
+                      '<a class="is-etch-button" href="#" data-value="xcode">Xcode</a>'+
+                      '<a class="is-etch-button" href="#" data-value="xt256">Xt256</a>'+
+                    '</li>'+
+            '</ul>';
+var code_style_selector='<div class="code-style-menu btn-group">'+
+                            '<a class="btn btn-inverse dropdown-toggle btn-small code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>'+
+                            code_style_list+
+                        '</div>';
 
 var add_img_modal ='<div class="modal hide fade modalwindow" id="imagemodal">'+
                         '<div class="modal-header">'+
