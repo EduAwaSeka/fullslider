@@ -1341,6 +1341,14 @@ Impressionist.prototype =
                 $("#downloadpresbtn").off();
                 $(".loadpresbtn").off();
                 $('#inputFile').off();
+
+                //Add/cancel graphics
+                $('#editEnd').off();
+                $('#cancelEdit').off();
+                
+                //Add code
+                $("#addcodebtn").off();
+                $("#pdfbtn").off();
             },
             openStyleSelector: function()
             {
@@ -1770,7 +1778,8 @@ Impressionist.prototype =
 
                 if ($(added_graphic).is("defs")) {
                     is_arrow = true;
-                    var added_graphic = $(svg_element).children()[1];
+                    var last = $($(svg_element).children()).size() - 1;
+                    var added_graphic = $(svg_element).children()[last];
                     stroke_width *= 3;
                 }
 
@@ -1793,10 +1802,8 @@ Impressionist.prototype =
                         else {
                             var w_rel = (stroke_width + 1 * width / height);
                         }
-
                         width += w_rel;
                         left_translate += vwToPx(w_rel / 2);
-
                         height += w_rel;
                         top_translate += vwToPx(w_rel / 2);
                         break;
@@ -1817,7 +1824,6 @@ Impressionist.prototype =
                         }
                         break
                 }
-
 
                 $(added_graphic).attr("transform", "translate(" + left_translate + ", " + top_translate + ")");
 

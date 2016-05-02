@@ -377,9 +377,9 @@ function onArrow() {
     $("#arrow-end").val("block");
     onArrowStart();
     onArrowEnd();
-    
+
     $("#arrow-type").css("display", "block");
-    
+
     setMode('arrow');
 }
 function onArrowStart() {
@@ -408,9 +408,8 @@ function onClearCanvas() {
     }
 }
 
-
+function jsvectoreditor_init_events() {
 // Init
-function jsvectoreditor_init() {
     $("#closeDialogButton").click(onCloseDialog);
     $("#importShapesButton").click(import_shapes);
 
@@ -441,6 +440,11 @@ function jsvectoreditor_init() {
     $("#savesvg").on("click", save);
     $("#open").on("click", opendialog);
 
+    $("#graphics-tools").off();
+}
+
+function jsvectoreditor_init() {
+    jsvectoreditor_init_events();
     setupColorPicker($("#fillcolor"), setFillHexColor);
     setupColorPicker($("#strokecolor"), setStrokeHexColor);
 
@@ -449,11 +453,48 @@ function jsvectoreditor_init() {
     $("#graphics-tools").on("click", function() {
         editor.unselect();
     });
-
-
     onEditEnd();
 }
-;
+
+function deleteJvectoreditorEvents() {
+    // Init
+    $("#closeDialogButton").off();
+    $("#importShapesButton").off();
+
+//    $("#fillcolor").off();
+    $("#fillopacity").off();
+
+//    $("#strokecolor").off();
+    $("#strokeopacity").off();
+    $("#strokewidth").off();
+
+    $('#selectSvg').off();
+    $('#selectp').off();
+    $('#drawRect').off();
+    $('#drawLine').off();
+    $('#drawEllipse').off();
+    $('#drawPath').off();
+    $('#drawPolygon').off();
+    $('#drawImage').off();
+    $('#drawText').off();
+    $('#drawArrow').off();
+    $('#arrow-start').off();
+    $('#arrow-end').off();
+    $('#deleteSvg').off();
+
+    $('#getMarkup').off();
+    $('#clearCanvas').off();
+
+    $("#savesvg").off();
+    $("#open").off();
+}
+
+function resetGraphicsEditor() {
+    deleteJvectoreditorEvents();
+    del_color_picker($("#fillcolor"));
+    del_color_picker($("#strokecolor"));
+    jsvectoreditor_init();
+}
 
 //$(window).resize(function() {
 //    editor.draw.setSize($(window).width(), $(window).height());
@@ -462,7 +503,9 @@ function jsvectoreditor_init() {
 //    });
 //});
 
-
+function del_color_picker(elem) {
+    $($(elem).find(".sp-replacer ")[0]).remove();
+}
 
 function setupColorPicker(elem, fn)
 {

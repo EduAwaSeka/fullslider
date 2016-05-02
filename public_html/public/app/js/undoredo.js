@@ -15,7 +15,7 @@ function initEvents() {
     me.enableDrag();
     me.addSlideEvents();
     me.enableSort();
-    jsvectoreditor_init();
+    resetGraphicsEditor();
     allowEdit();
     playInit();
     //Click on slide. It works with this form
