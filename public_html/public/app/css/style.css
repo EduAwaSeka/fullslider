@@ -507,7 +507,9 @@ p {
     border: 0.15vw #fff solid !important;
     border-radius: 0.5vw !important;
 }
-
+pre.prettyprint{   
+    border:none;
+}
 pre.prettyprint code{
     padding: 0.5vw;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;

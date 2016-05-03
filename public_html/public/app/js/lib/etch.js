@@ -1,3 +1,7 @@
+function initializeTextColorChooser(color) {
+    document.execCommand('foreColor', false, color.toHexString());
+}
+
 (function() {
     'use strict';
 
@@ -20,6 +24,7 @@
             'title': ['bold', 'italic', 'underline', 'save'],
             'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
+            'graphic': ['fillcolor', 'strokecolor'],
         }
     };
 
@@ -93,6 +98,19 @@
                     case "color":
                         var buttonEl = $(color_selector);
                         $(buttonEl).addClass("etch-color");
+                        $(buttonEl).attr("id", "text-color");
+                        $(buttonEl).removeClass("col-sm-2");
+                        break;
+                    case "fillcolor":
+                        var buttonEl = $(color_selector);
+                        $(buttonEl).addClass("etch-fill-color");
+                        $(buttonEl).attr("id", "edit-fill-color");
+                        $(buttonEl).removeClass("col-sm-2");
+                        break;
+                    case "strokecolor":
+                        var buttonEl = $(color_selector);
+                        $(buttonEl).addClass("etch-stroke-color");
+                        $(buttonEl).attr("id", "edit-stroke-color");
                         $(buttonEl).removeClass("col-sm-2");
                         break;
                     case "codestyle":
@@ -109,47 +127,17 @@
             });
 
             $(this.el).show('fast');
-
-            var $colorChooser = this.$el.find(".color-chooser");
-            if ($colorChooser.length > 0) {
-                var hex = '333';
-                $colorChooser.spectrum({
-                    color: '#' + hex,
-                    preferredFormat: "hex",
-                    showSelectionPalette: true,
-                    showPalette: true,
-                    showInitial: true,
-                    showInput: true,
-                    showButtons: true,
-                    cancelText: '<i class="fa fa-remove"></i>',
-                    chooseText: '<i class="fa fa-check"></i>',
-                    palette: [],
-                    clickoutFiresChange: false,
-                    theme: 'sp-dark',
-                    change: function(color) {
-                        document.execCommand('foreColor', false, color.toHexString());
-                        Backbone.trigger('etch:state', {
-                            color: color.toHexString()
-                        });
-                        changeContent();//Event for undo redo
-                    }
-                });
-
-                var prevent = function(e) {
-                    e.preventDefault();
-                };
-
-                $(".sp-replacer").mousedown(prevent);
-                $(".sp-container").mousedown(prevent);
-                $colorChooser.mousedown(prevent);
-
-                $colorChooser.find("div").css("backgroundColor", '#' + hex);
-            }
-
+            var colorChooser = setupColorPicker($("#text-color"), initializeTextColorChooser);
+            
+            setupColorPicker($("#edit-fill-color"), changeFillColor, getCurrentGraphicColor("fill"));
+            $("#edit-fill-color").prepend("Fill:");
+            setupColorPicker($("#edit-stroke-color"), changeStrokeColor, getCurrentGraphicColor("stroke"));
+            $("#edit-stroke-color").prepend("Stroke:");
+            
             var $toggle = this.$el.find('.dropdown-toggle');
             $toggle.dropdown();
             this.$fontSizeReadout = this.$el.find('.fontSizeReadout');
-            this.$colorChooser = $colorChooser;
+            this.$colorChooser = colorChooser;
             this.$fontFamilyReadout = this.$el.find('.fontFamilyBtn > .text');
         },
         changePosition: function() {
@@ -418,31 +406,37 @@
                 $editor.css("overflow", "initial");
             }
 
-            if ($editable.attr('data-button-class') == "text") {
-                //initialize value of font-size etch-editor-button with selected element value
-                fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-                fontSizeReadout.innerHTML = parseFloat(pxToVw(getFontSize($editable))).toFixed(2) + " vw";
+            switch ($editable.attr('data-button-class')) {
+                case "text":
+                    //initialize value of font-size etch-editor-button with selected element value
+                    fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+                    fontSizeReadout.innerHTML = parseFloat(pxToVw(getFontSize($editable))).toFixed(2) + " vw";
 
-                //initialize value of font-family etch-editor-button with selected element value
-                fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
-                var value = $editable.css("font-family");
-                if (value[0] === "'") {
-                    value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
-                }
-                else {
-                    if (value[0] === "\"") {
-                        value = value.substr(value.indexOf("\"") + 1, value.lastIndexOf("\"") - 1);
-                    } else {
-                        value = value.substr(0, value.lastIndexOf(","));
+                    //initialize value of font-family etch-editor-button with selected element value
+                    fontFamilyReadout = document.getElementsByClassName('fontFamilyReadout');
+                    var value = $editable.css("font-family");
+                    if (value[0] === "'") {
+                        value = value.substr(value.indexOf("'") + 1, value.lastIndexOf("'") - 1);
                     }
-                }
-                fontFamilyReadout[0].innerHTML = value;
-            }
+                    else {
+                        if (value[0] === "\"") {
+                            value = value.substr(value.indexOf("\"") + 1, value.lastIndexOf("\"") - 1);
+                        } else {
+                            value = value.substr(0, value.lastIndexOf(","));
+                        }
+                    }
+                    fontFamilyReadout[0].innerHTML = value;
+                    break;
 
-            if ($editable.attr('data-button-class') == "code") {
-                var codevalue = $($($editable).find("pre")).attr("data-class");
-                codestyle = document.getElementsByClassName('codeStyleReadout')[0];
-                codestyle.innerHTML = codevalue;
+                case "code":
+                    var codevalue = $($($editable).find("pre")).attr("data-class");
+                    codestyle = document.getElementsByClassName('codeStyleReadout')[0];
+                    codestyle.innerHTML = codevalue;
+                    break;
+                case "graphic":
+                    updateCurrentColor($("#edit-fill-color"),getCurrentGraphicColor("fill"));
+                    updateCurrentColor($("#edit-stroke-color"),getCurrentGraphicColor("stroke"));
+                    break;
             }
 
             // Firefox seems to be only browser that defaults to `StyleWithCSS == true`

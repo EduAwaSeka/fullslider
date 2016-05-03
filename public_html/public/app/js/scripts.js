@@ -63,7 +63,7 @@ function getNumericValue(value) {
     return value.toString().replace(/[^-\d\.]/g, '');
 }
 
-function getFloatValue(value){
+function getFloatValue(value) {
     return parseFloat(getNumericValue(value));
 }
 
@@ -234,7 +234,7 @@ function isRedo(e) {
 }
 
 
-function getElementEditing(){
+function getElementEditing() {
     return $(document).find("[contentEditable='true']");
 }
 
@@ -256,6 +256,69 @@ function dataURItoBlob(dataURI) {
     }
 
     var dataView = new DataView(arrayBuffer);
-    var blob = new Blob([dataView], { type: mimeString });
+    var blob = new Blob([dataView], {type: mimeString});
     return blob;
+}
+
+function setupColorPicker(elem, fn, color_init)
+{
+    var $colorChooser = elem.find(".color-chooser");
+    if ($colorChooser.length > 0) {
+        var hex = color_init || "333";
+        $colorChooser.spectrum({
+            color: '#' + hex,
+            preferredFormat: "hex",
+            showSelectionPalette: true,
+            showPalette: true,
+            showInitial: true,
+            showInput: true,
+            showButtons: true,
+            cancelText: '<i class="fa fa-remove"></i>',
+            chooseText: '<i class="fa fa-check"></i>',
+            palette: [],
+            clickoutFiresChange: false,
+            theme: 'sp-dark',
+            change: function(color) {
+                Backbone.trigger('etch:state', {
+                    color: color.toHexString()
+                });
+                fn(color);
+            }
+        });
+        var prevent = function(e) {
+            e.preventDefault();
+        };
+
+        $(".sp-replacer").mousedown(prevent);
+        $(".sp-container").mousedown(prevent);
+        $colorChooser.mousedown(prevent);
+        updateCurrentColor($colorChooser,'#' + hex);
+    }
+    return $colorChooser;
+}
+
+function updateCurrentColor(element,color) {
+    $(element.find(".sp-preview-inner")).css("backgroundColor", color);
+}
+
+function getGraphicEditableElement() {
+    var el = me.selectedforedit;
+    var svg = $($(el).find("svg"));
+    var last = $(svg.children()).size() - 1;
+    var graphic = $(svg).children()[last];
+    return graphic;
+}
+function changeFillColor(color) {
+    var graphic = getGraphicEditableElement();
+    $(graphic).attr("fill", color);
+}
+
+function changeStrokeColor(color) {
+    var graphic = getGraphicEditableElement();
+    $(graphic).attr("stroke", color);
+}
+
+function getCurrentGraphicColor(type) {
+    var graphic = getGraphicEditableElement();
+    return $(graphic).attr(type);
 }

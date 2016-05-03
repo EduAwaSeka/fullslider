@@ -99,8 +99,8 @@ function VectorEditor(elem, width, height) {
         }, this));
         $(elem).mousemove(bind(function(event) {
             event.preventDefault();
-            var x=getFloatValue(event.clientX) - getFloatValue(offset()[0]);
-            var y=getFloatValue(event.clientY) - getFloatValue(offset()[1]);
+            var x = getFloatValue(event.clientX) - getFloatValue(offset()[0]);
+            var y = getFloatValue(event.clientY) - getFloatValue(offset()[1]);
             this.onMouseMove(x, y, event.target);
         }, this));
         $(elem).mouseup(bind(function(event) {
@@ -495,6 +495,7 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
             this.action = "";
         }
     } else if (this.selected.length == 1) {
+        this.selected[0].node.setAttribute("data-svgtype", this.mode);
         if (this.selected[0].getBBox().height == 0 && this.selected[0].getBBox().width == 0) {
             if (this.selected[0].subtype != "polygon") {
                 this.deleteShape(this.selected[0]);
@@ -507,10 +508,13 @@ VectorEditor.prototype.onMouseUp = function(x, y, target) {
         } else if (this.mode == "path") {
             this.unselect();
         } else if (this.mode == "arrow") {
-
-            this.selected[0].attr("arrow-start", this.arrow_start);
-            this.selected[0].attr("arrow-end", this.arrow_end);
-            this.selected[0].node.setAttribute("data-svgtype", this.mode);
+            if (this.selected[0]) {
+                this.selected[0].attr("arrow-start", this.arrow_start);
+                this.selected[0].attr("arrow-end", this.arrow_end);
+            }
+            else {
+                //Nothing, only click
+            }
             this.unselect();
         } else if (this.mode == "line") {
             this.unselect();

@@ -445,8 +445,8 @@ function jsvectoreditor_init_events() {
 
 function jsvectoreditor_init() {
     jsvectoreditor_init_events();
-    setupColorPicker($("#fillcolor"), setFillHexColor);
-    setupColorPicker($("#strokecolor"), setStrokeHexColor);
+    setupColorPicker($("#fillcolor"), setFillHexColor, $("#fillcolor").attr("data-dfcolor"));
+    setupColorPicker($("#strokecolor"), setStrokeHexColor, $("#strokecolor").attr("data-dfcolor"));
 
     editor = new VectorEditor(document.getElementById("canvas"), $("#graphicsmodal").width(), $("#graphicscontainer").height());
 
@@ -505,35 +505,4 @@ function resetGraphicsEditor() {
 
 function del_color_picker(elem) {
     $($(elem).find(".sp-replacer ")[0]).remove();
-}
-
-function setupColorPicker(elem, fn)
-{
-    var $colorChooser = elem.find(".color-chooser");
-    if ($colorChooser.length > 0) {
-        var hex = elem.attr("data-dfcolor");
-        $colorChooser.spectrum({
-            color: '#' + hex,
-            preferredFormat: "hex",
-            showSelectionPalette: true,
-            showPalette: true,
-            showInitial: true,
-            showInput: true,
-            cancelText: '<i class="fa fa-remove"></i>',
-            chooseText: '<i class="fa fa-check"></i>',
-            palette: [],
-            clickoutFiresChange: false,
-            theme: 'sp-dark',
-            change: function(color) {
-                color = color.toHexString();
-                fn(color);
-            }
-        });
-        var prevent = function(e) {
-            e.preventDefault();
-        };
-        $(".sp-container").mousedown(prevent);
-        $colorChooser.mousedown(prevent);
-        $colorChooser.find("div").css("backgroundColor", '#' + hex);
-    }
 }

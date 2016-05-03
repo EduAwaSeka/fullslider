@@ -1,8 +1,10 @@
 {
   "name": "Fullslider",
   "version": "0.3.0",
-  "main": "electron_main.js",
+  "main": "init.js",
   "author": "Eduardo Jimenez Grande",
   "license": "",
-  "main"    : "init.js"
+  "dependencies": {
+    "mime": "^1.3.4"
+  }
 }

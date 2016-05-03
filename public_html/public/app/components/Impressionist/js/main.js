@@ -403,6 +403,7 @@ Impressionist.prototype =
                     switch ($(this).attr("data-type")) {
                         case "text":
                         case "code":
+                        case "graphic":
                             me.editElement(this);
                             break;
                         case "image":
@@ -1345,7 +1346,7 @@ Impressionist.prototype =
                 //Add/cancel graphics
                 $('#editEnd').off();
                 $('#cancelEdit').off();
-                
+
                 //Add code
                 $("#addcodebtn").off();
                 $("#pdfbtn").off();
@@ -1782,7 +1783,6 @@ Impressionist.prototype =
                     var added_graphic = $(svg_element).children()[last];
                     stroke_width *= 3;
                 }
-
 
                 //After append, because before has relative modal values
                 var width = parseFloat(pxToVw(graphic.getBBox().width));
