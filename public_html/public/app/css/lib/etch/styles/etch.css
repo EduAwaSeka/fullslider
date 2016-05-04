@@ -151,6 +151,30 @@
     height: 2.1vw
 }
 
+.etch-stroke-opacity{
+    float: left;
+    margin: 0vw 0.56vw 0vw 0.2vw;
+    height: 2.1vw;
+}
+
+#edit-stroke-opacity{
+    border: 0.0732vw solid #666;
+    margin-bottom: 0vw;
+    height: 2.1vw;
+}
+
+.etch-fill-opacity{
+    float: right;
+    margin: 0vw 0.2vw 0vw 0.56vw;
+    height: 2.1vw;
+}
+
+#edit-fill-opacity{
+    border: 0.0732vw solid #666;
+    margin-bottom: 0vw;
+    height: 2.1vw;
+}
+
 #edit-fill-color{
     margin-left: 1.1vw;
 }

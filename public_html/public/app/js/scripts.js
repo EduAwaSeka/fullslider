@@ -301,6 +301,16 @@ function updateCurrentColor(element, color) {
     $(element.find(".sp-preview-inner")).css("backgroundColor", color);
 }
 
+function updateCurrentOpacity(element, type) {
+    var graphic = getGraphicEditableElement();
+    var option = $(element).find("[value='" + $(graphic).css(type) + "']");
+    $(option[0]).prop('selected', true);
+}
+function updateCurrentStrokeWidth() {
+    var graphic = getGraphicEditableElement();
+    $("#edit-stroke-width").val($(graphic).attr("stroke-width"));
+}
+
 function getGraphicEditableElement() {
     var el = me.selectedforedit;
     var svg = $($(el).find("svg"));
@@ -318,6 +328,12 @@ function changeFillColor(color) {
 function changeStrokeColor(color) {
     var graphic = getGraphicEditableElement();
     $(graphic).attr("stroke", color);
+    if ($(graphic).attr("data-svgtype") == "arrow") {
+        var head = $($(graphic).parent()).find("use")[0];
+        $(head).attr("fill", color);//Arrowhead is fill instead of stroke
+        head = $(head).attr("href");
+        $(head).attr("fill", color);//Arrowhead is fill instead of stroke
+    }
     changeContent();
 }
 
@@ -329,6 +345,19 @@ function changeStrokeWidth() {
 
     me.addGraphicStyle(element, graphic);
     changeContent();
+}
+
+function changeStrokeOpacity() {
+    changeOpacity(this, "stroke-opacity");
+}
+function changeFillOpacity() {
+    changeOpacity(this, "fill-opacity");
+}
+
+function changeOpacity(el, type) {
+    var opacity = el.options[el.selectedIndex].value;
+    var graphic = getGraphicEditableElement();
+    $(graphic).css(type, opacity);
 }
 
 function getCurrentGraphicColor(type) {

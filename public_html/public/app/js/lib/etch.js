@@ -24,7 +24,7 @@ function initializeTextColorChooser(color) {
             'title': ['bold', 'italic', 'underline', 'save'],
             'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
-            'graphic': ["strokewidth", 'strokecolor', 'fillcolor'],
+            'graphic': ["strokewidth", "strokeopacity", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
     };
 
@@ -117,6 +117,12 @@ function initializeTextColorChooser(color) {
                         var buttonEl = $('<div class="etch-stroke-width"><input id="edit-stroke-width" type="number" min="1" max="44" value="5"><a href="#" id="edit-stroke-width-btn" class="etch-editor-button" title="Change stroke width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
                         $(buttonEl).prepend("Stroke:");
                         break;
+                    case "strokeopacity":
+                        var buttonEl = $('<div class="etch-stroke-opacity"><select id="edit-stroke-opacity">' + opacity_selector + '</select></div>');
+                        break;
+                    case "fillopacity":
+                        var buttonEl = $('<div class="etch-fill-opacity"><select id="edit-fill-opacity">' + opacity_selector + '</select></div>');
+                        break;
                     case "codestyle":
                         var buttonEl = $(code_style_selector);
                         break;
@@ -139,6 +145,9 @@ function initializeTextColorChooser(color) {
             $("#edit-stroke-width-btn").on("click", function() {
                 changeStrokeWidth();
             });
+
+            $("#edit-stroke-opacity").change(changeStrokeOpacity);
+            $("#edit-fill-opacity").change(changeFillOpacity);
 
             var $toggle = this.$el.find('.dropdown-toggle');
             $toggle.dropdown();
@@ -442,6 +451,9 @@ function initializeTextColorChooser(color) {
                 case "graphic":
                     updateCurrentColor($("#edit-fill-color"), getCurrentGraphicColor("fill"));
                     updateCurrentColor($("#edit-stroke-color"), getCurrentGraphicColor("stroke"));
+                    updateCurrentStrokeWidth();
+                    updateCurrentOpacity($("#edit-fill-opacity"), "fill-opacity");
+                    updateCurrentOpacity($("#edit-stroke-opacity"), "stroke-opacity");
                     break;
             }
 
