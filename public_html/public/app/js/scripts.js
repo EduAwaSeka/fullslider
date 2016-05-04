@@ -292,12 +292,12 @@ function setupColorPicker(elem, fn, color_init)
         $(".sp-replacer").mousedown(prevent);
         $(".sp-container").mousedown(prevent);
         $colorChooser.mousedown(prevent);
-        updateCurrentColor($colorChooser,'#' + hex);
+        updateCurrentColor($colorChooser, '#' + hex);
     }
     return $colorChooser;
 }
 
-function updateCurrentColor(element,color) {
+function updateCurrentColor(element, color) {
     $(element.find(".sp-preview-inner")).css("backgroundColor", color);
 }
 
@@ -308,17 +308,40 @@ function getGraphicEditableElement() {
     var graphic = $(svg).children()[last];
     return graphic;
 }
+
 function changeFillColor(color) {
     var graphic = getGraphicEditableElement();
     $(graphic).attr("fill", color);
+    changeContent();
 }
 
 function changeStrokeColor(color) {
     var graphic = getGraphicEditableElement();
     $(graphic).attr("stroke", color);
+    changeContent();
+}
+
+function changeStrokeWidth() {
+    var graphic = getGraphicEditableElement();
+    var stroke_width = $("#edit-stroke-width").val();
+    $(graphic).attr("stroke-width", stroke_width);
+    var element = me.selectedforedit;
+
+    me.addGraphicStyle(element, graphic);
+    changeContent();
 }
 
 function getCurrentGraphicColor(type) {
     var graphic = getGraphicEditableElement();
     return $(graphic).attr(type);
+}
+
+function getSvgViewBoxArray(svg) {
+    var vb = svg.getAttribute('viewBox');
+    vb = vb.split(" ");
+    return vb;
+}
+
+function setSvgViewBoxArray(svg, vb) {
+    svg.setAttribute('viewBox', vb.join(" "));
 }

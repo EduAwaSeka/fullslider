@@ -24,7 +24,7 @@ function initializeTextColorChooser(color) {
             'title': ['bold', 'italic', 'underline', 'save'],
             'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
-            'graphic': ['fillcolor', 'strokecolor'],
+            'graphic': ["strokewidth", 'strokecolor', 'fillcolor'],
         }
     };
 
@@ -113,6 +113,10 @@ function initializeTextColorChooser(color) {
                         $(buttonEl).attr("id", "edit-stroke-color");
                         $(buttonEl).removeClass("col-sm-2");
                         break;
+                    case "strokewidth":
+                        var buttonEl = $('<div class="etch-stroke-width"><input id="edit-stroke-width" type="number" min="1" max="44" value="5"><a href="#" id="edit-stroke-width-btn" class="etch-editor-button" title="Change stroke width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
+                        $(buttonEl).prepend("Stroke:");
+                        break;
                     case "codestyle":
                         var buttonEl = $(code_style_selector);
                         break;
@@ -122,18 +126,20 @@ function initializeTextColorChooser(color) {
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
                 }
-
                 view.$el.append(buttonEl);
             });
 
             $(this.el).show('fast');
             var colorChooser = setupColorPicker($("#text-color"), initializeTextColorChooser);
-            
-            setupColorPicker($("#edit-fill-color"), changeFillColor, getCurrentGraphicColor("fill"));
-            $("#edit-fill-color").prepend("Fill:");
+
             setupColorPicker($("#edit-stroke-color"), changeStrokeColor, getCurrentGraphicColor("stroke"));
-            $("#edit-stroke-color").prepend("Stroke:");
-            
+            setupColorPicker($("#edit-fill-color"), changeFillColor, getCurrentGraphicColor("fill"));
+            $("#edit-fill-color").prepend("Fill: ");
+
+            $("#edit-stroke-width-btn").on("click", function() {
+                changeStrokeWidth();
+            });
+
             var $toggle = this.$el.find('.dropdown-toggle');
             $toggle.dropdown();
             this.$fontSizeReadout = this.$el.find('.fontSizeReadout');
@@ -434,8 +440,8 @@ function initializeTextColorChooser(color) {
                     codestyle.innerHTML = codevalue;
                     break;
                 case "graphic":
-                    updateCurrentColor($("#edit-fill-color"),getCurrentGraphicColor("fill"));
-                    updateCurrentColor($("#edit-stroke-color"),getCurrentGraphicColor("stroke"));
+                    updateCurrentColor($("#edit-fill-color"), getCurrentGraphicColor("fill"));
+                    updateCurrentColor($("#edit-stroke-color"), getCurrentGraphicColor("stroke"));
                     break;
             }
 

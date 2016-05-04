@@ -116,6 +116,11 @@
     border-bottom-left-radius: 0;
 }
 
+.etch-stroke-width{
+    float: left;
+    margin: 0vw 0.366vw;
+}
+
 .is-etch-button{
     width: 66% !important;
     margin: 0 auto;
@@ -124,4 +129,28 @@
 
 .is-etch-button i{
     font-size: 1.25vw;
+}
+
+#edit-stroke-width{
+    margin: 0 0 0 0.2464vw;
+    border: 0.0732vw solid #666;
+    border-right: none;
+    height: 2.1vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#edit-stroke-width-btn{
+    color: #268035;
+    float: right;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top: 0.0732vw solid #666;
+    border-right: 0.0732vw solid #666;
+    border-bottom: 0.0732vw solid #666;
+    height: 2.1vw
+}
+
+#edit-fill-color{
+    margin-left: 1.1vw;
 }

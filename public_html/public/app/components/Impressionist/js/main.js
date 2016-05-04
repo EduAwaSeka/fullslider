@@ -1773,8 +1773,8 @@ Impressionist.prototype =
                 var svg_element = $(element).find("svg");
                 var added_graphic = $(svg_element).children()[0];
 
-                var stroke_width = pxToVw(parseFloat(getNumericValue($("#strokewidth").val())));
-
+//                var stroke_width = pxToVw(parseFloat(getNumericValue($("#strokewidth").val())));
+                var stroke_width = pxToVw(parseFloat($(graphic).attr("stroke-width")));
                 var is_arrow = false;
 
                 if ($(added_graphic).is("defs")) {
