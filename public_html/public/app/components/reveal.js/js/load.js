@@ -85,13 +85,11 @@ function toggleFullScreen() {
 }
 
 if (sessionStorage.preview) { //View presentation
-    document.getElementById("slides").innerHTML = sessionStorage.preview;
-    document.title = sessionStorage.title;
-    initializeReveal();
+    $.post("/getPres", function(json) {
+        if (json.end_code == 0) { //If no error
+            document.getElementById("slides").innerHTML = atob(cleanBase64Params(json.slides));
+            document.title = sessionStorage.title;
+            initializeReveal();
+        }
+    }, 'json');
 }
-//else { //PDF
-//    var params = purl(window.location.href).param();
-//    if (params.slides) {
-//        document.getElementById("slides").innerHTML = document.getElementById("slides").innerHTML + atob(cleanBase64Params(params.slides));
-//    }
-//}

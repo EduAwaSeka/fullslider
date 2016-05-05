@@ -63,8 +63,11 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 app.post('/uploadimage', multipartMiddleware, upload.uploadImage);
 app.post('/upimagefromurl', upload.uploadUrlImage);
+
 app.post('/toPDF', managepresentation.toPDF);
-app.post('/viewPres', managepresentation.viewPresentation);
+app.post('/exportPres', managepresentation.exportPresentation);
+app.post('/getPres', managepresentation.getPresentation);
+app.post('/downloadPres', managepresentation.downloadPresentation);
 
 app.listen(parseInt(port, 10));
 
