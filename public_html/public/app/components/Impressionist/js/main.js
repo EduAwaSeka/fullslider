@@ -1880,7 +1880,10 @@ Impressionist.prototype =
                 //Javascript insteadof Jquery because attr("viewBox") set attribute "viewbox". Case Sensitive
                 $(svg_element)[0].setAttribute('preserveAspectRatio', "xMinYMin meet");
                 $(svg_element)[0].setAttribute('viewBox', "0 0 " + vwToPx(width) + " " + vwToPx(height));
-
+                var maxwidth = calculateMaxWidth(element, $(".fullslider-slide-container"));
+                var maxheight = calculateMaxHeight(element, $(".fullslider-slide-container"));
+                $(element).css("max-width", maxwidth + "vw");
+                $(element).css("max-height", maxheight + "vw");
             },
             removeSlide: function(el)
             {

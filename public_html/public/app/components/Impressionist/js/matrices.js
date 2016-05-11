@@ -307,6 +307,70 @@ var Style = (function() {
              '-o-transform: matrix(' + css + ');',
              'transform: matrix(' + css + ');'
              ].join('\n');*/
+        },
+        toCSS_content: function(matrix, fix, moved) {
+            var cleaned = matrix.toArray().map(function(n) {
+                return (fix && (parseInt(n, 10) !== n)) ? n.toFixed(fix) : n;
+            });
+            var css = cleaned.join(',');
+            cleaned[4] += 'px';
+            cleaned[5] += 'px';
+            var moz = cleaned.join(',');
+
+            var element_content = $(me.selectedElement).children()[0];
+            var w = element_content.getBoundingClientRect().width;
+            var h = element_content.getBoundingClientRect().height;
+
+            var transform = "none";
+            var transformx = 1;
+            var transformy = 1;
+
+            if ($(element_content).css("-webkit-transform")) {
+                transform = $(element_content).css("-webkit-transform");
+                var transform_values = transform.replace("matrix(", "");
+                transform_values = transform_values.replace(")", "");
+                transform_values = transform_values.split(",");
+                transformx = transform_values[0];
+                transformy = transform_values[3];
+            }
+            var new_transform_values = css.split(",");
+            var new_transformx = new_transform_values[0];
+            var new_transformy = new_transform_values[3];
+
+            $(element_content).css("-webkit-transform", "matrix(" + css + ")");
+            $(element_content).css("transform-origin", "top left");
+
+            var new_w = element_content.getBoundingClientRect().width;
+            var new_h = element_content.getBoundingClientRect().height;
+
+            if (moved.x < 0) {
+                new_w *= -1;
+            }
+            if (moved.y < 0) {
+                new_h *= -1;
+            }
+
+            var max_w = getNumericValue($(me.selectedElement).css("max-width"));
+            var max_h = getNumericValue($(me.selectedElement).css("max-height"));
+
+            var minSize = vwToPx(1.5); // minimal size in px
+
+            if (new_w > max_w || new_w < minSize) {
+                new_transformx = transformx;
+            }
+
+            if (new_h > max_h || new_h < minSize) {
+                new_transformy = transformy;
+            }
+
+            $(element_content).css("-webkit-transform", "matrix(" + new_transformx + ",0,0," + new_transformy + ",0,0)");
+            new_w = element_content.getBoundingClientRect().width;
+            new_h = element_content.getBoundingClientRect().height;
+
+            $(me.selectedElement).css("width", pxToVw(new_w) + "vw");
+            $(me.selectedElement).css("height", pxToVw(new_h) + "vw");
+            scalePlay($(me.selectedElement)[0]);
+            return 'matrix(' + css + ');';
         }
     };
 }());
@@ -368,7 +432,7 @@ function handleMousemove(e) {
             var x = point.subtract(center).x;
             var r = Math.atan2(y, x);
 //            matrix = matrix.rotate(r);
-            var offset = $(me.selectedElement[0]).offset();
+            offset = $(me.selectedElement[0]).offset();
             var center_x = (offset.left) + ($(me.selectedElement[0]).width() / 2);
             var center_y = (offset.top) + ($(me.selectedElement[0]).height() / 2);
             var radians = Math.atan2(x - center_x, y - center_y);
@@ -416,19 +480,24 @@ function handleMousemove(e) {
 
                     break;
                 case "graphic":
-                    var el_width = $(element.find("svg")).width();
-                    var el_height = $(element.find("svg")).height();
-
-                    resizeElement(element, e);
-
-                    var new_width = element[0].getBoundingClientRect().width; //Not round int value
-                    var new_height = element[0].getBoundingClientRect().height;
-
-                    var ratio = Math.min(new_width / el_width, new_height / el_height);
-
-                    $(element.find("svg")).css("transform", "scale(" + ratio + ")");
-                    $(element.find("svg")).css("transform-origin", "top left");
-
+//                    var el_width = $(element.find("svg")).width();
+//                    var el_height = $(element.find("svg")).height();
+//
+//                    resizeElement(element, e);
+//
+//                    var new_width = element[0].getBoundingClientRect().width; //Not round int value
+//                    var new_height = element[0].getBoundingClientRect().height;
+//
+//                    var ratio = Math.min(new_width / el_width, new_height / el_height);
+//
+//                    $(element.find("svg")).css("transform", "scale(" + ratio + ")");
+//                    $(element.find("svg")).css("transform-origin", "top left");
+                    var moved = point.subtract(center);
+                    var scaled = moved.divide(offset);
+                    matrix = matrix.scale(scaled);
+                    // store and show the current transformation
+                    this.current = matrix;
+                    this.transform_element_content(matrix, moved);
                     break;
                 default:
                     break;
@@ -492,6 +561,10 @@ function transform(matrix) {
     {
         Style.setTransform(targetobject, matrix);
     }
+}
+
+function transform_element_content(matrix, moved) {
+    var css = Style.toCSS_content(matrix, FIXED, moved);
 }
 function save() {
     this.display = this.current;
