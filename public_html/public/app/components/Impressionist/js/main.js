@@ -1141,6 +1141,7 @@ Impressionist.prototype =
                         var slides = me.generateExportMarkup();
                         var title = me.getTitle();
 
+                        $("body").css("cursor", "progress");
                         $("#pdfbtn").button('loading');
                         $("#pdfbtn").html('Generating PDF...');
                         var msg = "Generating pdf. Wait please...";
@@ -1157,6 +1158,7 @@ Impressionist.prototype =
                                 openAlert("danger", msg);
                             }
                             $("#pdfbtn").button('reset');
+                            $("body").css("cursor", "default");
                             me.wait_s = false;
                         }, 'json');
                     }
@@ -1165,9 +1167,10 @@ Impressionist.prototype =
                 $("#viewbtn").on("click", function(e)
                 {
                     if (!me.wait_s) { //Only one click
+                        me.wait_s = true;
+                        $("body").css("cursor", "progress");
                         $("#viewbtntext").button('loading');
                         $("#viewbtntext").html('Generating view...');
-                        me.wait_s = true;
                         var slides = me.generateExportMarkup();
                         var title = me.getTitle();
 
@@ -1733,6 +1736,7 @@ Impressionist.prototype =
                         openAlert("danger", msg);
                     }
                     $("#viewbtntext").button('reset');
+                    $("body").css("cursor", "default");
                     me.wait_s = false;
                 }, 'json');
 
