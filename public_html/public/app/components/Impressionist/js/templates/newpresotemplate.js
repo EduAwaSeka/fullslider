@@ -297,4 +297,5 @@ var opacity_selector='<option value="1" selected>100%</option>'+
                     '<option value="0.3">30%</option>'+
                     '<option value="0.2">20%</option>'+
                     '<option value="0.1">10%</option>'+
-                    '<option value="0.05">5%</option>';
+                    '<option value="0.05">5%</option>'+
+                    '<option value="0">0%</option>';
