@@ -3038,6 +3038,7 @@ select[multiple].input-lg {
     background-image: none;
     border: 0.0732vw solid transparent;
     border-radius: 0.2928vw;
+    box-shadow: 0.12vw 0.12vw 0.15vw #161616 !important;
 }
 .btn.btn-large{
     padding-bottom: 0.8784vw;
@@ -3279,9 +3280,9 @@ fieldset[disabled] .btn-success.active {
     background-color: #fff;
 }
 .btn-info {
-    color: #FFFFFF;
+    color: #1B3148;
     border-color: #C4C4C4;
-    background: linear-gradient(to bottom, #6B6B6B 0%,#192733 100%);
+    background: linear-gradient(to bottom, #FFFFFF 0%,#D8D8D8 100%);
 }
 .btn-info:focus,
 .btn-info.focus {

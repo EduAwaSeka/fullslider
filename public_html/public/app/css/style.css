@@ -75,7 +75,7 @@ p {
 
 #header-menu{
     padding-bottom: 1vw;
-    background-color: #849C37;
+    background-color: #6F7F39;
     border-bottom: 0.074vw solid #767575;
     height: 4.7291vw;
 }
@@ -95,8 +95,10 @@ p {
 #textDropdown{
     padding-left: 0.1vw;
     padding-right: 0.1vw;
-    background-color: #E8EBEF;
+    background-color: #079BA9;
     border-left: 0.0732vw solid #4874A0;
+    color: #fff;
+    box-shadow: 0.12vw 0.12vw 0.15vw #161616 !important;
 }
 
 #textDropdown .caret{
