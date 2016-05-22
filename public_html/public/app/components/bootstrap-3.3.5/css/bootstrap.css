@@ -3038,7 +3038,7 @@ select[multiple].input-lg {
     background-image: none;
     border: 0.0732vw solid transparent;
     border-radius: 0.2928vw;
-    box-shadow: 0.12vw 0.12vw 0.15vw #161616 !important;
+    box-shadow: 0.08vw 0.08vw 0.15vw #161616 !important;
 }
 .btn.btn-large{
     padding-bottom: 0.8784vw;
@@ -3161,6 +3161,8 @@ fieldset[disabled] .btn-default.active {
     color: #fff;
     background-color: #2edcaf !important;
     border-color: #204d74;
+    background: linear-gradient(to bottom, rgb(51, 199, 161) 0%,rgb(7, 169, 163) 100%) !important;
+    text-shadow: 0.08vw 0.08vw 0.15vw #000;    
 }
 .btn-primary:active,
 .btn-primary.active,

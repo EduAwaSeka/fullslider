@@ -75,8 +75,8 @@ p {
 
 #header-menu{
     padding-bottom: 1vw;
-    background-color: #59652E;
-    border-bottom: 0.074vw solid #767575;
+    background-color: #A32C00;
+    border-bottom: 0.074vw solid #23313E;
     height: 4.7291vw;
 }
 
@@ -136,7 +136,28 @@ p {
 }
 
 .palette-night {
-    background-color: #34495e;
+    background-color: #34495e !important;
+}
+
+.palette-green {
+    background-color: #305D54 !important;
+}
+
+.palette-army{
+    background-color: #59652E !important;
+}
+
+.palette-purple {
+    background: #3B3E64!important;
+}
+
+.loadpresbtn.palette-purple:hover{
+    background: linear-gradient(to bottom, rgb(66, 140, 204) 0%,rgb(60, 64, 104) 100%) !important;
+    text-shadow: 0.08vw 0.08vw 0.15vw #000;
+}
+
+.loadpresbtn{
+    border-color: #000000 !important;
 }
 
 #deck{
@@ -241,6 +262,7 @@ p {
     color: white;
     width: 100%;
     text-align: center;
+    text-shadow: 0.08vw 0.08vw 0.15vw #161616 !important;
 }
 
 #editpresonamebtn{

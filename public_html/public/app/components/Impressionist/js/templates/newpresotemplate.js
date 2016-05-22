@@ -8,7 +8,7 @@ var welcome_panel = '<!-- Welcome panel -->'+
                         '</div>'+
                         '<div class="modal-footer">'+
                             '<a href="#" class="btn btn-primary newpresopanel"> <i class="fa fa-plus"></i> &nbsp; New presentation</a>'+
-                            '<a href="#" class="btn btn-success loadpresbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
+                            '<a href="#" class="btn btn-success loadpresbtn palette-purple"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
