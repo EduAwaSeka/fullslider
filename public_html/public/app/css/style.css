@@ -562,3 +562,11 @@ pre.prettyprint ol{
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
+
+/* Context menu custom icons */
+.context-menu-icon-left{
+    margin-left: -1.8vw;
+    color: #4A80B9;
+}

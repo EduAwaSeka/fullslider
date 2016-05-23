@@ -79,7 +79,13 @@ $(function() {
         items: {
             "Set as pattern": {
                 name: "Set as pattern",
-                icon: "paste",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="icon icon-pushpin context-menu-icon-left" aria-hidden="true"></span> ' + "Set as pattern");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
                 callback: function(key, options) {
                     me.clearElementSelections();
                     $(this).removeClass();
@@ -164,7 +170,13 @@ $(function() {
         items: {
             "Remove pattern": {
                 name: "Remove pattern",
-                icon: "paste",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-times-circle context-menu-icon-left" aria-hidden="true"></span> ' + "Remove pattern");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
                 callback: function(key, options) {
                     me.clearElementSelections();
 
@@ -206,16 +218,23 @@ $(function() {
                     changeContent();//Event for undo redo
                 }
             },
-            "Paste": {
-                name: "Paste",
-                icon: "paste",
-                callback: function(key, options) {
-                    me.pasteTextFromClipboard(this);
-                    changeContent();//Event for undo redo
-                }
-            },
+//            "Paste": {
+//                name: "Paste",
+//                icon: "paste",
+//                callback: function(key, options) {
+//                    me.pasteTextFromClipboard(this);
+//                    changeContent();//Event for undo redo
+//                }
+//            },
         }
     });
-
     /* End elements */
+
+    $(".context-menu-item").on("mouseover", function() {
+        $($(this).find(".context-menu-icon-left")[0]).css("color", "#fff");
+    });
+    $(".context-menu-item").on("mouseout", function() {
+        $($(this).find(".context-menu-icon-left")[0]).css("color", "#4A80B9");
+    });
+
 });

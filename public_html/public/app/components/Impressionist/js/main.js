@@ -378,20 +378,6 @@ Impressionist.prototype =
             },
             enableDrag: function()
             {
-//                $(".slidelement").off(); //Delete all events before add again
-//                $(".slidelement").resizable({
-//                    handles: {
-//                        'nw': '#play .ui-resizable-nw',
-//                        'ne': '#play .ui-resizable-ne',
-//                        'sw': '#play .ui-resizable-sw',
-//                        'se': '#play .ui-resizable-se',
-//                        'n': '#play .ui-resizable-n',
-//                        'e': '#play .ui-resizable-e',
-//                        's': '#play .ui-resizable-s',
-//                        'w': '#play .ui-resizable-w'
-//                    }
-//                });
-
                 $(".slidelement").draggable().on("dblclick", function(e)
                 {
                     $(this).removeClass("grabbing");
@@ -464,6 +450,24 @@ Impressionist.prototype =
                                     }
                                 }
                             }
+                        }
+                    }
+                }).on("keyup", function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if ($(this).attr("contentEditable") == "true") {
+                        switch ($(this).attr("data-type")) {
+                            case "text":
+                                if ($(this).html() == "" || $(this).html() == "<br>" || $($(this).children("div")[0]).html() == "<br>" || ($($(this).find["font"]).size() > 1 && $($(this).find["font"][0]).html() == "<br>")) {
+                                    $(this).html(text_inner);
+                                }
+                                break;
+                            case "code":
+                                var code = $(this).find("code")[0];
+                                if (typeof $(code).find("ol")[0] == "undefined" || $(this).html() == "" || $(this).html() == "<br>") {
+                                    $(this).html(code_inner);
+                                }
+                                break;
                         }
                     }
                 }).on("drag", function(e)

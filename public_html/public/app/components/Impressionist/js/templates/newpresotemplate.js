@@ -21,7 +21,11 @@ var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement cent
 var text_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="text" data-type="text"><div>Sample Text</div> </div>';
 var image_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="image" data-type="image"><img style="width: 100%;" src=""></div>';
 var graphic_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="graphic" data-type="graphic"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" ></svg></div>';
-var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;</li></ol></code></pre></div>';
+var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;&lt;/script&gt;</li></ol></code></pre></div>';
+
+var text_inner='<div><font color="#000">&nbsp; </font></div>';
+var code_inner='<pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&nbsp;</li></ol></code></pre>';
+
 var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__" data-background="#fff"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
