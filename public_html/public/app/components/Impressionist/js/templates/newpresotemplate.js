@@ -8,7 +8,7 @@ var welcome_panel = '<!-- Welcome panel -->'+
                         '</div>'+
                         '<div class="modal-footer">'+
                             '<a href="#" class="btn btn-primary newpresopanel"> <i class="fa fa-plus"></i> &nbsp; New presentation</a>'+
-                            '<a href="#" class="btn btn-success loadpresbtn"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
+                            '<a href="#" class="btn btn-success loadpresbtn palette-purple"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open presentation</a>'+
                         '</div>'+
                     '</div>'+
                     '<!-- End of new preso modal-->';
@@ -16,12 +16,16 @@ var welcome_panel = '<!-- Welcome panel -->'+
 var slidethumb = '<div id="slidethumb_^UID^" class="slidethumb thumbelement center-block context-menu-slides">'+
 					 '<div class="thumbnailholder"></div>'+
 					 '<canvas class="slidemask" id="slidethumb_^UID^" style="z-index:1000; width:100%; height:100%; background-color:#FFF; opacity:0.1; left:0px; top:0px; position:absolute"></canvas>'+
-					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-info btn-small deletebtn"><i class="fa fa-close"></i></a>'+
+					'<a id="deletebtn" data-parent="slidethumb_^UID^" style="z-index:1001;" class="btn btn-warning btn-small deletebtn"><i class="fa fa-close"></i></a>'+
 				 '</div>';
 var text_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="text" data-type="text"><div>Sample Text</div> </div>';
 var image_snippet = '<div class="slidelement elementselectable" id="slidelement_id" data-button-class="image" data-type="image"><img style="width: 100%;" src=""></div>';
 var graphic_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="graphic" data-type="graphic"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" ></svg></div>';
-var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;</li></ol></code></pre></div>';
+var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;&lt;/script&gt;</li></ol></code></pre></div>';
+
+var text_inner='<div><font color="#000">&nbsp; </font></div>';
+var code_inner='<pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&nbsp;</li></ol></code></pre>';
+
 var fullslider_slide = '<section class="fullslider-slide" id="fullslider_slide__slidenumber__" data-background="#fff"></section>';
 var saved_presentations = '<div class="savedpresos">' +
                                     '<div class="presothumbcontent">' +
@@ -33,7 +37,7 @@ var saved_presentations = '<div class="savedpresos">' +
                                     '</div>' +
                             '</div>';
 var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
-                                '<a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" title="Choose the font size"><span class="text fontSizeReadout">72</span>' +
+                                '<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="Choose the font size"><span class="text fontSizeReadout">72</span>' +
                                         '<span class="caret"></span></a>' +
                                 '<ul class="dropdown-menu" data-option="fontSize">' +
                                         '<li>' +
@@ -95,7 +99,7 @@ var font_list='<ul class="dropdown-menu">'+
             '</ul>';
 
 var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
-                                '<a class="btn btn-inverse dropdown-toggle btn-small fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text fontFamilyReadout">Lato</span><span class="caret"></span></a>'+
+                                '<a class="btn btn-primary dropdown-toggle fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text fontFamilyReadout">Lato</span><span class="caret"></span></a>'+
                                 font_list+
                             '</div>';
                     
@@ -128,7 +132,7 @@ var code_style_list='<ul class="dropdown-menu" data-option="codestyle">'+
                     '</li>'+
             '</ul>';
 var code_style_selector='<div class="code-style-menu btn-group">'+
-                            '<a class="btn btn-inverse dropdown-toggle btn-small code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>'+
+                            '<a class="btn btn-primary dropdown-toggle code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>'+
                             code_style_list+
                         '</div>';
 
@@ -176,7 +180,7 @@ var my_pres_modal= '<!-- Saved Presentations Modal -->'+
                    '<div class="modal hide fade modalwindow" id="savedpresentationsmodal">'+
                         '<div class="modal-header">'+
                             '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-                            '<h3>My Presentations</h3>'+
+                            '<h3>My Saved Presentations</h3>'+
                         '</div>'+
                         '<div class="modal-body" id="savedpresentations">'+
                         '</div>'+

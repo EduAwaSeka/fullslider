@@ -76,7 +76,7 @@ p {
 #header-menu{
     padding-bottom: 1vw;
     background-color: #A32C00;
-    border-bottom: 0.074vw solid #767575;
+    border-bottom: 0.074vw solid #23313E;
     height: 4.7291vw;
 }
 
@@ -95,8 +95,10 @@ p {
 #textDropdown{
     padding-left: 0.1vw;
     padding-right: 0.1vw;
-    background-color: #E8EBEF;
+    background-color: #079BA9;
     border-left: 0.0732vw solid #4874A0;
+    color: #fff;
+    box-shadow: 0.12vw 0.12vw 0.15vw #161616 !important;
 }
 
 #textDropdown .caret{
@@ -134,7 +136,37 @@ p {
 }
 
 .palette-night {
-    background-color: #34495e;
+    background-color: #34495e !important;
+}
+
+.palette-green {
+    background-color: #305D54 !important;
+}
+
+.palette-aquamarine{
+    background-color: #366B69 !important;
+}
+
+.palette-bismark{
+    background-color: #3B6775 !important;
+}
+
+.palette-army{
+    background-color: #59652E !important;
+}
+
+.palette-purple {
+    background: #3B3E64!important;
+    text-shadow: 0.05vw 0.055vw 0.1vw #000000;
+}
+
+.loadpresbtn.palette-purple:hover{
+    background: linear-gradient(to bottom, rgb(66, 140, 204) 0%,rgb(60, 64, 104) 100%) !important;
+    text-shadow: 0.08vw 0.08vw 0.15vw #000;
+}
+
+.loadpresbtn{
+    border-color: #000000 !important;
 }
 
 #deck{
@@ -145,7 +177,7 @@ p {
 /* Vertical-toolbar */
 
 #vertical-toolbar{
-    border-right: 0.0732vw solid #767575;
+    border-right: 0.0732vw solid #424F5C;
     height: 100%;
     background-color: #555;
     float: left;
@@ -239,6 +271,7 @@ p {
     color: white;
     width: 100%;
     text-align: center;
+    text-shadow: 0.08vw 0.08vw 0.15vw #161616 !important;
 }
 
 #editpresonamebtn{
@@ -253,6 +286,7 @@ p {
     left: 0vw !important;
     padding: 0vw !important;
     height: 38.8vw !important;
+    box-shadow: 0.07vw 0.07vw 0.3vw #1F1F1F;
 }
 
 .slidelement div,.slidelement span, .slidelement ul,
@@ -527,4 +561,12 @@ pre.prettyprint ol{
     list-style-type: decimal;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+
+
+/* Context menu custom icons */
+.context-menu-icon-left{
+    margin-left: -1.8vw;
+    color: #4A80B9;
 }
