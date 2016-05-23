@@ -143,6 +143,14 @@ p {
     background-color: #305D54 !important;
 }
 
+.palette-aquamarine{
+    background-color: #366B69 !important;
+}
+
+.palette-bismark{
+    background-color: #3B6775 !important;
+}
+
 .palette-army{
     background-color: #59652E !important;
 }
@@ -168,7 +176,7 @@ p {
 /* Vertical-toolbar */
 
 #vertical-toolbar{
-    border-right: 0.0732vw solid #767575;
+    border-right: 0.0732vw solid #424F5C;
     height: 100%;
     background-color: #555;
     float: left;
@@ -277,6 +285,7 @@ p {
     left: 0vw !important;
     padding: 0vw !important;
     height: 38.8vw !important;
+    box-shadow: 0.07vw 0.07vw 0.3vw #1F1F1F;
 }
 
 .slidelement div,.slidelement span, .slidelement ul,

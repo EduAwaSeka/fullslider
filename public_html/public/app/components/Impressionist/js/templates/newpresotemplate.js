@@ -176,7 +176,7 @@ var my_pres_modal= '<!-- Saved Presentations Modal -->'+
                    '<div class="modal hide fade modalwindow" id="savedpresentationsmodal">'+
                         '<div class="modal-header">'+
                             '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-                            '<h3>My Presentations</h3>'+
+                            '<h3>My Saved Presentations</h3>'+
                         '</div>'+
                         '<div class="modal-body" id="savedpresentations">'+
                         '</div>'+
