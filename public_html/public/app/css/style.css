@@ -157,6 +157,7 @@ p {
 
 .palette-purple {
     background: #3B3E64!important;
+    text-shadow: 0.05vw 0.055vw 0.1vw #000000;
 }
 
 .loadpresbtn.palette-purple:hover{

@@ -446,7 +446,7 @@ function jsvectoreditor_init_events() {
 function jsvectoreditor_init() {
     jsvectoreditor_init_events();
     $("#fillopacity").html(opacity_selector);
-    $("#strokeopacity").html(opacity_selector);
+//    $("#strokeopacity").html(opacity_selector);
     setupColorPicker($("#fillcolor"), setFillHexColor, $("#fillcolor").attr("data-dfcolor"));
     setupColorPicker($("#strokecolor"), setStrokeHexColor, $("#strokecolor").attr("data-dfcolor"));
 

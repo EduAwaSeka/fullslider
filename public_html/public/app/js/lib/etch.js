@@ -24,7 +24,7 @@ function initializeTextColorChooser(color) {
             'title': ['bold', 'italic', 'underline', 'save'],
             'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
-            'graphic': ["strokewidth", "strokeopacity", 'strokecolor', 'fillcolor', 'fillopacity'],
+            'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
     };
 
@@ -114,12 +114,12 @@ function initializeTextColorChooser(color) {
                         $(buttonEl).removeClass("col-sm-2");
                         break;
                     case "strokewidth":
-                        var buttonEl = $('<div class="etch-stroke-width"><input id="edit-stroke-width" type="number" min="1" max="44" value="5"><a href="#" id="edit-stroke-width-btn" class="etch-editor-button" title="Change stroke width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
-                        $(buttonEl).prepend("Stroke:");
+                        var buttonEl = $('<div class="etch-stroke-width"><input id="edit-stroke-width" type="number" min="1" max="44" value="5"><a href="#" id="edit-stroke-width-btn" class="etch-editor-button btn btn-info" title="Change stroke width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
+                        $(buttonEl).prepend("<span class='etch-label'>Stroke:</span>");
                         break;
-                    case "strokeopacity":
-                        var buttonEl = $('<div class="etch-stroke-opacity"><select id="edit-stroke-opacity">' + opacity_selector + '</select></div>');
-                        break;
+//                    case "strokeopacity":
+//                        var buttonEl = $('<div class="etch-stroke-opacity"><select id="edit-stroke-opacity">' + opacity_selector + '</select></div>');
+//                        break;
                     case "fillopacity":
                         var buttonEl = $('<div class="etch-fill-opacity"><select id="edit-fill-opacity">' + opacity_selector + '</select></div>');
                         break;
@@ -127,10 +127,10 @@ function initializeTextColorChooser(color) {
                         var buttonEl = $(code_style_selector);
                         break;
                     case "shownumbers":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
                         break;
                     default:
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + '" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
                 }
                 view.$el.append(buttonEl);
             });
@@ -140,13 +140,13 @@ function initializeTextColorChooser(color) {
 
             setupColorPicker($("#edit-stroke-color"), changeStrokeColor, getCurrentGraphicColor("stroke"));
             setupColorPicker($("#edit-fill-color"), changeFillColor, getCurrentGraphicColor("fill"));
-            $("#edit-fill-color").prepend("Fill: ");
+            $("#edit-fill-color").prepend("<span class='etch-label'>Fill: </span>");
 
             $("#edit-stroke-width-btn").on("click", function() {
                 changeStrokeWidth();
             });
 
-            $("#edit-stroke-opacity").change(changeStrokeOpacity);
+//            $("#edit-stroke-opacity").change(changeStrokeOpacity);
             $("#edit-fill-opacity").change(changeFillOpacity);
 
             var $toggle = this.$el.find('.dropdown-toggle');
@@ -453,7 +453,7 @@ function initializeTextColorChooser(color) {
                     updateCurrentColor($("#edit-stroke-color"), getCurrentGraphicColor("stroke"));
                     updateCurrentStrokeWidth();
                     updateCurrentOpacity($("#edit-fill-opacity"), "fill-opacity");
-                    updateCurrentOpacity($("#edit-stroke-opacity"), "stroke-opacity");
+//                    updateCurrentOpacity($("#edit-stroke-opacity"), "stroke-opacity");
                     break;
             }
 

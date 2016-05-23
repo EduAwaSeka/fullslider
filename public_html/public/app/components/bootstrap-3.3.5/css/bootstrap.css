@@ -3150,6 +3150,7 @@ fieldset[disabled] .btn-default.active {
     color: #fff;
     background-color: #079BA9 !important;
     border-color: #000000;
+    text-shadow: 0.05vw 0.055vw 0.1vw #000000;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3293,9 +3294,9 @@ fieldset[disabled] .btn-success.active {
     background: linear-gradient(to bottom, #61A1D6 0%,#294E6D 100%);
 }
 .btn-info:hover {
-    color: #FFFFFF;
-    border-color: #2C2F3C;
-    background: linear-gradient(to bottom, #61A1D6 0%,#294E6D 100%);
+    color: #FFFFFF !important;
+    border-color: #2C2F3C !important;
+    background: linear-gradient(to bottom, #61A1D6 0%,#294E6D 100%) !important; 
 }
 .btn-info:active,
 .btn-info.active,

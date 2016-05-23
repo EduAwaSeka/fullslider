@@ -33,7 +33,7 @@ var saved_presentations = '<div class="savedpresos">' +
                                     '</div>' +
                             '</div>';
 var font_size_selector = '<div id="etch-font-size" class="btn-group">'+
-                                '<a class="btn btn-small btn-inverse dropdown-toggle" data-toggle="dropdown" title="Choose the font size"><span class="text fontSizeReadout">72</span>' +
+                                '<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="Choose the font size"><span class="text fontSizeReadout">72</span>' +
                                         '<span class="caret"></span></a>' +
                                 '<ul class="dropdown-menu" data-option="fontSize">' +
                                         '<li>' +
@@ -95,7 +95,7 @@ var font_list='<ul class="dropdown-menu">'+
             '</ul>';
 
 var etch_font_family_selector =  '<div id="etch-font-family" class="btn-group">'+
-                                '<a class="btn btn-inverse dropdown-toggle btn-small fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text fontFamilyReadout">Lato</span><span class="caret"></span></a>'+
+                                '<a class="btn btn-primary dropdown-toggle fontFamilyBtn" data-toggle="dropdown" title="Choose the font family"><span class="text fontFamilyReadout">Lato</span><span class="caret"></span></a>'+
                                 font_list+
                             '</div>';
                     
@@ -128,7 +128,7 @@ var code_style_list='<ul class="dropdown-menu" data-option="codestyle">'+
                     '</li>'+
             '</ul>';
 var code_style_selector='<div class="code-style-menu btn-group">'+
-                            '<a class="btn btn-inverse dropdown-toggle btn-small code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>'+
+                            '<a class="btn btn-primary dropdown-toggle code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>'+
                             code_style_list+
                         '</div>';
 
