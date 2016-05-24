@@ -289,6 +289,10 @@ p {
     box-shadow: 0.07vw 0.07vw 0.3vw #1F1F1F;
 }
 
+.slidelement{
+    z-index: 1;
+}
+
 .slidelement div,.slidelement span, .slidelement ul,
 .slidelement li, .slidelement ol, .slidelement b,
 .slidelement u, .slidelement p, .slidelement i,
@@ -303,11 +307,10 @@ p {
 }
 
 #markdown-editor{
-    border-left: 0.0732vw solid #767575;
+    /*border-left: 0.0732vw solid #767575;*/
     height: 100%;
     padding: 0.5%;
     z-index: 2;
-    display: none;
 }
 
 #markdown-space{

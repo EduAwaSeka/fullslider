@@ -59,9 +59,9 @@
 }
 
 #graphic-options {
-    margin-bottom: 0.464vw;
     font-size: 0.7vw;
-    z-index: -50;
+    /*z-index: -50;*/
+    display:none;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -71,8 +71,10 @@
     width: 6vw;
     height: 100%;
     border-right: none;    
-    margin-top: -0.1464vw;
+    /*margin-top: -0.1464vw;*/
+    margin-top: 2.36vw;
     padding-left: 0.1464vw;
+    margin-bottom: 0.464vw;
     padding: 0.2vw;
 }
 #graphic-options .panel-heading {

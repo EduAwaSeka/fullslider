@@ -94,8 +94,6 @@ Eduardo Jiménez Grande
                         </div>
                         <div class="btn-group">
                             <a class="btn btn-info" id="addcodebtn" href="#" title="Add code"><i class="fa fa-code"></i></a>
-                        </div>
-                        <div class="btn-group">
                             <a class="btn btn-info" id="addimagebtn" href="#" title="Add image"><i class="fa fa-image"></i></a>
                         </div>
                         <div id="graphics-tools" class="btn-group">
@@ -147,75 +145,75 @@ Eduardo Jiménez Grande
 
                             </div>
                             <div id="canvas"></div>
-                            <div id="graphic-options">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Fill:</div>
-                                    <div class="panel-body">
-                                        <label>Color:</label>
-                                        <div id="fillcolor" data-dfcolor="#f3350b" class=""><input class="color-chooser colorpicker" /></div>
-
-                                        <label>Opacity:</label>
-                                        <select id="fillopacity"></select> 
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Stroke:</div>
-                                    <div class="panel-body">
-
-                                        <label>Color:</label>
-                                        <div id="strokecolor" data-dfcolor="#000000" class=""><input class="color-chooser colorpicker" /></div>
-
-                                        <label>Width:</label>
-
-                                        <input id="strokewidth" type="number" min="1" max="44" value="5">
-
-<!--                                        <label>Opacity:</label>
-                                        <select id="strokeopacity"></select> -->
-                                    </div>
-                                </div>
-
-                                <div id="arrow-type" class="panel panel-default">
-                                    <div class="panel-heading">Arrow Type:</div>
-                                    <div class="panel-body">
-
-                                        <label>Start:</label>
-                                        <select id="arrow-start"> 
-                                            <option value="none" selected>None</option> 
-                                            <option value="block">Normal</option> 
-                                            <option value="classic">Classic</option> 
-                                            <option value="open">Open</option> 
-                                            <option value="oval">Oval</option> 
-                                            <option value="diamond">Diamond</option> 
-                                        </select> 
-
-                                        <label>End:</label>
-                                        <select id="arrow-end"> 
-                                            <option value="block" selected>Normal</option> 
-                                            <option value="classic">Classic</option> 
-                                            <option value="open">Open</option> 
-                                            <option value="oval">Oval</option> 
-                                            <option value="diamond">Diamond</option> 
-                                        </select> 
-                                    </div>
-                                </div>
-                            </div>
                             <span id="play">
                                 <span class="rotate label label-disabled" id="spanrotate"><i class="fa fa-rotate-left"></i></span>
                                 <span class="scale label label-important"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
-<!--                                <span class="skewx label label-disabled" id="spanskewx"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
-                                <span class="skewy label label-disabled" id="spanskewy"><i class="glyphicon glyphicon-resize-vertical"></i></span>-->
+                                <!--                                <span class="skewx label label-disabled" id="spanskewx"><i class="glyphicon glyphicon-resize-horizontal"></i></span>
+                                                                <span class="skewy label label-disabled" id="spanskewy"><i class="glyphicon glyphicon-resize-vertical"></i></span>-->
                                 <span class="deleteicon label label-important" id="spandelete"><i class="fa fa-close"></i></span>
                             </span>
                         </div><!-- slideviewport -->
                     </div>
                 </div>
-                <div id="markdown-editor" class="col-sm-3 palette-night">
-                    <div class="center-block text-center h4">
-                        <span class="glyphicon glyphicon-pencil"></span> Markdown
-                    </div>
-                    <div id="markdown-space">
-                        <textarea></textarea>
+                <div id="markdown-editor" class="col-sm-3">
+                    <!--                    <div class="center-block text-center h4">
+                                            <span class="glyphicon glyphicon-pencil"></span> Markdown
+                                        </div>
+                                        <div id="markdown-space">
+                                            <textarea></textarea>
+                                        </div>-->
+                    <div id="graphic-options">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Fill:</div>
+                            <div class="panel-body">
+                                <label>Color:</label>
+                                <div id="fillcolor" data-dfcolor="#f3350b" class=""><input class="color-chooser colorpicker" /></div>
+
+                                <label>Opacity:</label>
+                                <select id="fillopacity"></select> 
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Stroke:</div>
+                            <div class="panel-body">
+
+                                <label>Color:</label>
+                                <div id="strokecolor" data-dfcolor="#000000" class=""><input class="color-chooser colorpicker" /></div>
+
+                                <label>Width:</label>
+
+                                <input id="strokewidth" type="number" min="1" max="44" value="5">
+
+                                <!--                                        <label>Opacity:</label>
+                                                                        <select id="strokeopacity"></select> -->
+                            </div>
+                        </div>
+
+                        <div id="arrow-type" class="panel panel-default">
+                            <div class="panel-heading">Arrow Type:</div>
+                            <div class="panel-body">
+
+                                <label>Start:</label>
+                                <select id="arrow-start"> 
+                                    <option value="none" selected>None</option> 
+                                    <option value="block">Normal</option> 
+                                    <option value="classic">Classic</option> 
+                                    <option value="open">Open</option> 
+                                    <option value="oval">Oval</option> 
+                                    <option value="diamond">Diamond</option> 
+                                </select> 
+
+                                <label>End:</label>
+                                <select id="arrow-end"> 
+                                    <option value="block" selected>Normal</option> 
+                                    <option value="classic">Classic</option> 
+                                    <option value="open">Open</option> 
+                                    <option value="oval">Oval</option> 
+                                    <option value="diamond">Diamond</option> 
+                                </select> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

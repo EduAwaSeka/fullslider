@@ -10,7 +10,13 @@ $(function() {
         items: {
             "Duplicate slide": {
                 name: "Duplicate slide",
-                icon: "copy",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="icon icon-page-duplicate context-menu-icon-left" aria-hidden="true"></span> ' + "Duplicate slide");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
                 callback: function(key, options) {
                     me.selectCurrentClicked($(this));
                     copyEl();
@@ -93,6 +99,7 @@ $(function() {
                     $(this).unbind();
 
                     $(this).addClass("slidelement_pattern");
+                    $(this).css("z-index", 0);
                     var pattern_uid = me.generateUID();
                     $(this).attr("data-pattern", pattern_uid);
                     var cloned = me.clonePatternElement($(this));
@@ -106,7 +113,13 @@ $(function() {
             },
             "Duplicate element": {
                 name: "Duplicate element",
-                icon: "copy",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="icon icon-page-duplicate context-menu-icon-left" aria-hidden="true"></span> ' + "Duplicate element");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
                 callback: function(key, options) {
                     me.selectCurrentClicked($(this));
                     copyEl();
@@ -172,7 +185,7 @@ $(function() {
                 name: "Remove pattern",
                 icon: function(opt, $itemElement, itemKey, item) {
                     // Set the content to the menu trigger selector and add an bootstrap icon to the item.
-                    $itemElement.html('<span class="fa fa-times-circle context-menu-icon-left" aria-hidden="true"></span> ' + "Remove pattern");
+                    $itemElement.html('<span class="fa fa-trash context-menu-icon-left" aria-hidden="true"></span> ' + "Remove pattern");
 
                     // Add the context-menu-icon-updated class to the item
                     return 'context-menu-icon-updated';
@@ -188,6 +201,63 @@ $(function() {
                     });
                     me.removePattern(pattern_uid);
                     changeContent();//Event for undo redo
+                }
+            },
+            "Remove from this slide": {
+                name: "Remove from this slide",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-times-circle context-menu-icon-left" aria-hidden="true"></span> ' + "Remove pattern from this slide");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    me.clearElementSelections();
+                    var slide_parent = $(this).parent();
+                    me.deleteElement($(this));
+                    me.updateScaledSlide(slide_parent);
+                    changeContent();//Event for undo redo
+                }
+            },
+            "To front(+1)": {
+                name: "To front (+1)",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-arrow-up context-menu-icon-left" aria-hidden="true"></span> ' + "To front (+1)");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    if (zindex) {
+                        zindex++;
+                    }
+                    else {
+                        zindex = 1;
+                    }
+                    $(this).css("z-index", zindex);
+                }
+            },
+            "To back (-1)": {
+                name: "To back (-1)",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-arrow-down context-menu-icon-left" aria-hidden="true"></span> ' + "To back (-1)");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    if (zindex) {
+                        zindex--;
+                    }
+                    else {
+                        zindex = 0;
+                    }
+                    $(this).css("z-index", zindex);
                 }
             },
         }
