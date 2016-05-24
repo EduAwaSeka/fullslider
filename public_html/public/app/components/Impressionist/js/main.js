@@ -742,7 +742,7 @@ Impressionist.prototype =
                 //$("#slidethumb_" + uid).attr("data-top", "0px");
                 me.addSlideEvents();
                 me.lastslideleftpos += 200;
-                me.assignSlideNumbers();
+                me.assignSlideNumbers(true);
                 me.addFullsliderSlide(uid);
                 $("#presentationmetatitle").html($("#titleinput").val());
                 changeContent();//Event for undo redo
@@ -792,6 +792,12 @@ Impressionist.prototype =
                 me.selectSlide("#fullslider_slide_" + id);
                 me.selectThumb(id);
                 me.addFullsliderText("normal");
+
+                //Slidenumbers
+                $(me.selectedSlide).append(slidenumbers_snippet);
+                me.setSlideNumbersDisplay();
+                me.setSlideNumber();
+
                 for (var i in me.patterns) {
                     $(me.selectedSlide).append(me.clonePatternElement(me.patterns[i]));
                 }
@@ -963,7 +969,7 @@ Impressionist.prototype =
                 $(".slidethumb").removeClass("currentselection");
                 $("#slidethumb_" + id).addClass("currentselection");
             },
-            assignSlideNumbers: function()
+            assignSlideNumbers: function(noreset)
             {
                 children = $(".slidethumbholder").children();
                 for (var i = 0; i < children.length; i++)
@@ -971,6 +977,9 @@ Impressionist.prototype =
                     child = $(children[i]);
                     count = i;
                     $("#" + child[0].id).attr("data-slidenumber", ++count);
+                    if (!noreset) {
+                        me.resetSlideNumber(child[0].id);
+                    }
                     //slidenumber = $("#"+child[0].id).find(".slidedisplay").html();
                     //child.innerText = child.innerText.split("__text__").join("Slide "+(++count));
                 }
@@ -2047,6 +2056,32 @@ Impressionist.prototype =
 
                 $(element_id).find(".sp-preview-inner").css("background-color", value);
             },
+            setSlideNumber: function() {
+                var slidenum = $(me.selectedSlide).find(".slidenum")[0];
+                var slide_id = $(me.selectedSlide).attr("id").split("_");
+                slide_id = "#slidethumb_" + slide_id[2];
+                $($(slidenum).find("font")[0]).html($(slide_id).attr("data-slidenumber"));
+            },
+            resetSlideNumber: function(thumb_id) {
+                var slide_id = thumb_id.split("_");
+                slide_id = "#fullslider_slide_" + slide_id[1];
+                var slidenum = $(slide_id).find(".slidenum")[0];
+                $($(slidenum).find("font")[0]).html($("#" + thumb_id).attr("data-slidenumber"));
+            },
+            setSlideNumbersDisplay: function() {
+                var displaynum;
+                if (me.showSlideNumbers == "showslidenumbersradio") {
+                    displaynum = "block";
+                }
+                else {
+                    displaynum = "none";
+                }
+                var slidenums = $(".fullslider-slide-container").children();
+                for (var i = 0; i < slidenums.length; i++) {
+                    var slidenum = $(slidenums[i]).find(".slidenum")[0];
+                    $(slidenum).css("display", displaynum);
+                }
+            },
             updateConfig: function() {
                 me.normalSize = parseFloat($("#normal_text_size").attr("value"));
                 me.titleSize = parseFloat($("#title_text_size").attr("value"));
@@ -2061,8 +2096,9 @@ Impressionist.prototype =
                 me.subtitleColor = rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
 
                 me.boundTextOption = $("input[name='boundOption']:checked").attr("id");
-                me.showSlideNumbers = $("input[name='showSlideNumbers']:checked").attr("id");
 
+                me.showSlideNumbers = $("input[name='showslidenumbers']:checked").attr("id");
+                me.setSlideNumbersDisplay();
             },
             updateConfigFromSaved: function(config) {
                 me.normalSize = parseFloat(config.normalText.size);
@@ -2079,7 +2115,7 @@ Impressionist.prototype =
 
                 me.boundTextOption = config.boundTextOption;
                 me.showSlideNumbers = config.showSlideNumbers;
-
+                me.setSlideNumbersDisplay();
             },
             getConfigVariable: function() {
                 var normalText = {'size': me.normalSize, 'font': me.normalFont, 'color': me.normalColor};
