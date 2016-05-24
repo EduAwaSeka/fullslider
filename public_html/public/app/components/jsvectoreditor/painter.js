@@ -47,7 +47,7 @@ function enableEditor() {
         }
 
         $("#canvas").css("z-index", "50");
-        $("#graphic-options").css("z-index", "50");
+        $("#graphic-options").css("display", "block");
         $(".btn").on("click", manageOnEditBtnEvents);
         $("#addtextbtn").attr("disabled", "true");
         $("#textDropdown").attr("disabled", "true");
@@ -59,7 +59,7 @@ function enableEditor() {
 function disableEditor() {
     if (isEnabledEditor()) {
         $("#canvas").css("z-index", "-50");
-        $("#graphic-options").css("z-index", "-50");
+        $("#graphic-options").css("display", "none");
         $(".btn").off("click", manageOnEditBtnEvents);
         $("#addtextbtn").attr("disabled", null);
         $("#textDropdown").attr("disabled", null);

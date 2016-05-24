@@ -47,6 +47,7 @@ Impressionist = function()
     this.subtitleColor;
 
     this.boundTextOption;
+    this.showSlideNumbers;
 
     this.patterns = {};
 
@@ -89,6 +90,7 @@ Impressionist.prototype =
             loadDefaultConfig: function() { //Load default config on Fullslider attributes
                 me.loadDefaultText();
                 me.boundTextOption = "nothingradio";
+                me.showSlideNumbers = "dontshowslidenumbersradio";
             },
             initializeWelcomePanel: function() {
                 $("#modals").append(welcome_panel);
@@ -216,7 +218,7 @@ Impressionist.prototype =
             },
             clonePatternElement: function(element)
             {
-                var clone = element.clone();
+                var clone = $(element).clone();
                 var id = clone.attr("id").replace(/[0-9]/g, '');
                 id = id + me.generateUID();
                 clone.attr("id", id);
@@ -968,7 +970,7 @@ Impressionist.prototype =
                 {
                     child = $(children[i]);
                     count = i;
-                    $("#" + child[0].id).find(".slidedisplay").html("Slide " + (++count));
+                    $("#" + child[0].id).attr("data-slidenumber", ++count);
                     //slidenumber = $("#"+child[0].id).find(".slidedisplay").html();
                     //child.innerText = child.innerText.split("__text__").join("Slide "+(++count));
                 }
@@ -1468,6 +1470,7 @@ Impressionist.prototype =
                 var title = (presentation.title === undefined || presentation.title === null);
                 var contents = (presentation.contents === undefined || presentation.contents === null);
                 var config = (presentation.config === undefined || presentation.config === null);
+                var patterns = (presentation.patterns === undefined || presentation.patterns === null);
 
                 var normalText = (presentation.config.normalText === undefined || presentation.config.normalText === null);
                 var normalTextSize = (presentation.config.normalText.size === undefined || presentation.config.normalText.size === null);
@@ -1485,9 +1488,10 @@ Impressionist.prototype =
                 var subtTextColor = (presentation.config.subtText.color === undefined || presentation.config.subtText.color === null);
 
                 var boundTextOption = (presentation.config.boundTextOption === undefined || presentation.config.boundTextOption === null);
+                var showSlideNumbers = (presentation.config.showSlideNumbers === undefined || presentation.config.showSlideNumbers === null);
 
-                var error = (id || title || contents || config || normalText || normalTextSize || normalTextFont || normalTextColor || titleText ||
-                        titleTextSize || titleTextFont || titleTextColor || subtText || subtTextSize || subtTextFont || subtTextColor || boundTextOption);
+                var error = (id || title || contents || config || patterns || normalText || normalTextSize || normalTextFont || normalTextColor || titleText ||
+                        titleTextSize || titleTextFont || titleTextColor || subtText || subtTextSize || subtTextFont || subtTextColor || boundTextOption || showSlideNumbers);
                 return error;
             },
             fetchAndPreview: function(id)
@@ -1564,7 +1568,8 @@ Impressionist.prototype =
                     id: tempid,
                     title: $("#presentationmetatitle").text(),
                     contents: $(".fullslider-slide-container").html().toString(),
-                    config: config
+                    config: config,
+                    patterns: me.patterns
                 };
                 me.currentPresentation = o;
                 $("#presentationmetatitle").html(me.currentPresentation.title);
@@ -1606,7 +1611,8 @@ Impressionist.prototype =
                     'id': id,
                     'title': title,
                     'contents': contents,
-                    'config': config
+                    'config': config,
+                    'patterns': me.patterns
                 };
                 return JSON.stringify(file);
             },
@@ -1662,7 +1668,7 @@ Impressionist.prototype =
             loadPresentation: function(presentation) {
                 me.cleanFullslider();
                 //Clean all patterns
-                me.patterns = {};
+                me.patterns = presentation.patterns;
 
                 $(".fullslider-slide-container").html(presentation.contents);
                 me.generateAllThumbs();
@@ -1991,6 +1997,7 @@ Impressionist.prototype =
                 me.loadColor("title");
                 me.loadColor("subtitle");
                 $("#" + me.boundTextOption).prop("checked", true);
+                $("#" + me.showSlideNumbers).prop("checked", true);
             },
             loadFont: function(type) {
                 var value = "";
@@ -2054,6 +2061,7 @@ Impressionist.prototype =
                 me.subtitleColor = rgbToHex($("#subt_text_color").find(".sp-preview-inner").css("background-color"));
 
                 me.boundTextOption = $("input[name='boundOption']:checked").attr("id");
+                me.showSlideNumbers = $("input[name='showSlideNumbers']:checked").attr("id");
 
             },
             updateConfigFromSaved: function(config) {
@@ -2070,6 +2078,8 @@ Impressionist.prototype =
                 me.subtitleColor = config.subtText.color;
 
                 me.boundTextOption = config.boundTextOption;
+                me.showSlideNumbers = config.showSlideNumbers;
+
             },
             getConfigVariable: function() {
                 var normalText = {'size': me.normalSize, 'font': me.normalFont, 'color': me.normalColor};
@@ -2080,12 +2090,13 @@ Impressionist.prototype =
                     'normalText': normalText,
                     'titleText': titleText,
                     'subtText': subtitleText,
-                    'boundTextOption': me.boundTextOption
+                    'boundTextOption': me.boundTextOption,
+                    'showSlideNumbers': me.showSlideNumbers
                 };
                 return config;
             },
             addPattern: function(key, value) {
-                me.patterns[key] = value;
+                me.patterns[key] = $(value)[0].outerHTML;
             },
             removePattern: function(key) {
                 delete me.patterns[key];

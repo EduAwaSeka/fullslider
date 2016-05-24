@@ -217,6 +217,7 @@ var config_modal= '<!-- Design Configuration Modal -->'+
                         '<div class="modal-body">'+
                             '<ul id="configTab" class="nav nav-tabs">'+ 
                                 '<li role="presentation" class="active"><a href="#textFormat">Text Format</a></li>'+
+                                '<li role="presentation"><a href="#slidesConfig">Slides</a></li>'+
                             '</ul>'+
                             '<div class="tab-content">'+
                                 '<div role="tabpanel" class="tab-pane active" id="textFormat">'+
@@ -258,7 +259,24 @@ var config_modal= '<!-- Design Configuration Modal -->'+
                                                     '</span>'+
                                                 '</span>'+
                                             '</div>'+
-                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div role="tabpanel" class="tab-pane" id="slidesConfig">'+
+                                    '<div id="showSlideNumbersOptions" class="panel panel-default">'+
+                                        '<div class="panel-heading">Show slide number:</div>'+
+                                            '<div class="panel-body">'+
+                                                '<span class="col-sm-2">'+
+                                                    '<input id="showslidenumbersradio" type="radio" value="yes" name="showslidenumbers">'+
+                                                    '<label for="showslidenumbersradio" class="label">Yes</label>'+
+                                                '</span>'+
+                                                '<span class="col-sm-10">'+
+                                                    '<span class="col-sm-5">'+
+                                                            '<input id="dontshowslidenumbersradio" type="radio" value="no" name="showslidenumbers">'+
+                                                            '<label for="dontshowslidenumbersradio" class="label">No</label>'+
+                                                    '</span>'+
+                                                '</span>'+
+                                            '</div>'+
+                                    '</div>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+
