@@ -22,7 +22,7 @@ function initializeTextColorChooser(color) {
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', "more-spacing", "less-spacing", 'font-size', 'font-family', 'color'],
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }

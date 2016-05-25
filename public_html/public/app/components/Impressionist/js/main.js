@@ -1162,7 +1162,7 @@ Impressionist.prototype =
                         var msg = "Generating pdf. Wait please...";
                         openAlert("info", msg);
 
-                        $.post("/toPDF", {'slides': btoa(slides), title: title}, function(json) {
+                        $.post("/toPDF", {'slides': btoa(unescape(encodeURIComponent(slides))), title: title}, function(json) {
                             if (json.end_code == 0) { //If no error
                                 window.open("tmp_files/" + title + ".pdf");    // Opens the pdf download prompt
                                 $("#infoalert").fadeOut(0);
@@ -1186,9 +1186,6 @@ Impressionist.prototype =
                         $("body").css("cursor", "progress");
                         $("#viewbtntext").button('loading');
                         $("#viewbtntext").html('Generating view...');
-                        var slides = me.generateExportMarkup();
-                        var title = me.getTitle();
-
                         var slides = me.generateExportMarkup();
                         me.generateView(slides);
                     }
@@ -1746,7 +1743,7 @@ Impressionist.prototype =
             {
                 sessionStorage.setItem('preview', true);
                 sessionStorage.setItem('title', me.getTitle());
-                $.post("/exportPres", {'slides': btoa(str)}, function(json) {
+                $.post("/exportPres", {'slides': btoa(unescape(encodeURIComponent(str)))}, function(json) {
                     if (json.end_code == 0) { //If no error
                         window.open("app/components/reveal.js/index.html");
                     }
