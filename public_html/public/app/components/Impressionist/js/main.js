@@ -2134,6 +2134,13 @@ Impressionist.prototype =
             addPattern: function(key, value) {
                 me.patterns[key] = $(value)[0].outerHTML;
             },
+            updatePattern: function(element_pattern) {
+                var data_pattern = $(element_pattern).attr("data-pattern");
+                var zindex = $(element_pattern).css("z-index");
+                var pattern=$.parseHTML(me.patterns[data_pattern]);
+                $(pattern).css("z-index", zindex);
+                me.patterns[data_pattern]= $(pattern)[0].outerHTML;
+            },
             removePattern: function(key) {
                 delete me.patterns[key];
             },

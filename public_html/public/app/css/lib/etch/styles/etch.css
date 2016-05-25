@@ -136,6 +136,15 @@
     margin: 0vw 0.366vw;
 }
 
+.etch-more-spacing, .etch-less-spacing{
+    width: 3.1vw;
+}
+
+.etch-more-spacing .fa-plus, .etch-less-spacing .fa-minus{
+    font-size: 0.95vw;
+    color: #3B6775;
+}
+
 .is-etch-button{
     width: 66% !important;
     margin: 0 auto;

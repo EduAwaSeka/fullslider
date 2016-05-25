@@ -22,7 +22,7 @@ function initializeTextColorChooser(color) {
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', 'font-size', 'font-family', 'color'],
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', 'link', 'eraser', "more-spacing", "less-spacing", 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
@@ -63,6 +63,8 @@ function initializeTextColorChooser(color) {
             'click .etch-redo': 'toggleRedo',
             'click [data-option="codestyle"]': 'setCodeStyle',
             'click .etch-shownumbers': 'shownumbers',
+            'click .etch-more-spacing': 'moreSpacing',
+            'click .etch-less-spacing': 'lessSpacing',
         },
         changeEditable: function() {
             this.setButtonClass();
@@ -128,6 +130,12 @@ function initializeTextColorChooser(color) {
                         break;
                     case "shownumbers":
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
+                        break;
+                    case "more-spacing":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-height"></i></span></a>');
+                        break;
+                    case "less-spacing":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-height"></i></span></a>');
                         break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
@@ -321,6 +329,34 @@ function initializeTextColorChooser(color) {
                 ol.css("list-style-type", "decimal");
             }
             changeContent();//Event for undo redo
+        },
+        moreSpacing: function(e) {
+            var elementToChange = getElementEditing();
+            var spacing = pxToVw(getFloatValue($(elementToChange).css("line-height")));
+            if (spacing) {
+                spacing += 0.5;
+            }
+            else {
+                spacing = 2.5;
+            }
+            if (spacing >= 7) {
+                spacing = 6.5;
+            }
+            $(elementToChange).css("line-height", spacing + "vw");
+        },
+        lessSpacing: function(e) {
+            var elementToChange = getElementEditing();
+            var spacing = pxToVw(getFloatValue($(elementToChange).css("line-height")));
+            if (spacing) {
+                spacing -= 0.5;
+            }
+            else {
+                spacing = 2;
+            }
+            if (spacing <= 1) {
+                spacing = 1.5;
+            }
+            $(elementToChange).css("line-height", spacing + "vw");
         },
         setCodeStyle: function(e) {
             e.preventDefault();

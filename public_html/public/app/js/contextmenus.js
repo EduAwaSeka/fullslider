@@ -99,7 +99,7 @@ $(function() {
                     $(this).unbind();
 
                     $(this).addClass("slidelement_pattern");
-                    $(this).css("z-index", 0);
+                    $(this).css("z-index", 1);
                     var pattern_uid = me.generateUID();
                     $(this).attr("data-pattern", pattern_uid);
                     var cloned = me.clonePatternElement($(this));
@@ -145,6 +145,49 @@ $(function() {
                 }
             },
             "sep1": "---------",
+            "To front(+1)": {
+                name: "To front (+1)",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-arrow-up context-menu-icon-left" aria-hidden="true"></span> ' + "To front (+1)");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    if (zindex) {
+                        zindex++;
+                    }
+                    else {
+                        zindex = 2;
+                    }
+                    $($(this)).css("z-index", zindex);
+                    changeContent();//Event for undo redo
+                }
+            },
+            "To back (-1)": {
+                name: "To back (-1)",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-arrow-down context-menu-icon-left" aria-hidden="true"></span> ' + "To back (-1)");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    if (zindex) {
+                        zindex--;
+                    }
+                    else {
+                        zindex = 0;
+                    }
+                    $(this).css("z-index", zindex);
+                    changeContent();//Event for undo redo
+                }
+            },
+            "sep2": "---------",
             "Delete element": {
                 name: "Delete element",
                 icon: "delete",
@@ -235,9 +278,16 @@ $(function() {
                         zindex++;
                     }
                     else {
-                        zindex = 1;
+                        zindex = 2;
                     }
-                    $(this).css("z-index", zindex);
+                    var data_pattern = $(this).attr("data-pattern");
+                    var all = $("#workspace").find("[data-pattern=" + data_pattern + "]");
+                    for (var i = 0; i < all.length; i++) {
+                        $(all[i]).css("z-index", zindex);
+                    }
+                    me.updatePattern($(this));
+
+                    changeContent();//Event for undo redo
                 }
             },
             "To back (-1)": {
@@ -257,13 +307,16 @@ $(function() {
                     else {
                         zindex = 0;
                     }
-                    $(this).css("z-index", zindex);
+                    var data_pattern = $(this).attr("data-pattern");
+                    var all = $("#workspace").find("[data-pattern=" + data_pattern + "]");
+                    for (var i = 0; i < all.length; i++) {
+                        $(all[i]).css("z-index", zindex);
+                    }
+                    changeContent();//Event for undo redo
                 }
             },
         }
     });
-
-
 
 
     $.contextMenu({

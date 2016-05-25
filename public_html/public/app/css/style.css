@@ -293,6 +293,10 @@ p {
     z-index: 1;
 }
 
+.slidelement a{
+    color:currentColor;
+}
+
 .slidelement div,.slidelement span, .slidelement ul,
 .slidelement li, .slidelement ol, .slidelement b,
 .slidelement u, .slidelement p, .slidelement i,
