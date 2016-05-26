@@ -113,7 +113,7 @@
     height: 2.5vw;
 }
 
-.etch-bold, .etch-align-left, .etch-list-ul,.etch-undo{
+.etch-bold, .etch-align-left, .etch-list-ul,.etch-undo,.etch-less-spacing,.etch-less-letter-spacing{
     margin-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -126,7 +126,7 @@
     border-right: none;
 }
 
-.etch-underline, .etch-align-right, .etch-list-ol,.etch-redo{
+.etch-underline, .etch-align-right, .etch-list-ol,.etch-redo,.etch-more-spacing,.etch-more-letter-spacing{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -136,11 +136,11 @@
     margin: 0vw 0.366vw;
 }
 
-.etch-more-spacing, .etch-less-spacing{
+.etch-more-spacing, .etch-less-spacing,.etch-more-letter-spacing, .etch-less-letter-spacing{
     width: 3.1vw;
 }
 
-.etch-more-spacing .fa-plus, .etch-less-spacing .fa-minus{
+.etch-more-spacing .fa-plus, .etch-less-spacing .fa-minus,.etch-more-letter-spacing .fa-plus, .etch-less-letter-spacing .fa-minus{
     font-size: 0.85vw;
     color: #3B6775;
 }

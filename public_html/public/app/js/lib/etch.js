@@ -22,7 +22,7 @@ function initializeTextColorChooser(color) {
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color'],
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color'],
             'code': ['codestyle', 'shownumbers'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
@@ -65,6 +65,8 @@ function initializeTextColorChooser(color) {
             'click .etch-shownumbers': 'shownumbers',
             'click .etch-more-spacing': 'moreSpacing',
             'click .etch-less-spacing': 'lessSpacing',
+            'click .etch-more-letter-spacing': 'moreLetterSpacing',
+            'click .etch-less-letter-spacing': 'lessLetterSpacing',
         },
         changeEditable: function() {
             this.setButtonClass();
@@ -136,6 +138,12 @@ function initializeTextColorChooser(color) {
                         break;
                     case "less-spacing":
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-height"></i></span></a>');
+                        break;
+                    case "more-letter-spacing":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-width"></i></span></a>');
+                        break;
+                    case "less-letter-spacing":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-width"></i></span></a>');
                         break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
@@ -357,6 +365,34 @@ function initializeTextColorChooser(color) {
                 spacing = 1.5;
             }
             $(elementToChange).css("line-height", spacing + "vw");
+        },
+        moreLetterSpacing: function(e) {
+            var elementToChange = getElementEditing();
+            var spacing = pxToVw(getFloatValue($(elementToChange).css("letter-spacing")));
+            if (spacing) {
+                spacing += 0.2;
+            }
+            else {
+                spacing = 0.2;
+            }
+            if (spacing >= 6) {
+                spacing = 5.8;
+            }
+            $(elementToChange).css("letter-spacing", spacing + "vw");
+        },
+        lessLetterSpacing: function(e) {
+            var elementToChange = getElementEditing();
+            var spacing = pxToVw(getFloatValue($(elementToChange).css("letter-spacing")));
+            if (spacing || spacing == 0) {
+                spacing -= 0.2;
+            }
+            else {
+                spacing = 0.2;
+            }
+            if (spacing < 0) {
+                spacing = 0;
+            }
+            $(elementToChange).css("letter-spacing", spacing + "vw");
         },
         setCodeStyle: function(e) {
             e.preventDefault();
