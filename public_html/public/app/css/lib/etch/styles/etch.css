@@ -87,6 +87,9 @@
     background-image: linear-gradient(to bottom, #3498DB, #3491D0);
 }
 
+.etch-editor-panel .btn-group{
+    float:left;
+}
 #etch-font-size ul{
     min-width: 7.713vw;
 }
@@ -193,7 +196,7 @@
 }
 
 .etch-fill-opacity{
-    float: right;
+    float: left;
     margin: 0vw 0.2vw 0vw 0.56vw;
     height: 2.1vw;
 }
@@ -206,4 +209,15 @@
 
 #edit-fill-color{
     margin-left: 1.1vw;
+}
+
+
+.etch-panel-move{
+    color: #E7E7E7;
+    text-shadow: 0.05vw 0.05vw 0.15vw #000;
+    padding: 0.3vw 0.3vw 0.3vw 0.45vw;
+    margin-left: 0.65vw;
+    border-left: 0.07vw solid #828282;
+    cursor: move;
+    float:left;
 }

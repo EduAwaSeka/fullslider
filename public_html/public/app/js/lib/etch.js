@@ -23,7 +23,7 @@ function initializeTextColorChooser(color) {
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
             'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color'],
-            'code': ['codestyle', 'shownumbers'],
+            'code': ['shownumbers', 'codestyle'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
     };
@@ -347,8 +347,8 @@ function initializeTextColorChooser(color) {
             else {
                 spacing = 2.5;
             }
-            if (spacing >= 7) {
-                spacing = 6.5;
+            if (spacing >= 12) {
+                spacing = 11.5;
             }
             $(elementToChange).css("line-height", spacing + "vw");
         },
@@ -375,8 +375,8 @@ function initializeTextColorChooser(color) {
             else {
                 spacing = 0.2;
             }
-            if (spacing >= 6) {
-                spacing = 5.8;
+            if (spacing >= 9) {
+                spacing = 8.8;
             }
             $(elementToChange).css("letter-spacing", spacing + "vw");
         },
@@ -478,7 +478,9 @@ function initializeTextColorChooser(color) {
                 $editor.etchInstantiate({classType: 'Editor', attrs: editorAttrs});
                 editorModel = $editor.data('model');
                 $editor.css("overflow", "initial");
-
+                $editor.draggable();
+                $editor.draggable({autoscroll: false, containment: "#body-editor", scroll: false});
+                $editor.append('<div class="etch-panel-move"><i class="fa fa-arrows"></i></div>');
                 // check if we are on a new editable
             } else if ($editable[0] !== editorModel.get('editable')[0]) {
                 // set new editable
@@ -488,11 +490,12 @@ function initializeTextColorChooser(color) {
                 });
                 $editor.css("display", "block");
                 $editor.css("overflow", "initial");
+                $editor.append('<div class="etch-panel-move"><i class="fa fa-arrows"></i></div>');
+
             } else {
                 $editor.css("display", "block");
                 $editor.css("overflow", "initial");
             }
-
             switch ($editable.attr('data-button-class')) {
                 case "text":
                     //initialize value of font-size etch-editor-button with selected element value
@@ -581,9 +584,9 @@ function initializeTextColorChooser(color) {
 
             this.model.trigger('change:size', this.model, this.model.get('size'), {});
             if (e.pageX === 0) {
-                editorModel.set({position: {x: $editable.offset().left - 15, y: $editable.offset().top - 80}});
+                editorModel.set({position: {x: $editable.offset().left - 50, y: $editable.offset().top - 120}});
             } else {
-                editorModel.set({position: {x: e.pageX - 15, y: e.pageY - 80}});
+                editorModel.set({position: {x: e.pageX - 50, y: e.pageY - 120}});
             }
         }
     });
