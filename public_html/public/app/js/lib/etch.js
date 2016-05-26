@@ -480,7 +480,10 @@ function initializeTextColorChooser(color) {
                 $editor.css("overflow", "initial");
                 $editor.draggable();
                 $editor.draggable({autoscroll: false, containment: "#body-editor", scroll: false});
-                $editor.append('<div class="etch-panel-move"><i class="fa fa-arrows"></i></div>');
+                if ($("#etch-panel-move")) {
+                    $("#etch-panel-move").remove();
+                }
+                $editor.append(etch_panel_move);
                 // check if we are on a new editable
             } else if ($editable[0] !== editorModel.get('editable')[0]) {
                 // set new editable
@@ -490,7 +493,10 @@ function initializeTextColorChooser(color) {
                 });
                 $editor.css("display", "block");
                 $editor.css("overflow", "initial");
-                $editor.append('<div class="etch-panel-move"><i class="fa fa-arrows"></i></div>');
+                if ($("#etch-panel-move")) {
+                    $("#etch-panel-move").remove();
+                }
+                $editor.append(etch_panel_move);
 
             } else {
                 $editor.css("display", "block");

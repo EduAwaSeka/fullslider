@@ -323,3 +323,6 @@ var opacity_selector='<option value="1" selected>100%</option>'+
                     '<option value="0.1">10%</option>'+
                     '<option value="0.05">5%</option>'+
                     '<option value="0">0%</option>';
+            
+            
+var etch_panel_move='<div id="etch-panel-move"><i class="fa fa-arrows"></i></div>';            

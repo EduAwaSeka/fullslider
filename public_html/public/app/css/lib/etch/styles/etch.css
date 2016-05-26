@@ -212,7 +212,7 @@
 }
 
 
-.etch-panel-move{
+#etch-panel-move{
     color: #E7E7E7;
     text-shadow: 0.05vw 0.05vw 0.15vw #000;
     padding: 0.3vw 0.3vw 0.3vw 0.45vw;
