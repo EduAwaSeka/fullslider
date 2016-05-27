@@ -97,6 +97,30 @@ Impressionist.prototype =
             },
             initializeImageModal: function() {
                 $("#modals").append(add_img_modal);
+
+                //Upload image from device
+                $("#inputimage").fileinput({
+                    uploadUrl: "/uploadimage", // server upload action
+                    uploadAsync: true,
+                    maxFileCount: 5,
+                    showUpload: false, // hide upload button
+                    showRemove: false, // hide remove button
+                }).on("filebatchselected", function(event, files) { //For auto-upload images
+                    // trigger upload method immediately after files are selected
+                    $("#inputimage").fileinput("upload");
+                });
+
+                $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
+                    //Clear preview
+                    $('#inputimage').fileinput('clear');
+                    $('#inputimage').fileinput('refresh');
+                    $('#inputimage').fileinput('unlock');
+//                    me.addImageToSlide(data.response);
+
+                    //Create image from returned json object of loadimage module
+                    createImageFromJSONFile(data.response);
+                    $("#imagemodal").modal("hide");
+                });
             },
             initializeEditImageModal: function() {
                 $("#modals").append(edit_img_modal);
@@ -1259,33 +1283,6 @@ Impressionist.prototype =
                     me.clearElementSelections();
                     me.selectElement(element);
                 });
-
-                //Upload image from device
-                $("#inputimage").fileinput({
-                    uploadUrl: "/uploadimage", // server upload action
-                    uploadAsync: true,
-                    maxFileCount: 5,
-                    showUpload: false, // hide upload button
-                    showRemove: false, // hide remove button
-                }).on("filebatchselected", function(event, files) { //For auto-upload images
-                    // trigger upload method immediately after files are selected
-                    $("#inputimage").fileinput("upload");
-                });
-
-                $("#inputimage").on('fileuploaded', function(event, data, previewId, index) {
-
-                    //Clear preview
-                    $('#inputimage').fileinput('clear');
-                    $('#inputimage').fileinput('refresh');
-                    $('#inputimage').fileinput('unlock');
-//                    me.addImageToSlide(data.response);
-
-                    //Create image from returned json object of loadimage module
-                    createImageFromJSONFile(data.response);
-                    $("#imagemodal").modal("hide");
-                });
-
-
                 //Upload image from url
                 $("#addurlimgbtn").on("click", function(e)
                 {

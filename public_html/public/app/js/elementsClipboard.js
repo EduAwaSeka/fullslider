@@ -9,11 +9,12 @@ function setElClipboard(type, value) {
 }
 
 function copyEl() {
+    document.execCommand('copy', false, null);
     var currentClicked = me.getCurrentClicked();
     if (currentClicked !== "") {
         if (currentClicked.hasClass("slidethumb")) {
-            var slideId =me.slideIdFromThumb(currentClicked);
-            setElClipboard("slidethumb", $("#"+slideId).clone());
+            var slideId = me.slideIdFromThumb(currentClicked);
+            setElClipboard("slidethumb", $("#" + slideId).clone());
         }
         else {
             if (currentClicked.hasClass("slidelement") && !currentClicked.hasClass("elementediting")) {
@@ -63,10 +64,8 @@ key('ctrl+c', function(e) {
 
 
 
-
 document.onpaste = function(e)
 {
-
     var items = e.clipboardData.items;
     for (var i = 0; i < items.length; ++i) {
         //If there is an image on clipboard and slide or slide element is current clicked -> paste image

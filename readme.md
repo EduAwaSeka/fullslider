@@ -1,7 +1,6 @@
 Fullslider
 =======
-
-![sin titulo](https://cloud.githubusercontent.com/assets/6854006/14534704/a7109c70-026a-11e6-915a-2b0100d07ab6.png)
+![fullslider capture](https://cloud.githubusercontent.com/assets/6854006/15613027/b6fe531e-2431-11e6-9d9e-6c54d20c6900.png)
 
 #### A multiplatform tool to create presentations####
 
