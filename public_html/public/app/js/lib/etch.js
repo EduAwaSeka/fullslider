@@ -350,7 +350,7 @@ function initializeTextColorChooser(color) {
             if (spacing >= 12) {
                 spacing = 11.5;
             }
-            $(elementToChange).css("line-height", spacing + "vw");
+            $(elementToChange).css("line-height", spacing + "vw", "important");
         },
         lessSpacing: function(e) {
             var elementToChange = getElementEditing();
@@ -364,7 +364,7 @@ function initializeTextColorChooser(color) {
             if (spacing <= 1) {
                 spacing = 1.5;
             }
-            $(elementToChange).css("line-height", spacing + "vw");
+            $(elementToChange).css("line-height", spacing + "vw", "important");
         },
         moreLetterSpacing: function(e) {
             var elementToChange = getElementEditing();
@@ -378,7 +378,7 @@ function initializeTextColorChooser(color) {
             if (spacing >= 9) {
                 spacing = 8.8;
             }
-            $(elementToChange).css("letter-spacing", spacing + "vw");
+            $(elementToChange).css("letter-spacing", spacing + "vw", "important");
         },
         lessLetterSpacing: function(e) {
             var elementToChange = getElementEditing();
@@ -392,7 +392,7 @@ function initializeTextColorChooser(color) {
             if (spacing < 0) {
                 spacing = 0;
             }
-            $(elementToChange).css("letter-spacing", spacing + "vw");
+            $(elementToChange).css("letter-spacing", spacing + "vw", "important");
         },
         setCodeStyle: function(e) {
             e.preventDefault();
@@ -469,6 +469,11 @@ function initializeTextColorChooser(color) {
             // if the editor isn't already built, build it
             var $editor = $('.etch-editor-panel');
             var editorModel = $editor.data('model');
+            var alreadyDisplay = false;
+
+            if ($editor.css("display") == "block") {
+                alreadyDisplay = true;
+            }
 
             //this.$fontSizeReadout.text($editable.css("font-size"));
             if (!$editor.size()) {
@@ -589,10 +594,14 @@ function initializeTextColorChooser(color) {
             });
 
             this.model.trigger('change:size', this.model, this.model.get('size'), {});
-            if (e.pageX === 0) {
-                editorModel.set({position: {x: $editable.offset().left - 50, y: $editable.offset().top - 120}});
-            } else {
-                editorModel.set({position: {x: e.pageX - 50, y: e.pageY - 120}});
+            
+            //if not already display, move to position, else nothing
+            if (!alreadyDisplay) {
+                if (e.pageX === 0) {
+                    editorModel.set({position: {x: $editable.offset().left - 80, y: $editable.offset().top - 115}});
+                } else {
+                    editorModel.set({position: {x: e.pageX - 80, y: e.pageY - 115}});
+                }
             }
         }
     });

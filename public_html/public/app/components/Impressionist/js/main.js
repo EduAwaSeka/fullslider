@@ -1154,6 +1154,7 @@ Impressionist.prototype =
                     if (!me.wait_s) { //Only one click
                         me.wait_s = true;
                         var slides = me.generateExportMarkup();
+                        slides = me.correctListWidthOnConvertToPDF(slides);
                         var title = me.getTitle();
 
                         $("body").css("cursor", "progress");
@@ -1240,8 +1241,9 @@ Impressionist.prototype =
                                 $(".loadpresbtn").button('reset');
                             }
                             catch (e) {
-                                var msg = "Could not open the file. File is corrupted.";
+                                var msg = "An error occurred while trying to open the file.";
                                 openAlert("danger", msg);
+                                me.resetSaveButtonText();
                             }
                         });
                         reader.readAsText(files[0]);
@@ -1428,6 +1430,25 @@ Impressionist.prototype =
                 });
                 return (outputcontainer.html().toString());
             },
+            correctListWidthOnConvertToPDF: function(elements) {
+                var tempelement = '<div id="tempslides" style="z-index: -50000000;" class="fullslider-slide-container"></div>';
+                $(document.body).append(tempelement);
+                $("#tempslides").html(elements);
+                var ul_list = $("#tempslides").find(".slidelement > div > ul");
+                var hasul;
+                var value;
+                for (var i = 0; i < ul_list.length; i++) {
+                    hasul = $($(ul_list[i]).parent()).parent();
+                    if ($(hasul).hasClass("slidelement")) {
+                        value = hasul[0].getBoundingClientRect().width;
+                        value = pxToVw(value) + 0.2;
+                        $(hasul).css("width", value + "vw");
+                    }
+                }
+                var slides = $("#tempslides").html();
+                $("#tempslides").remove();
+                return slides;
+            },
             cleanFullslider: function() {
                 $(".slidethumbholder").html("");
                 $(".fullslider-slide-container").html("");
@@ -1544,7 +1565,6 @@ Impressionist.prototype =
                         }
 
                     }
-
                 }
                 else
                 {
@@ -1569,7 +1589,6 @@ Impressionist.prototype =
                 }
 
                 var config = me.getConfigVariable();
-
                 var o = {
                     id: tempid,
                     title: $("#presentationmetatitle").text(),
@@ -1581,7 +1600,7 @@ Impressionist.prototype =
                 $("#presentationmetatitle").html(me.currentPresentation.title);
                 arr.push(o);
                 me.saveItem(me.saveKey, JSON.stringify(arr));
-                me.saveItem(me.lastSaved, JSON.stringify(o));
+//                    me.saveItem(me.lastSaved, JSON.stringify(o));
                 presentations = me.getSavedPresentations();
                 presentations.reverse();
                 me.renderPresentations(presentations);
@@ -1590,6 +1609,7 @@ Impressionist.prototype =
                     me.fetchAndPreview($(this).attr("data-id"));
                 });
                 $(".modal").modal("hide");
+
                 setTimeout(me.resetSaveButtonText, 1000);
             },
             savePresentationOnSession: function() {
@@ -2134,9 +2154,9 @@ Impressionist.prototype =
             updatePattern: function(element_pattern) {
                 var data_pattern = $(element_pattern).attr("data-pattern");
                 var zindex = $(element_pattern).css("z-index");
-                var pattern=$.parseHTML(me.patterns[data_pattern]);
+                var pattern = $.parseHTML(me.patterns[data_pattern]);
                 $(pattern).css("z-index", zindex);
-                me.patterns[data_pattern]= $(pattern)[0].outerHTML;
+                me.patterns[data_pattern] = $(pattern)[0].outerHTML;
             },
             removePattern: function(key) {
                 delete me.patterns[key];

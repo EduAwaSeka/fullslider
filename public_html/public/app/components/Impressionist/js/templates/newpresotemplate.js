@@ -23,7 +23,7 @@ var image_snippet = '<div class="slidelement elementselectable" id="slidelement_
 var graphic_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="graphic" data-type="graphic"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" ></svg></div>';
 var code_snippet = '<div class="slidelement editable elementselectable" id="slidelement_id" data-button-class="code" data-type="code"><pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&lt;script&gt;&lt;/script&gt;</li></ol></code></pre></div>';
 
-var slidenumbers_snippet='<div class="slidenum" data-button-class="slidenumbers" data-type="slidenumbers" style="display:none; font-size: 1vw; font-family: Montserrat, \'sans serif\'; position: absolute; left: 58.9583vw; top: 36.4583vw; line-height: initial; height: initial; width: auto; white-space: normal; max-width: 1.23372vw; max-height: 2.25667vw; overflow: hidden; word-break: break-word;" aria-disabled="false" data-select="false"><div><font color="#000"></font></div> </div>';
+var slidenumbers_snippet='<div class="slidenum" data-button-class="slidenumbers" data-type="slidenumbers" style="display:none; z-index: 50000; font-size: 1vw; font-family: Montserrat, \'sans serif\'; position: absolute; left: 58.9583vw; top: 36.4583vw; line-height: initial; height: initial; width: auto; white-space: normal; max-width: 1.23372vw; max-height: 2.25667vw; overflow: hidden; word-break: break-word;" aria-disabled="false" data-select="false"><div><font color="#000"></font></div> </div>';
 
 var text_inner='<div><font color="#000">&nbsp; </font></div>';
 var code_inner='<pre class="prettyprint prettyprinted idea" data-class="idea"><code><ol><li>&nbsp;</li></ol></code></pre>';
