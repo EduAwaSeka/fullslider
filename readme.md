@@ -6,13 +6,15 @@ Fullslider
 
 You can create presentations and view it, using Reveal.js. You can check out the Reveal.JS demo presentation: http://lab.hakim.se/reveal-js/
 
-### Browser Compatibility
+## Browser Compatibility ##
 Fullslider works in Chrome, Mozilla Firefox and Opera browsers.
 
 
-### How to install?###
+## How to install?##
 
-First, you need install Node JS:
+### With NodeJS ###
+
+First, you need to have installed Node JS. If you have already installed go to "Common steps", if not install it:
 
 ##### Linux: #####
 Open shell and type the following commands:
@@ -78,14 +80,60 @@ node init.js
 ```
 localhost:8888
 ```
-6 You can already work with Fullslider!
+6. You can already work with Fullslider!
 
-### RELEASE NOTES ###
 
-###### v0.2 - With Fullslider, you can do: ######
+
+### With Docker Image ###
+First, you need to have installed Docker. 
+You can see how to install it here: https://docs.docker.com/engine/installation/
+
+Once Docker has been installed, continue with following steps:
+
+#### Linux ####
+1. Open shell
+2. Download Fullslider image
+```
+sudo docker pull edujg/fullslider:v0.3
+```
+3. Run image
+```
+sudo docker run -p 8888:8888 edujg/fullslider:v0.3
+```
+4. Open your browser and write url: 
+```
+localhost:8888
+```
+5. You can already work with Fullslider!
+
+#### Windows and Mac OSX ####
+1. Open Docker Quickstart Terminal
+2. Download Fullslider image
+```
+docker pull edujg/fullslider:v0.3
+```
+3. Run image
+```
+docker run -p 8888:8888 edujg/fullslider:v0.3
+```
+4. Get docker machine ip
+
+```
+docker-machine ip default
+```
+5. Open your browser and write url: 
+```
+dockerip:8888 (for example 192.168.99.100:8888)
+```
+6. You can already work with Fullslider!
+
+## RELEASE NOTES ##
+
+###### v0.3 - With Fullslider, you can do: ######
  - Create new presentations.
  - Download presentation as .fspf file (FullSlider Presentation File).
  - Open downloaded presentations from Fullslider, with .fspf extension.
+ - Export to PDF
  - Add/remove slides.
  - Add/remove text element
  - Edit text element: change color, font, size, align, rotate, skew, add link, add bold, italic, underline and list format.
@@ -95,42 +143,44 @@ localhost:8888
 	*Clipboard
  - Edit uploaded images (resize, rotate and crop)
  - Create graphics with Graphic editor
- - Change presentation title.
- - Reorder slides.
+ - Edit already created graphics
+ - Add and Edit code
+ - Change presentation title
+ - Reorder slides
  - Duplicate slides
  - Copy and paste elements
- - Set element as a pattern. This element repeats on all slides.
+ - Set element as a pattern. This element repeats on all slides
  - Configure default values of text (color, font, etc.)
  - Save presentation on session storage
  - Open recent presentations.
  - And view presentation!
 
 
-### Quick Guide ###
+## Quick Guide ##
 
 1 Select New Presentation.
 
-![Welcomemodal](https://cloud.githubusercontent.com/assets/6854006/11539835/8c2558c4-9929-11e5-9a49-e66c05b45379.png)
+![welcome](https://cloud.githubusercontent.com/assets/6854006/15626732/12bcecec-24cd-11e6-89f8-8c7ace9eb301.PNG)
 
 2 Enter a title.
 
-![newtitle](https://cloud.githubusercontent.com/assets/6854006/11539869/af8bbe0c-9929-11e5-8240-2c0a5612e528.png)
+![title](https://cloud.githubusercontent.com/assets/6854006/15626729/12b12830-24cd-11e6-9f6e-0cb9d91d322b.PNG)
 
 
 3 For edit text element:
 
-	*One click: select it and shows buttons for delete, rotate, resize or skew it.
+	*One click: select it and shows buttons for delete, rotate and resize.
 
-![select](https://cloud.githubusercontent.com/assets/6854006/11539994/71f98a64-992a-11e5-9efd-4c6a569cc885.png)
+![selected](https://cloud.githubusercontent.com/assets/6854006/15626731/12b65dbe-24cd-11e6-9a6e-74f0e8ef08d1.PNG)
 
 	*Double click: select for edit. You can write text, change size, colour, font, etc.
 
-![edittext](https://cloud.githubusercontent.com/assets/6854006/11540010/914a49f8-992a-11e5-90f8-18ef169d69db.png)
+![edit](https://cloud.githubusercontent.com/assets/6854006/15626730/12b11214-24cd-11e6-883a-120d33d3cf13.PNG)
 
 
 
 
-### Credits ###
+## Credits ##
 
 * Impressionist https://github.com/harish-io/Impressionist
 * RevealJS https://github.com/hakimel/reveal.js/
@@ -146,4 +196,8 @@ localhost:8888
 * JSVectorEditor https://code.google.com/archive/p/jsvectoreditor/
 * Simple-Undo https://github.com/mattjmattj/simple-undo/
 * NodeJS https://nodejs.org/en/
+* Docker https://www.docker.com/
+* Code Prettify https://github.com/google/code-prettify
+* PhantomJS phantomjs.org
+* Decktape https://github.com/astefanutti/decktape
 
