@@ -16,7 +16,7 @@ Fullslider works in Chrome, Mozilla Firefox and Opera browsers.
 
 First, you need to have installed Node JS. If you have already installed go to "Common steps", if not install it:
 
-##### Linux: #####
+#### Linux: ####
 Open shell and type the following commands:
 ```
 sudo apt-get install nodejs
@@ -30,7 +30,7 @@ sudo apt-get install npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-##### Mac OSX #####
+#### Mac OSX ####
 Open shell and type the following commands:
 
 ```
@@ -61,7 +61,7 @@ nvm ls-remote
 nvm alias default stable
 ```
 
-##### Windows #####
+#### Windows ####
 Download NodeJS installer from:
 https://nodejs.org/en/
 
