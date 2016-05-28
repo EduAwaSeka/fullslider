@@ -84,8 +84,8 @@ p {
     font-size: 0.95vw
 }
 #undo-redo-btns{
-    margin-left: 4.15vw;
-    margin-right: 0.5vw;
+    margin-left: 3.15vw;
+    margin-right: -1.3vw;
 }
 
 #addElementsPanel{
@@ -112,12 +112,13 @@ p {
 #view-save-btns{
     display: inline-block;
     position: absolute;
-    right: 0.1vw;
+    /* right: 0.1vw; */
     margin: -0.0732vw auto;
 }
 
 #view-save-btns .btn{
     padding: 0.7vw 0.9vw;
+    margin: 0 0.2vw;
 }
 
 .previewbtn {

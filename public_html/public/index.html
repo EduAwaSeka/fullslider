@@ -56,7 +56,7 @@ Eduardo Jiménez Grande
         <div class="container-fluid">
 
             <div id="header-menu" class="palette-night row">
-                <div id="menu" class="col-sm-1 navbar-brand">
+                <div id="menu" class="col-sm-1 col-xs-1 navbar-brand">
                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                         <span> Menu</span>
@@ -71,12 +71,12 @@ Eduardo Jiménez Grande
                     </ul>
                 </div>
 
-                <div id="tools" class="col-sm-11 navbar-brand sidebarfooter">
-                    <div id="undo-redo-btns" class="btn-group">
-                        <a href="#" class="undo btn btn-info menubtn" title="undo"><i class="fa fa-undo"></i></a>
-                        <a href="#" class="redo btn btn-info menubtn" title="redo"><i class="fa fa-redo"></i></a>
+                <div id="tools" class="col-sm-11 col-xs-11 navbar-brand sidebarfooter">
+                    <div id="undo-redo-btns" class="btn-group col-sm-1 col-xs-1">
+                        <a href="#" class="undo btn btn-info menubtn col-sm-6 col-xs-6" title="undo"><i class="fa fa-undo"></i></a>
+                        <a href="#" class="redo btn btn-info menubtn col-sm-6 col-xs-6" title="redo"><i class="fa fa-redo"></i></a>
                     </div>
-                    <div class="" id="addElementsPanel">
+                    <div class="col-sm-6 col-xs-6" id="addElementsPanel">
                         <div id="text-tools" class="btn-group">
                             <button class="btn btn-info" id="addtextbtn" title="Add text">
                                 <i class="icon icon-text-ico"></i>
@@ -111,20 +111,21 @@ Eduardo Jiménez Grande
 
                     </div>
 
-                    <div id="view-save-btns">
-                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn" title="View presentation"><i class="fa fa-eye"></i>&nbsp; <span id="viewbtntext">View</span></a>
-                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Save presentation"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp; Save</a> 
-                        <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn" title="Download Presentation"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; <span id="downloadbtntext">Download</span></a> 
-                        <button id="loadpresbtn" class="loadpresbtn btn btn-large btn-inline btn-info previewbtn" title="Open Presentation" data-loading-text="Loading..."><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open</button> 
+                    <div id="view-save-btns" class="col-sm-5 col-xs-5">
+                        <span class="col-sm-2 col-xs-2"></span>
+                        <a id="viewbtn" class="btn btn-large btn-inline btn-primary previewbtn col-sm-2 col-xs-2" title="View presentation"><i class="fa fa-eye"></i>&nbsp; <span id="viewbtntext">View</span></a>
+                        <a id="savepresentationbtn" class="btn btn-large btn-inline btn-info previewbtn col-sm-2 col-xs-2" title="Save presentation"><i class="glyphicon glyphicon-ok-sign"></i>&nbsp; Save</a> 
+                        <a id="downloadpresbtn" class="btn btn-large btn-inline btn-info previewbtn col-sm-3 col-xs-3" title="Download Presentation"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; <span id="downloadbtntext">Download</span></a> 
+                        <button id="loadpresbtn" class="loadpresbtn btn btn-large btn-inline btn-info previewbtn col-sm-2 col-xs-2" title="Open Presentation" data-loading-text="Loading..."><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Open</button> 
                         <input id="inputFile" type="file" name="openFile" style="visibility: hidden;" accept=".fspf"/>
                     </div>
                 </div>
             </div>
 
             <div id="body-editor" class="row">
-                <div id="deck" class="col-sm-9">
-                    <div id="vertical-toolbar" class="col-sm-2">
-                        <div class ="mainfooter palette-bismark col-sm-12">
+                <div id="deck" class="col-sm-9 col-xs-9">
+                    <div id="vertical-toolbar" class="col-sm-2 col-xs-2">
+                        <div class ="mainfooter palette-bismark col-sm-12 col-xs-12">
                             <div class = "slidethumbholdercontainer">
                                 <a class="btn btn-primary btn-large center-block" href="#" id="addslidebtn" title="Add slide"><i class="fa fa-plus"></i>&nbsp;Add Slide</a>
 
@@ -135,12 +136,12 @@ Eduardo Jiménez Grande
                         </div>
                     </div>
 
-                    <div id="workspace" class="slideviewportcontainer col-sm-10">
+                    <div id="workspace" class="slideviewportcontainer col-sm-10 col-xs-10">
                         <div class="presentationmeta palette-bismark">
                             <p id="presentationmetatitle" style="margin:0 auto; text-transform:none; font-size:130%; color:white"> </p>
                             <a href="#" id="editpresonamebtn" class="btn btn-small btn-inline btn-primary" title="Change title"><i class="fa fa-edit"></i></a>
                         </div>
-                        <div class="slideviewport col-sm-12">
+                        <div class="slideviewport col-sm-12 col-xs-12">
                             <div class="fullslider-slide-container">
 
                             </div>
@@ -155,7 +156,7 @@ Eduardo Jiménez Grande
                         </div><!-- slideviewport -->
                     </div>
                 </div>
-                <div id="markdown-editor" class="col-sm-3">
+                <div id="markdown-editor" class="col-sm-3 col-xs-3">
                     <!--                    <div class="center-block text-center h4">
                                             <span class="glyphicon glyphicon-pencil"></span> Markdown
                                         </div>
