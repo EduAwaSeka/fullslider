@@ -1178,7 +1178,7 @@ Impressionist.prototype =
                     if (!me.wait_s) { //Only one click
                         me.wait_s = true;
                         var slides = me.generateExportMarkup();
-                        slides = me.correctListWidthOnConvertToPDF(slides);
+                        slides = me.correctListWidth(slides);
                         var title = me.getTitle();
 
                         $("body").css("cursor", "progress");
@@ -1212,6 +1212,7 @@ Impressionist.prototype =
                         $("#viewbtntext").button('loading');
                         $("#viewbtntext").html('Generating view...');
                         var slides = me.generateExportMarkup();
+                        slides = me.correctListWidth(slides);
                         me.generateView(slides);
                     }
                 });
@@ -1427,7 +1428,7 @@ Impressionist.prototype =
                 });
                 return (outputcontainer.html().toString());
             },
-            correctListWidthOnConvertToPDF: function(elements) {
+            correctListWidth: function(elements) {
                 var tempelement = '<div id="tempslides" style="z-index: -50000000;" class="fullslider-slide-container"></div>';
                 $(document.body).append(tempelement);
                 $("#tempslides").html(elements);
