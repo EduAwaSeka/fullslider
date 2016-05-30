@@ -84,11 +84,10 @@ key('ctrl+c', function(e) {
 //    changeContent();//Event for undo redo
 //});
 
-
-
 document.onpaste = function(e)
 {
     var items = e.clipboardData.items;
+
     for (var i = 0; i < items.length; ++i) {
         //If there is an image on clipboard and slide or slide element is current clicked -> paste image
         if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) && (!newCopied || isCopiedImage) && (isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked))) { //If clipboard has an image, paste it

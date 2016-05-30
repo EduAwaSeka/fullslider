@@ -690,8 +690,7 @@ Impressionist.prototype =
                 var t = $(e.target);
                 if (t.not('.etch-editor-panel, .etch-editor-panel *, .etch-image-tools, .etch-image-tools *, .elementediting, .elementediting *,.sp-container *, .colorpicker *, #colorpickerbtn, #textToolsm, #textTools *, .contextmenu-textEditing *, #editimgmodal *').size()) {
                     if ($(me.selectedforedit).attr("data-type") == "code") {
-                        $($(me.selectedforedit).find("code")[0]).removeClass();
-                        hljs.highlightBlock($(me.selectedforedit).find("code")[0]);
+                        me.prettifyCode();
                     }
                     me.clearElementSelections();
                 }
@@ -920,6 +919,14 @@ Impressionist.prototype =
                 $(element).css("max-height", maxheight + "vw");
                 $(element).css("overflow", "hidden");
                 $(element).css("word-break", "break-word", "important");
+            },
+            prettifyCode: function() {
+                $($(me.selectedforedit).find("code")[0]).removeClass();
+                var line_list = $(me.selectedforedit).find("li");
+                for (var i = 0; i < line_list.length; i++) {
+                    $(line_list[i]).html($(line_list[i]).text());
+                }
+                hljs.highlightBlock($(me.selectedforedit).find("code")[0]);
             },
             addDataSelectable: function(element) {
                 element.setAttribute("data-select", true);
