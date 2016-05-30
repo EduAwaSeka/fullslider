@@ -140,11 +140,11 @@ function decreaseSize(element) {
 
 
 function isInElement(parent, element) {
-    return ((parent.has(element).length > 0) || element.html() == parent.html());
+    return (($(parent).has(element).length > 0) || $(element).html() == parent.html());
 }
 
 function isElementByClass(parentClass, element) {
-    return (element.hasClass(parentClass) || element.parent().hasClass(parentClass));
+    return ($(element).hasClass(parentClass) || $(element).parent().hasClass(parentClass));
 }
 
 function get_font_name(font) {
@@ -373,4 +373,11 @@ function getSvgViewBoxArray(svg) {
 
 function setSvgViewBoxArray(svg, vb) {
     svg.setAttribute('viewBox', vb.join(" "));
+}
+
+function getTransformMatrixValues(matrix) {
+    var transform_values = matrix.replace("matrix(", "");
+    transform_values = transform_values.replace(")", "");
+    transform_values = transform_values.split(",");
+    return transform_values;
 }

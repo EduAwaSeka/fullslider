@@ -312,6 +312,9 @@ var Style = (function() {
             var cleaned = matrix.toArray().map(function(n) {
                 return (fix && (parseInt(n, 10) !== n)) ? n.toFixed(fix) : n;
             });
+
+            var change = false;
+
             var css = cleaned.join(',');
             cleaned[4] += 'px';
             cleaned[5] += 'px';
@@ -324,12 +327,9 @@ var Style = (function() {
             var transform = "none";
             var transformx = 1;
             var transformy = 1;
-
-            if ($(element_content).css("-webkit-transform")) {
-                transform = $(element_content).css("-webkit-transform");
-                var transform_values = transform.replace("matrix(", "");
-                transform_values = transform_values.replace(")", "");
-                transform_values = transform_values.split(",");
+            if ($(element_content).css("transform") && $(element_content).css("transform") != "none") {
+                transform = $(element_content).css("transform");
+                var transform_values = getTransformMatrixValues(transform);
                 transformx = transform_values[0];
                 transformy = transform_values[3];
             }
@@ -337,7 +337,7 @@ var Style = (function() {
             var new_transformx = new_transform_values[0];
             var new_transformy = new_transform_values[3];
 
-            $(element_content).css("-webkit-transform", "matrix(" + css + ")");
+            $(element_content).css("transform", "matrix(" + css + ")");
             $(element_content).css("transform-origin", "top left");
 
             var new_w = element_content.getBoundingClientRect().width;
@@ -357,15 +357,19 @@ var Style = (function() {
 
             if (new_w > max_w || new_w < minSize) {
                 new_transformx = transformx;
+                change = true;
             }
 
             if (new_h > max_h || new_h < minSize) {
                 new_transformy = transformy;
+                change = true;
             }
 
-            $(element_content).css("-webkit-transform", "matrix(" + new_transformx + ",0,0," + new_transformy + ",0,0)");
-            new_w = element_content.getBoundingClientRect().width;
-            new_h = element_content.getBoundingClientRect().height;
+            if (change) {
+                $(element_content).css("transform", "matrix(" + new_transformx + ",0,0," + new_transformy + ",0,0)");
+                new_w = element_content.getBoundingClientRect().width;
+                new_h = element_content.getBoundingClientRect().height;
+            }
 
             $(me.selectedElement).css("width", pxToVw(new_w) + "vw");
             $(me.selectedElement).css("height", pxToVw(new_h) + "vw");
@@ -398,6 +402,12 @@ function handleMousedown(e) {
     this.anchor = new Vector(ev.clientX, ev.clientY);
     this.offset = this.anchor.subtract(this.center);
     this.mode = handle.className;
+
+    var element_content = $(me.selectedElement).children()[0];
+    this.already_scaled = $(element_content).css("transform");
+    if (already_scaled != "none") {
+        this.already_scaled = getTransformMatrixValues(already_scaled);
+    }
 }
 /**
  * mousemove/touchmove handler
@@ -494,10 +504,16 @@ function handleMousemove(e) {
 //                    $(element.find("svg")).css("transform-origin", "top left");
                     var moved = point.subtract(center);
                     var scaled = moved.divide(offset);
+
+                    if (this.already_scaled != "none") {
+                        scaled.x *= already_scaled[0];
+                        scaled.y *= already_scaled[3];
+                    }
+
                     matrix = matrix.scale(scaled);
                     // store and show the current transformation
                     this.current = matrix;
-                    this.transform_element_content(matrix, moved);
+                    this.current = this.transform_element_content(matrix, moved);
                     break;
                 default:
                     break;

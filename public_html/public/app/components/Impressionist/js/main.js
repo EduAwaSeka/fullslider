@@ -696,6 +696,7 @@ Impressionist.prototype =
                     me.clearElementSelections();
                 }
 
+                e.stopPropagation();
                 me.selectCurrentClicked(t);
             },
             selectCurrentClicked: function(el) {
@@ -710,7 +711,7 @@ Impressionist.prototype =
                             toSave = el.parent();
                         }
                     }
-                    toSave.addClass("currentClicked");
+                    $(toSave).addClass("currentClicked");
                 }
                 else {
                     if (isElementByClass("slidelement", el)) {
@@ -728,6 +729,10 @@ Impressionist.prototype =
             },
             clearCurrentClicked: function() {
                 me.currentClicked.removeClass("currentClicked");
+                var currentClicked = $(document.body).find(".currentClicked");
+                for (var i = 0; i < currentClicked.length; i++) {
+                    $(currentClicked[0]).removeClass("currentClicked");
+                }
                 me.currentClicked = "";
             },
             clearElementSelections: function()
