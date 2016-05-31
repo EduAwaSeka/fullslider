@@ -11,7 +11,7 @@ function initializeReveal() {
             keyboard: true,
             touch: true,
             mouseWheel: true,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            transition: 'none', // none/fade/slide/convex/concave/zoom
 
             // Optional reveal.js plugins
             dependencies: [
@@ -33,6 +33,13 @@ function initializeReveal() {
                 {src: 'plugin/notes/notes.js', async: true}
             ]
         });
+    });
+    
+    
+    //open links in new tab
+    $("a").on("click",function(e){
+        window.open(this.href,'_blank');
+        return false;
     });
 }
 

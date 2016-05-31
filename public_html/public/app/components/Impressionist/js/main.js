@@ -609,7 +609,7 @@ Impressionist.prototype =
                 me.imageOnEdit = el;
                 var image_url = $(el).find("img").attr("src");
                 $("#image-crop").attr("src", image_url);
-                $("#image-crop").change(); //Change event for cropimage.js functiont
+                $("#image-crop").change(); //Change event for cropimage.js function
 
                 $("#editimgmodal").removeClass("hide");
                 $("#editimgmodal").modal("show");
@@ -746,7 +746,9 @@ Impressionist.prototype =
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
                 me.selectedforedit = "";
-                me.imageOnEdit = "";
+                if (me.imageOnEdit != "" && !$(me.imageOnEdit).attr("contentEditable")) { //If not is editing image (for crop from context menu)
+                    me.imageOnEdit = "";
+                }
             },
             colorSelectedElement: function(color)
             {
@@ -1222,7 +1224,7 @@ Impressionist.prototype =
                         me.wait_s = true;
                         $("body").css("cursor", "progress");
                         $("#viewbtntext").button('loading');
-                        $("#viewbtntext").html('Generating view...');
+                        $("#viewbtntext").html('Wait...');
                         var slides = me.generateExportMarkup();
                         slides = me.correctListWidth(slides);
                         me.generateView(slides);

@@ -67,6 +67,10 @@ function getFloatValue(value) {
     return parseFloat(getNumericValue(value));
 }
 
+function getIntValue(value) {
+    return parseInt(getNumericValue(value));
+}
+
 function pxToVw(value) {
     return value / getRel();
 }
@@ -373,6 +377,75 @@ function getSvgViewBoxArray(svg) {
 
 function setSvgViewBoxArray(svg, vb) {
     svg.setAttribute('viewBox', vb.join(" "));
+}
+
+
+function changeBorderWidth() {
+    var new_border_width = pxToVw($("#edit-border-width").val()) + "vw";
+    var element = me.selectedforedit;
+    var border = $(element).css("border");
+    if (border) {
+        border = border.split(" ");
+        border[0] = new_border_width;
+        border[1] = "solid";
+        border = border.join(" ");
+        $(element).css("border", border);
+    }
+    else {
+        $(element).css("border", new_border_width + " solid #000");
+    }
+    changeContent();
+}
+
+function updateCurrentBorderWidth() {
+    var element = me.selectedforedit;
+    var border = $(element).css("border");
+
+    if (border) {
+        border = border.split(" ");
+        $("#edit-border-width").val(getIntValue(border[0]));
+    } else {
+        $("#edit-border-width").val("0");
+    }
+}
+
+function getCurrentEtchBorderColor() {
+    var element = me.selectedforedit;
+    var border = $(element).css("border");
+    var border_color = $(element).css("border-color");
+    var color = "#000";
+
+    if (border_color) {
+        if (border_color[0] != "#") {
+            border_color = rgbToHex(border_color);
+        }
+        color = border_color;
+    }
+    else {
+        if (border) {
+            border = border.split(" ");
+            border.shift(); //width
+            border.shift(); //type
+            if (border[0] != "#") {
+                border = border.join(",");
+                color = rgbToHex(border);
+            }
+            else {
+                color = border[0];
+            }
+        }
+    }
+    return color;
+}
+
+
+function changeBorderColor(color) {
+    var element = me.selectedforedit;
+    var border = $(element).css("border");
+    border = border.split(" ");
+    border = pxToVw(getFloatValue(border[0])) + "vw " + border[1] + " " + color;
+    $(element).css("border", border, "important");
+    changeContent();
 }
 
 function getTransformMatrixValues(matrix) {

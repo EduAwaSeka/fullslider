@@ -145,6 +145,16 @@ function initializeTextColorChooser(color) {
                     case "less-letter-spacing":
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-width"></i></span></a>');
                         break;
+                    case "borderwidth":
+                        var buttonEl = $('<div class="etch-border-width"><input id="edit-border-width" type="number" min="0" max="20" value="2"><a href="#" id="edit-border-width-btn" class="etch-editor-button btn btn-info" title="Change border width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
+                        $(buttonEl).prepend("<span class='etch-label'>Border:</span>");
+                        break;
+                    case "bordercolor":
+                        var buttonEl = $(color_selector);
+                        $(buttonEl).addClass("etch-border-color");
+                        $(buttonEl).attr("id", "edit-border-color");
+                        $(buttonEl).removeClass("col-sm-2");
+                        break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
                 }
@@ -164,6 +174,13 @@ function initializeTextColorChooser(color) {
 
 //            $("#edit-stroke-opacity").change(changeStrokeOpacity);
             $("#edit-fill-opacity").change(changeFillOpacity);
+
+            $("#edit-border-width-btn").on("click", function() {
+                changeBorderWidth();
+            });
+
+            setupColorPicker($("#edit-border-color"), changeBorderColor, getCurrentEtchBorderColor());
+
 
             var $toggle = this.$el.find('.dropdown-toggle');
             $toggle.dropdown();
@@ -533,6 +550,8 @@ function initializeTextColorChooser(color) {
                     var codevalue = $($($editable).find("pre")).attr("data-class");
                     codestyle = document.getElementsByClassName('codeStyleReadout')[0];
                     codestyle.innerHTML = codevalue;
+//                    updateCurrentBorderWidth();
+//                    updateCurrentColor($("#edit-border-color"), getCurrentEtchBorderColor());
                     break;
                 case "graphic":
                     updateCurrentColor($("#edit-fill-color"), getCurrentGraphicColor("fill"));
@@ -594,7 +613,7 @@ function initializeTextColorChooser(color) {
             });
 
             this.model.trigger('change:size', this.model, this.model.get('size'), {});
-            
+
             //if not already display, move to position, else nothing
             if (!alreadyDisplay) {
                 if (e.pageX === 0) {

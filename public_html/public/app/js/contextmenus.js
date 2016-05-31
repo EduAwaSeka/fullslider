@@ -147,12 +147,12 @@ var selectable_context_items = {
     },
 };
 var selectable_image_context_items = $.extend(true, {}, selectable_context_items);
-selectable_image_context_items["sep2"] = "---------";
+selectable_image_context_items["sep3"] = "---------";
 selectable_image_context_items["Crop image"] = {
     name: "Crop image",
     icon: "paste",
     callback: function(key, options) {
-        me.editImageElement(this[0]);
+        me.editImageElement(me.selectedElement[0]);
     }
 };
 

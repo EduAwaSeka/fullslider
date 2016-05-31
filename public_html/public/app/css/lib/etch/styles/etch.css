@@ -134,7 +134,7 @@
     border-bottom-left-radius: 0;
 }
 
-.etch-stroke-width{
+.etch-stroke-width,.etch-border-width{
     float: left;
     margin: 0vw 0.366vw;
 }
@@ -159,7 +159,7 @@
     margin-top: 0.2vw;
 }
 
-#edit-stroke-width{
+#edit-stroke-width,#edit-border-width{
     margin: 0 0 0 0.2464vw;
     border: 0.0732vw solid #666;
     border-right: none;
@@ -168,7 +168,7 @@
     border-bottom-right-radius: 0;
 }
 
-#edit-stroke-width-btn{
+#edit-stroke-width-btn,#edit-border-width-btn{
     color: #268035;
     float: right;
     border-top-left-radius: 0;
