@@ -52,6 +52,8 @@ Impressionist = function()
     this.patterns = {};
 
     this.wait_s = false;
+
+    this.changesCounter = 0;
 };
 Impressionist.prototype =
         {
@@ -85,6 +87,7 @@ Impressionist.prototype =
                 //me.openLastSavedPresentation();
 
                 me.attachListeners();
+                me.changesCounter = 0;
                 me.openWelcomePanel();
             },
             loadDefaultConfig: function() { //Load default config on Fullslider attributes
@@ -1564,6 +1567,7 @@ Impressionist.prototype =
             savePresentation: function()
             {
                 $("#savepresentationbtn").text("Saving...");
+                me.changesCounter = 0;
                 var item = me.getItem(me.saveKey);
                 var arr;
                 if (item)

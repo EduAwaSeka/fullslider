@@ -1,6 +1,7 @@
 'use strict';
 
 function changeContent() {
+    me.changesCounter++;
     $("#body-editor").change();
 }
 
@@ -31,6 +32,7 @@ function setEditorContents(contents) {
 
 
 function initializeUndoRedo() {
+    me.changesCounter = 0;
     $(function() {
         var history = new SimpleUndo({
             maxLength: 75,

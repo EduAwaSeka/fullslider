@@ -454,3 +454,9 @@ function getTransformMatrixValues(matrix) {
     transform_values = transform_values.split(",");
     return transform_values;
 }
+
+$(window).bind('beforeunload', function() {
+    if (me.changesCounter > 0) {
+//        return 'You have unsaved changes';
+    }
+});
