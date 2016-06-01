@@ -1873,7 +1873,7 @@ Impressionist.prototype =
                 var stroke_width = pxToVw(parseFloat($(graphic).attr("stroke-width")));
                 var is_arrow = false;
 
-                if ($(added_graphic).is("defs")) {
+                if ($(added_graphic).is("defs")) { //If is arrow
                     is_arrow = true;
                     var last = $($(svg_element).children()).size() - 1;
                     var added_graphic = $(svg_element).children()[last];
@@ -1893,10 +1893,10 @@ Impressionist.prototype =
                 switch (true) {
                     case (height != 0 && width != 0):
                         if (width > height) {
-                            var w_rel = (stroke_width + 1 * height / width);
+                            var w_rel = (stroke_width + 0 * height / width);
                         }
                         else {
-                            var w_rel = (stroke_width + 1 * width / height);
+                            var w_rel = (stroke_width + 0 * width / height);
                         }
                         width += w_rel;
                         left_translate += vwToPx(w_rel / 2);

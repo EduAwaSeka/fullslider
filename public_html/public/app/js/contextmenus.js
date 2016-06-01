@@ -318,6 +318,7 @@ $(function() {
                     changeContent();//Event for undo redo
                 }
             },
+            "sep1": "---------",
             "To front(+1)": {
                 name: "To front (+1)",
                 icon: function(opt, $itemElement, itemKey, item) {
@@ -335,14 +336,7 @@ $(function() {
                     else {
                         zindex = 2;
                     }
-                    var data_pattern = $(this).attr("data-pattern");
-                    var all = $("#workspace").find("[data-pattern=" + data_pattern + "]");
-                    for (var i = 0; i < all.length; i++) {
-                        $(all[i]).css("z-index", zindex);
-                    }
-                    me.updatePattern($(this));
-
-                    changeContent();//Event for undo redo
+                    changePatternZindex(this, zindex);
                 }
             },
             "To back (-1)": {
@@ -362,12 +356,37 @@ $(function() {
                     else {
                         zindex = 0;
                     }
-                    var data_pattern = $(this).attr("data-pattern");
-                    var all = $("#workspace").find("[data-pattern=" + data_pattern + "]");
-                    for (var i = 0; i < all.length; i++) {
-                        $(all[i]).css("z-index", zindex);
-                    }
-                    changeContent();//Event for undo redo
+                    changePatternZindex(this, zindex);
+                }
+            },
+            "To front of all": {
+                name: "To front of all",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-fast-forward context-menu-icon-left" aria-hidden="true"></span> ' + "To front of all");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    zindex = 50;
+                    changePatternZindex(this, zindex);
+                }
+            },
+            "To back of all": {
+                name: "To back of all",
+                icon: function(opt, $itemElement, itemKey, item) {
+                    // Set the content to the menu trigger selector and add an bootstrap icon to the item.
+                    $itemElement.html('<span class="fa fa-fast-backward context-menu-icon-left" aria-hidden="true"></span> ' + "To back of all");
+
+                    // Add the context-menu-icon-updated class to the item
+                    return 'context-menu-icon-updated';
+                },
+                callback: function(key, options) {
+                    var zindex = parseInt($(this).css("z-index"));
+                    zindex = 0;
+                    changePatternZindex(this, zindex);
                 }
             },
         }
@@ -417,3 +436,12 @@ $(function() {
     });
 
 });
+
+function changePatternZindex(el, zindex) {
+    var data_pattern = $(el).attr("data-pattern");
+    var all = $("#workspace").find("[data-pattern=" + data_pattern + "]");
+    for (var i = 0; i < all.length; i++) {
+        $(all[i]).css("z-index", zindex);
+    }
+    changeContent();//Event for undo redo
+}
