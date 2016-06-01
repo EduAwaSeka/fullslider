@@ -22,7 +22,7 @@ function initializeTextColorChooser(color) {
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color'],
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color', 'backgroundcolor'],
             'code': ['shownumbers', 'codestyle'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
@@ -104,6 +104,7 @@ function initializeTextColorChooser(color) {
                         $(buttonEl).addClass("etch-color");
                         $(buttonEl).attr("id", "text-color");
                         $(buttonEl).removeClass("col-sm-2");
+                        $(buttonEl).prepend('<span class="etch-label palette-bright-army">Color:</span>');
                         break;
                     case "fillcolor":
                         var buttonEl = $(color_selector);
@@ -119,7 +120,7 @@ function initializeTextColorChooser(color) {
                         break;
                     case "strokewidth":
                         var buttonEl = $('<div class="etch-stroke-width"><input id="edit-stroke-width" type="number" min="1" max="44" value="5"><a href="#" id="edit-stroke-width-btn" class="etch-editor-button btn btn-info" title="Change stroke width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
-                        $(buttonEl).prepend("<span class='etch-label'>Stroke:</span>");
+                        $(buttonEl).prepend("<span class='etch-label palette-bright-army'>Stroke:</span>");
                         break;
 //                    case "strokeopacity":
 //                        var buttonEl = $('<div class="etch-stroke-opacity"><select id="edit-stroke-opacity">' + opacity_selector + '</select></div>');
@@ -147,13 +148,20 @@ function initializeTextColorChooser(color) {
                         break;
                     case "borderwidth":
                         var buttonEl = $('<div class="etch-border-width"><input id="edit-border-width" type="number" min="0" max="20" value="2"><a href="#" id="edit-border-width-btn" class="etch-editor-button btn btn-info" title="Change border width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
-                        $(buttonEl).prepend("<span class='etch-label'>Border:</span>");
+                        $(buttonEl).prepend("<span class='etch-label palette-bright-army'>Border:</span>");
                         break;
                     case "bordercolor":
                         var buttonEl = $(color_selector);
                         $(buttonEl).addClass("etch-border-color");
                         $(buttonEl).attr("id", "edit-border-color");
                         $(buttonEl).removeClass("col-sm-2");
+                        break;
+                    case "backgroundcolor":
+                        var buttonEl = $(color_selector);
+                        $(buttonEl).addClass("etch-background-color");
+                        $(buttonEl).attr("id", "edit-background-color");
+                        $(buttonEl).removeClass("col-sm-2");
+                        $(buttonEl).prepend('<span class="etch-label palette-bright-army">Backg:</span>');
                         break;
                     default:
                         var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-' + button + '"></i></span></a>');
@@ -166,7 +174,7 @@ function initializeTextColorChooser(color) {
 
             setupColorPicker($("#edit-stroke-color"), changeStrokeColor, getCurrentGraphicColor("stroke"));
             setupColorPicker($("#edit-fill-color"), changeFillColor, getCurrentGraphicColor("fill"));
-            $("#edit-fill-color").prepend("<span class='etch-label'>Fill: </span>");
+            $("#edit-fill-color").prepend("<span class='etch-label palette-bright-army'>Fill: </span>");
 
             $("#edit-stroke-width-btn").on("click", function() {
                 changeStrokeWidth();
@@ -180,6 +188,7 @@ function initializeTextColorChooser(color) {
             });
 
             setupColorPicker($("#edit-border-color"), changeBorderColor, getCurrentEtchBorderColor());
+            setupColorPicker($("#edit-background-color"), changeBackgroundColor, getCurrentEtchBackgroundColor());
 
 
             var $toggle = this.$el.find('.dropdown-toggle');
@@ -544,6 +553,7 @@ function initializeTextColorChooser(color) {
                         }
                     }
                     fontFamilyReadout[0].innerHTML = value;
+                    updateCurrentColor($("#edit-background-color"), getCurrentEtchBackgroundColor());
                     break;
 
                 case "code":

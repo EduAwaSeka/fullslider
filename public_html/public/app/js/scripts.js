@@ -438,13 +438,30 @@ function getCurrentEtchBorderColor() {
     return color;
 }
 
-
 function changeBorderColor(color) {
     var element = me.selectedforedit;
     var border = $(element).css("border");
     border = border.split(" ");
     border = pxToVw(getFloatValue(border[0])) + "vw " + border[1] + " " + color;
     $(element).css("border", border, "important");
+    changeContent();
+}
+
+
+function getCurrentEtchBackgroundColor() {
+    var element = me.selectedforedit;
+    var bg = $(element).css("background");
+    if (bg) {
+        return bg;
+    }
+    else {
+        return "#fff";
+    }
+}
+
+function changeBackgroundColor(color) {
+    var element = me.selectedforedit;
+    $(element).css("background", color, "important");
     changeContent();
 }
 
