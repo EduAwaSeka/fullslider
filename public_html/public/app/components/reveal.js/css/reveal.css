@@ -295,7 +295,7 @@ body {
     margin: auto;
     overflow: visible;
     z-index: 1;
-/*    text-align: center;*/ //Conflicts with scaled svg position
+    /*    text-align: center;*/ //Conflicts with scaled svg position
     -webkit-perspective: 43.9239vw;
     perspective: 43.9239vw;
     -webkit-perspective-origin: 50% 40%;
@@ -1227,4 +1227,35 @@ body {
 #slides section{
     width: 100% !important;
     top:inherit !important;
+}
+
+
+
+
+
+
+/* Grey theme */
+
+.grey-theme #slides{
+    background: rgb(255, 255, 255) !important;
+}
+
+.grey-theme .fullscr{
+    color:#fff !important;
+    text-shadow: 0.15vw 0.15vw 0.15vw #000;
+}
+.grey-theme .navigate-left{
+    border-right-color: #fff !important;
+}
+.grey-theme .navigate-right{
+    border-left-color:  #fff !important;
+}
+.grey-theme .navigate-up{
+    border-bottom-color:#fff !important;
+}
+.grey-theme .navigate-down{
+    border-top-color:#fff !important;
+}
+.grey-theme .slide-background{
+    background: rgb(82, 82, 82) !important;
 }
