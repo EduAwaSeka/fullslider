@@ -89,6 +89,8 @@
 
 .etch-editor-panel .btn-group{
     float:left;
+    margin-right: 0.3196vw;
+    margin-left: 0.3196vw;
 }
 #etch-font-size ul{
     min-width: 7.713vw;
@@ -116,7 +118,7 @@
     height: 2.5vw;
 }
 
-.etch-bold, .etch-align-left, .etch-list-ul,.etch-undo,.etch-less-spacing,.etch-less-letter-spacing{
+.etch-bold, .etch-align-left, .etch-list-ul,.etch-undo,.etch-less-spacing,.etch-less-letter-spacing,.etch-font-size-down{
     margin-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -129,7 +131,7 @@
     border-right: none;
 }
 
-.etch-underline, .etch-align-right, .etch-list-ol,.etch-redo,.etch-more-spacing,.etch-more-letter-spacing{
+.etch-underline, .etch-align-right, .etch-list-ol,.etch-redo,.etch-more-spacing,.etch-more-letter-spacing, .etch-font-size-up{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -139,11 +141,11 @@
     margin: 0vw 0.366vw;
 }
 
-.etch-more-spacing, .etch-less-spacing,.etch-more-letter-spacing, .etch-less-letter-spacing{
-    width: 3.1vw;
+.etch-more-spacing, .etch-less-spacing,.etch-more-letter-spacing, .etch-less-letter-spacing,.etch-font-size-up,.etch-font-size-down{
+    width: 3.3vw;
 }
 
-.etch-more-spacing .fa-plus, .etch-less-spacing .fa-minus,.etch-more-letter-spacing .fa-plus, .etch-less-letter-spacing .fa-minus{
+.is-etch-button .fa-plus, .is-etch-button .fa-minus{
     font-size: 0.85vw;
     color: #3B6775;
 }

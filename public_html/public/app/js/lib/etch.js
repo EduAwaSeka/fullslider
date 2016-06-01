@@ -22,7 +22,7 @@ function initializeTextColorChooser(color) {
             'default': ['save'],
             'all': ['bold', 'italic', 'underline', 'list-ul', 'list-ol', 'link', 'eraser', 'save'],
             'title': ['bold', 'italic', 'underline', 'save'],
-            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-family', 'color', 'backgroundcolor'],
+            'text': ['bold', 'italic', 'underline', 'align-left', 'align-center', 'align-right', 'list-ul', 'list-ol', "less-spacing", "more-spacing", "less-letter-spacing", "more-letter-spacing", 'link', 'eraser', 'font-size', 'font-size-down', 'font-size-up', 'font-family', 'color', 'backgroundcolor'],
             'code': ['shownumbers', 'codestyle'],
             'graphic': ["strokewidth", 'strokecolor', 'fillcolor', 'fillopacity'],
         }
@@ -67,6 +67,8 @@ function initializeTextColorChooser(color) {
             'click .etch-less-spacing': 'lessSpacing',
             'click .etch-more-letter-spacing': 'moreLetterSpacing',
             'click .etch-less-letter-spacing': 'lessLetterSpacing',
+            'click .etch-font-size-up': 'fontSizeUp',
+            'click .etch-font-size-down': 'fontSizeDown',
         },
         changeEditable: function() {
             this.setButtonClass();
@@ -132,19 +134,25 @@ function initializeTextColorChooser(color) {
                         var buttonEl = $(code_style_selector);
                         break;
                     case "shownumbers":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Show/hide numbers"><span class="is-etch-button"><i class="icon icon-sort-numeric-outline"></i></span></a>');
                         break;
                     case "more-spacing":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-height"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Line spacing +"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-height"></i></span></a>');
                         break;
                     case "less-spacing":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-height"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Line spacing -"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-height"></i></span></a>');
                         break;
                     case "more-letter-spacing":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-width"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Letter spacing +"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="fa fa-text-width"></i></span></a>');
                         break;
                     case "less-letter-spacing":
-                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="' + button.replace('-', ' ') + '"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-width"></i></span></a>');
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Letter spacing -"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="fa fa-text-width"></i></span></a>');
+                        break;
+                    case "font-size-up":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Font size +"><span class="is-etch-button"><i class="fa fa-plus"></i><i class="icon icon-text-ico"></i></span></a>');
+                        break;
+                    case "font-size-down":
+                        var buttonEl = $('<a href="#" class="etch-editor-button etch-' + button + ' btn btn-info" title="Font size -"><span class="is-etch-button"><i class="fa fa-minus"></i><i class="icon icon-text-ico"></i></span></a>');
                         break;
                     case "borderwidth":
                         var buttonEl = $('<div class="etch-border-width"><input id="edit-border-width" type="number" min="0" max="20" value="2"><a href="#" id="edit-border-width-btn" class="etch-editor-button btn btn-info" title="Change border width"><span class="is-etch-button"><i class="glyphicon glyphicon-ok-sign"></i></span></a></div>');
@@ -419,6 +427,30 @@ function initializeTextColorChooser(color) {
                 spacing = 0;
             }
             $(elementToChange).css("letter-spacing", spacing + "vw", "important");
+        },
+        fontSizeUp: function(e) {
+            var elementToChange = getElementEditing();
+            var current_fontsize = parseFloat(pxToVw(getFontSize(elementToChange)));
+            var new_fontsize = current_fontsize + 0.25;
+
+            $(elementToChange).css("font-size", new_fontsize + "vw");
+            var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+            console.log(fontSizeReadout);
+            fontSizeReadout.innerHTML = new_fontsize.toFixed(2) + " vw";
+        },
+        fontSizeDown: function(e) {
+            var elementToChange = getElementEditing();
+            var current_fontsize = parseFloat(pxToVw(getFontSize(elementToChange))).toFixed(2);
+            var new_fontsize = 1;
+
+            if (current_fontsize >= 1.25) {
+                new_fontsize = current_fontsize - 0.25;
+            }
+
+            $(elementToChange).css("font-size", new_fontsize + "vw");
+            var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
+            console.log(fontSizeReadout);
+            fontSizeReadout.innerHTML = new_fontsize.toFixed(2) + " vw";
         },
         setCodeStyle: function(e) {
             e.preventDefault();
