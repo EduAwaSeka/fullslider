@@ -13,3 +13,4 @@ node_js:
   - "0.6"
   - "iojs"
 sudo: required
+script: cd public_html && npm install && npm test
