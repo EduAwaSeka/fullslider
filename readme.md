@@ -73,13 +73,15 @@ Once NodeJS has been installed, continue with following steps:
 2. Unpack it.
 3. On console, go to unpacked folder and open "public_html" folder
 4. Type command:
-```
-node init.js 
-```
+
+	```
+	node init.js 
+	```
 5. Open your browser and write url: 
-```
-localhost:8888
-```
+
+	```
+	localhost:8888
+	```
 6. You can already work with Fullslider!
 
 
@@ -93,14 +95,17 @@ Once Docker has been installed, continue with following steps:
 #### Linux ####
 1. Open shell
 2. Download Fullslider image
+
 	```
 	sudo docker pull edujg/fullslider:v0.3
 	```
 3. Run image
+
 	```
 	sudo docker run -p 8888:8888 edujg/fullslider:v0.3
 	```
 4. Open your browser and write url: 
+
 	```
 	localhost:8888
 	```
@@ -109,10 +114,12 @@ Once Docker has been installed, continue with following steps:
 #### Windows and Mac OSX ####
 1. Open Docker Quickstart Terminal
 2. Download Fullslider image
+
 	```
 	docker pull edujg/fullslider:v0.3
 	```
 3. Run image
+
 	```
 	docker run -p 8888:8888 edujg/fullslider:v0.3
 	```
@@ -122,6 +129,7 @@ Once Docker has been installed, continue with following steps:
 	docker-machine ip default
 	```
 5. Open your browser and write url: 
+
 	```
 	dockerip:8888 (for example 192.168.99.100:8888)
 	```
