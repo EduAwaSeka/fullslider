@@ -93,38 +93,38 @@ Once Docker has been installed, continue with following steps:
 #### Linux ####
 1. Open shell
 2. Download Fullslider image
-```
-sudo docker pull edujg/fullslider:v0.3
-```
+	```
+	sudo docker pull edujg/fullslider:v0.3
+	```
 3. Run image
-```
-sudo docker run -p 8888:8888 edujg/fullslider:v0.3
-```
+	```
+	sudo docker run -p 8888:8888 edujg/fullslider:v0.3
+	```
 4. Open your browser and write url: 
-```
-localhost:8888
-```
+	```
+	localhost:8888
+	```
 5. You can already work with Fullslider!
 
 #### Windows and Mac OSX ####
 1. Open Docker Quickstart Terminal
 2. Download Fullslider image
-```
-docker pull edujg/fullslider:v0.3
-```
+	```
+	docker pull edujg/fullslider:v0.3
+	```
 3. Run image
-```
-docker run -p 8888:8888 edujg/fullslider:v0.3
-```
+	```
+	docker run -p 8888:8888 edujg/fullslider:v0.3
+	```
 4. Get docker machine ip
-
-```
-docker-machine ip default
-```
+	
+	```
+	docker-machine ip default
+	```
 5. Open your browser and write url: 
-```
-dockerip:8888 (for example 192.168.99.100:8888)
-```
+	```
+	dockerip:8888 (for example 192.168.99.100:8888)
+	```
 6. You can already work with Fullslider!
 
 ## RELEASE NOTES ##
@@ -201,3 +201,5 @@ dockerip:8888 (for example 192.168.99.100:8888)
 * PhantomJS phantomjs.org
 * Decktape https://github.com/astefanutti/decktape
 
+## License ##
+Fullslider is licensed under Apache license 2.0
