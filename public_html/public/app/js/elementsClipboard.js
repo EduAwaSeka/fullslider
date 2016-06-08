@@ -100,8 +100,8 @@ document.onpaste = function(e)
             if (i == items.length - 1) {
                 pasteEl();
                 newCopied = false;
-                break;
                 isCopiedImage = false;
+                break;
             }
         }
     }
