@@ -5,7 +5,7 @@ var elClipboard = {
 
 //To control elClipboard and system clipboard
 var newCopied = false;
-var isCopiedImage = false;
+var isCopiedImage = true;
 
 function setElClipboard(type, value) {
     elClipboard.type = type;
@@ -99,8 +99,8 @@ document.onpaste = function(e)
         } else { //Else, paste Fullslider element
             if (i == items.length - 1) {
                 pasteEl();
-                break;
                 newCopied = false;
+                break;
                 isCopiedImage = false;
             }
         }
