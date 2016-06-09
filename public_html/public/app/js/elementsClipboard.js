@@ -101,15 +101,18 @@ function pasteItemIfLast() {
 document.onpaste = function(e)
 {
     var items = e.clipboardData.items;
-    var imagereturn = false;
     for (var i = 0; i < items.length; ++i) {
-        //If there is an image on clipboard 
-        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) && isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked)) { //If system clipboard has image && slide is clicked
+        //If there is an image in system clipboard && slide is clicked
+        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) &&
+                isElementByClass("fullslider-slide", me.currentClicked) ||
+                isElementByClass("slidelement", me.currentClicked)) 
+        {
             var clipboardimg = items[i].getAsFile();
             var fr = new FileReader();
             fr.onload = function(e) {
                 clipboardimg64 = e.target.result;
-                if (clipboardimg64 != latestImage || (!newCopied && isCopiedImage)) { //If clipboard image is not latest pasted image.
+                //If clipboard image is not latest pasted image.
+                if (clipboardimg64 != latestImage || (!newCopied && isCopiedImage)) { 
                     latestImage = clipboardimg64;
                     pasteImg(clipboardimg);
                 }
