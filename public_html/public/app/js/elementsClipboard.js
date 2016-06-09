@@ -5,7 +5,8 @@ var elClipboard = {
 
 //To control elClipboard and system clipboard
 var newCopied = false;
-var isCopiedImage = true;
+var isCopiedImage = false;
+var latestImage = "";
 
 function setElClipboard(type, value) {
     elClipboard.type = type;
@@ -84,23 +85,59 @@ key('ctrl+c', function(e) {
 //    changeContent();//Event for undo redo
 //});
 
+function pasteImg(img) {
+    if ((!newCopied || isCopiedImage) && (isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked))) {
+        var blob = img;
+        createImageFromBlob(blob);
+        newCopied = false;
+        isCopiedImage = true;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function pasteItemIfLast() {
+    pasteEl();
+    newCopied = false;
+    isCopiedImage = false;
+}
+
 document.onpaste = function(e)
 {
     var items = e.clipboardData.items;
-
+    var imagereturn = false;
     for (var i = 0; i < items.length; ++i) {
-        //If there is an image on clipboard and slide or slide element is current clicked -> paste image
-        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) && (!newCopied || isCopiedImage) && (isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked))) { //If clipboard has an image, paste it
-            var blob = items[i].getAsFile();
-            createImageFromBlob(blob);
-            newCopied = false;
-            isCopiedImage = true;
-            break;
-        } else { //Else, paste Fullslider element
+        //If there is an image on clipboard 
+        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1)) { //If system clipboard has image
+            var clipboardimg = items[i].getAsFile();
+            if (!isCopiedImage) {
+                var fr = new FileReader();
+                fr.onload = function(e) {
+                    clipboardimg64 = e.target.result;
+                    if (clipboardimg64 != latestImage) { //If clipboard image is not latest pasted image.
+                        latestImage = clipboardimg64;
+                        imagereturn = pasteImg(clipboardimg);
+                    }
+                    if (!imagereturn) {
+                        pasteItemIfLast();
+                    }
+                };
+                fr.readAsDataURL(clipboardimg);
+            }
+            else {
+                imagereturn = pasteImg(clipboardimg);
+                if (!imagereturn) {
+                    if (i == items.length - 1) {
+                        pasteItemIfLast();
+                        break;
+                    }
+                }
+            }
+        } else {//Else, paste Fullslider element
             if (i == items.length - 1) {
-                pasteEl();
-                newCopied = false;
-                isCopiedImage = false;
+                pasteItemIfLast();
                 break;
             }
         }
