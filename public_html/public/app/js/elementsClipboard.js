@@ -86,16 +86,10 @@ key('ctrl+c', function(e) {
 //});
 
 function pasteImg(img) {
-    if ((!newCopied || isCopiedImage) && (isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked))) {
-        var blob = img;
-        createImageFromBlob(blob);
-        newCopied = false;
-        isCopiedImage = true;
-        return true;
-    }
-    else {
-        return false;
-    }
+    var blob = img;
+    createImageFromBlob(blob);
+    newCopied = false;
+    isCopiedImage = true;
 }
 
 function pasteItemIfLast() {
@@ -110,31 +104,21 @@ document.onpaste = function(e)
     var imagereturn = false;
     for (var i = 0; i < items.length; ++i) {
         //If there is an image on clipboard 
-        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1)) { //If system clipboard has image
+        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) && isElementByClass("fullslider-slide", me.currentClicked) || isElementByClass("slidelement", me.currentClicked)) { //If system clipboard has image && slide is clicked
             var clipboardimg = items[i].getAsFile();
-            if (!isCopiedImage) {
-                var fr = new FileReader();
-                fr.onload = function(e) {
-                    clipboardimg64 = e.target.result;
-                    if (clipboardimg64 != latestImage) { //If clipboard image is not latest pasted image.
-                        latestImage = clipboardimg64;
-                        imagereturn = pasteImg(clipboardimg);
-                    }
-                    if (!imagereturn) {
-                        pasteItemIfLast();
-                    }
-                };
-                fr.readAsDataURL(clipboardimg);
-            }
-            else {
-                imagereturn = pasteImg(clipboardimg);
-                if (!imagereturn) {
-                    if (i == items.length - 1) {
-                        pasteItemIfLast();
-                        break;
-                    }
+            var fr = new FileReader();
+            fr.onload = function(e) {
+                clipboardimg64 = e.target.result;
+                if (clipboardimg64 != latestImage || (!newCopied && isCopiedImage)) { //If clipboard image is not latest pasted image.
+                    latestImage = clipboardimg64;
+                    pasteImg(clipboardimg);
                 }
-            }
+                else {
+                    pasteItemIfLast();
+                }
+            };
+            fr.readAsDataURL(clipboardimg);
+
         } else {//Else, paste Fullslider element
             if (i == items.length - 1) {
                 pasteItemIfLast();
