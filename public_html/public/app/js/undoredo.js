@@ -55,10 +55,12 @@ function initializeUndoRedo() {
 
         $('.undo').click(function(e) {
             e.stopPropagation();
+            me.changesCounter--;
             history.undo(setEditorContents);
         });
         $('.redo').click(function(e) {
             e.stopPropagation();
+            me.changesCounter++;
             history.redo(setEditorContents);
         });
         $('#body-editor').change(function() {

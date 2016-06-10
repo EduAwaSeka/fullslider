@@ -316,6 +316,6 @@ function getTransformMatrixValues(matrix) {
 
 $(window).bind('beforeunload', function() {
     if (me.changesCounter > 0) {
-//        return 'You have unsaved changes';
+        return 'You have unsaved changes';
     }
 });
