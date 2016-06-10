@@ -69,12 +69,13 @@ function initializeUndoRedo() {
 
         updateButtons(history);
 
-
         key('ctrl+z', function(e) {
+            me.changesCounter--;
             history.undo(setEditorContents);
         });
 
         key('ctrl+shift+z', function(e) {
+            me.changesCounter++;
             history.redo(setEditorContents);
         });
     });
