@@ -135,7 +135,16 @@ Once Docker has been installed, continue with following steps:
 	```
 6. You can already work with Fullslider!
 
-## RELEASE NOTES ##
+## Fullslider Presentation File (.fspf) ##
+Presentations created with Fullslider can be downloaded as file to edit later. 
+When user click on Download button, a file with .fspf extension is automatically generated. This file contains the following information:
+ - Presentation ID
+ - Presentation title
+ - Presentation content (slides)
+ - Configuration parameters
+ - Patterns applied to the presentation.
+
+## Release Notes
 
 ###### v0.3 - With Fullslider, you can do: ######
  - Create new presentations.
@@ -163,7 +172,6 @@ Once Docker has been installed, continue with following steps:
  - Open recent presentations.
  - And view presentation!
 
-
 ## Quick Guide ##
 
 1 Select New Presentation.
@@ -184,8 +192,6 @@ Once Docker has been installed, continue with following steps:
 	*Double click: select for edit. You can write text, change size, colour, font, etc.
 
 ![edit](https://cloud.githubusercontent.com/assets/6854006/15626730/12b11214-24cd-11e6-883a-120d33d3cf13.PNG)
-
-
 
 
 ## Credits ##

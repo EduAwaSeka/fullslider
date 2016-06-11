@@ -435,7 +435,6 @@ function initializeTextColorChooser(color) {
 
             $(elementToChange).css("font-size", new_fontsize + "vw");
             var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-            console.log(fontSizeReadout);
             fontSizeReadout.innerHTML = new_fontsize.toFixed(2) + " vw";
         },
         fontSizeDown: function(e) {
