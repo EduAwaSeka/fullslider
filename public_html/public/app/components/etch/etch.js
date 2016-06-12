@@ -461,9 +461,9 @@ function initializeTextColorChooser(color) {
             elementToChange.removeClass(current);
             elementToChange.addClass(value);
             elementToChange.attr("data-class", value);
-
             var codestyle = document.getElementsByClassName('codeStyleReadout')[0];
             codestyle.innerHTML = value;
+            me.prettifyCode();
             changeContent();//Event for undo redo
         },
         setFontFamily: function(e) {

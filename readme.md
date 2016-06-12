@@ -12,6 +12,55 @@ Fullslider works in Chrome, Mozilla Firefox and Opera browsers.
 
 ## How to install?##
 
+### With Docker Image ###
+First, you need to have installed Docker. 
+You can see how to install it here: https://docs.docker.com/engine/installation/
+
+Once Docker has been installed, continue with following steps:
+
+#### Linux ####
+1. Open shell
+2. Download Fullslider image
+
+	```
+	sudo docker pull edujg/fullslider:v0.3
+	```
+3. Run image
+
+	```
+	sudo docker run -p 8888:8888 edujg/fullslider:v0.3
+	```
+4. Open your browser and write url: 
+
+	```
+	localhost:8888
+	```
+5. You can already work with Fullslider!
+
+#### Windows and Mac OSX ####
+1. Open Docker Quickstart Terminal
+2. Download Fullslider image
+
+	```
+	docker pull edujg/fullslider:v0.3
+	```
+3. Run image
+
+	```
+	docker run -p 8888:8888 edujg/fullslider:v0.3
+	```
+4. Get docker machine ip
+	
+	```
+	docker-machine ip default
+	```
+5. Open your browser and write url: 
+
+	```
+	dockerip:8888 (for example 192.168.99.100:8888)
+	```
+6. You can already work with Fullslider!
+
 ### With NodeJS ###
 
 First, you need to have installed Node JS. If you have already installed go to "Common steps", if not install it:
@@ -84,56 +133,6 @@ Once NodeJS has been installed, continue with following steps:
 	```
 6. You can already work with Fullslider!
 
-
-
-### With Docker Image ###
-First, you need to have installed Docker. 
-You can see how to install it here: https://docs.docker.com/engine/installation/
-
-Once Docker has been installed, continue with following steps:
-
-#### Linux ####
-1. Open shell
-2. Download Fullslider image
-
-	```
-	sudo docker pull edujg/fullslider:v0.3
-	```
-3. Run image
-
-	```
-	sudo docker run -p 8888:8888 edujg/fullslider:v0.3
-	```
-4. Open your browser and write url: 
-
-	```
-	localhost:8888
-	```
-5. You can already work with Fullslider!
-
-#### Windows and Mac OSX ####
-1. Open Docker Quickstart Terminal
-2. Download Fullslider image
-
-	```
-	docker pull edujg/fullslider:v0.3
-	```
-3. Run image
-
-	```
-	docker run -p 8888:8888 edujg/fullslider:v0.3
-	```
-4. Get docker machine ip
-	
-	```
-	docker-machine ip default
-	```
-5. Open your browser and write url: 
-
-	```
-	dockerip:8888 (for example 192.168.99.100:8888)
-	```
-6. You can already work with Fullslider!
 
 ## Fullslider Presentation File (.fspf) ##
 Presentations created with Fullslider can be downloaded as file to edit later. 

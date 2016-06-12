@@ -48,13 +48,13 @@ key('ctrl+o', function(e) {
 });
 
 key('right,pagedown', function(e) {
-    e.preventDefault();
+//    e.preventDefault();
     e.stopPropagation();
     slideNavigate("right");
 });
 
 key('left,pageup', function(e) {
-    e.preventDefault();
+//    e.preventDefault();
     e.stopPropagation();
     slideNavigate("left");
 });

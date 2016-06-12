@@ -836,12 +836,11 @@ Impressionist.prototype =
                 }
                 me.generateScaledSlide(me.selectedSlide);
             },
-            addFullsliderSlideItem: function(type)
+            addFullsliderSlideItem: function(template)
             {
-                var item = type;
                 var id = "slidelement_" + me.generateUID();
-                item = item.split("slidelement_id").join(id);
-                $(me.selectedSlide).append(item);
+                template = template.split("slidelement_id").join(id);
+                $(me.selectedSlide).append(template);
                 return (document.getElementById(id));
             },
             finishAddFile: function(element) {
