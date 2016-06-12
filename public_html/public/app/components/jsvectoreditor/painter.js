@@ -5,8 +5,9 @@ function setMode(mode)
         $("#arrow-type").css("display", "none");
     }
     removeDisabledBtns();
-    $($("#graphics-tools").find("[data-mode='" + mode + "']")).attr("disabled", "true");
-    editor.setMode(mode == 'selectp' ? 'selectp' : mode);
+    var btn=$("#graphics-tools").find("[data-mode='" + mode + "']");
+    $(btn).attr("disabled", "true");
+    editor.setMode(mode);
 }
 
 function removeDisabledBtns() {
@@ -370,7 +371,6 @@ function jsvectoreditor_init_events() {
     $("#strokewidth").change(onStrokeWidthChange);
 
     $('#selectSvg').on("click", onToolSelected);
-    $('#selectp').on("click", onToolSelected);
     $('#drawRect').on("click", onToolSelected);
     $('#drawLine').on("click", onToolSelected);
     $('#drawEllipse').on("click", onToolSelected);
@@ -420,7 +420,6 @@ function deleteJvectoreditorEvents() {
     $("#strokewidth").off();
 
     $('#selectSvg').off();
-    $('#selectp').off();
     $('#drawRect').off();
     $('#drawLine').off();
     $('#drawEllipse').off();
@@ -429,9 +428,9 @@ function deleteJvectoreditorEvents() {
     $('#drawImage').off();
     $('#drawText').off();
     $('#drawArrow').off();
+    $('#deleteSvg').off();
     $('#arrow-start').off();
     $('#arrow-end').off();
-    $('#deleteSvg').off();
 
     $('#getMarkup').off();
     $('#clearCanvas').off();
