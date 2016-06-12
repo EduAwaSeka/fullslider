@@ -211,7 +211,7 @@ When user click on Download button, a file with .fspf extension is automatically
 * Simple-Undo https://github.com/mattjmattj/simple-undo/
 * NodeJS https://nodejs.org/en/
 * Docker https://www.docker.com/
-* Code Prettify https://github.com/google/code-prettify
+* Highlight.js https://highlightjs.org
 * PhantomJS phantomjs.org
 * Decktape https://github.com/astefanutti/decktape
 

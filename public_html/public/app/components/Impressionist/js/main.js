@@ -1113,24 +1113,18 @@ Impressionist.prototype =
                     e.stopPropagation();
                     me.addFullsliderText("normal");
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected
-                    me.toSelectElement(me.selectedElement);
                 });
                 $("#titleTextBtn").on("click", function(e)
                 {
                     e.stopPropagation();
                     me.addFullsliderText("title");
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected
-                    me.toSelectElement(me.selectedElement);
                 });
                 $("#subtTextBtn").on("click", function(e)
                 {
                     e.stopPropagation();
                     me.addFullsliderText("subtitle");
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected
-                    me.toSelectElement(me.selectedElement);
                 });
                 //End add text buttons on click
 
@@ -1139,8 +1133,6 @@ Impressionist.prototype =
                     e.stopPropagation();
                     me.addFullsliderCode();
                     changeContent();//Event for undo redo
-                    //On create text element, this is selected
-                    me.toSelectElement(me.selectedElement);
                 });
 
                 $("#addimagebtn").on("click", function(e)
