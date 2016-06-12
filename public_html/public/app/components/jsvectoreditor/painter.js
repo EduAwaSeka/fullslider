@@ -1,18 +1,11 @@
 function setMode(mode)
 {
     enableEditor();
-    if (mode == "text") {
-        editor.prop.text = prompt("Text:", editor.prop.text);
-    } else if (mode == "image") {
-        editor.prop.src = prompt("Image Source URL:", editor.prop.src);
-    }
     if (mode != "arrow") {
         $("#arrow-type").css("display", "none");
     }
-
     removeDisabledBtns();
-    $("#" + mode).attr("disabled", "true");
-
+    $($("#graphics-tools").find("[data-mode='" + mode + "']")).attr("disabled", "true");
     editor.setMode(mode == 'selectp' ? 'selectp' : mode);
 }
 
@@ -52,6 +45,7 @@ function enableEditor() {
         $("#addtextbtn").attr("disabled", "true");
         $("#textDropdown").attr("disabled", "true");
         $("#addimagebtn").attr("disabled", "true");
+        $("#addcodebtn").attr("disabled", "true");
         $(".undo").attr("disabled", "true");
         $(".redo").attr("disabled", "true");
     }
@@ -64,6 +58,7 @@ function disableEditor() {
         $("#addtextbtn").attr("disabled", null);
         $("#textDropdown").attr("disabled", null);
         $("#addimagebtn").attr("disabled", null);
+        $("#addcodebtn").attr("disabled", null);
         $(".undo").attr("disabled", undo_disabled);
         $(".redo").attr("disabled", redo_disabled);
         $("#arrow-type").css("display", "none");
@@ -329,59 +324,6 @@ function onEditEnd() {
     editor.deleteAll();
 }
 
-function onSelect() {
-    setMode('select');
-}
-
-
-function onSelectp() {
-    setMode('selectp');
-}
-
-
-function onRect() {
-    setMode('rect');
-}
-
-
-function onLine() {
-    setMode('line');
-}
-
-
-function onEllipse() {
-    setMode('ellipse');
-}
-
-function onPath() {
-    setMode('path');
-}
-
-
-function onPolygon() {
-    setMode('polygon');
-}
-
-
-function onImage() {
-    setMode('image');
-}
-
-
-function onText() {
-    setMode('text');
-}
-
-function onArrow() {
-    $("#arrow-start").val("none");
-    $("#arrow-end").val("block");
-    onArrowStart();
-    onArrowEnd();
-
-    $("#arrow-type").css("display", "block");
-
-    setMode('arrow');
-}
 function onArrowStart() {
     var type = $("#arrow-start").val();
     editor.setArrowStart(type);
@@ -391,11 +333,18 @@ function onArrowEnd() {
     editor.setArrowEnd(type);
 }
 
+function onToolSelected() {
+    var mode = $(this).attr("data-mode");
+    if (mode == "arrow") {
+        $("#arrow-start").val("none");
+        $("#arrow-end").val("block");
+        onArrowStart();
+        onArrowEnd();
 
-function onDelete() {
-    setMode('delete');
+        $("#arrow-type").css("display", "block");
+    }
+    setMode($(this).attr("data-mode"));
 }
-
 
 function onGetMarkup() {
     alert(editor.getMarkup())
@@ -420,19 +369,19 @@ function jsvectoreditor_init_events() {
     $("#strokeopacity").change(onStrokeOpacityChange);
     $("#strokewidth").change(onStrokeWidthChange);
 
-    $('#selectSvg').on("click", onSelect);
-    $('#selectp').on("click", onSelectp);
-    $('#drawRect').on("click", onRect);
-    $('#drawLine').on("click", onLine);
-    $('#drawEllipse').on("click", onEllipse);
-    $('#drawPath').on("click", onPath);
-    $('#drawPolygon').on("click", onPolygon);
-    $('#drawImage').on("click", onImage);
-    $('#drawText').on("click", onText);
-    $('#drawArrow').on("click", onArrow);
+    $('#selectSvg').on("click", onToolSelected);
+    $('#selectp').on("click", onToolSelected);
+    $('#drawRect').on("click", onToolSelected);
+    $('#drawLine').on("click", onToolSelected);
+    $('#drawEllipse').on("click", onToolSelected);
+    $('#drawPath').on("click", onToolSelected);
+    $('#drawPolygon').on("click", onToolSelected);
+    $('#drawImage').on("click", onToolSelected);
+    $('#drawText').on("click", onToolSelected);
+    $('#drawArrow').on("click", onToolSelected);
+    $('#deleteSvg').on("click", onToolSelected);
     $('#arrow-start').on("change", onArrowStart);
     $('#arrow-end').on("change", onArrowEnd);
-    $('#deleteSvg').on("click", onDelete);
 
     $('#getMarkup').on("click", onGetMarkup);
     $('#clearCanvas').on("click", onClearCanvas);
