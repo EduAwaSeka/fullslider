@@ -1195,20 +1195,24 @@ Impressionist.prototype =
                         var msg = "Generating pdf. Wait please...";
                         openAlert("info", msg);
 
-                        $.post("/toPDF", {'slides': btoa(unescape(encodeURIComponent(slides))), title: title}, function(json) {
-                            if (json.end_code == 0) { //If no error
-                                window.open("tmp_files/" + title + ".pdf");    // Opens the pdf download prompt
-                                $("#infoalert").fadeOut(0);
-                            }
-                            else {
-                                $("#infoalert").fadeOut(0);
-                                msg = "";
-                                openAlert("danger", msg);
-                            }
-                            $("#pdfbtn").button('reset');
-                            $("body").css("cursor", "default");
-                            me.wait_s = false;
-                        }, 'json');
+                        $.post("/toPDF",{
+                            'slides': btoa(unescape(encodeURIComponent(slides))),
+                            'title': title
+                            }, function(json) {
+                                if (json.end_code == 0) { //If no error
+                                    // Opens the pdf download prompt
+                                    window.open("tmp_files/" + title + ".pdf");    
+                                    $("#infoalert").fadeOut(0);
+                                }
+                                else {
+                                    $("#infoalert").fadeOut(0);
+                                    msg = "";
+                                    openAlert("danger", msg);
+                                }
+                                $("#pdfbtn").button('reset');
+                                $("body").css("cursor", "default");
+                                me.wait_s = false;
+                            }, 'json');
                     }
                 });
 
@@ -1228,6 +1232,7 @@ Impressionist.prototype =
                 {
                     if (!me.wait_s) { //Only one click
                         me.wait_s = true;
+                        $("body").css("cursor", "progress");
                         $("#downloadbtntext").button('loading');
                         $("#downloadbtntext").html('Downloading...');
                         me.downloadFile(me.generateJsonFile(), me.getFileName());
@@ -1411,29 +1416,7 @@ Impressionist.prototype =
             generateExportMarkup: function()
             {
                 var children = $(".slidethumbholder").children();
-//                var count = 0;
-                for (var i = 0; i < children.length; i++)
-                {
-                    var child = $(children[i]);
-                    var id = child.attr("id").split("_")[1];
-//                    var l = count;
-//                    count += 200;
-//                    var t = child.attr("data-top").split("px")[0];
-
-                    var el = $("#fullslider_slide_" + id);
-//                    el.attr("data-x", coords.x - 500);
-//                    el.attr("data-y", coords.y);
-//                    el.attr("data-rotate", child.attr("data-rotate"));
-//                    el.attr("data-rotate-x", child.attr("data-rotate-x"));
-//                    el.attr("data-rotate-y", child.attr("data-rotate-y"));
-//                    el.attr("data-z", child.attr("data-z"));
-//                    el.attr("data-scale", child.attr("data-scale"));
-//                    el.addClass("step");
-                }
                 var outputcontainer = $(".fullslider-slide-container").clone();
-                outputcontainer.find(".fullslider-slide").each(function(i, object)
-                {
-                });
                 return (outputcontainer.html().toString());
             },
             correctListWidth: function(elements) {
@@ -1676,6 +1659,7 @@ Impressionist.prototype =
                         openAlert("danger", msg);
                     }
                     $("#downloadbtntext").button('reset');
+                    $("body").css("cursor", "default");
                     me.wait_s = false;
                 }, 'json');
             },
@@ -2142,9 +2126,21 @@ Impressionist.prototype =
                 me.setSlideNumbersDisplay();
             },
             getConfigVariable: function() {
-                var normalText = {'size': me.normalSize, 'font': me.normalFont, 'color': me.normalColor};
-                var titleText = {'size': me.titleSize, 'font': me.titleFont, 'color': me.titleColor};
-                var subtitleText = {'size': me.subtitleSize, 'font': me.subtitleFont, 'color': me.subtitleColor};
+                var normalText = {
+                    'size': me.normalSize,
+                    'font': me.normalFont,
+                    'color': me.normalColor
+                };
+                var titleText = {
+                    'size': me.titleSize,
+                    'font': me.titleFont,
+                    'color': me.titleColor
+                };
+                var subtitleText = {
+                    'size': me.subtitleSize, 
+                    'font': me.subtitleFont,
+                    'color': me.subtitleColor
+                };
 
                 var config = {
                     'normalText': normalText,
