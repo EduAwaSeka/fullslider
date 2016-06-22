@@ -94,7 +94,7 @@ function toggleFullScreen() {
 if (sessionStorage.preview) { //View presentation
     $.post("/getPres", function(json) {
         if (json.end_code == 0) { //If no error
-            document.getElementById("slides").innerHTML = decodeURIComponent(escape(atob(cleanBase64Params(json.slides))));
+            document.getElementById("slides").innerHTML = decodeURIComponent(atob(cleanBase64Params(json.slides)));
             document.title = sessionStorage.title;
             initializeReveal();
         }

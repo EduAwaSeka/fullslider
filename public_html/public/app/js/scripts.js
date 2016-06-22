@@ -314,6 +314,87 @@ function getTransformMatrixValues(matrix) {
     return transform_values;
 }
 
+function getUserAgent() {
+    // Chrome 1+
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // At least Safari 3+: "[object HTMLElementConstructor]"
+    var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    // Blink engine detection
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    if (isChrome) {
+        return "chrome";
+    }
+    else {
+        if (isFirefox) {
+            return "firefox";
+        }
+        else {
+            if (isEdge) {
+                return "edge";
+            }
+            else {
+                if (isIE) {
+                    return "ie";
+                }
+                else {
+                    if (isOpera) {
+                        return "opera";
+                    }
+                    else {
+                        if (isSafari) {
+                            return "safari";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function getUserAgentTag(useragent) {
+    if (!useragent) {
+        useragent = getUserAgent();
+    }
+    if (useragent == "chrome") {
+        return "-webkit-";
+    }
+    else {
+        if (useragent == "firefox") {
+            return "-moz-";
+        }
+        else {
+            if (useragent == "edge") {
+                return "";
+            }
+            else {
+                if (useragent == "ie") {
+                    return "-ms-";
+                }
+                else {
+                    if (useragent == "opera") {
+                        return "";
+                    }
+                    else {
+                        if (useragent == "safari") {
+                            return "-webkit-";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 $(window).bind('beforeunload', function() {
     if (me.changesCounter > 0) {
         return 'You have unsaved changes';

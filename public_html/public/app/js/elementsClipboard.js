@@ -18,7 +18,7 @@ function setElClipboard(type, value) {
 }
 
 function copyEl() {
-    document.execCommand('copy', false, null);
+//    document.execCommand('copy', false, null);
     var currentClicked = me.getCurrentClicked();
     if (currentClicked !== "") {
         if (currentClicked.hasClass("slidethumb")) {
@@ -80,11 +80,6 @@ key('ctrl+c', function(e) {
     copyEl();
 });
 
-//key('ctrl+v', function(e) {
-//    pasteEl();
-//    changeContent();//Event for undo redo
-//});
-
 function pasteImg(img) {
     var blob = img;
     createImageFromBlob(blob);
@@ -98,35 +93,45 @@ function pasteItemIfLast() {
     isCopiedImage = false;
 }
 
-document.onpaste = function(e)
-{
-    var items = e.clipboardData.items;
-    for (var i = 0; i < items.length; ++i) {
-        //If there is an image in system clipboard && slide is clicked
-        if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) &&
-                isElementByClass("fullslider-slide", me.currentClicked) ||
-                isElementByClass("slidelement", me.currentClicked)) 
-        {
-            var clipboardimg = items[i].getAsFile();
-            var fr = new FileReader();
-            fr.onload = function(e) {
-                clipboardimg64 = e.target.result;
-                //If clipboard image is not latest pasted image.
-                if (clipboardimg64 != latestImage || (!newCopied && isCopiedImage)) { 
-                    latestImage = clipboardimg64;
-                    pasteImg(clipboardimg);
-                }
-                else {
-                    pasteItemIfLast();
-                }
-            };
-            fr.readAsDataURL(clipboardimg);
-
-        } else {//Else, paste Fullslider element
-            if (i == items.length - 1) {
-                pasteItemIfLast();
-                break;
-            }
-        }
+$(document).on("ready", function() {
+    if (me.useragent == "firefox" || me.useragent == "edge" || me.useragent == "ie") {
+        key('ctrl+v', function(e) {
+            pasteEl();
+            changeContent();//Event for undo redo
+        });
     }
-}; 
+    else {
+        document.onpaste = function(e)
+        {
+            var items = e.clipboardData.items;
+            for (var i = 0; i < items.length; ++i) {
+                //If there is an image in system clipboard && slide is clicked
+                if ((items[i].kind == 'file' && items[i].type.indexOf('image/') !== -1) &&
+                        isElementByClass("fullslider-slide", me.currentClicked) ||
+                        isElementByClass("slidelement", me.currentClicked))
+                {
+                    var clipboardimg = items[i].getAsFile();
+                    var fr = new FileReader();
+                    fr.onload = function(e) {
+                        clipboardimg64 = e.target.result;
+                        //If clipboard image is not latest pasted image.
+                        if (clipboardimg64 != latestImage || (!newCopied && isCopiedImage)) {
+                            latestImage = clipboardimg64;
+                            pasteImg(clipboardimg);
+                        }
+                        else {
+                            pasteItemIfLast();
+                        }
+                    };
+                    fr.readAsDataURL(clipboardimg);
+
+                } else {//Else, paste Fullslider element
+                    if (i == items.length - 1) {
+                        pasteItemIfLast();
+                        break;
+                    }
+                }
+            }
+        };
+    }
+});

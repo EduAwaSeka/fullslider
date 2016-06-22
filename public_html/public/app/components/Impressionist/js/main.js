@@ -6,6 +6,9 @@ Impressionist = function()
 
     this.menuopen = false;
 
+    this.useragent;
+    this.useragent_tag;
+
     this.selectedElement;
     this.selectedforedit;
 
@@ -61,6 +64,7 @@ Impressionist.prototype =
             {
                 me = this;
                 me.continueInit();
+                me.getUserAgent();
 //                me.openNewPresentationWindow();
             },
             continueInit: function()
@@ -89,6 +93,10 @@ Impressionist.prototype =
                 me.attachListeners();
                 me.changesCounter = 0;
                 me.openWelcomePanel();
+            },
+            getUserAgent: function() {
+                me.useragent = getUserAgent();
+                me.useragent_tag = getUserAgentTag(me.useragent);
             },
             loadDefaultConfig: function() { //Load default config on Fullslider attributes
                 me.loadDefaultText();
@@ -1187,6 +1195,8 @@ Impressionist.prototype =
                         me.wait_s = true;
                         var slides = me.generateExportMarkup();
                         slides = me.correctListWidth(slides);
+//                        slides = me.correctUserAgentTag(slides);
+
                         var title = me.getTitle();
 
                         $("body").css("cursor", "progress");
@@ -1195,24 +1205,24 @@ Impressionist.prototype =
                         var msg = "Generating pdf. Wait please...";
                         openAlert("info", msg);
 
-                        $.post("/toPDF",{
-                            'slides': btoa(unescape(encodeURIComponent(slides))),
+                        $.post("/toPDF", {
+                            'slides': btoa(encodeURIComponent(slides)),
                             'title': title
-                            }, function(json) {
-                                if (json.end_code == 0) { //If no error
-                                    // Opens the pdf download prompt
-                                    window.open("tmp_files/" + title + ".pdf");    
-                                    $("#infoalert").fadeOut(0);
-                                }
-                                else {
-                                    $("#infoalert").fadeOut(0);
-                                    msg = "";
-                                    openAlert("danger", msg);
-                                }
-                                $("#pdfbtn").button('reset');
-                                $("body").css("cursor", "default");
-                                me.wait_s = false;
-                            }, 'json');
+                        }, function(json) {
+                            if (json.end_code == 0) { //If no error
+                                // Opens the pdf download prompt
+                                window.open("tmp_files/" + title + ".pdf");
+                                $("#infoalert").fadeOut(0);
+                            }
+                            else {
+                                $("#infoalert").fadeOut(0);
+                                msg = "";
+                                openAlert("danger", msg);
+                            }
+                            $("#pdfbtn").button('reset');
+                            $("body").css("cursor", "default");
+                            me.wait_s = false;
+                        }, 'json');
                     }
                 });
 
@@ -1225,6 +1235,7 @@ Impressionist.prototype =
                         $("#viewbtntext").html('Wait...');
                         var slides = me.generateExportMarkup();
                         slides = me.correctListWidth(slides);
+                        slides = me.correctUserAgentTag(slides);
                         me.generateView(slides);
                     }
                 });
@@ -1437,6 +1448,11 @@ Impressionist.prototype =
                 var slides = $("#tempslides").html();
                 $("#tempslides").remove();
                 return slides;
+            },
+            correctUserAgentTag: function(elements) {
+                elements = elements.replace(/transform:/g, me.useragent_tag + "transform:");
+                elements = elements.replace(/transform-origin/g, me.useragent_tag + "transform-origin");
+                return elements;
             },
             cleanFullslider: function() {
                 $(".slidethumbholder").html("");
@@ -1754,7 +1770,7 @@ Impressionist.prototype =
             {
                 sessionStorage.setItem('preview', true);
                 sessionStorage.setItem('title', me.getTitle());
-                $.post("/exportPres", {'slides': btoa(unescape(encodeURIComponent(str)))}, function(json) {
+                $.post("/exportPres", {'slides': btoa(encodeURIComponent(str))}, function(json) {
                     if (json.end_code == 0) { //If no error
                         window.open("app/components/reveal.js/index.html");
                     }
@@ -2137,7 +2153,7 @@ Impressionist.prototype =
                     'color': me.titleColor
                 };
                 var subtitleText = {
-                    'size': me.subtitleSize, 
+                    'size': me.subtitleSize,
                     'font': me.subtitleFont,
                     'color': me.subtitleColor
                 };
