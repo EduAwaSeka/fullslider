@@ -1255,6 +1255,7 @@ Impressionist.prototype =
                 });
                 $('#inputFile').change(function(e) {
                     $(".loadpresbtn").button('loading');
+                    $(".loadpresbtn").html('Opening...');
                     var files = e.target.files;
                     var error = false;
                     if (!(/\.fspf$/).test(files[0].name)) {

@@ -3,5 +3,8 @@
   "version": "0.3.0",
   "main": "init.js",
   "author": "Eduardo Jimenez Grande",
-  "license": "Apache 2.0,  2016, Eduardo Jiménez Grande"
+  "license": "Apache 2.0,  2016, Eduardo Jimï¿½nez Grande",
+  "dependencies": {
+    "selenium-webdriver": "^2.53.2"
+  }
 }

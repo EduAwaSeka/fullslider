@@ -133,7 +133,7 @@ var code_style_list = '<ul class="dropdown-menu" data-option="codestyle">' +
         '<a class="is-etch-button" href="#" data-value="xt256">Xt256</a>' +
         '</li>' +
         '</ul>';
-var code_style_selector = '<div class="code-style-menu btn-group">' +
+var code_style_selector = '<div id="code-style-menu" class="code-style-menu btn-group">' +
         '<a class="btn btn-primary dropdown-toggle code-style-btn" data-toggle="dropdown" title="Choose the code style"><span class="text codeStyleReadout">Idea</span><span class="caret"></span></a>' +
         code_style_list +
         '</div>';
