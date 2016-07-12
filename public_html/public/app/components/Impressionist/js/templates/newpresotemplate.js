@@ -80,7 +80,7 @@ var font_list = '<ul class="dropdown-menu">' +
         '<a class="gorditas is-etch-button" href="#" data-value="\'Gorditas\', cursive">Gorditas</a>' +
         '<a class="greatvibes is-etch-button" href="#" data-value="\'Great Vibes\', cursive">Great Vibes</a>' +
         '<a class="hammersmith is-etch-button" href="#" data-value="\'Hammersmith One\', sans-serif">Hammersmith One</a>' +
-        '<a class="inconsolata is-etch-button" href="#" data-value="\'Inconsolata\',">Inconsolata</a>' +
+        '<a class="inconsolata is-etch-button" href="#" data-value="\'Inconsolata\', sans-serif">Inconsolata</a>' +
         '<a class="indieflower is-etch-button" href="#" data-value="\'Indie Flower\', cursive">Indie Flower</a>' +
         '<a class="lato is-etch-button" href="#" data-value="\'Lato\', sans-serif">Lato</a>' +
         '<a class="leaguegothic is-etch-button" href="#" data-value="\'League Gothic\', sans-serif">League Gothic</a>' +
@@ -88,6 +88,7 @@ var font_list = '<ul class="dropdown-menu">' +
         '<a class="miltonian is-etch-button" href="#" data-value="\'Miltonian\', cursive">Miltonian</a>' +
         '<a class="montserrat is-etch-button" href="#" data-value="\'Montserrat\', sans serif">Montserrat</a>' +
         '<a class="niconne is-etch-button" href="#" data-value="\'Niconne\', cursive">Niconne</a>' +
+        '<a class="opensans is-etch-button" href="#" data-value="\'Open Sans\', sans-serif">Open Sans</a>' +
         '<a class="pacifico is-etch-button" href="#" data-value="\'Pacifico\', cursive">Pacifico</a>' +
         '<a class="playfair is-etch-button" href="#" data-value="\'Playfair Display\', cursive">Playfair Display</a>' +
         '<a class="pressstart is-etch-button" href="#" data-value="\'Press Start 2P\', cursive">Press Start 2P</a>' +

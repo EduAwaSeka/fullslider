@@ -292,6 +292,7 @@ p {
     padding: 0vw !important;
     height: 38.8vw !important;
     box-shadow: 0.07vw 0.07vw 0.3vw #1F1F1F;
+    border:none;
 }
 
 .slidelement{

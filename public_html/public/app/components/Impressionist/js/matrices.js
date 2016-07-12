@@ -353,7 +353,7 @@ var Style = (function() {
             var max_w = getNumericValue($(me.selectedElement).css("max-width"));
             var max_h = getNumericValue($(me.selectedElement).css("max-height"));
 
-            var minSize = vwToPx(1.5); // minimal size in px
+            var minSize = vwToPx(1.4); // minimal size in px
 
             if (new_w > max_w || new_w < minSize) {
                 new_transformx = transformx;

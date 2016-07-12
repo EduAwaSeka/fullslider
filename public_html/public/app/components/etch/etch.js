@@ -431,7 +431,7 @@ function initializeTextColorChooser(color) {
         fontSizeUp: function(e) {
             var elementToChange = getElementEditing();
             var current_fontsize = parseFloat(pxToVw(getFontSize(elementToChange)));
-            var new_fontsize = current_fontsize + 0.25;
+            var new_fontsize = current_fontsize + 0.10;
 
             $(elementToChange).css("font-size", new_fontsize + "vw");
             var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
@@ -443,12 +443,11 @@ function initializeTextColorChooser(color) {
             var new_fontsize = 1;
 
             if (current_fontsize >= 1.25) {
-                new_fontsize = current_fontsize - 0.25;
+                new_fontsize = current_fontsize - 0.10;
             }
 
             $(elementToChange).css("font-size", new_fontsize + "vw");
             var fontSizeReadout = document.getElementsByClassName('fontSizeReadout')[0];
-            console.log(fontSizeReadout);
             fontSizeReadout.innerHTML = new_fontsize.toFixed(2) + " vw";
         },
         setCodeStyle: function(e) {

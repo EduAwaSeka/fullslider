@@ -151,8 +151,9 @@ selectable_image_context_items["sep3"] = "---------";
 selectable_image_context_items["Crop image"] = {
     name: "Crop image",
     icon: "paste",
+    className: "contextual_cropimage",
     callback: function(key, options) {
-        me.editImageElement(me.selectedElement[0]);
+        me.editImageElement(this[0]);
     }
 };
 

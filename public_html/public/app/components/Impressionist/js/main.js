@@ -594,7 +594,7 @@ Impressionist.prototype =
             selectElement: function(el)
             {
                 // if not is in editionmode, select it
-                if (($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined") && (me.imageOnEdit == "")) {
+                if (($(el).attr("contentEditable") == "false" || typeof ($(el).attr("contentEditable")) == "undefined") && (me.imageOnEdit == "" || typeof (me.imageOnEdit) == "undefined")) {
                     me.clearElementSelections();
                     me.selectedElement = $(el);
                     $(el).addClass("elementselected");
@@ -703,9 +703,11 @@ Impressionist.prototype =
                     if ($(me.selectedforedit).attr("data-type") == "code") {
                         me.prettifyCode();
                     }
-                    me.clearElementSelections();
+                    me.clearElementSelections(e);
                 }
-
+                if (!isInElement($("#menu"), t)) {
+                    $('#menu').removeClass('open');
+                }
                 e.stopPropagation();
                 me.selectCurrentClicked(t);
             },
@@ -745,8 +747,12 @@ Impressionist.prototype =
                 }
                 me.currentClicked = "";
             },
-            clearElementSelections: function()
+            clearElementSelections: function(e)
             {
+                t=null;
+                if (e) {
+                    var t = $(e.target);
+                }
                 $("#play").css("display", "none");
                 $(".slidelement").removeClass("elementhover");
                 $(".slidelement").removeClass("elementselected");
@@ -757,7 +763,7 @@ Impressionist.prototype =
                 $(".slidelement").attr("contentEditable", "false");
                 me.selectedElement = "";
                 me.selectedforedit = "";
-                if (me.imageOnEdit != "" && !$(me.imageOnEdit).attr("contentEditable")) { //If not is editing image (for crop from context menu)
+                if (me.imageOnEdit != "" && $(me.imageOnEdit).attr("contentEditable") == "false" && !isInElement($(".contextual_cropimage"), t)) { //If not is editing image (for crop from context menu)
                     me.imageOnEdit = "";
                 }
             },
@@ -1340,6 +1346,10 @@ Impressionist.prototype =
 
                 $('#cancelEdit').on("click", onEditEnd);
 
+                $('#menu a').on('click', function() {
+                    $('#menu').removeClass('open');
+                });
+
                 $(window).resize(function(e) {
                     if ((me.selectedforedit !== "") && ($("#welcomemodal").css("display") == "none")) {
                         launchEvent("dblclick", me.selectedforedit);
@@ -1398,6 +1408,8 @@ Impressionist.prototype =
                 //Add code
                 $("#addcodebtn").off();
                 $("#pdfbtn").off();
+
+                $('#menu a').off();
             },
             openStyleSelector: function()
             {
